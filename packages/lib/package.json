@@ -18,6 +18,7 @@
     "@aws-sdk/cloudfront-signer": "^3.410.0",
     "@aws-sdk/s3-request-presigner": "^3.410.0",
     "@aws-sdk/signature-v4-crt": "^3.410.0",
+    "@boxyhq/saml-jackson": "^1.14.2",
     "@documenso/email": "*",
     "@documenso/prisma": "*",
     "@documenso/signing": "*",
