@@ -10,6 +10,7 @@ import { match } from 'ts-pattern';
 
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
 import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 
@@ -20,7 +21,8 @@ import { Widget } from './widget';
 export type HeroProps = {
   className?: string;
   [key: string]: unknown;
-  locale: any;
+  locale: LocaleTypes;
+  starCount: number;
 };
 
 const BackgroundPatternVariants: Variants = {

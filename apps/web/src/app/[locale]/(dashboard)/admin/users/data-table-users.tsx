@@ -51,7 +51,7 @@ export const UsersDataTable = ({ users, totalPages, perPage, page }: UsersDataTa
         perPage,
       });
     });
-  }, [debouncedSearchString]);
+  }, [debouncedSearchString, perPage, updateSearchParams]);
 
   const onPaginationChange = (page: number, perPage: number) => {
     startTransition(() => {

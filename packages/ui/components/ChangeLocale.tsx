@@ -4,9 +4,12 @@ import React from 'react';
 
 import { useParams, useRouter, useSelectedLayoutSegments } from 'next/navigation';
 
+import { LocaleTypes } from '../i18n/settings';
+
 const ChangeLocale = () => {
   const router = useRouter();
-  const params = useParams();
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+  const locale = useParams()?.locale as LocaleTypes;
   const urlSegments = useSelectedLayoutSegments();
 
   const handleLocaleChange = (event: { target: { value: string } }) => {
@@ -20,7 +23,7 @@ const ChangeLocale = () => {
 
   return (
     <div>
-      <select onChange={handleLocaleChange} value={params.locale}>
+      <select onChange={handleLocaleChange} value={locale}>
         <option value="en">🇺🇸</option>
         <option value="fr">🇫🇷</option>
         <option value="sv">🇸🇪</option>

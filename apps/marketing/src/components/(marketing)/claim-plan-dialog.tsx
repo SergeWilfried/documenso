@@ -12,6 +12,7 @@ import { z } from 'zod';
 
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
 import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import {
@@ -41,7 +42,7 @@ export type ClaimPlanDialogProps = {
   className?: string;
   planId: string;
   children: React.ReactNode;
-  locale: any;
+  locale: LocaleTypes;
 };
 
 export const ClaimPlanDialog = ({ className, planId, children, locale }: ClaimPlanDialogProps) => {

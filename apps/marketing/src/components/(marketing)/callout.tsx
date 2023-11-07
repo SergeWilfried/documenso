@@ -6,12 +6,13 @@ import { usePlausible } from 'next-plausible';
 import { LuGithub } from 'react-icons/lu';
 
 import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { Button } from '@documenso/ui/primitives/button';
 
 export type CalloutProps = {
   starCount?: number;
   [key: string]: unknown;
-  locale: any;
+  locale: LocaleTypes;
 };
 
 export const Callout = ({ starCount, locale }: CalloutProps) => {

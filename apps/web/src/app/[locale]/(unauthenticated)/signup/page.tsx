@@ -1,10 +1,16 @@
 import Link from 'next/link';
 
 import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 
 import { SignUpForm } from '~/components/forms/signup';
 
-export default function SignUpPage({ locale }) {
+interface WithLocalProps {
+  params: {
+    locale: LocaleTypes;
+  };
+}
+export default function SignUpPage({ params: { locale } }: WithLocalProps) {
   const { t } = useTranslation(locale, 'dashboard');
 
   return (
@@ -21,7 +27,7 @@ export default function SignUpPage({ locale }) {
       <p className="text-muted-foreground mt-6 text-center text-sm">
         Already have an account?{' '}
         <Link href="/signin" className="text-primary duration-200 hover:opacity-70">
-          Sign in instead
+          {t('sign-in-instead')}
         </Link>
       </p>
     </div>

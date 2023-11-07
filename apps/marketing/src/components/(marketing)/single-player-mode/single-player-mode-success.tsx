@@ -12,6 +12,7 @@ import { DocumentDownloadButton } from '@documenso/ui/components/document/docume
 import { DocumentShareButton } from '@documenso/ui/components/document/document-share-button';
 import { SigningCard3D } from '@documenso/ui/components/signing-card';
 import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 
@@ -20,7 +21,7 @@ import { ConfettiScreen } from '~/components/(marketing)/confetti-screen';
 
 interface SinglePlayerModeSuccessProps {
   className?: string;
-  locale: any;
+  locale: LocaleTypes;
   document: DocumentWithRecipient;
   signatures: Signature[];
 }

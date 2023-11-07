@@ -2,11 +2,12 @@
 
 import { useCopyToClipboard } from '@documenso/lib/client-only/hooks/use-copy-to-clipboard';
 import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
 export type PasswordRevealProps = {
   password: string;
-  locale: any;
+  locale: LocaleTypes;
 };
 
 export const PasswordReveal = ({ password, locale }: PasswordRevealProps) => {

@@ -1,10 +1,16 @@
 import Link from 'next/link';
 
 import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 
 import { SignInForm } from '~/components/forms/signin';
 
-const SignInPage = ({ locale }) => {
+interface WithLocalProps {
+  params: {
+    locale: LocaleTypes;
+  };
+}
+const SignInPage = ({ params: { locale } }: WithLocalProps) => {
   // Make sure to use the correct namespace here.
   const { t } = useTranslation(locale, 'marketing');
 

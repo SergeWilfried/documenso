@@ -30,13 +30,13 @@ export default async function IndexPage() {
 
   return (
     <div className={cn('mt-12', fontCaveat.variable)}>
-      <Hero starCount={starCount} />
+      <Hero locale={'en'} starCount={starCount} />
 
       <FasterSmarterBeautifulBento className="my-48" />
       <ShareConnectPaidWidgetBento className="my-48" />
       <OpenBuildTemplateBento className="my-48" />
 
-      <Callout starCount={starCount} />
+      <Callout locale={'en'} starCount={starCount} />
     </div>
   );
 }
