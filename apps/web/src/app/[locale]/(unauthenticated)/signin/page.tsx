@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
 
 import { SignInForm } from '~/components/forms/signin';
 
-const SignInPage = async ({ locale }) => {
+const SignInPage = ({ locale }) => {
   // Make sure to use the correct namespace here.
-  const { t } = await createTranslation(locale, 'dashboard');
+  const { t } = useTranslation(locale, 'marketing');
 
   return (
     <div>

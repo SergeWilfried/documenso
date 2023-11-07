@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react';
 import { redis } from '@documenso/lib/server-only/redis';
 import { stripe } from '@documenso/lib/server-only/stripe';
 import { prisma } from '@documenso/prisma';
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 
@@ -36,7 +36,7 @@ export default async function ClaimedPlanPage({ searchParams = {} }: ClaimedPlan
 
   const session = await stripe.checkout.sessions.retrieve(sessionId);
   const customerId = typeof session.customer === 'string' ? session.customer : session.customer?.id;
-  const { t } = await createTranslation(locale, 'about');
+  const { t } = useTranslation(locale, 'marketing');
 
   if (!customerId) {
     redirect('/');

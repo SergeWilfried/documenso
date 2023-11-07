@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
 
 import { SignUpForm } from '~/components/forms/signup';
 
-export default async function SignUpPage({ locale }) {
-  const { t } = await createTranslation(locale, 'dashboard');
+export default function SignUpPage({ locale }) {
+  const { t } = useTranslation(locale, 'dashboard');
 
   return (
     <div>

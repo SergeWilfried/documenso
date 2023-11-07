@@ -54,7 +54,7 @@ const HeroTitleVariants: Variants = {
 
 export const Hero = async ({ className, locale, ...props }: HeroProps) => {
   const event = usePlausible();
-  const { t } = await createTranslation(locale, 'hero');
+  const { t } = useTranslation(locale, 'marketing');
 
   const { getFlag } = useFeatureFlags();
 

@@ -55,7 +55,7 @@ export const ClaimPlanDialog = async ({
   const event = usePlausible();
 
   const { toast } = useToast();
-  const { t } = await createTranslation(locale, 'home');
+  const { t } = useTranslation(locale, 'marketing');
 
   const [open, setOpen] = useState(() => params?.get('cancelled') === 'true');
 
