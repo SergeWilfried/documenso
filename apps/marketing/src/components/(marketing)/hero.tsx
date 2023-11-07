@@ -9,7 +9,7 @@ import { LuGithub } from 'react-icons/lu';
 import { match } from 'ts-pattern';
 
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 
@@ -52,7 +52,7 @@ const HeroTitleVariants: Variants = {
   },
 };
 
-export const Hero = async ({ className, locale, ...props }: HeroProps) => {
+export const Hero = ({ className, locale, ...props }: HeroProps) => {
   const event = usePlausible();
   const { t } = useTranslation(locale, 'marketing');
 

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePlausible } from 'next-plausible';
 import { LuGithub } from 'react-icons/lu';
 
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
 import { Button } from '@documenso/ui/primitives/button';
 
 export type CalloutProps = {
@@ -14,7 +14,7 @@ export type CalloutProps = {
   locale: any;
 };
 
-export const Callout = async ({ starCount, locale }: CalloutProps) => {
+export const Callout = ({ starCount, locale }: CalloutProps) => {
   const event = usePlausible();
   const { t } = useTranslation(locale, 'marketing');
 

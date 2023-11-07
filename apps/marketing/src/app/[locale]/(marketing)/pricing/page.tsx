@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +12,11 @@ import { Button } from '@documenso/ui/primitives/button';
 
 import { PricingTable } from '~/components/(marketing)/pricing-table';
 
+interface WithLocalProps {
+  params: {
+    locale: LocaleTypes;
+  };
+}
 export type PricingPageProps = {
   searchParams?: {
     planId?: string;
@@ -20,7 +26,7 @@ export type PricingPageProps = {
   };
 };
 
-export default async function PricingPage({ params: { locale } }) {
+export default function PricingPage({ params: { locale } }: WithLocalProps) {
   const { t } = useTranslation(locale, 'marketing');
 
   return (

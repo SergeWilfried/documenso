@@ -1,8 +1,14 @@
 import { allBlogPosts } from 'contentlayer/generated';
 
 import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 
-export default function BlogPage({ params: { locale } }) {
+interface WithLocalProps {
+  params: {
+    locale: LocaleTypes;
+  };
+}
+export default function BlogPage({ params: { locale } }: WithLocalProps) {
   const blogPosts = allBlogPosts.sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);

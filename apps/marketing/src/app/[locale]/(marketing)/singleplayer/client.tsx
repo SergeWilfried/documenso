@@ -9,7 +9,8 @@ import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
 import { base64 } from '@documenso/lib/universal/base64';
 import { putFile } from '@documenso/lib/universal/upload/put-file';
 import { DocumentDataType, Field, Prisma, Recipient } from '@documenso/prisma/client';
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
 import { DocumentDropzone } from '@documenso/ui/primitives/document-dropzone';
 import { AddFieldsFormPartial } from '@documenso/ui/primitives/document-flow/add-fields';
@@ -26,12 +27,18 @@ import { useToast } from '@documenso/ui/primitives/use-toast';
 
 import { createSinglePlayerDocument } from '~/components/(marketing)/single-player-mode/create-single-player-document.action';
 
+interface WithLocalProps {
+  params: {
+    locale: LocaleTypes;
+  };
+}
+
 type SinglePlayerModeStep = 'fields' | 'sign';
 
 // !: This entire file is a hack to get around failed prerendering of
 // !: the Single Player Mode page. This regression was introduced during
 // !: the upgrade of Next.js to v13.5.x.
-export const SinglePlayerClient = async ({ params: { locale } }) => {
+export const SinglePlayerClient = ({ params: { locale } }: WithLocalProps) => {
   const analytics = useAnalytics();
   const router = useRouter();
 

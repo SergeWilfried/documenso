@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 
 import Image from 'next/image';
 
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
 import { cn } from '@documenso/ui/lib/utils';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
 
@@ -13,7 +13,7 @@ import cardSmartFigure from '~/assets/card-smart-figure.png';
 
 export type FasterSmarterBeautifulBentoProps = HTMLAttributes<HTMLDivElement>;
 
-export const FasterSmarterBeautifulBento = async ({
+export const FasterSmarterBeautifulBento = ({
   className,
   ...props
 }: FasterSmarterBeautifulBentoProps) => {

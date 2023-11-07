@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import {
@@ -44,12 +44,7 @@ export type ClaimPlanDialogProps = {
   locale: any;
 };
 
-export const ClaimPlanDialog = async ({
-  className,
-  planId,
-  children,
-  locale,
-}: ClaimPlanDialogProps) => {
+export const ClaimPlanDialog = ({ className, planId, children, locale }: ClaimPlanDialogProps) => {
   const params = useSearchParams();
   const analytics = useAnalytics();
   const event = usePlausible();
