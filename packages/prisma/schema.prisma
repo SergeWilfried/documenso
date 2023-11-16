@@ -13,6 +13,50 @@ enum IdentityProvider {
   GOOGLE
 }
 
+model Team {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  domain      String?  @unique
+  defaultRole Role     @default(USER)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+
+  members     TeamMember[]
+  invitations Invitation[]
+  apiKeys     ApiKey[]
+}
+
+
+
+model ApiKey {
+  id         String    @id @default(uuid())
+  name       String
+  teamId     String
+  hashedKey  String    @unique
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now())
+  expiresAt  DateTime?
+  lastUsedAt DateTime?
+
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+}
+model TeamMember {
+  id        String   @id @default(uuid())
+  teamId    String
+  userId    String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([teamId, userId])
+  @@index([userId])
+}
+
+
 enum Role {
   ADMIN
   USER
@@ -238,4 +282,22 @@ model DocumentShareLink {
   document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
 
   @@unique([documentId, email])
+}
+
+
+model Invitation {
+  id        String   @id @default(uuid())
+  teamId    String
+  email     String
+  role      Role     @default(USER)
+  token     String   @unique
+  expires   DateTime
+  invitedBy String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  user User @relation(fields: [invitedBy], references: [id], onDelete: Cascade)
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@unique([teamId, email])
 }
