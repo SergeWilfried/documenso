@@ -8,6 +8,7 @@
     "client-only/",
     "server-only/",
     "universal/",
+    "audit",
     "next-auth/"
   ],
   "scripts": {
