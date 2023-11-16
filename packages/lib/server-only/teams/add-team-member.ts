@@ -4,7 +4,13 @@ import { Role } from '@prisma/client';
 
 import { prisma } from '@documenso/prisma';
 
-export const addTeamMember = async (teamId: string, userId: number, role: Role) => {
+export interface addTeamMemberOptions {
+  userId: number;
+  teamId: string;
+  role: Role;
+}
+
+export const addTeamMember = async ({ teamId, userId, role }: addTeamMemberOptions) => {
   return await prisma.teamMember.upsert({
     create: {
       teamId,
