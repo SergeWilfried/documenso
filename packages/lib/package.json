@@ -30,6 +30,8 @@
     "bcrypt": "^5.1.0",
     "luxon": "^3.4.0",
     "nanoid": "^4.0.2",
+    "@retracedhq/logs-viewer": "2.5.2",
+    "@retracedhq/retraced": "0.7.1",
     "next": "14.0.0",
     "next-auth": "4.24.3",
     "pdf-lib": "^1.17.1",
