@@ -58,6 +58,7 @@ model TeamMember {
 
 
 enum Role {
+  OWNER
   ADMIN
   USER
 }
