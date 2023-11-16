@@ -6,9 +6,12 @@ import { prisma } from '@documenso/prisma';
 
 import { addTeamMember } from './add-team-member';
 
-export const createTeam = async (param: { userId: number; name: string; slug: string }) => {
-  const { userId, name, slug } = param;
-
+export interface createTeamOptions {
+  userId: number;
+  slug: string;
+  name: string;
+}
+export const createTeam = async ({ userId, name, slug }: createTeamOptions) => {
   const team = await prisma.team.create({
     data: {
       name,
@@ -16,7 +19,7 @@ export const createTeam = async (param: { userId: number; name: string; slug: st
     },
   });
 
-  await addTeamMember(team.id, userId, Role.ADMIN);
+  await addTeamMember({ teamId: team.id, userId: userId, role: Role.ADMIN });
 
   return team;
 };
