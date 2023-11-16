@@ -42,9 +42,9 @@ model ApiKey {
   team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
 }
 model TeamMember {
-  id        String   @id @default(uuid())
+  id        Int      @id @default(autoincrement())
   teamId    String
-  userId    String
+  userId    Int
   role      Role     @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
@@ -80,7 +80,8 @@ model User {
   Document           Document[]
   Subscription       Subscription?
   PasswordResetToken PasswordResetToken[]
-
+  teamMembers TeamMember[]
+  invitations Invitation[]
   @@index([email])
 }
 
@@ -286,13 +287,13 @@ model DocumentShareLink {
 
 
 model Invitation {
-  id        String   @id @default(uuid())
+  id                 Int                  @id @default(autoincrement())
   teamId    String
   email     String
   role      Role     @default(USER)
   token     String   @unique
   expires   DateTime
-  invitedBy String
+  invitedBy Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
