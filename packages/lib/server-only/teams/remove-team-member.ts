@@ -2,7 +2,12 @@
 
 import { prisma } from '@documenso/prisma';
 
-export const removeTeamMember = async (teamId: string, userId: number) => {
+export interface removeTeamMemberOptions {
+  userId: number;
+  teamId: string;
+}
+
+export const removeTeamMember = async ({ teamId, userId }: removeTeamMemberOptions) => {
   return await prisma.teamMember.delete({
     where: {
       teamId_userId: {

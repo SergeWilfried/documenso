@@ -3,7 +3,12 @@
 import { prisma } from '@documenso/prisma';
 import { Team } from '@documenso/prisma/client';
 
-export const updateTeam = async (slug: string, data: Partial<Team>) => {
+export interface updateTeamOptions {
+  data: Partial<Team>;
+  slug: string;
+}
+
+export const updateTeam = async ({ slug, data }: updateTeamOptions) => {
   return await prisma.team.update({
     where: {
       slug,

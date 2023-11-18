@@ -2,7 +2,10 @@
 
 import { prisma } from '@documenso/prisma';
 
-export const getTeams = async (userId: number) => {
+export interface getTeamsOptions {
+  userId: number;
+}
+export const getTeams = async ({ userId }: getTeamsOptions) => {
   return await prisma.team.findMany({
     where: {
       members: {
