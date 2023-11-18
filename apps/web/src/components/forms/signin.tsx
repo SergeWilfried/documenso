@@ -24,7 +24,7 @@ const ERROR_MESSAGES = {
     'This account appears to be using a social login method, please sign in using that method',
 };
 
-const LOGIN_REDIRECT_PATH = '/documents';
+const LOGIN_REDIRECT_PATH = `/documents`;
 
 export const ZSignInFormSchema = z.object({
   email: z.string().email().min(1),

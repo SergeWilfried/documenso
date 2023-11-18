@@ -52,8 +52,8 @@ const config = {
     return [
       {
         permanent: true,
-        source: '/documents/:id/sign',
-        destination: '/sign/:token',
+        source: 'fr/documents/:id/sign',
+        destination: 'fr/sign/:token',
         has: [
           {
             type: 'query',
@@ -63,8 +63,8 @@ const config = {
       },
       {
         permanent: true,
-        source: '/documents/:id/signed',
-        destination: '/sign/:token',
+        source: 'fr/documents/:id/signed',
+        destination: 'fr/sign/:token',
         has: [
           {
             type: 'query',

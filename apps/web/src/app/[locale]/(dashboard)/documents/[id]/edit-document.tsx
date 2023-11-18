@@ -84,8 +84,6 @@ export const EditDocumentForm = ({
 
       setStep('fields');
     } catch (err) {
-      console.error(err);
-
       toast({
         title: 'Error',
         description: 'An error occurred while adding signers.',
@@ -106,8 +104,6 @@ export const EditDocumentForm = ({
 
       setStep('subject');
     } catch (err) {
-      console.error(err);
-
       toast({
         title: 'Error',
         description: 'An error occurred while adding signers.',
@@ -136,8 +132,6 @@ export const EditDocumentForm = ({
 
       router.push('/documents');
     } catch (err) {
-      console.error(err);
-
       toast({
         title: 'Error',
         description: 'An error occurred while sending the document.',

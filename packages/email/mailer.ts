@@ -5,7 +5,7 @@ import { ResendTransport } from '@documenso/nodemailer-resend';
 import { MailChannelsTransport } from './transports/mailchannels';
 
 const getTransport = () => {
-  const transport = process.env.NEXT_PRIVATE_SMTP_TRANSPORT ?? 'smtp-auth';
+  const transport = process.env.NEXT_PRIVATE_SMTP_TRANSPORT ?? 'resend';
 
   if (transport === 'mailchannels') {
     return createTransport(

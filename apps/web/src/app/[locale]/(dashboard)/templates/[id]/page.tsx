@@ -12,7 +12,7 @@ import { getTemplateById } from '@documenso/lib/server-only/template/get-templat
 
 import { TemplateType } from '~/components/formatter/template-type';
 
-import { EditTemplateForm } from './edit-template';
+import { EditTemplateForm } from './edit-templates';
 
 export type TemplatePageProps = {
   params: {

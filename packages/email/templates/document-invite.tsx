@@ -26,9 +26,9 @@ export type DocumentInviteEmailTemplateProps = Partial<TemplateDocumentInvitePro
 
 export const DocumentInviteEmailTemplate = ({
   inviterName = 'Lucas Smith',
-  inviterEmail = 'lucas@documenso.com',
+  inviterEmail = 'lucas@progiciel.co',
   documentName = 'Open Source Pledge.pdf',
-  signDocumentLink = 'https://documenso.com',
+  signDocumentLink = 'https://app.notario.progiciel.co',
   assetBaseUrl = 'http://localhost:3002',
   customBody,
 }: DocumentInviteEmailTemplateProps) => {

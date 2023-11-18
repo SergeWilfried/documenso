@@ -1,10 +1,11 @@
 import Link from 'next/link';
 
 import { createTranslation } from '@documenso/ui/i18n/server';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 
 import { SignInForm } from '~/components/forms/signin';
 
-const SignInPage = async ({ locale }) => {
+const SignInPage = async ({ params: { locale } }: { params: { locale: LocaleTypes } }) => {
   // Make sure to use the correct namespace here.
   const { t } = await createTranslation(locale, 'common');
 

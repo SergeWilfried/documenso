@@ -19,10 +19,10 @@ import {
 } from '@documenso/ui/primitives/document-flow/document-flow-root';
 import { DocumentFlowStep } from '@documenso/ui/primitives/document-flow/types';
 import { LazyPDFViewer } from '@documenso/ui/primitives/lazy-pdf-viewer';
-import { AddTemplateFieldsFormPartial } from '@documenso/ui/primitives/template-flow/add-template-fields';
-import { TAddTemplateFieldsFormSchema } from '@documenso/ui/primitives/template-flow/add-template-fields.types';
-import { AddTemplatePlaceholderRecipientsFormPartial } from '@documenso/ui/primitives/template-flow/add-template-placeholder-recipients';
-import { TAddTemplatePlacholderRecipientsFormSchema } from '@documenso/ui/primitives/template-flow/add-template-placeholder-recipients.types';
+import { AddTemplateFieldsFormPartial } from '@documenso/ui/primitives/template-flow/fields/add-template-fields';
+import { TAddTemplateFieldsFormSchema } from '@documenso/ui/primitives/template-flow/fields/types';
+import { AddTemplatePlaceholderRecipientsFormPartial } from '@documenso/ui/primitives/template-flow/recipients/add-template-placeholder-recipients';
+import { TAddTemplatePlaceholderRecipientsFormSchema } from '@documenso/ui/primitives/template-flow/recipients/types';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
 import { addTemplateFields } from '~/components/forms/edit-template/add-template-fields.action';
@@ -69,7 +69,7 @@ export const EditTemplateForm = ({
   const currentDocumentFlow = documentFlow[step];
 
   const onAddTemplatePlaceholderFormSubmit = async (
-    data: TAddTemplatePlacholderRecipientsFormSchema,
+    data: TAddTemplatePlaceholderRecipientsFormSchema,
   ) => {
     try {
       await addTemplatePlaceholders({

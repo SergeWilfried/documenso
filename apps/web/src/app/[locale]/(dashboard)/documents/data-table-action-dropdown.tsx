@@ -53,21 +53,7 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
   const { data: session } = useSession();
   const router = useRouter();
   const { toast } = useToast();
-  const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
-  if (!session) {
-    return null;
-  }
-
-  const recipient = row.Recipient.find((recipient) => recipient.email === session.user.email);
-
-  const isOwner = row.User.id === session.user.id;
-  // const isRecipient = !!recipient;
-  const isDraft = row.status === DocumentStatus.DRAFT;
-  // const isPending = row.status === DocumentStatus.PENDING;
-  const isComplete = row.status === DocumentStatus.COMPLETED;
-  // const isSigned = recipient?.signingStatus === SigningStatus.SIGNED;
-  const isDocumentDeletable = isOwner && row.status === DocumentStatus.DRAFT;
   const { mutateAsync: createTemplateFromDocument } =
     trpc.template.createTemplateFromDocument.useMutation({
       onSuccess: ({ id }) => {
@@ -92,6 +78,34 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
     onSuccess: () => toast(TOAST_DOCUMENT_SHARE_SUCCESS),
     onError: () => toast(TOAST_DOCUMENT_SHARE_ERROR),
   });
+  const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
+
+  if (!session) {
+    return null;
+  }
+
+  const recipient = row.Recipient.find((recipient) => recipient.email === session.user.email);
+
+  const isOwner = row.User.id === session.user.id;
+  // const isRecipient = !!recipient;
+  const isDraft = row.status === DocumentStatus.DRAFT;
+  // const isPending = row.status === DocumentStatus.PENDING;
+  const isComplete = row.status === DocumentStatus.COMPLETED;
+  // const isSigned = recipient?.signingStatus === SigningStatus.SIGNED;
+  const isDocumentDeletable = isOwner && row.status === DocumentStatus.DRAFT;
+  const onSaveAsTemplateClick = async () => {
+    try {
+      await createTemplateFromDocument({ documentId: row.id });
+    } catch {
+      toast({
+        title: 'Something went wrong',
+        description: 'This template could not be created at this time. Please try again.',
+        variant: 'destructive',
+        duration: 7500,
+      });
+    }
+  };
+
   const onDownloadClick = async () => {
     let document: DocumentWithData | null = null;
 
@@ -125,18 +139,6 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
     link.click();
 
     window.URL.revokeObjectURL(link.href);
-  };
-  const onSaveAsTemplateClick = async () => {
-    try {
-      await createTemplateFromDocument({ documentId: row.id });
-    } catch {
-      toast({
-        title: 'Something went wrong',
-        description: 'This template could not be created at this time. Please try again.',
-        variant: 'destructive',
-        duration: 7500,
-      });
-    }
   };
 
   return (

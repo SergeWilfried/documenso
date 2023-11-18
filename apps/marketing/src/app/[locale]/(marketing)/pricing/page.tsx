@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { createTranslation } from '@documenso/ui/i18n/server';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import {
   Accordion,
   AccordionContent,
@@ -20,7 +21,11 @@ export type PricingPageProps = {
   };
 };
 
-export default async function PricingPage({ params: { locale } }) {
+export default async function PricingPage({
+  params: { locale },
+}: {
+  params: { locale: LocaleTypes };
+}) {
   const { t } = await createTranslation(locale, 'pricing');
 
   return (
@@ -144,9 +149,9 @@ export default async function PricingPage({ params: { locale } }) {
               <Link
                 className="text-documenso-700 font-bold"
                 target="_blank"
-                href="mailto:support@documenso.com"
+                href="mailto:support@progiciel.co"
               >
-                support@documenso.com
+                support@progiciel.co
               </Link>{' '}
               {t(`or`)}{' '}
               <a
