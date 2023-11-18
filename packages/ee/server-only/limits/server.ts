@@ -50,7 +50,6 @@ export const getServerLimits = async ({ email }: GetServerLimitsOptions) => {
         expand: ['product'],
       })
       .catch((err) => {
-        console.error(err);
         throw err;
       });
 

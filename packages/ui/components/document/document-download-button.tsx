@@ -49,8 +49,6 @@ export const DocumentDownloadButton = ({
 
       window.URL.revokeObjectURL(link.href);
     } catch (err) {
-      console.error(err);
-
       toast({
         title: 'Error',
         description: 'An error occurred while downloading your document.',

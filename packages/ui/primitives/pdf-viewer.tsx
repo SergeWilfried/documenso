@@ -145,8 +145,6 @@ export const PDFViewer = ({
 
         setIsDocumentBytesLoading(false);
       } catch (err) {
-        console.error(err);
-
         toast({
           title: 'Error',
           description: 'An error occurred while loading the document.',

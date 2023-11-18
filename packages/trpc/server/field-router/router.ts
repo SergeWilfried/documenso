@@ -23,8 +23,6 @@ export const fieldRouter = router({
           isBase64,
         });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to sign this field. Please try again later.',
@@ -43,8 +41,6 @@ export const fieldRouter = router({
           fieldId,
         });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to remove the signature for this field. Please try again later.',

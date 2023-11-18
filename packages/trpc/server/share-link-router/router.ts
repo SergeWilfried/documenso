@@ -24,8 +24,6 @@ export const shareLinkRouter = router({
 
         return await createOrGetShareLink({ documentId, userId: ctx.user.id });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to create a sharing link.',

@@ -32,8 +32,6 @@ export const documentRouter = router({
           userId: ctx.user.id,
         });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to find this document. Please try again later.',
@@ -49,8 +47,6 @@ export const documentRouter = router({
         token,
       });
     } catch (err) {
-      console.error(err);
-
       throw new TRPCError({
         code: 'BAD_REQUEST',
         message: 'We were unable to find this document. Please try again later.',
@@ -101,8 +97,6 @@ export const documentRouter = router({
 
         return await deleteDraftDocument({ id, userId });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to delete this document. Please try again later.',
@@ -122,8 +116,6 @@ export const documentRouter = router({
           recipients,
         });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message:
@@ -144,8 +136,6 @@ export const documentRouter = router({
           fields,
         });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to set the fields for this document. Please try again later.',
@@ -164,8 +154,6 @@ export const documentRouter = router({
           documentId,
         });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to send this document. Please try again later.',

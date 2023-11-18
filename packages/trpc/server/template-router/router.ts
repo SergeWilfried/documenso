@@ -28,8 +28,6 @@ export const templateRouter = router({
           templateDocumentDataId,
         });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to create this template. Please try again later.',
@@ -66,8 +64,6 @@ export const templateRouter = router({
           userId: ctx.user.id,
         });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to create this template. Please try again later.',
@@ -86,8 +82,6 @@ export const templateRouter = router({
           userId: ctx.user.id,
         });
       } catch (err) {
-        console.error(err);
-
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to duplicate the template. Please try again later.',
@@ -105,7 +99,6 @@ export const templateRouter = router({
 
         return await deleteTemplate({ id, userId });
       } catch (err) {
-        console.error(err);
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to delete this template. Please try again later.',

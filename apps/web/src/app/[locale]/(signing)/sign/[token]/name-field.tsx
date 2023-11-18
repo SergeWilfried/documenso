@@ -68,8 +68,6 @@ export const NameField = ({ field, recipient }: NameFieldProps) => {
 
       startTransition(() => router.refresh());
     } catch (err) {
-      console.error(err);
-
       toast({
         title: 'Error',
         description: 'An error occurred while signing the document.',
@@ -87,8 +85,6 @@ export const NameField = ({ field, recipient }: NameFieldProps) => {
 
       startTransition(() => router.refresh());
     } catch (err) {
-      console.error(err);
-
       toast({
         title: 'Error',
         description: 'An error occurred while removing the signature.',
