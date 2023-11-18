@@ -10,6 +10,7 @@ import { base64 } from '@documenso/lib/universal/base64';
 import { putFile } from '@documenso/lib/universal/upload/put-file';
 import { DocumentDataType, Field, Prisma, Recipient } from '@documenso/prisma/client';
 import { createTranslation } from '@documenso/ui/i18n/server';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
 import { DocumentDropzone } from '@documenso/ui/primitives/document-dropzone';
 import { AddFieldsFormPartial } from '@documenso/ui/primitives/document-flow/add-fields';
@@ -31,7 +32,11 @@ type SinglePlayerModeStep = 'fields' | 'sign';
 // !: This entire file is a hack to get around failed prerendering of
 // !: the Single Player Mode page. This regression was introduced during
 // !: the upgrade of Next.js to v13.5.x.
-export const SinglePlayerClient = async ({ params: { locale } }) => {
+export const SinglePlayerClient = async ({
+  params: { locale },
+}: {
+  params: { locale: LocaleTypes };
+}) => {
   const analytics = useAnalytics();
   const router = useRouter();
 
@@ -154,6 +159,7 @@ export const SinglePlayerClient = async ({ params: { locale } }) => {
     expired: null,
     signedAt: null,
     readStatus: 'OPENED',
+    templateToken: '',
     signingStatus: 'NOT_SIGNED',
     sendStatus: 'NOT_SENT',
   };
