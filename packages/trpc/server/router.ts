@@ -6,6 +6,7 @@ import { profileRouter } from './profile-router/router';
 import { shareLinkRouter } from './share-link-router/router';
 import { templateRouter } from './template-router/router';
 import { procedure, router } from './trpc';
+import { twoFactorRouter } from './two-factor-router/router';
 
 export const appRouter = router({
   health: procedure.query(() => {
@@ -18,6 +19,7 @@ export const appRouter = router({
   admin: adminRouter,
   shareLink: shareLinkRouter,
   template: templateRouter,
+  twoFactor: twoFactorRouter,
 });
 
 export type AppRouter = typeof appRouter;

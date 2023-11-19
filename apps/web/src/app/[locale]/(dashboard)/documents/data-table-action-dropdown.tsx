@@ -5,6 +5,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+import { useParams } from 'next/navigation';
+
 import {
   Copy,
   Download,
@@ -31,6 +33,7 @@ import { DocumentWithData } from '@documenso/prisma/types/document-with-data';
 import { trpc as trpcClient } from '@documenso/trpc/client';
 import { trpc } from '@documenso/trpc/react';
 import { DocumentShareButton } from '@documenso/ui/components/document/document-share-button';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,6 +44,7 @@ import {
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
 import { DeleteDraftDocumentDialog } from './delete-draft-document-dialog';
+import { DuplicateDocumentDialog } from './duplicate-document-dialog';
 
 export type DataTableActionDropdownProps = {
   row: Document & {
@@ -78,7 +82,11 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
     onSuccess: () => toast(TOAST_DOCUMENT_SHARE_SUCCESS),
     onError: () => toast(TOAST_DOCUMENT_SHARE_ERROR),
   });
+
+  const locale = useParams()?.locale as LocaleTypes;
+
   const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [isDuplicateDialogOpen, setDuplicateDialogOpen] = useState(false);
 
   if (!session) {
     return null;
@@ -150,13 +158,13 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
       <DropdownMenuContent className="w-52" align="start" forceMount>
         <DropdownMenuLabel>Action</DropdownMenuLabel>
         <DropdownMenuItem disabled={!recipient || isComplete} asChild>
-          <Link href={`/sign/${recipient?.token}`}>
+          <Link href={`/${locale}/sign/${recipient?.token}`}>
             <Pencil className="mr-2 h-4 w-4" />
             Sign
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem disabled={!isOwner || isComplete} asChild>
-          <Link href={`/documents/${row.id}`}>
+          <Link href={`/${locale}/documents/${row.id}`}>
             <Edit className="mr-2 h-4 w-4" />
             Edit
           </Link>
@@ -170,6 +178,9 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
           Save as Template
         </DropdownMenuItem>
         <DropdownMenuItem disabled>
+
+
+        <DropdownMenuItem onClick={() => setDuplicateDialogOpen(true)}>
           <Copy className="mr-2 h-4 w-4" />
           Duplicate
         </DropdownMenuItem>
@@ -221,6 +232,13 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
           id={row.id}
           open={isDeleteDialogOpen}
           onOpenChange={setDeleteDialogOpen}
+        />
+      )}
+      {isDuplicateDialogOpen && (
+        <DuplicateDocumentDialog
+          id={row.id}
+          open={isDuplicateDialogOpen}
+          onOpenChange={setDuplicateDialogOpen}
         />
       )}
     </DropdownMenu>

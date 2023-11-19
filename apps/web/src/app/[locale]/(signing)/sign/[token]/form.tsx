@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
@@ -11,6 +11,7 @@ import { completeDocumentWithToken } from '@documenso/lib/server-only/document/c
 import { sortFieldsByPosition, validateFieldsInserted } from '@documenso/lib/utils/fields';
 import { Document, Field, Recipient } from '@documenso/prisma/client';
 import { FieldToolTip } from '@documenso/ui/components/field/field-tooltip';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
@@ -19,6 +20,7 @@ import { Label } from '@documenso/ui/primitives/label';
 import { SignaturePad } from '@documenso/ui/primitives/signature-pad';
 
 import { useRequiredSigningContext } from './provider';
+import { SignDialog } from './sign-dialog';
 
 export type SigningFormProps = {
   document: Document;
@@ -29,6 +31,7 @@ export type SigningFormProps = {
 export const SigningForm = ({ document, recipient, fields }: SigningFormProps) => {
   const router = useRouter();
   const { data: session } = useSession();
+  const locale = useParams()?.locale as LocaleTypes;
 
   const { fullName, signature, setFullName, setSignature } = useRequiredSigningContext();
 
@@ -56,7 +59,7 @@ export const SigningForm = ({ document, recipient, fields }: SigningFormProps) =
       documentId: document.id,
     });
 
-    router.push(`/sign/${recipient.token}/complete`);
+    router.push(`/${locale}/sign/${recipient.token}/complete`);
   };
 
   return (
@@ -131,10 +134,12 @@ export const SigningForm = ({ document, recipient, fields }: SigningFormProps) =
               >
                 Cancel
               </Button>
-
-              <Button className="w-full" type="submit" size="lg" loading={isSubmitting}>
-                Complete
-              </Button>
+              <SignDialog
+                isSubmitting={isSubmitting}
+                onSignatureComplete={handleSubmit(onFormSubmit)}
+                document={document}
+                fields={fields}
+              />
             </div>
           </div>
         </div>

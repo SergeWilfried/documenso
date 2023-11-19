@@ -1,8 +1,10 @@
 import Link from 'next/link';
 
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
+
 import { SignUpForm } from '~/components/forms/signup';
 
-export default function SignUpPage() {
+const SignUpPage = ({ params: { locale } }: { params: { locale: LocaleTypes } }) => {
   return (
     <div>
       <h1 className="text-4xl font-semibold">Create a new account</h1>
@@ -16,10 +18,12 @@ export default function SignUpPage() {
 
       <p className="text-muted-foreground mt-6 text-center text-sm">
         Already have an account?{' '}
-        <Link href="/signin" className="text-primary duration-200 hover:opacity-70">
+        <Link href={`/${locale}/signin`} className="text-primary duration-200 hover:opacity-70">
           Sign in instead
         </Link>
       </p>
     </div>
   );
-}
+};
+
+export default SignUpPage;

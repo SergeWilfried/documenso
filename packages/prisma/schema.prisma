@@ -82,7 +82,6 @@ model User {
   Subscription       Subscription?
   PasswordResetToken PasswordResetToken[]
   Template           Template[]
-
   teamMembers TeamMember[]
 
   invitations Invitation[]

@@ -60,7 +60,7 @@ export default async function DocumentsPage({ searchParams = {} }: DocumentsPage
       params.delete('page');
     }
 
-    return `/documents?${params.toString()}`;
+    return `/fr/documents?${params.toString()}`;
   };
 
   return (
@@ -68,7 +68,7 @@ export default async function DocumentsPage({ searchParams = {} }: DocumentsPage
       <UploadDocument />
 
       <div className="mt-12 flex flex-wrap items-center justify-between gap-x-4 gap-y-8">
-        <h1 className="text-4xl font-semibold">Documents</h1>
+        <h1 className="text-4xl font-semibold">Mes Documents</h1>
 
         <div className="-m-1 flex flex-wrap gap-x-4 gap-y-6 overflow-hidden p-1">
           <Tabs defaultValue={status} className="overflow-x-auto">
@@ -80,7 +80,12 @@ export default async function DocumentsPage({ searchParams = {} }: DocumentsPage
                 ExtendedDocumentStatus.DRAFT,
                 ExtendedDocumentStatus.ALL,
               ].map((value) => (
-                <TabsTrigger key={value} className="min-w-[60px]" value={value} asChild>
+                <TabsTrigger
+                  key={value}
+                  className="min-w-[60px] hover:border-2 hover:border-solid hover:border-gray-600"
+                  value={value}
+                  asChild
+                >
                   <Link href={getTabHref(value)} scroll={false}>
                     <DocumentStatus status={value} />
 

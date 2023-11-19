@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 
+import signingCelebration from '@documenso/assets/images/signing-celebration.png';
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
 import { DocumentStatus, Signature } from '@documenso/prisma/client';
 import { DocumentWithRecipient } from '@documenso/prisma/types/document-with-recipient';
@@ -11,28 +12,28 @@ import DocumentDialog from '@documenso/ui/components/document/document-dialog';
 import { DocumentDownloadButton } from '@documenso/ui/components/document/document-download-button';
 import { DocumentShareButton } from '@documenso/ui/components/document/document-share-button';
 import { SigningCard3D } from '@documenso/ui/components/signing-card';
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 
-import signingCelebration from '~/assets/signing-celebration.png';
 import { ConfettiScreen } from '~/components/(marketing)/confetti-screen';
 
 interface SinglePlayerModeSuccessProps {
   className?: string;
-  locale: any;
+  locale: LocaleTypes;
   document: DocumentWithRecipient;
   signatures: Signature[];
 }
 
-export const SinglePlayerModeSuccess = async ({
+export const SinglePlayerModeSuccess = ({
   className,
   document,
   signatures,
   locale,
 }: SinglePlayerModeSuccessProps) => {
   const { getFlag } = useFeatureFlags();
-  const { t } = await createTranslation(locale, 'common');
+  const { t } = useTranslation(locale, 'marketing');
 
   const isConfettiEnabled = getFlag('marketing_spm_confetti');
 

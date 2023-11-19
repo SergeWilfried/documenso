@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 import {
   CreditCard,
@@ -16,12 +17,13 @@ import {
 } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 import { useTheme } from 'next-themes';
-import { LuGithub } from 'react-icons/lu';
 
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
 import { isAdmin } from '@documenso/lib/next-auth/guards/is-admin';
 import { recipientInitials } from '@documenso/lib/utils/recipient-formatter';
 import { User } from '@documenso/prisma/client';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { Avatar, AvatarFallback } from '@documenso/ui/primitives/avatar';
 import { Button } from '@documenso/ui/primitives/button';
 import {
@@ -47,7 +49,8 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
   const { getFlag } = useFeatureFlags();
   const { theme, setTheme } = useTheme();
   const isUserAdmin = isAdmin(user);
-
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = useTranslation(locale, 'dashboard');
   const isBillingEnabled = getFlag('app_billing');
 
   const avatarFallback = user.name
@@ -65,14 +68,14 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-56" align="end" forceMount>
-        <DropdownMenuLabel>Account</DropdownMenuLabel>
+        <DropdownMenuLabel>{t(`account`)}</DropdownMenuLabel>
 
         {isUserAdmin && (
           <>
             <DropdownMenuItem asChild>
-              <Link href="/admin" className="cursor-pointer">
+              <Link href={`/${locale}/admin`} className="cursor-pointer">
                 <UserCog className="mr-2 h-4 w-4" />
-                Admin
+                {t(`admin`)}
               </Link>
             </DropdownMenuItem>
 
@@ -81,24 +84,24 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
         )}
 
         <DropdownMenuItem asChild>
-          <Link href="/settings/profile" className="cursor-pointer">
+          <Link href={`/${locale}/settings/profile`} className="cursor-pointer">
             <LucideUser className="mr-2 h-4 w-4" />
-            Profile
+            {t(`profile`)}
           </Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>
-          <Link href="/settings/password" className="cursor-pointer">
+          <Link href={`/${locale}/settings/password`} className="cursor-pointer">
             <Key className="mr-2 h-4 w-4" />
-            Password
+            {t(`password`)}
           </Link>
         </DropdownMenuItem>
 
         {isBillingEnabled && (
           <DropdownMenuItem asChild>
-            <Link href="/settings/billing" className="cursor-pointer">
+            <Link href={`/${locale}/settings/billing`} className="cursor-pointer">
               <CreditCard className="mr-2 h-4 w-4" />
-              Billing
+              {t(`billing`)}
             </Link>
           </DropdownMenuItem>
         )}
@@ -115,7 +118,7 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Palette className="mr-2 h-4 w-4" />
-            Themes
+            {t(`themes`)}
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
@@ -136,12 +139,6 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
           </DropdownMenuPortal>
         </DropdownMenuSub>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href="https://github.com/documenso/documenso" className="cursor-pointer">
-            <LuGithub className="mr-2 h-4 w-4" />
-            Star on Github
-          </Link>
-        </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
@@ -153,7 +150,7 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
           }
         >
           <LogOut className="mr-2 h-4 w-4" />
-          Sign Out
+          {t(`sign-out`)}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

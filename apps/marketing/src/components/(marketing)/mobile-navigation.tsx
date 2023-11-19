@@ -6,53 +6,51 @@ import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaXTwitter } from 'react-icons/fa6';
 import { LiaDiscord } from 'react-icons/lia';
-import { LuGithub } from 'react-icons/lu';
 
+import LogoImage from '@documenso/assets/logo.png';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { Sheet, SheetContent } from '@documenso/ui/primitives/sheet';
 
 export type MobileNavigationProps = {
   isMenuOpen: boolean;
   onMenuOpenChange?: (_value: boolean) => void;
+  locale: LocaleTypes;
 };
 
 export const MENU_NAVIGATION_LINKS = [
   {
     href: '/singleplayer',
-    text: 'Singleplayer',
+    text: 'single-player-mode',
   },
-  {
-    href: '/blog',
-    text: 'Blog',
-  },
+
   {
     href: '/pricing',
-    text: 'Pricing',
+    text: 'pricing',
   },
   {
-    href: '/open',
-    text: 'Open',
-  },
-  {
-    href: 'https://status.documenso.com',
-    text: 'Status',
-  },
-  {
-    href: 'mailto:support@progiciel.co',
-    text: 'Support',
+
+    href: 'mailto:notario@progiciel.co',
+    text: 'support',
     target: '_blank',
   },
   {
     href: '/privacy',
-    text: 'Privacy',
+    text: 'privacy',
   },
   {
-    href: 'https://app.documenso.com/signin',
-    text: 'Sign in',
+    href: `https://app.progiciel.co/fr/signin/`,
+    text: 'sign-in',
   },
 ];
 
-export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigationProps) => {
+export const MobileNavigation = ({
+  isMenuOpen,
+  onMenuOpenChange,
+  locale,
+}: MobileNavigationProps) => {
   const shouldReduceMotion = useReducedMotion();
+  const { t } = useTranslation(locale, 'marketing');
 
   const handleMenuItemClick = () => {
     onMenuOpenChange?.(false);
@@ -63,10 +61,10 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
       <SheetContent className="w-full max-w-[400px]">
         <Link href="/" className="z-10" onClick={handleMenuItemClick}>
           <Image
-            src="/logo.png"
-            alt="Documenso Logo"
+            src={LogoImage}
+            alt="Notario Logo"
             className="dark:invert"
-            width={170}
+            width={155}
             height={25}
           />
         </Link>
@@ -103,7 +101,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
                 onClick={() => handleMenuItemClick()}
                 target={target}
               >
-                {text}
+                {t(text)}
               </Link>
             </motion.div>
           ))}
@@ -116,14 +114,6 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
             className="text-foreground hover:text-foreground/80"
           >
             <FaXTwitter className="h-6 w-6" />
-          </Link>
-
-          <Link
-            href="https://github.com/documenso/documenso"
-            target="_blank"
-            className="text-foreground hover:text-foreground/80"
-          >
-            <LuGithub className="h-6 w-6" />
           </Link>
 
           <Link
