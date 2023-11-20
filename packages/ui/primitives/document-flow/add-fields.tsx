@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Caveat } from 'next/font/google';
+import { useParams } from 'next/navigation';
 
 import { Check, ChevronsUpDown, Info } from 'lucide-react';
 import { useFieldArray, useForm } from 'react-hook-form';
@@ -25,6 +26,8 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from '@documenso/ui/primitives/popover';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@documenso/ui/primitives/tooltip';
 
+import { useTranslation } from '../../i18n/client';
+import { LocaleTypes } from '../../i18n/settings';
 import { TAddFieldsFormSchema } from './add-fields.types';
 import {
   DocumentFlowFormContainerActions,
@@ -66,7 +69,8 @@ export const AddFieldsFormPartial = ({
   onSubmit,
 }: AddFieldsFormProps) => {
   const { isWithinPageBounds, getFieldPosition, getPage } = useDocumentElement();
-
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = useTranslation(locale, 'marketing');
   const {
     control,
     handleSubmit,
@@ -452,7 +456,7 @@ export const AddFieldsFormPartial = ({
                         'text-muted-foreground group-data-[selected]:text-foreground text-xl font-medium',
                       )}
                     >
-                      {'Email'}
+                      {t('Email')}
                     </p>
 
                     <p className="text-muted-foreground mt-2 text-xs">Email</p>
@@ -475,7 +479,7 @@ export const AddFieldsFormPartial = ({
                         'text-muted-foreground group-data-[selected]:text-foreground text-xl font-medium',
                       )}
                     >
-                      {'Name'}
+                      {t('Name')}
                     </p>
 
                     <p className="text-muted-foreground mt-2 text-xs">Name</p>
@@ -498,7 +502,7 @@ export const AddFieldsFormPartial = ({
                         'text-muted-foreground group-data-[selected]:text-foreground text-xl font-medium',
                       )}
                     >
-                      {'Date'}
+                      {t('Date')}
                     </p>
 
                     <p className="text-muted-foreground mt-2 text-xs">Date</p>

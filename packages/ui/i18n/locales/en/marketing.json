@@ -73,7 +73,9 @@
     "claim-early-adopters":"Claim the early adopters Plan",
     "monthly":"Monthly",
     "yearly":"Yearly",
-
+    "Name":"Name",
+    "Email":"Email",
+    "Date": "Date",
     "name":"Name",
     "email":"Email",
     "404": "404 Page not found",
@@ -167,7 +169,8 @@
     "non-legally-binding": "non-legally binding, but heartfelt way",
     "and-your-name": "and your name?",
     "unlock-option": "You also unlock the option to purchase the early supporter plan including everything we build this year for fixed price.",
-
+    "step": "Step",
+    "of": "of",
     "support": "Support",
     "privacy": "Privacy",
     "your-own": "Truly your own.",

@@ -76,6 +76,9 @@
     "moved": "La page que vous recherchez a été déplacée, supprimée, renommée ou n'a peut-être jamais existé.",
     "back": "Retour",
     "home": "Accueil",
+    "Name":"Nom Complet",
+    "Email":"Email",
+    "Date": "Date",
     "integrates-tools": "Intègre tous vos outils préférés.",
     "send-connect": "Envoyez, connectez, recevez et intégrez partout.",
     "easy-sharing": "Partage facile (Bientôt).",
@@ -158,10 +161,11 @@
     "and-your-name": "et votre nom?",
     "unlock-option": "Vous débloquez également l'option d'acheter le plan de supporteur précoce comprenant tout ce que nous construisons cette année pour un prix fixe.",
 
-
+    "step": "Étape",
+    "of": "sur",
     "support": "Besoin d'aide",
     "privacy": "Termes",
-    
+
         "your-own": "Entierement vôtre.",
         "customise": "Personnalisez et développez.",
         "hosted": "Cloud ou Hébergé.",
@@ -170,6 +174,6 @@
         "template-store": "Template de documents (Bientôt)",
         "up-to-you": "C'est à vous. Hebergez sur vos serveurs, soit comptez sur notre solution d'hébergement facile à utiliser.",
         "use-template": "Choisissez un modèle dans la boutique de modèles communautaires. Ou soumettez votre propre modèle pour que d'autres puissent l'utiliser."
-    
-    
+
+
 }
