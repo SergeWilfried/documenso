@@ -51,13 +51,13 @@ export const Header = ({ className, ...props }: HeaderProps) => {
           {t(`pricing`)}
         </Link>
 
-        <Link
+        {/* <Link
           href={`https://app.progiciel.co/fr/signin`}
           target="_blank"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
           {t(`sign-in`)}
-        </Link>
+        </Link> */}
         <ChangeLocale />
       </div>
 
