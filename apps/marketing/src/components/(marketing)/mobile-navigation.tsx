@@ -24,10 +24,10 @@ export const MENU_NAVIGATION_LINKS = [
     text: 'single-player-mode',
   },
 
-  {
-    href: '/pricing',
-    text: 'pricing',
-  },
+  // {
+  //   href: '/pricing',
+  //   text: 'pricing',
+  // },
   {
     href: 'mailto:notario@progiciel.co',
     text: 'support',
@@ -96,7 +96,7 @@ export const MobileNavigation = ({
             >
               <Link
                 className="text-foreground hover:text-foreground/80 text-2xl font-semibold"
-                href={href}
+                href={`${locale}/${href}`}
                 onClick={() => handleMenuItemClick()}
                 target={target}
               >
@@ -108,18 +108,14 @@ export const MobileNavigation = ({
 
         <div className="mx-auto mt-8 flex w-full flex-wrap items-center gap-x-4 gap-y-4 ">
           <Link
-            href="https://twitter.com/documenso"
+            href="https://twitter.com/notario"
             target="_blank"
             className="text-foreground hover:text-foreground/80"
           >
             <FaXTwitter className="h-6 w-6" />
           </Link>
 
-          <Link
-            href="https://documen.so/discord"
-            target="_blank"
-            className="text-foreground hover:text-foreground/80"
-          >
+          <Link href="#" target="_blank" className="text-foreground hover:text-foreground/80">
             <LiaDiscord className="h-7 w-7" />
           </Link>
         </div>

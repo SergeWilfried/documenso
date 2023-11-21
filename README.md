@@ -9,7 +9,7 @@
     <a href="https://documenso.com"><strong>Learn more »</strong></a>
     <br />
     <br />
-    <a href="https://documen.so/discord">Discord</a>
+    <a href="#">Discord</a>
     ·
     <a href="https://documenso.com">Website</a>
     ·
@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-   <a href="https://documen.so/discord"><img src="https://img.shields.io/badge/Discord-documen.so/discord-%235865F2" alt="Join Notario on Discord"></a>
+   <a href="#"><img src="https://img.shields.io/badge/Discord-documen.so/discord-%235865F2" alt="Join Notario on Discord"></a>
    <a href="https://github.com/documenso/documenso/stargazers"><img src="https://img.shields.io/github/stars/documenso/documenso" alt="Github Stars"></a>
    <a href="https://github.com/documenso/documenso/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPLv3-purple" alt="License"></a>
    <a href="https://github.com/documenso/documenso/pulse"><img src="https://img.shields.io/github/commit-activity/m/documenso/documenso" alt="Commits-per-month"></a>
@@ -68,7 +68,7 @@ We're currently working on a redesign of the application, including a revamp of 
 
 - Check out the first source code release in this repository and test it.
 - Tell us what you think in the [Discussions](https://github.com/documenso/documenso/discussions).
-- Join the [Discord server](https://documen.so/discord) for any questions and getting to know to other community members.
+- Join the [Discord server](#) for any questions and getting to know to other community members.
 - ⭐ the repository to help us raise awareness.
 - Spread the word on Twitter that Notario is working towards a more open signing tool.
 - Fix or create [issues](https://github.com/documenso/documenso/issues), that are needed for the first production release.

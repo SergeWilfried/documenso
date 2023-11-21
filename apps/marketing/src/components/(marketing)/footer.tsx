@@ -21,11 +21,11 @@ export type FooterProps = HTMLAttributes<HTMLDivElement>;
 const SOCIAL_LINKS = [
   { href: 'https://twitter.com/notario', icon: <FaXTwitter className="h-6 w-6" /> },
   // { href: 'https://github.com/documenso/documenso', icon: <LuGithub className="h-6 w-6" /> },
-  // { href: 'https://documen.so/discord', icon: <LiaDiscord className="h-7 w-7" /> },
+  // { href: '#', icon: <LiaDiscord className="h-7 w-7" /> },
 ];
 
 const FOOTER_LINKS = [
-  { href: '/pricing', text: 'pricing' },
+  // { href: '/pricing', text: 'pricing' },
   { href: '/singleplayer', text: 'single-player-mode' },
   { href: 'mailto:info@progiciel.com', text: 'support', target: '_blank' },
   { href: '/privacy', text: 'privacy' },
@@ -53,7 +53,7 @@ export const Footer = ({ className, ...props }: FooterProps) => {
             {SOCIAL_LINKS.map((link, index) => (
               <Link
                 key={index}
-                href={link.href}
+                href={`${locale}/${link.href}`}
                 target="_blank"
                 className="text-muted-foreground hover:text-muted-foreground/80"
               >

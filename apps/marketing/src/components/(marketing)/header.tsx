@@ -44,12 +44,12 @@ export const Header = ({ className, ...props }: HeaderProps) => {
       </div>
 
       <div className="hidden items-center gap-x-6 md:flex">
-        <Link
+        {/* <Link
           href={`${locale}/pricing`}
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
           {t(`pricing`)}
-        </Link>
+        </Link> */}
 
         {/* <Link
           href={`https://app.progiciel.co/fr/signin`}
