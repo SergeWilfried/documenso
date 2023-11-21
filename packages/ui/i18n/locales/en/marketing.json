@@ -74,6 +74,7 @@
     "monthly":"Monthly",
     "yearly":"Yearly",
     "Name":"Name",
+
     "Email":"Email",
     "Date": "Date",
     "name":"Name",
@@ -93,7 +94,9 @@
     "integrated-payments": "Integrated payments with stripe so you don’t have to worry about getting paid.",
     "react-widget": "React Widget (Soon).",
     "embed-widget": "Easily embed Notario into your product. Simply copy and paste our react widget into your application.",
-
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "clear-signature": "Clear Signature",
     "designed-for": "Designed for every stage of your journey.",
     "get-started-today": "Get started today.",
     "need-option": "None of these work for you? Try self-hosting!",
