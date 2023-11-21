@@ -32,11 +32,11 @@ export type OnPDFViewerPageClick = (_event: {
   pageY: number;
 }) => void | Promise<void>;
 
-const PDFLoader = ({ label }) => (
+const PDFLoader = () => (
   <>
     <Loader className="text-documenso h-12 w-12 animate-spin" />
 
-    <p className="text-muted-foreground mt-4">{label}</p>
+    <p className="text-muted-foreground mt-4">Chargement du document en cours...</p>
   </>
 );
 
