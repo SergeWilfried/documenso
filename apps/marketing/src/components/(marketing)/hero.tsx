@@ -185,14 +185,13 @@ export const Hero = ({ className, locale, ...props }: HeroProps) => {
             <p className="w-full max-w-[70ch]">{t(`supporter-pledge`)}</p>
 
             <p className="w-full max-w-[70ch]">{t(`through`)}</p>
-
             <p className="w-full max-w-[70ch]">
               {t(`today-we-invite`)}{' '}
               <span className="bg-primary text-black">{t(`non-legally`)}</span> {t(`early-forever`)}
             </p>
 
             <div className="flex h-24 items-center">
-              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>Timur & Lucas</p>
+              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>L'Équipe</p>
             </div>
 
             <div>
