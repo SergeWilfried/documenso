@@ -11,6 +11,8 @@ import {
   useState,
 } from 'react';
 
+import { useParams } from 'next/navigation';
+
 import { StrokeOptions, getStroke } from 'perfect-freehand';
 
 import { useTranslation } from '@documenso/ui/i18n/client';
