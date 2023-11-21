@@ -152,7 +152,7 @@
     "with-founders": "avec Serge de Notario",
     "what-ur-email": "Quel est votre e-mail ?",
     "draw-or-sign": "Dessinez votre signature ici",
-    "minimise-contract": "Minimiser le contract",
+    "minimize-contract": "Minimiser le contract",
     "steps-until": "étape(s) avant signature" ,
     "ready-for-signing": "Prêt Pour Signature",
     "by-sign-in": "En signant, vous manifestez votre soutien à la mission de Notario de manière ",
@@ -173,7 +173,7 @@
     "privacy": "Termes",
 
         "your-own": "Entierement vôtre.",
-        "customise": "Personnalisez et développez.",
+        "customize": "Personnalisez et développez.",
         "hosted": "Cloud ou Hébergé.",
         "build-on-top": "Intégrer via API.",
         "make-it-ur-own": "Heberger sur vos serveurs pour une personnalisation avancée et à une adaptabilité.",

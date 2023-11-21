@@ -312,7 +312,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
               </p>
 
               <p className="text-muted-foreground block text-xs md:hidden">
-                {t(`minimise-contract`)}
+                {t(`minimize-contract`)}
               </p>
             </div>
 
