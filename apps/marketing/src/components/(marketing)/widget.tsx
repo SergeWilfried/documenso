@@ -394,7 +394,6 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
           <DialogDescription>
             {t(`by-sign-in`)}
-            <br></br>
             <strong>{t(`non-legally-binding`)}</strong>. <br></br>
             <br></br>
             {t(`unlock-option`)}
