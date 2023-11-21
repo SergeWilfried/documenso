@@ -13,6 +13,8 @@ import {
 
 import { StrokeOptions, getStroke } from 'perfect-freehand';
 
+import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 
 import { getSvgPathFromStroke } from './helper';
@@ -33,7 +35,8 @@ export const SignaturePad = ({
   ...props
 }: SignaturePadProps) => {
   const $el = useRef<HTMLCanvasElement>(null);
-
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = useTranslation(locale, 'marketing');
   const [isPressed, setIsPressed] = useState(false);
   const [points, setPoints] = useState<Point[]>([]);
 
@@ -231,7 +234,7 @@ export const SignaturePad = ({
           className="focus-visible:ring-ring ring-offset-background text-muted-foreground rounded-full p-0 text-xs focus-visible:outline-none focus-visible:ring-2"
           onClick={() => onClearClick()}
         >
-          Clear Signature
+          {t(`clear-signature`)}
         </button>
       </div>
     </div>

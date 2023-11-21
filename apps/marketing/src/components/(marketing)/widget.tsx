@@ -172,7 +172,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
       event('claim-plan-failed');
 
       toast({
-        title: t('Something went wrong'),
+        title: t('something-went-wrong'),
         description: error instanceof Error ? error.message : t(`try-later`),
         variant: 'destructive',
       });
