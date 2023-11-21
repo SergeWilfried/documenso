@@ -83,6 +83,7 @@ model User {
   PasswordResetToken PasswordResetToken[]
   Template           Template[]
   teamMembers TeamMember[]
+  twoFactorSecret      String?
 
   invitations Invitation[]
   @@index([email])
