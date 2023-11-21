@@ -37,10 +37,10 @@ export const MENU_NAVIGATION_LINKS = [
     href: '/privacy',
     text: 'privacy',
   },
-  {
-    href: `https://app.progiciel.co/fr/signin/`,
-    text: 'sign-in',
-  },
+  // {
+  //   href: `https://app.progiciel.co/fr/signin/`,
+  //   text: 'sign-in',
+  // },
 ];
 
 export const MobileNavigation = ({
