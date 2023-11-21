@@ -89,7 +89,7 @@ export const SinglePlayerModeSuccess = ({
       <p className="text-muted-foreground/60 mt-16 text-center text-sm">
         {t(`create-a`)}{' '}
         <Link
-          href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/signup`}
+          href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/${locale}/signup`}
           target="_blank"
           className="text-documenso-700 hover:text-documenso-600 whitespace-nowrap"
         >

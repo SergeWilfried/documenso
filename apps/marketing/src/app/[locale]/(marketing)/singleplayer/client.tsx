@@ -189,7 +189,7 @@ export const SinglePlayerClient = ({ params: { locale } }: SinglePlayerClientPro
         <p className="text-foreground mx-auto mt-4 max-w-[50ch] text-lg leading-normal">
           {t('create-a')}{' '}
           <Link
-            href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/signup`}
+            href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/${locale}/signup`}
             target="_blank"
             className="hover:text-foreground/80 font-semibold transition-colors"
           >
