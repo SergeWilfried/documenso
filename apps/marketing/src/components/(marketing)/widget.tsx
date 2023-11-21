@@ -172,8 +172,8 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
       event('claim-plan-failed');
 
       toast({
-        title: 'Something went wrong',
-        description: error instanceof Error ? error.message : 'Please try again later.',
+        title: t('Something went wrong'),
+        description: error instanceof Error ? error.message : t(`try-later`),
         variant: 'destructive',
       });
     }

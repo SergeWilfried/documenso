@@ -88,8 +88,8 @@ export const ClaimPlanDialog = ({ className, planId, children, locale }: ClaimPl
       analytics.capture('Marketing: Claim plan failure', { planId, email });
 
       toast({
-        title: 'Something went wrong',
-        description: error instanceof Error ? error.message : 'Please try again later.',
+        title: t('Something went wrong'),
+        description: error instanceof Error ? error.message : t(`try-later`),
         variant: 'destructive',
       });
     }

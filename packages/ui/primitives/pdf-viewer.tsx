@@ -149,7 +149,7 @@ export const PDFViewer = ({
 
         toast({
           title: 'Error',
-          description: 'An error occurred while loading the document.',
+          description: 'Une erreur est survenue lors du télechargement du document.',
           variant: 'destructive',
         });
       }
@@ -185,8 +185,10 @@ export const PDFViewer = ({
             <div className="dark:bg-background flex h-[80vh] max-h-[60rem] flex-col items-center justify-center bg-white/50">
               {pdfError ? (
                 <div className="text-muted-foreground text-center">
-                  <p>Something went wrong while loading the document.</p>
-                  <p className="mt-1 text-sm">Please try again or contact our support.</p>
+                  <p>Une erreur est survenue lors du télechargement du document.</p>
+                  <p className="mt-1 text-sm">
+                    Veuillez réessayer ou contacter notre service d'assistance.
+                  </p>
                 </div>
               ) : (
                 <PDFLoader />
@@ -196,8 +198,10 @@ export const PDFViewer = ({
           error={
             <div className="dark:bg-background flex h-[80vh] max-h-[60rem] flex-col items-center justify-center bg-white/50">
               <div className="text-muted-foreground text-center">
-                <p>Something went wrong while loading the document.</p>
-                <p className="mt-1 text-sm">Please try again or contact our support.</p>
+                <p>Une erreur est survenue lors du télechargement du document.</p>
+                <p className="mt-1 text-sm">
+                  Veuillez réessayer ou contacter notre service d'assistance.
+                </p>
               </div>
             </div>
           }
