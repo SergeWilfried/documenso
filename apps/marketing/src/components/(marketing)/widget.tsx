@@ -308,7 +308,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
             <div className="flex items-center justify-between">
               <p className="text-muted-foreground text-xs">
-                {isValid ? t(`ready-for-sign-in`) : `${stepsRemaining}` + t(`steps-until`)}
+                {isValid ? t(`ready-for-sign-in`) : `${stepsRemaining} ` + t(`steps-until`)}
               </p>
 
               <p className="text-muted-foreground block text-xs md:hidden">
