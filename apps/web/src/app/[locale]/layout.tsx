@@ -23,7 +23,7 @@ const fontCaveat = Caveat({ subsets: ['latin'], variable: '--font-signature' });
 export const metadata = {
   title: 'Notario - Simplify Your Signatures, Secure Your Documents',
   description:
-    'Join Notario, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+    'Join Notario, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. Forever! Sign in now and enjoy a faster, smarter, and more intuitive document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our community.',
   keywords:
     'Notario,  DocuSign alternative, document signing, open signing infrastructure,  fast signing, beautiful signing, smart templates',
   authors: { name: 'Notario, Inc.' },
@@ -31,7 +31,7 @@ export const metadata = {
   openGraph: {
     title: 'Notario - Simplify Your Signatures, Secure Your Documents',
     description:
-      'Join Notario, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+      'Join Notario, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. Forever! Sign in now and enjoy a faster, smarter, and more intuitive document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our community.',
     type: 'website',
     images: [`${process.env.NEXT_PUBLIC_WEBAPP_URL}/opengraph-image.jpg`],
   },
@@ -40,7 +40,7 @@ export const metadata = {
     card: 'summary_large_image',
     images: [`${process.env.NEXT_PUBLIC_WEBAPP_URL}/opengraph-image.jpg`],
     description:
-      'Join Notario, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+      'Join Notario, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. Forever! Sign in now and enjoy a faster, smarter, and more intuitive document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our community.',
   },
 };
 
