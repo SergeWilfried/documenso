@@ -19,8 +19,7 @@ import {
 import { useSession } from 'next-auth/react';
 
 import { getFile } from '@documenso/lib/universal/upload/get-file';
-import type { Document, Recipient, User } from '@documenso/prisma/client';
-import { DocumentStatus } from '@documenso/prisma/client';
+import { type Document, DocumentStatus, type Recipient, type User } from '@documenso/prisma/client';
 import type { DocumentWithData } from '@documenso/prisma/types/document-with-data';
 import { trpc as trpcClient } from '@documenso/trpc/client';
 import { DocumentShareButton } from '@documenso/ui/components/document/document-share-button';

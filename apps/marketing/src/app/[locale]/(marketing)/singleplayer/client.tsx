@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
 import { base64 } from '@documenso/lib/universal/base64';
@@ -28,16 +28,14 @@ import { useToast } from '@documenso/ui/primitives/use-toast';
 import { createSinglePlayerDocument } from '~/components/(marketing)/single-player-mode/create-single-player-document.action';
 
 type SinglePlayerModeStep = 'fields' | 'sign';
-export interface SinglePlayerClientProps {
-  params: { locale: LocaleTypes };
-}
+
 // !: This entire file is a hack to get around failed prerendering of
 // !: the Single Player Mode page. This regression was introduced during
 // !: the upgrade of Next.js to v13.5.x.
-export const SinglePlayerClient = ({ params: { locale } }: SinglePlayerClientProps) => {
+export const SinglePlayerClient = () => {
   const analytics = useAnalytics();
   const router = useRouter();
-
+  const locale = useParams()?.locale as LocaleTypes;
   const { toast } = useToast();
   const { t } = useTranslation(locale, 'marketing');
 
@@ -138,7 +136,7 @@ export const SinglePlayerClient = ({ params: { locale } }: SinglePlayerClientPro
         signer: data.email,
       });
 
-      router.push(`/singleplayer/${documentToken}/success`);
+      router.push(`/${locale}/singleplayer/${documentToken}/success`);
     } catch {
       toast({
         title: t('something-went-wrong'),
@@ -172,7 +170,8 @@ export const SinglePlayerClient = ({ params: { locale } }: SinglePlayerClientPro
       });
 
       analytics.capture('Marketing: SPM - Document uploaded');
-    } catch {
+    } catch (e) {
+      console.error(e);
       toast({
         title: t('something-went-wrong'),
         description: t('try-later'),
