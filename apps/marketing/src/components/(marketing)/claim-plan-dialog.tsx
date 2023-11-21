@@ -86,7 +86,7 @@ export const ClaimPlanDialog = ({ className, planId, children, locale }: ClaimPl
     } catch (error) {
       event('claim-plan-failed');
       analytics.capture('Marketing: Claim plan failure', { planId, email });
-
+      console.error(error.message);
       toast({
         title: t('something-went-wrong'),
         description: error instanceof Error ? error.message : t(`try-later`),
