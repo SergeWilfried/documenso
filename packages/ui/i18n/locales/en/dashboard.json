@@ -129,9 +129,13 @@
     "use": "Use",
     "code": "code",
     "backup-copied-to-clipboard" : "Your backup codes has been copied to your clipboard.",
-    "mask-password": "Mask password", 
+    "mask-password": "Mask password",
     "reveal-password": "Reveal password",
-    "view": "View"
+    "view": "View",
+
+    "copied-avatar-to-clipboard": "Copied to clipboard",
+    "sharing-link-has-been-copied": "The signing link has been copied to your clipboard.",
+    "click-to-copy-link": "Click to copy signing link for sending to recipient"
 
 
 

@@ -85,7 +85,10 @@
     "document-sent": "Document envoyé",
     "document-sent-mess": "Votre document a été envoyé avec succès.",
     "you-can-use": "Vous pouvez utiliser les variables suivantes dans votre message:",
-    "empty-caption": "Vous n'avez encore créé ni reçu aucun document. Pour créer un document, veuillez en télécharger un."
-    
+    "empty-caption": "Vous n'avez encore créé ni reçu aucun document. Pour créer un document, veuillez en télécharger un.",
+    "copied-avatar-to-clipboard" : "Copié dans le presse-papiers",
+    "sharing-link-has-been-copied" : "Le lien de signature a été copié dans votre presse-papiers",
+    "click-to-copy-link" : "Cliquez pour copier le lien de signature afin de l'envoyer au destinataire"
+
 
 }
