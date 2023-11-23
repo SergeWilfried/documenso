@@ -436,7 +436,9 @@ export const AddFieldsFormPartial = ({
                       {selectedSigner?.name || 'Signature'}
                     </p>
 
-                    <p className="text-muted-foreground mt-2 text-center text-xs">Signature</p>
+                    <p className="text-muted-foreground mt-2 text-center text-xs">
+                      {t('signature')}
+                    </p>
                   </CardContent>
                 </Card>
               </button>
@@ -456,7 +458,7 @@ export const AddFieldsFormPartial = ({
                         'text-muted-foreground group-data-[selected]:text-foreground text-xl font-medium',
                       )}
                     >
-                      {t('Email')}
+                      {t('email')}
                     </p>
 
                     <p className="text-muted-foreground mt-2 text-xs">Email</p>
@@ -479,10 +481,10 @@ export const AddFieldsFormPartial = ({
                         'text-muted-foreground group-data-[selected]:text-foreground text-xl font-medium',
                       )}
                     >
-                      {t('Name')}
+                      {t('name')}
                     </p>
 
-                    <p className="text-muted-foreground mt-2 text-xs">Name</p>
+                    <p className="text-muted-foreground mt-2 text-xs">{t('name')}</p>
                   </CardContent>
                 </Card>
               </button>

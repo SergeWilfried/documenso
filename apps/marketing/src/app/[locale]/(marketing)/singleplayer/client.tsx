@@ -196,7 +196,7 @@ export const SinglePlayerClient = () => {
           </Link>{' '}
           {t('or-view-our')}{' '}
           <Link
-            href={'/pricing'}
+            href={`/${locale}/pricing`}
             target="_blank"
             className="hover:text-foreground/80 font-semibold transition-colors"
           >
