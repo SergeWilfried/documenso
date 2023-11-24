@@ -93,7 +93,7 @@ export const SinglePlayerModeSuccess = ({
           target="_blank"
           className="text-documenso-700 hover:text-documenso-600 whitespace-nowrap"
         >
-          {t(`free account`)}
+          {t(`free-account`)}
         </Link>{' '}
         {t(`access-your-doc`)}
       </p>

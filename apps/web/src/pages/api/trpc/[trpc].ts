@@ -3,7 +3,7 @@ import { createTrpcContext } from '@documenso/trpc/server/context';
 import { appRouter } from '@documenso/trpc/server/router';
 
 export const config = {
-  maxDuration: 60,
+  maxDuration: 10,
 };
 
 export default trpcNext.createNextApiHandler({
