@@ -24,6 +24,7 @@ export const claimPlan = async ({
   const body = await response.json();
 
   if (response.status !== 200) {
+    console.error(response);
     throw new Error('Failed to claim plan');
   }
 

@@ -70,6 +70,7 @@ export const SinglePlayerModeSuccess = ({
               documentId={document.id}
               token={document.Recipient.token}
               className="flex-1 bg-transparent backdrop-blur-sm"
+              locale={locale}
             />
 
             <DocumentDownloadButton
@@ -77,6 +78,7 @@ export const SinglePlayerModeSuccess = ({
               fileName={document.title}
               documentData={document.documentData}
               disabled={document.status !== DocumentStatus.COMPLETED}
+              locale={locale}
             />
 
             <Button onClick={() => setShowDocumentDialog(true)} className="z-10 col-span-2">
@@ -93,7 +95,7 @@ export const SinglePlayerModeSuccess = ({
           target="_blank"
           className="text-documenso-700 hover:text-documenso-600 whitespace-nowrap"
         >
-          {t(`free account`)}
+          {t(`free-account`)}
         </Link>{' '}
         {t(`access-your-doc`)}
       </p>

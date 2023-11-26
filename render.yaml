@@ -74,7 +74,7 @@ services:
       - key: NEXT_PUBLIC_POSTHOG_KEY
         sync: false
       - key: NEXT_PUBLIC_POSTHOG_HOST
-        value: 'https://eu.posthog.com'
+        value: 'https://app.posthog.com'
       - key: NEXT_PUBLIC_FEATURE_BILLING_ENABLED
         sync: false
 

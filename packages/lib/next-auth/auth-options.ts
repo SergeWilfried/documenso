@@ -1,7 +1,8 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { compare } from 'bcrypt';
 import { DateTime } from 'luxon';
-import { AuthOptions, Session, User } from 'next-auth';
+import type { AuthOptions, Session, User } from 'next-auth';
+import { JWT } from 'next-auth/jwt/types';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google';
 
@@ -59,6 +60,7 @@ export const NEXT_AUTH_OPTIONS: AuthOptions = {
           id: Number(user.id),
           email: user.email,
           name: user.name,
+          emailVerified: user.emailVerified?.toISOString() ?? null,
         } satisfies User;
       },
     }),
@@ -72,6 +74,7 @@ export const NEXT_AUTH_OPTIONS: AuthOptions = {
           id: Number(profile.sub),
           name: profile.name || `${profile.given_name} ${profile.family_name}`.trim(),
           email: profile.email,
+          emailVerified: profile.email_verified ? new Date().toISOString() : null,
         };
       },
     }),
@@ -81,9 +84,10 @@ export const NEXT_AUTH_OPTIONS: AuthOptions = {
       const merged = {
         ...token,
         ...user,
-      };
+        emailVerified: user?.emailVerified ? new Date(user.emailVerified).toISOString() : null,
+      } satisfies JWT;
 
-      if (!merged.email) {
+      if (!merged.email || typeof merged.emailVerified !== 'string') {
         const userId = Number(merged.id ?? token.sub);
 
         const retrieved = await prisma.user.findFirst({
@@ -99,6 +103,7 @@ export const NEXT_AUTH_OPTIONS: AuthOptions = {
         merged.id = retrieved.id;
         merged.name = retrieved.name;
         merged.email = retrieved.email;
+        merged.emailVerified = retrieved.emailVerified?.toISOString() ?? null;
       }
 
       if (
@@ -108,7 +113,7 @@ export const NEXT_AUTH_OPTIONS: AuthOptions = {
       ) {
         merged.lastSignedIn = new Date().toISOString();
 
-        await prisma.user.update({
+        const user = await prisma.user.update({
           where: {
             id: Number(merged.id),
           },
@@ -116,6 +121,7 @@ export const NEXT_AUTH_OPTIONS: AuthOptions = {
             lastSignedIn: merged.lastSignedIn,
           },
         });
+        merged.emailVerified = user.emailVerified?.toISOString() ?? null;
       }
 
       return {
@@ -123,7 +129,8 @@ export const NEXT_AUTH_OPTIONS: AuthOptions = {
         name: merged.name,
         email: merged.email,
         lastSignedIn: merged.lastSignedIn,
-      };
+        emailVerified: merged.emailVerified,
+      } satisfies JWT;
     },
 
     session({ token, session }) {
@@ -134,6 +141,7 @@ export const NEXT_AUTH_OPTIONS: AuthOptions = {
             id: Number(token.id),
             name: token.name,
             email: token.email,
+            emailVerified: token.emailVerified ?? null,
           },
         } satisfies Session;
       }
