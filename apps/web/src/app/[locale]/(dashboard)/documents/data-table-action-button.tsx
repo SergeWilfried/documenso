@@ -115,6 +115,7 @@ export const DataTableActionButton = ({ row }: DataTableActionButtonProps) => {
       <DocumentShareButton
         documentId={row.id}
         token={recipient?.token}
+        locale={locale}
         trigger={({ loading }) => (
           <Button className="w-24" loading={loading}>
             {!loading && <Share className="-ml-1 mr-2 h-4 w-4" />}

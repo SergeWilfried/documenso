@@ -149,6 +149,7 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
         <DocumentShareButton
           documentId={row.id}
           token={recipient?.token}
+          locale={locale}
           trigger={({ loading, disabled }) => (
             <DropdownMenuItem disabled={disabled || isDraft} onSelect={(e) => e.preventDefault()}>
               <div className="flex items-center">
