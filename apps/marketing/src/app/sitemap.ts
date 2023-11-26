@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-import { allBlogPosts, allGenericPages } from 'contentlayer/generated';
+import { allGenericPages } from 'contentlayer/generated';
 
 import { getBaseUrl } from '@documenso/lib/universal/get-base-url';
 
@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     //   lastModified,
     // },
     {
-      url: `${baseUrl}/pricing`,
+      url: `${baseUrl}/fr/pricing`,
       lastModified,
     },
   ];
