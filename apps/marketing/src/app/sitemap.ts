@@ -17,22 +17,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/${doc._raw.flattenedPath}`,
       lastModified,
     })),
-    {
-      url: `${baseUrl}/blog`,
-      lastModified,
-    },
-    ...allBlogPosts.map((doc) => ({
-      url: `${baseUrl}/${doc._raw.flattenedPath}`,
-      lastModified,
-    })),
-    {
-      url: `${baseUrl}/open`,
-      lastModified,
-    },
-    {
-      url: `${baseUrl}/oss-friends`,
-      lastModified,
-    },
+    // {
+    //   url: `${baseUrl}/blog`,
+    //   lastModified,
+    // },
+    // ...allBlogPosts.map((doc) => ({
+    //   url: `${baseUrl}/${doc._raw.flattenedPath}`,
+    //   lastModified,
+    // })),
+    // {
+    //   url: `${baseUrl}/open`,
+    //   lastModified,
+    // },
+    // {
+    //   url: `${baseUrl}/oss-friends`,
+    //   lastModified,
+    // },
     {
       url: `${baseUrl}/pricing`,
       lastModified,

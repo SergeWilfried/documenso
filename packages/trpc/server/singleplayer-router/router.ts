@@ -146,7 +146,7 @@ export const singleplayerRouter = router({
 
       const template = createElement(DocumentSelfSignedEmailTemplate, {
         documentName: documentName,
-        assetBaseUrl: process.env.NEXT_PUBLIC_WEBAPP_URL || 'http://localhost:3000',
+        assetBaseUrl: process.env.NEXT_PUBLIC_MARKETING_URL || 'http://localhost:3000',
       });
 
       // Send email to signer.
@@ -159,7 +159,7 @@ export const singleplayerRouter = router({
           name: FROM_NAME,
           address: FROM_ADDRESS,
         },
-        subject: 'Document signed',
+        subject: 'Document Signé',
         html: render(template),
         text: render(template, { plainText: true }),
         attachments: [{ content: signedPdfBuffer, filename: documentName }],
