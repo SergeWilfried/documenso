@@ -25,7 +25,7 @@ export const LOCAL_FEATURE_FLAGS: Record<string, boolean> = {
  */
 export function extractPostHogConfig(): { key: string; host: string } | null {
   const postHogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-  const postHogHost = `${APP_BASE_URL}/ingest`;
+  const postHogHost = `${APP_BASE_URL}/fr/ingest`;
 
   if (!postHogKey || !postHogHost) {
     return null;
