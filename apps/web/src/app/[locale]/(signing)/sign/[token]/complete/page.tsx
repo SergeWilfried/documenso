@@ -95,9 +95,10 @@ export default async function CompletedSigningPage({
           ))}
 
         <div className="mt-8 flex w-full max-w-sm items-center justify-center gap-4">
-          <DocumentShareButton documentId={document.id} token={recipient.token} />
+          <DocumentShareButton locale="fr" documentId={document.id} token={recipient.token} />
 
           <DocumentDownloadButton
+            locale="fr"
             className="flex-1"
             fileName={document.title}
             documentData={documentData}
@@ -108,7 +109,7 @@ export default async function CompletedSigningPage({
         <p className="text-muted-foreground/60 mt-36 text-sm">
           Want to send slick signing links like this one?{' '}
           <Link
-            href="https://documenso.com"
+            href="https://notario.progiciel.com"
             className="text-documenso-700 hover:text-documenso-600"
           >
             Check out Notario.
