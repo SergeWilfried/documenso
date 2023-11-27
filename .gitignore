@@ -48,3 +48,7 @@ yarn-error.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+certificate.crt
+certificate.p12
+outputfile
+private.key
