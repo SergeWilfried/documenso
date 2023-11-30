@@ -6,7 +6,7 @@ let svixClient: Svix;
 
 const createSvixInstance = () => {
   if (!svixClient) {
-    return new Svix(process.env.SVIX_API_KEY);
+    svixClient = new Svix(process.env.SVIX_API_KEY);
   } else {
     return svixClient;
   }
