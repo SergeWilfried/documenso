@@ -4,7 +4,7 @@ import { prisma } from '@documenso/prisma';
 import { IdentityProvider } from '@documenso/prisma/client';
 
 import { SALT_ROUNDS } from '../../constants/auth';
-import { sendEvent } from '../../svix/svix';
+import { sendEvent } from '../../webhook/svix';
 
 export interface CreateUserOptions {
   name: string;
