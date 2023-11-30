@@ -8,7 +8,7 @@ import { useParams, useSearchParams } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePlausible } from 'next-plausible';
 
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
 import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
@@ -17,12 +17,12 @@ export type PricingTableProps = HTMLAttributes<HTMLDivElement>;
 
 const SELECTED_PLAN_BAR_LAYOUT_ID = 'selected-plan-bar';
 
-export const PricingTable = async ({ className, ...props }: PricingTableProps) => {
+export const PricingTable = ({ className, ...props }: PricingTableProps) => {
   const locale = useParams()?.locale as LocaleTypes;
 
   const params = useSearchParams();
   const event = usePlausible();
-  const { t } = await createTranslation(locale, 'pricing');
+  const { t } = useTranslation(locale, 'marketing');
 
   const [period, setPeriod] = useState<'MONTHLY' | 'YEARLY'>(() =>
     params?.get('planId') === process.env.NEXT_PUBLIC_STRIPE_COMMUNITY_PLAN_YEARLY_PRICE_ID
@@ -93,7 +93,7 @@ export const PricingTable = async ({ className, ...props }: PricingTableProps) =
 
           <Button className="rounded-full text-base" asChild>
             <Link
-              href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/signup`}
+              href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/${locale}/signup`}
               target="_blank"
               className="mt-6"
             >
@@ -125,7 +125,9 @@ export const PricingTable = async ({ className, ...props }: PricingTableProps) =
           <p className="text-foreground mt-4 max-w-[30ch] text-center">{t(`fast-growing`)}</p>
 
           <Button className="mt-6 rounded-full text-base" asChild>
-            <Link href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/signup`}>{t(`signup-now`)}</Link>
+            <Link href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/${locale}/signup`}>
+              {t(`signup-now`)}
+            </Link>
           </Button>
 
           <div className="mt-8 flex w-full flex-col divide-y">

@@ -3,13 +3,15 @@
 import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
 import { base64 } from '@documenso/lib/universal/base64';
 import { putFile } from '@documenso/lib/universal/upload/put-file';
 import { DocumentDataType, Field, Prisma, Recipient } from '@documenso/prisma/client';
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { trpc } from '@documenso/trpc/react';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
 import { DocumentDropzone } from '@documenso/ui/primitives/document-dropzone';
 import { AddFieldsFormPartial } from '@documenso/ui/primitives/document-flow/add-fields';
@@ -24,24 +26,24 @@ import { DocumentFlowStep } from '@documenso/ui/primitives/document-flow/types';
 import { LazyPDFViewer } from '@documenso/ui/primitives/lazy-pdf-viewer';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
-import { createSinglePlayerDocument } from '~/components/(marketing)/single-player-mode/create-single-player-document.action';
-
 type SinglePlayerModeStep = 'fields' | 'sign';
 
 // !: This entire file is a hack to get around failed prerendering of
 // !: the Single Player Mode page. This regression was introduced during
 // !: the upgrade of Next.js to v13.5.x.
-export const SinglePlayerClient = async ({ params: { locale } }) => {
+export const SinglePlayerClient = () => {
   const analytics = useAnalytics();
   const router = useRouter();
-
+  const locale = useParams()?.locale as LocaleTypes;
   const { toast } = useToast();
-  const { t } = await createTranslation(locale, 'common');
+  const { t } = useTranslation(locale, 'marketing');
 
   const [uploadedFile, setUploadedFile] = useState<{ file: File; fileBase64: string } | null>();
 
   const [step, setStep] = useState<SinglePlayerModeStep>('fields');
   const [fields, setFields] = useState<Field[]>([]);
+  const { mutateAsync: createSinglePlayerDocument } =
+    trpc.singleplayer.createSinglePlayerDocument.useMutation();
 
   const documentFlow: Record<SinglePlayerModeStep, DocumentFlowStep> = {
     fields: {
@@ -135,7 +137,7 @@ export const SinglePlayerClient = async ({ params: { locale } }) => {
         signer: data.email,
       });
 
-      router.push(`/singleplayer/${documentToken}/success`);
+      router.push(`/${locale}/singleplayer/${documentToken}/success`);
     } catch {
       toast({
         title: t('something-went-wrong'),
@@ -169,7 +171,8 @@ export const SinglePlayerClient = async ({ params: { locale } }) => {
       });
 
       analytics.capture('Marketing: SPM - Document uploaded');
-    } catch {
+    } catch (e) {
+      console.error(e);
       toast({
         title: t('something-went-wrong'),
         description: t('try-later'),
@@ -186,7 +189,7 @@ export const SinglePlayerClient = async ({ params: { locale } }) => {
         <p className="text-foreground mx-auto mt-4 max-w-[50ch] text-lg leading-normal">
           {t('create-a')}{' '}
           <Link
-            href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/signup`}
+            href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/${locale}/signup`}
             target="_blank"
             className="hover:text-foreground/80 font-semibold transition-colors"
           >
@@ -194,7 +197,7 @@ export const SinglePlayerClient = async ({ params: { locale } }) => {
           </Link>{' '}
           {t('or-view-our')}{' '}
           <Link
-            href={'/pricing'}
+            href={`/${locale}/pricing`}
             target="_blank"
             className="hover:text-foreground/80 font-semibold transition-colors"
           >

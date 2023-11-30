@@ -4,23 +4,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Variants, motion } from 'framer-motion';
-import { usePlausible } from 'next-plausible';
-import { LuGithub } from 'react-icons/lu';
 import { match } from 'ts-pattern';
 
+import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
-
-import backgroundPattern from '~/assets/background-pattern.png';
 
 import { Widget } from './widget';
 
 export type HeroProps = {
   className?: string;
   [key: string]: unknown;
-  locale: any;
+  locale?: LocaleTypes;
 };
 
 const BackgroundPatternVariants: Variants = {
@@ -52,9 +50,8 @@ const HeroTitleVariants: Variants = {
   },
 };
 
-export const Hero = async ({ className, locale, ...props }: HeroProps) => {
-  const event = usePlausible();
-  const { t } = await createTranslation(locale, 'hero');
+export const Hero = ({ className, locale, ...props }: HeroProps) => {
+  const { t } = useTranslation(locale ?? 'fr', 'marketing');
 
   const { getFlag } = useFeatureFlags();
 
@@ -123,13 +120,6 @@ export const Hero = async ({ className, locale, ...props }: HeroProps) => {
               {t(`30-forever`)}
             </span>
           </Button>
-
-          <Link href="https://github.com/documenso/documenso" onClick={() => event('view-github')}>
-            <Button variant="outline" className="rounded-full bg-transparent backdrop-blur-sm">
-              <LuGithub className="mr-2 h-5 w-5" />
-              {t(`star-on-git`)}
-            </Button>
-          </Link>
         </motion.div>
 
         {match(heroMarketingCTA)
@@ -162,7 +152,7 @@ export const Hero = async ({ className, locale, ...props }: HeroProps) => {
               >
                 <img
                   src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=395047&theme=light&period=daily"
-                  alt="Documenso - The open source DocuSign alternative | Product Hunt"
+                  alt="Notario - Simplifiez Vos Signatures, Securisez Vos Documents | Product Hunt"
                   style={{ width: '250px', height: '54px' }}
                 />
               </Link>
@@ -195,22 +185,17 @@ export const Hero = async ({ className, locale, ...props }: HeroProps) => {
             <p className="w-full max-w-[70ch]">{t(`supporter-pledge`)}</p>
 
             <p className="w-full max-w-[70ch]">{t(`through`)}</p>
-
-            <p className="w-full max-w-[70ch]">{t(`at`)}</p>
-
-            <p className="w-full max-w-[70ch]">{t(`we-understand`)}</p>
-
             <p className="w-full max-w-[70ch]">
               {t(`today-we-invite`)}{' '}
               <span className="bg-primary text-black">{t(`non-legally`)}</span> {t(`early-forever`)}
             </p>
 
             <div className="flex h-24 items-center">
-              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>Timur & Lucas</p>
+              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>L'Équipe</p>
             </div>
 
             <div>
-              <strong>Timur Ercan & Lucas Smith</strong>
+              <strong>Serge</strong>
               <p className="mt-1">{t(`co-founders`)}</p>
             </div>
           </Widget>

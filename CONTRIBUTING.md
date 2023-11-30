@@ -1,6 +1,6 @@
-# Contributing to Documenso
+# Contributing to Notario
 
-If you plan to contribute to Documenso, please take a moment to feel awesome ✨ People like you are what open source is about ♥. Any contributions, no matter how big or small, are highly appreciated.
+If you plan to contribute to Notario, please take a moment to feel awesome ✨ People like you are what open source is about ♥. Any contributions, no matter how big or small, are highly appreciated.
 
 ## Before getting started
 
@@ -27,7 +27,7 @@ Always feel free to ask questions or seek clarification on the issue.
 
 ## Developing
 
-The development branch is <code>main</code>. All pull requests should be made against this branch. If you need help getting started, [join us on Discord](https://documen.so/discord).
+The development branch is <code>main</code>. All pull requests should be made against this branch. If you need help getting started, [join us on Discord](#).
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your
    own GitHub account and then

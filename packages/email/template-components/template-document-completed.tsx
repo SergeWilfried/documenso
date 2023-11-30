@@ -68,7 +68,7 @@ export const TemplateDocumentCompleted = ({
               src={getAssetUrl('/static/download.png')}
               className="mb-0.5 mr-2 inline h-5 w-5 align-middle"
             />
-            Download
+            Telecharger
           </Button>
         </Section>
       </Section>

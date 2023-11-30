@@ -7,7 +7,8 @@ import { ChevronLeft } from 'lucide-react';
 import type { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
-import { createTranslation } from '@documenso/ui/i18n/server';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 
 export const generateStaticParams = () =>
   allBlogPosts.map((post) => ({ post: post._raw.flattenedPath }));
@@ -20,7 +21,7 @@ export const generateMetadata = ({ params }: { params: { post: string } }) => {
   }
 
   return {
-    title: `Documenso - ${blogPost.title}`,
+    title: `Notario - ${blogPost.title}`,
     description: blogPost.description,
   };
 };
@@ -32,9 +33,13 @@ const mdxComponents: MDXComponents = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function BlogPostPage({ params }: { params: { post: string; locale: any } }) {
+export default function BlogPostPage({
+  params,
+}: {
+  params: { post: string; locale: LocaleTypes };
+}) {
   const post = allBlogPosts.find((post) => post._raw.flattenedPath === `blog/${params.post}`);
-  const { t } = createTranslation(params.locale, 'blog-post');
+  const { t } = useTranslation(params.locale, 'marketing');
 
   if (!post) {
     notFound();

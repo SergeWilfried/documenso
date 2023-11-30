@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Loader } from 'lucide-react';
 
 import { useUpdateSearchParams } from '@documenso/lib/client-only/hooks/use-update-search-params';
-import { FindResultSet } from '@documenso/lib/types/find-result-set';
+import type { FindResultSet } from '@documenso/lib/types/find-result-set';
 import { recipientInitials } from '@documenso/lib/utils/recipient-formatter';
 import { Document, User } from '@documenso/prisma/client';
 import { Avatar, AvatarFallback } from '@documenso/ui/primitives/avatar';

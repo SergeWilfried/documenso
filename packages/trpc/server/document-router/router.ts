@@ -3,9 +3,12 @@ import { TRPCError } from '@trpc/server';
 import { getServerLimits } from '@documenso/ee/server-only/limits/server';
 import { createDocument } from '@documenso/lib/server-only/document/create-document';
 import { deleteDraftDocument } from '@documenso/lib/server-only/document/delete-draft-document';
+import { duplicateDocumentById } from '@documenso/lib/server-only/document/duplicate-document-by-id';
 import { getDocumentById } from '@documenso/lib/server-only/document/get-document-by-id';
 import { getDocumentAndSenderByToken } from '@documenso/lib/server-only/document/get-document-by-token';
+import { resendDocument } from '@documenso/lib/server-only/document/resend-document';
 import { sendDocument } from '@documenso/lib/server-only/document/send-document';
+import { updateTitle } from '@documenso/lib/server-only/document/update-title';
 import { setFieldsForDocument } from '@documenso/lib/server-only/field/set-fields-for-document';
 import { setRecipientsForDocument } from '@documenso/lib/server-only/recipient/set-recipients-for-document';
 
@@ -15,9 +18,11 @@ import {
   ZDeleteDraftDocumentMutationSchema,
   ZGetDocumentByIdQuerySchema,
   ZGetDocumentByTokenQuerySchema,
+  ZResendDocumentMutationSchema,
   ZSendDocumentMutationSchema,
   ZSetFieldsForDocumentMutationSchema,
   ZSetRecipientsForDocumentMutationSchema,
+  ZSetTitleForDocumentMutationSchema,
 } from './schema';
 
 export const documentRouter = router({
@@ -110,6 +115,20 @@ export const documentRouter = router({
       }
     }),
 
+  setTitleForDocument: authenticatedProcedure
+    .input(ZSetTitleForDocumentMutationSchema)
+    .mutation(async ({ input, ctx }) => {
+      const { documentId, title } = input;
+
+      const userId = ctx.user.id;
+
+      return await updateTitle({
+        title,
+        userId,
+        documentId,
+      });
+    }),
+
   setRecipientsForDocument: authenticatedProcedure
     .input(ZSetRecipientsForDocumentMutationSchema)
     .mutation(async ({ input, ctx }) => {
@@ -169,6 +188,45 @@ export const documentRouter = router({
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'We were unable to send this document. Please try again later.',
+        });
+      }
+    }),
+  resendDocument: authenticatedProcedure
+    .input(ZResendDocumentMutationSchema)
+    .mutation(async ({ input, ctx }) => {
+      try {
+        const { documentId, recipients } = input;
+
+        return await resendDocument({
+          userId: ctx.user.id,
+          documentId,
+          recipients,
+        });
+      } catch (err) {
+        console.error(err);
+
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'We were unable to resend this document. Please try again later.',
+        });
+      }
+    }),
+
+  duplicateDocument: authenticatedProcedure
+    .input(ZGetDocumentByIdQuerySchema)
+    .mutation(async ({ input, ctx }) => {
+      try {
+        const { id } = input;
+
+        return await duplicateDocumentById({
+          id,
+          userId: ctx.user.id,
+        });
+      } catch (err) {
+        console.log(err);
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'We are unable to duplicate this document. Please try again later.',
         });
       }
     }),

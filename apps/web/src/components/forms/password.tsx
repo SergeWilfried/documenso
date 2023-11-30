@@ -20,9 +20,18 @@ import { FormErrorMessage } from '../form/form-error-message';
 
 export const ZPasswordFormSchema = z
   .object({
-    currentPassword: z.string().min(6).max(72),
-    password: z.string().min(6).max(72),
-    repeatedPassword: z.string().min(6).max(72),
+    currentPassword: z
+      .string()
+      .min(6, { message: 'Password should contain at least 6 characters' })
+      .max(72),
+    password: z
+      .string()
+      .min(6, { message: 'Password should contain at least 6 characters' })
+      .max(72),
+    repeatedPassword: z
+      .string()
+      .min(6, { message: 'Password should contain at least 6 characters' })
+      .max(72),
   })
   .refine((data) => data.password === data.repeatedPassword, {
     message: 'Passwords do not match',
@@ -82,7 +91,7 @@ export const PasswordForm = ({ className }: PasswordFormProps) => {
         });
       } else {
         toast({
-          title: 'An unknown error occurred',
+          title: 't(`unknown-error`)',
           variant: 'destructive',
           description:
             'We encountered an unknown error while attempting to update your password. Please try again later.',

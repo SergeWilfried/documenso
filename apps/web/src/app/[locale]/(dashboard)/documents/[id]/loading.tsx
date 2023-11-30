@@ -18,7 +18,7 @@ export default function Loading() {
           <div className="flex h-[80vh] max-h-[60rem] flex-col items-center justify-center">
             <Loader className="text-documenso h-12 w-12 animate-spin" />
 
-            <p className="text-muted-foreground mt-4">Loading document...</p>
+            <p className="text-muted-foreground mt-4">Chargement du document en cours...</p>
           </div>
         </div>
 

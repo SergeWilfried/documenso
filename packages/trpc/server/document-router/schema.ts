@@ -20,7 +20,12 @@ export const ZCreateDocumentMutationSchema = z.object({
 });
 
 export type TCreateDocumentMutationSchema = z.infer<typeof ZCreateDocumentMutationSchema>;
+export const ZSetTitleForDocumentMutationSchema = z.object({
+  documentId: z.number(),
+  title: z.string().min(1),
+});
 
+export type TSetTitleForDocumentMutationSchema = z.infer<typeof ZSetTitleForDocumentMutationSchema>;
 export const ZSetRecipientsForDocumentMutationSchema = z.object({
   documentId: z.number(),
   recipients: z.array(
@@ -58,6 +63,11 @@ export type TSetFieldsForDocumentMutationSchema = z.infer<
 
 export const ZSendDocumentMutationSchema = z.object({
   documentId: z.number(),
+});
+
+export const ZResendDocumentMutationSchema = z.object({
+  documentId: z.number(),
+  recipients: z.array(z.number()).min(1),
 });
 
 export type TSendDocumentMutationSchema = z.infer<typeof ZSendDocumentMutationSchema>;

@@ -17,7 +17,7 @@ export const FEATURE_FLAG_POLL_INTERVAL = 30000;
  */
 export const LOCAL_FEATURE_FLAGS: Record<string, boolean> = {
   app_billing: process.env.NEXT_PUBLIC_FEATURE_BILLING_ENABLED === 'true',
-  marketing_header_single_player_mode: false,
+  marketing_header_single_player_mode: true,
 } as const;
 
 /**
@@ -25,7 +25,7 @@ export const LOCAL_FEATURE_FLAGS: Record<string, boolean> = {
  */
 export function extractPostHogConfig(): { key: string; host: string } | null {
   const postHogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-  const postHogHost = `${APP_BASE_URL}/ingest`;
+  const postHogHost = `${APP_BASE_URL}/fr/ingest`;
 
   if (!postHogKey || !postHogHost) {
     return null;

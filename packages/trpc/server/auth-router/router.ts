@@ -1,9 +1,11 @@
 import { TRPCError } from '@trpc/server';
+import { compare } from 'bcrypt';
 
+import { ErrorCode } from '@documenso/lib/next-auth/error-codes';
 import { createUser } from '@documenso/lib/server-only/user/create-user';
 
-import { procedure, router } from '../trpc';
-import { ZSignUpMutationSchema } from './schema';
+import { authenticatedProcedure, procedure, router } from '../trpc';
+import { ZSignUpMutationSchema, ZVerifyPasswordMutationSchema } from './schema';
 
 export const authRouter = router({
   signup: procedure.input(ZSignUpMutationSchema).mutation(async ({ input }) => {
@@ -12,6 +14,7 @@ export const authRouter = router({
 
       return await createUser({ name, email, password, signature });
     } catch (err) {
+      console.error(err);
       let message =
         'We were unable to create your account. Please review the information you provided and try again.';
 
@@ -25,4 +28,16 @@ export const authRouter = router({
       });
     }
   }),
+  verifyPassword: authenticatedProcedure
+    .input(ZVerifyPasswordMutationSchema)
+    .mutation(async ({ input: { password }, ctx: { user } }) => {
+      if (!user.password) {
+        throw new TRPCError({
+          code: 'UNAUTHORIZED',
+          message: ErrorCode.INCORRECT_PASSWORD,
+        });
+      }
+      const verified = await compare(password, user.password);
+      return { verified };
+    }),
 });

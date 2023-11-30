@@ -14,6 +14,7 @@ ENV_FILES.forEach((file) => {
 const config = {
   experimental: {
     serverActionsBodySizeLimit: '10mb',
+    outputFileTracingRoot: path.join(__dirname, '../../'),
   },
   reactStrictMode: true,
   transpilePackages: ['@documenso/lib', '@documenso/prisma', '@documenso/trpc', '@documenso/ui'],
@@ -70,8 +71,8 @@ const config = {
   async rewrites() {
     return [
       {
-        source: '/ingest/:path*',
-        destination: 'https://eu.posthog.com/:path*',
+        source: '/fr/ingest/:path*',
+        destination: 'https://app.posthog.com/:path*',
       },
     ];
   },

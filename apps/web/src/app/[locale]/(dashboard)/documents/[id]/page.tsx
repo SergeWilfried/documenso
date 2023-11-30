@@ -3,16 +3,17 @@ import { redirect } from 'next/navigation';
 
 import { ChevronLeft, Users2 } from 'lucide-react';
 
-import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-session';
+import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-component-session';
 import { getDocumentById } from '@documenso/lib/server-only/document/get-document-by-id';
 import { getFieldsForDocument } from '@documenso/lib/server-only/field/get-fields-for-document';
 import { getRecipientsForDocument } from '@documenso/lib/server-only/recipient/get-recipients-for-document';
 import { DocumentStatus as InternalDocumentStatus } from '@documenso/prisma/client';
 import { LazyPDFViewer } from '@documenso/ui/primitives/lazy-pdf-viewer';
 
-import { EditDocumentForm } from '~/app/(dashboard)/documents/[id]/edit-document';
 import { StackAvatarsWithTooltip } from '~/components/(dashboard)/avatar/stack-avatars-with-tooltip';
 import { DocumentStatus } from '~/components/formatter/document-status';
+
+import { EditDocumentForm } from './edit-document';
 
 export type DocumentPageProps = {
   params: {
@@ -43,11 +44,11 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
   const { documentData } = document;
 
   const [recipients, fields] = await Promise.all([
-    await getRecipientsForDocument({
+    getRecipientsForDocument({
       documentId,
       userId: user.id,
     }),
-    await getFieldsForDocument({
+    getFieldsForDocument({
       documentId,
       userId: user.id,
     }),
@@ -55,11 +56,14 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
 
   return (
     <div className="mx-auto -mt-4 w-full max-w-screen-xl px-4 md:px-8">
-      <Link href="/documents" className="flex items-center text-[#7AC455] hover:opacity-80">
+      <Link
+        href="/documents"
+        prefetch={false}
+        className="flex items-center text-[#7AC455] hover:opacity-80"
+      >
         <ChevronLeft className="mr-2 inline-block h-5 w-5" />
         Documents
       </Link>
-
       <h1 className="mt-4 truncate text-2xl font-semibold md:text-3xl" title={document.title}>
         {document.title}
       </h1>

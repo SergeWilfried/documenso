@@ -18,26 +18,26 @@ const fontInter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const fontCaveat = Caveat({ subsets: ['latin'], variable: '--font-signature' });
 
 export const metadata = {
-  title: 'Documenso - The Open Source DocuSign Alternative',
+  title: 'Notario - Simplifiez Vos Signatures, Securisez Vos Documents',
   description:
-    'Join Documenso, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+    'Rejoignez Notario votre solution de signature numérique. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
   keywords:
-    'Documenso, open source, DocuSign alternative, document signing, open signing infrastructure, open-source community, fast signing, beautiful signing, smart templates',
-  authors: { name: 'Documenso, Inc.' },
+    'Notario, signature numérique, signature de documents, signature rapide, modèles contrats intelligents',
+  authors: { name: 'Notario, Inc.' },
   robots: 'index, follow',
   openGraph: {
-    title: 'Documenso - The Open Source DocuSign Alternative',
+    title: 'Notario - Simplifiez Vos Signatures, Securisez Vos Documents',
     description:
-      'Join Documenso, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+      'Rejoignez Notario votre solution de signature numérique. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
     type: 'website',
     images: [`${process.env.NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
   },
   twitter: {
-    site: '@documenso',
+    site: '@notario',
     card: 'summary_large_image',
     images: [`${process.env.NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
     description:
-      'Join Documenso, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+      'Rejoignez Notario votre solution de signature numérique. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
   },
 };
 
