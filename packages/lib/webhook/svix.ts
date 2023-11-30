@@ -23,7 +23,6 @@ const withSvixApiKey = async (callback: (svix: any) => Promise<any>) => {
 
 export const findOrCreateApp = async (name: string, uid: string) => {
   return withSvixApiKey(async () => {
-    const svix = createSvixInstance();
     return svix.application.getOrCreate({ name, uid });
   });
 };
