@@ -9,8 +9,12 @@ import { DocumentData } from '@documenso/prisma/client';
 import { Button } from '@documenso/ui/primitives/button';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
+import { useTranslation } from '../../i18n/client';
+import { LocaleTypes } from '../../i18n/settings';
+
 export type DownloadButtonProps = HTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
+  locale: LocaleTypes;
   fileName?: string;
   documentData?: DocumentData;
 };
@@ -20,12 +24,13 @@ export const DocumentDownloadButton = ({
   fileName,
   documentData,
   disabled,
+  locale,
   ...props
 }: DownloadButtonProps) => {
   const { toast } = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
-
+  const { t } = useTranslation(locale, 'dashboard');
   const onDownloadClick = async () => {
     try {
       setIsLoading(true);
@@ -41,9 +46,9 @@ export const DocumentDownloadButton = ({
       });
 
       const link = window.document.createElement('a');
-
+      const baseTitle = fileName?.includes('.pdf') ? fileName.split('.pdf')[0] : fileName;
       link.href = window.URL.createObjectURL(blob);
-      link.download = fileName || 'document.pdf';
+      link.download = baseTitle ? `${baseTitle}_signed.pdf` : 'document.pdf';
 
       link.click();
 
@@ -52,8 +57,8 @@ export const DocumentDownloadButton = ({
       console.error(err);
 
       toast({
-        title: 'Error',
-        description: 'An error occurred while downloading your document.',
+        title: t(`something-went-wrong`),
+        description: t(`something-went-wrong-with-the-doc`),
         variant: 'destructive',
       });
     } finally {
@@ -72,7 +77,7 @@ export const DocumentDownloadButton = ({
       {...props}
     >
       <Download className="mr-2 h-5 w-5" />
-      Download
+      {t(`download`)}
     </Button>
   );
 };

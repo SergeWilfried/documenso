@@ -24,8 +24,12 @@ import {
 } from '@documenso/ui/primitives/dialog';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
+import { useTranslation } from '../../i18n/client';
+import { LocaleTypes } from '../../i18n/settings';
+
 export type DocumentShareButtonProps = HTMLAttributes<HTMLButtonElement> & {
   token?: string;
+  locale: LocaleTypes;
   documentId: number;
   trigger?: (_props: { loading: boolean; disabled: boolean }) => React.ReactNode;
 };
@@ -35,9 +39,10 @@ export const DocumentShareButton = ({
   documentId,
   className,
   trigger,
+  locale,
 }: DocumentShareButtonProps) => {
   const { toast } = useToast();
-
+  const { t } = useTranslation(locale, 'dashboard');
   const { copyShareLink, createAndCopyShareLink, isCopyingShareLink } = useCopyShareLink({
     onSuccess: () => toast(TOAST_DOCUMENT_SHARE_SUCCESS),
     onError: () => toast(TOAST_DOCUMENT_SHARE_ERROR),
@@ -88,7 +93,7 @@ export const DocumentShareButton = ({
     }
 
     // Ensuring we've prewarmed the opengraph image for the Twitter
-    await fetch(`${process.env.NEXT_PUBLIC_WEBAPP_URL}/share/${slug}/opengraph`, {
+    await fetch(`${process.env.NEXT_PUBLIC_WEBAPP_URL}/${locale}/share/${slug}/opengraph`, {
       // We don't care about the response, so we can use no-cors
       mode: 'no-cors',
     });
@@ -96,7 +101,7 @@ export const DocumentShareButton = ({
     window.open(
       generateTwitterIntent(
         `I just ${token ? 'signed' : 'sent'} a document with @documenso. Check it out!`,
-        `${process.env.NEXT_PUBLIC_WEBAPP_URL}/share/${slug}`,
+        `${process.env.NEXT_PUBLIC_WEBAPP_URL}/${locale}/share/${slug}`,
       ),
       '_blank',
     );
@@ -118,14 +123,14 @@ export const DocumentShareButton = ({
             loading={isLoading || isCopyingShareLink}
           >
             {!isLoading && !isCopyingShareLink && <Share className="mr-2 h-5 w-5" />}
-            Share
+            {t('share')}
           </Button>
         )}
       </DialogTrigger>
 
       <DialogContent position="end">
         <DialogHeader>
-          <DialogTitle>Share</DialogTitle>
+          <DialogTitle>{t('share')}</DialogTitle>
 
           <DialogDescription className="mt-4">Share your signing experience!</DialogDescription>
         </DialogHeader>
@@ -141,7 +146,7 @@ export const DocumentShareButton = ({
                 'animate-pulse': !shareLink?.slug,
               })}
             >
-              {process.env.NEXT_PUBLIC_WEBAPP_URL}/share/{shareLink?.slug || '...'}
+              {process.env.NEXT_PUBLIC_WEBAPP_URL}/{locale}/share/{shareLink?.slug || '...'}
             </span>
             <div
               className={cn('bg-muted/40 mt-4 aspect-video overflow-hidden rounded-lg border', {
@@ -150,7 +155,7 @@ export const DocumentShareButton = ({
             >
               {shareLink?.slug && (
                 <img
-                  src={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/share/${shareLink.slug}/opengraph`}
+                  src={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/${locale}/share/${shareLink.slug}/opengraph`}
                   alt="sharing link"
                   className="h-full w-full object-cover"
                 />

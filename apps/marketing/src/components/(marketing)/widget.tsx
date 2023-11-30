@@ -172,8 +172,8 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
       event('claim-plan-failed');
 
       toast({
-        title: 'Something went wrong',
-        description: error instanceof Error ? error.message : 'Please try again later.',
+        title: t('something-went-wrong'),
+        description: error instanceof Error ? error.message : t(`try-later`),
         variant: 'destructive',
       });
     }
@@ -308,11 +308,11 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
             <div className="flex items-center justify-between">
               <p className="text-muted-foreground text-xs">
-                {isValid ? t(`ready-for-sign-in`) : `${stepsRemaining}` + t(`steps-until`)}
+                {isValid ? t(`ready-for-sign-in`) : `${stepsRemaining} ` + t(`steps-until`)}
               </p>
 
               <p className="text-muted-foreground block text-xs md:hidden">
-                {t(`minimise-contract`)}
+                {t(`minimize-contract`)}
               </p>
             </div>
 
@@ -394,7 +394,6 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
           <DialogDescription>
             {t(`by-sign-in`)}
-            <br></br>
             <strong>{t(`non-legally-binding`)}</strong>. <br></br>
             <br></br>
             {t(`unlock-option`)}

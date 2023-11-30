@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 
 import { ChevronLeft, Users2 } from 'lucide-react';
 
-import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-session';
+import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-component-session';
 import { getDocumentById } from '@documenso/lib/server-only/document/get-document-by-id';
 import { getFieldsForDocument } from '@documenso/lib/server-only/field/get-fields-for-document';
 import { getRecipientsForDocument } from '@documenso/lib/server-only/recipient/get-recipients-for-document';
@@ -44,11 +44,11 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
   const { documentData } = document;
 
   const [recipients, fields] = await Promise.all([
-    await getRecipientsForDocument({
+    getRecipientsForDocument({
       documentId,
       userId: user.id,
     }),
-    await getFieldsForDocument({
+    getFieldsForDocument({
       documentId,
       userId: user.id,
     }),

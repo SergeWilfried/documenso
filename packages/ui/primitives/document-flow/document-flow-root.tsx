@@ -2,10 +2,15 @@
 
 import React, { HTMLAttributes } from 'react';
 
+import { useParams } from 'next/navigation';
+
 import { motion } from 'framer-motion';
 
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
+
+import { useTranslation } from '../../i18n/client';
+import { LocaleTypes } from '../../i18n/settings';
 
 export type DocumentFlowFormContainerProps = HTMLAttributes<HTMLFormElement> & {
   children?: React.ReactNode;
@@ -99,10 +104,12 @@ export const DocumentFlowFormContainerStep = ({
   step,
   maxStep,
 }: DocumentFlowFormContainerStepProps) => {
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = useTranslation(locale, 'marketing');
   return (
     <div>
       <p className="text-muted-foreground text-sm">
-        Step <span>{`${step} of ${maxStep}`}</span>
+        {t('step')} <span>{`${step} ${t('of')} ${maxStep}`}</span>
       </p>
 
       <div className="bg-muted relative mt-4 h-[2px] rounded-md">

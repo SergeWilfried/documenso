@@ -152,7 +152,7 @@ export const Hero = ({ className, locale, ...props }: HeroProps) => {
               >
                 <img
                   src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=395047&theme=light&period=daily"
-                  alt="Notario - Simplify Your Signatures, Secure Your Documents | Product Hunt"
+                  alt="Notario - Simplifiez Vos Signatures, Securisez Vos Documents | Product Hunt"
                   style={{ width: '250px', height: '54px' }}
                 />
               </Link>
@@ -185,16 +185,13 @@ export const Hero = ({ className, locale, ...props }: HeroProps) => {
             <p className="w-full max-w-[70ch]">{t(`supporter-pledge`)}</p>
 
             <p className="w-full max-w-[70ch]">{t(`through`)}</p>
-
-            <p className="w-full max-w-[70ch]">{t(`at`)}</p>
-
             <p className="w-full max-w-[70ch]">
               {t(`today-we-invite`)}{' '}
               <span className="bg-primary text-black">{t(`non-legally`)}</span> {t(`early-forever`)}
             </p>
 
             <div className="flex h-24 items-center">
-              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>Timur & Lucas</p>
+              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>L'Équipe</p>
             </div>
 
             <div>

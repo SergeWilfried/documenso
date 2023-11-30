@@ -21,17 +21,17 @@ const fontInter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const fontCaveat = Caveat({ subsets: ['latin'], variable: '--font-signature' });
 
 export const metadata = {
-  title: 'Notario - Simplify Your Signatures, Secure Your Documents',
+  title: 'Notario - Simplifiez Vos Signatures, Securisez Vos Documents',
   description:
-    'Join Notario, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+    'Rejoignez Notario votre solution de signature numérique offrant une expérience 10 fois meilleure de signature. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
   keywords:
     'Notario,  DocuSign alternative, document signing, open signing infrastructure,  fast signing, beautiful signing, smart templates',
   authors: { name: 'Notario, Inc.' },
   robots: 'index, follow',
   openGraph: {
-    title: 'Notario - Simplify Your Signatures, Secure Your Documents',
+    title: 'Notario - Simplifiez Vos Signatures, Securisez Vos Documents',
     description:
-      'Join Notario, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+      'Rejoignez Notario votre solution de signature numérique offrant une expérience 10 fois meilleure de signature. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
     type: 'website',
     images: [`${process.env.NEXT_PUBLIC_WEBAPP_URL}/opengraph-image.jpg`],
   },
@@ -40,7 +40,7 @@ export const metadata = {
     card: 'summary_large_image',
     images: [`${process.env.NEXT_PUBLIC_WEBAPP_URL}/opengraph-image.jpg`],
     description:
-      'Join Notario, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+      'Rejoignez Notario votre solution de signature numérique offrant une expérience 10 fois meilleure de signature. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
   },
 };
 

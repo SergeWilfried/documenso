@@ -6,8 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
-import { Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import { FaXTwitter } from 'react-icons/fa6';
 
 import LogoImage from '@documenso/assets/logo.png';
@@ -16,24 +14,24 @@ import { LocaleTypes } from '@documenso/ui/i18n/settings';
 // import { LiaDiscord } from 'react-icons/lia';
 // import { LuGithub } from 'react-icons/lu';
 import { cn } from '@documenso/ui/lib/utils';
+import { ThemeSwitcher } from '@documenso/ui/primitives/theme-switcher';
 
 export type FooterProps = HTMLAttributes<HTMLDivElement>;
 
 const SOCIAL_LINKS = [
   { href: 'https://twitter.com/notario', icon: <FaXTwitter className="h-6 w-6" /> },
   // { href: 'https://github.com/documenso/documenso', icon: <LuGithub className="h-6 w-6" /> },
-  // { href: 'https://documen.so/discord', icon: <LiaDiscord className="h-7 w-7" /> },
+  // { href: '#', icon: <LiaDiscord className="h-7 w-7" /> },
 ];
 
 const FOOTER_LINKS = [
-  { href: '/pricing', text: 'pricing' },
+  // { href: '/pricing', text: 'pricing' },
   { href: '/singleplayer', text: 'single-player-mode' },
   { href: 'mailto:info@progiciel.com', text: 'support', target: '_blank' },
   { href: '/privacy', text: 'privacy' },
 ];
 
 export const Footer = ({ className, ...props }: FooterProps) => {
-  const { setTheme } = useTheme();
   const locale = useParams()?.locale as LocaleTypes;
   const { t } = useTranslation(locale, 'marketing');
 
@@ -55,7 +53,7 @@ export const Footer = ({ className, ...props }: FooterProps) => {
             {SOCIAL_LINKS.map((link, index) => (
               <Link
                 key={index}
-                href={link.href}
+                href={`${locale}/${link.href}`}
                 target="_blank"
                 className="text-muted-foreground hover:text-muted-foreground/80"
               >
@@ -78,21 +76,13 @@ export const Footer = ({ className, ...props }: FooterProps) => {
           ))}
         </div>
       </div>
-      <div className="mx-auto mt-4 flex w-full max-w-screen-xl flex-wrap justify-between gap-4 px-8 md:mt-12 lg:mt-24">
+      <div className="mx-auto mt-4 flex w-full max-w-screen-xl flex-wrap items-center justify-between gap-4 px-8 md:mt-12 lg:mt-24">
         <p className="text-muted-foreground text-sm">
           © {new Date().getFullYear()} Notario, Inc. All rights reserved.
         </p>
 
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5">
-          <button type="button" className="text-muted-foreground" onClick={() => setTheme('light')}>
-            <Sun className="h-5 w-5" />
-            <span className="sr-only">Light</span>
-          </button>
-
-          <button type="button" className="text-muted-foreground" onClick={() => setTheme('dark')}>
-            <Moon className="h-5 w-5" />
-            <span className="sr-only">Dark</span>
-          </button>
+        <div className="flex flex-wrap">
+          <ThemeSwitcher />
         </div>
       </div>
     </div>

@@ -32,7 +32,7 @@ export const OpenBuildTemplateBento = async ({
       </div>
       <h2 className="px-0 text-[22px] font-semibold md:px-12 md:text-4xl lg:px-24">
         {t(`your-own`)}
-        <span className="block md:mt-0">{t(`customise`)}</span>
+        <span className="block md:mt-0">{t(`customize`)}</span>
       </h2>
 
       <div className="mt-6 grid grid-cols-2 gap-8 md:mt-8">

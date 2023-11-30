@@ -14,7 +14,7 @@ For the digital signature of your documents you need a signing certificate in .p
 
 3. Combine the private key and the self-signed certificate to create the p12 certificate. You can run the following command to do this:
 
-   `openssl pkcs12 -export -out certificate.p12 -inkey private.key -in certificate.crt`
+   `openssl pkcs12 -password pass:etalon123 -export -out certificate.p12 -inkey private.key -in certificate.crt`
 
 4. You will be prompted to enter a password for the p12 file. Choose a strong password and remember it, as you will need it to use the certificate (**can be empty for dev certificates**)
 5. Place the certificate `/apps/web/resources/certificate.p12`

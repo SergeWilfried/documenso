@@ -6,6 +6,7 @@ import { Variants, motion } from 'framer-motion';
 import { Plus } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
 
+import { megabytesToBytes } from '@documenso/lib/universal/unit-convertions';
 import { useTranslation } from '@documenso/ui/i18n/client';
 import { cn } from '@documenso/ui/lib/utils';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
@@ -103,6 +104,7 @@ export const DocumentDropzone = ({
         void onDrop(acceptedFile);
       }
     },
+    maxSize: megabytesToBytes(50),
   });
 
   return (

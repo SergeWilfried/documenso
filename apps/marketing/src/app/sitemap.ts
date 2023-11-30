@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-import { allBlogPosts, allGenericPages } from 'contentlayer/generated';
+import { allGenericPages } from 'contentlayer/generated';
 
 import { getBaseUrl } from '@documenso/lib/universal/get-base-url';
 
@@ -17,24 +17,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/${doc._raw.flattenedPath}`,
       lastModified,
     })),
+    // {
+    //   url: `${baseUrl}/blog`,
+    //   lastModified,
+    // },
+    // ...allBlogPosts.map((doc) => ({
+    //   url: `${baseUrl}/${doc._raw.flattenedPath}`,
+    //   lastModified,
+    // })),
+    // {
+    //   url: `${baseUrl}/open`,
+    //   lastModified,
+    // },
+    // {
+    //   url: `${baseUrl}/oss-friends`,
+    //   lastModified,
+    // },
     {
-      url: `${baseUrl}/blog`,
-      lastModified,
-    },
-    ...allBlogPosts.map((doc) => ({
-      url: `${baseUrl}/${doc._raw.flattenedPath}`,
-      lastModified,
-    })),
-    {
-      url: `${baseUrl}/open`,
-      lastModified,
-    },
-    {
-      url: `${baseUrl}/oss-friends`,
-      lastModified,
-    },
-    {
-      url: `${baseUrl}/pricing`,
+      url: `${baseUrl}/fr/pricing`,
       lastModified,
     },
   ];

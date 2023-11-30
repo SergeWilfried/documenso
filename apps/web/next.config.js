@@ -45,8 +45,8 @@ const config = {
   async rewrites() {
     return [
       {
-        source: '/ingest/:path*',
-        destination: 'https://eu.posthog.com/:path*',
+        source: '/fr/ingest/:path*',
+        destination: 'https://app.posthog.com/:path*',
       },
     ];
   },
@@ -54,8 +54,8 @@ const config = {
     return [
       {
         permanent: true,
-        source: '/documents/:id/sign',
-        destination: '/sign/:token',
+        source: '/fr/documents/:id/sign',
+        destination: '/fr/sign/:token',
         has: [
           {
             type: 'query',
@@ -65,8 +65,8 @@ const config = {
       },
       {
         permanent: true,
-        source: '/documents/:id/signed',
-        destination: '/sign/:token',
+        source: '/fr/documents/:id/signed',
+        destination: '/fr/sign/:token',
         has: [
           {
             type: 'query',
