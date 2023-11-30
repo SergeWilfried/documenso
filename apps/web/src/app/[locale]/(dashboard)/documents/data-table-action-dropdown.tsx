@@ -91,10 +91,10 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
     });
 
     const link = window.document.createElement('a');
-
+    const baseTitle = row.title.includes('.pdf') ? row.title.split('.pdf')[0] : row.title;
     link.href = window.URL.createObjectURL(blob);
-    link.download = row.title || 'document.pdf';
 
+    link.download = baseTitle ? `${baseTitle}_signed.pdf` : 'document.pdf';
     link.click();
 
     window.URL.revokeObjectURL(link.href);
@@ -149,6 +149,7 @@ export const DataTableActionDropdown = ({ row }: DataTableActionDropdownProps) =
         <DocumentShareButton
           documentId={row.id}
           token={recipient?.token}
+          locale={locale}
           trigger={({ loading, disabled }) => (
             <DropdownMenuItem disabled={disabled || isDraft} onSelect={(e) => e.preventDefault()}>
               <div className="flex items-center">

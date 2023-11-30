@@ -71,8 +71,8 @@ const config = {
   async rewrites() {
     return [
       {
-        source: '/ingest/:path*',
-        destination: 'https://eu.posthog.com/:path*',
+        source: '/fr/ingest/:path*',
+        destination: 'https://app.posthog.com/:path*',
       },
     ];
   },

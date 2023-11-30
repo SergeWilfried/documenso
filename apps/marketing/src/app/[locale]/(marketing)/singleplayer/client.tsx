@@ -9,6 +9,7 @@ import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
 import { base64 } from '@documenso/lib/universal/base64';
 import { putFile } from '@documenso/lib/universal/upload/put-file';
 import { DocumentDataType, Field, Prisma, Recipient } from '@documenso/prisma/client';
+import { trpc } from '@documenso/trpc/react';
 import { useTranslation } from '@documenso/ui/i18n/client';
 import { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
@@ -24,8 +25,6 @@ import {
 import { DocumentFlowStep } from '@documenso/ui/primitives/document-flow/types';
 import { LazyPDFViewer } from '@documenso/ui/primitives/lazy-pdf-viewer';
 import { useToast } from '@documenso/ui/primitives/use-toast';
-
-import { createSinglePlayerDocument } from '~/components/(marketing)/single-player-mode/create-single-player-document.action';
 
 type SinglePlayerModeStep = 'fields' | 'sign';
 
@@ -43,6 +42,8 @@ export const SinglePlayerClient = () => {
 
   const [step, setStep] = useState<SinglePlayerModeStep>('fields');
   const [fields, setFields] = useState<Field[]>([]);
+  const { mutateAsync: createSinglePlayerDocument } =
+    trpc.singleplayer.createSinglePlayerDocument.useMutation();
 
   const documentFlow: Record<SinglePlayerModeStep, DocumentFlowStep> = {
     fields: {

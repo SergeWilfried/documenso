@@ -8,7 +8,11 @@
   "javascript.preferences.useAliasesForRenames": false,
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
+    "APIKEY",
     "DOCUMENSO",
-    "L'Équipe"
+    "L'Équipe",
+    "MAILCHANNELS",
+    "NEXTAUTH",
+    "POSTHOG"
   ]
 }

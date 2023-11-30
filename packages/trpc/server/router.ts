@@ -4,13 +4,11 @@ import { documentRouter } from './document-router/router';
 import { fieldRouter } from './field-router/router';
 import { profileRouter } from './profile-router/router';
 import { shareLinkRouter } from './share-link-router/router';
-import { procedure, router } from './trpc';
+import { singleplayerRouter } from './singleplayer-router/router';
+import { router } from './trpc';
 import { twoFactorRouter } from './two-factor-router/router';
 
 export const appRouter = router({
-  health: procedure.query(() => {
-    return { status: 'ok' };
-  }),
   auth: authRouter,
   profile: profileRouter,
   document: documentRouter,
@@ -18,6 +16,7 @@ export const appRouter = router({
   admin: adminRouter,
   shareLink: shareLinkRouter,
   twoFactor: twoFactorRouter,
+  singleplayer: singleplayerRouter,
 });
 
 export type AppRouter = typeof appRouter;

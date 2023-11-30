@@ -20,7 +20,7 @@ const fontCaveat = Caveat({ subsets: ['latin'], variable: '--font-signature' });
 export const metadata = {
   title: 'Notario - Simplifiez Vos Signatures, Securisez Vos Documents',
   description:
-    'Rejoignez Notario votre solution de signature numérique offrant une expérience 10 fois meilleure de signature. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
+    'Rejoignez Notario votre solution de signature numérique. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
   keywords:
     'Notario, signature numérique, signature de documents, signature rapide, modèles contrats intelligents',
   authors: { name: 'Notario, Inc.' },
@@ -28,7 +28,7 @@ export const metadata = {
   openGraph: {
     title: 'Notario - Simplifiez Vos Signatures, Securisez Vos Documents',
     description:
-      'Rejoignez Notario votre solution de signature numérique offrant une expérience 10 fois meilleure de signature. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
+      'Rejoignez Notario votre solution de signature numérique. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
     type: 'website',
     images: [`${process.env.NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
   },
@@ -37,7 +37,7 @@ export const metadata = {
     card: 'summary_large_image',
     images: [`${process.env.NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
     description:
-      'Rejoignez Notario votre solution de signature numérique offrant une expérience 10 fois meilleure de signature. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
+      'Rejoignez Notario votre solution de signature numérique. À partir de 30 $/mois, cette tarification est garantie à vie ! Inscrivez-vous dès maintenant pour bénéficier dun processus de signature de documents plus rapide, plus intelligent et plus intuitif.',
   },
 };
 
