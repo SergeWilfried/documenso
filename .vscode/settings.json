@@ -13,6 +13,7 @@
     "L'Équipe",
     "MAILCHANNELS",
     "NEXTAUTH",
-    "POSTHOG"
+    "POSTHOG",
+    "SVIX"
   ]
 }

@@ -1,68 +1,69 @@
 import { EndpointIn, Svix } from 'svix';
 
-/// FIXME
-const svix = new Svix('apiKey');
+import { AppEvent } from '../types/webhook.type';
 
-export const findOrCreateApp = async (name: string, uid: string, apiKey: string) => {
-  if (!apiKey) {
+/// FIXME
+const svix = new Svix(process.env.SVIX_API_KEY);
+
+export const findOrCreateApp = async (name: string, uid: string) => {
+  if (!process.env.SVIX_API_KEY) {
     return;
   }
 
   return await svix.application.getOrCreate({ name, uid });
 };
 
-export const createWebhook = async (appId: string, data: EndpointIn, apiKey: string) => {
-  if (!apiKey) {
+export const createWebhook = async (appId: string, data: EndpointIn) => {
+  if (!process.env.SVIX_API_KEY) {
     return;
   }
 
   return await svix.endpoint.create(appId, data);
 };
 
-export const updateWebhook = async (
-  appId: string,
-  endpointId: string,
-  data: EndpointIn,
-  apiKey: string,
-) => {
-  if (!apiKey) {
+export const updateWebhook = async (appId: string, endpointId: string, data: EndpointIn) => {
+  if (!process.env.SVIX_API_KEY) {
     return;
   }
 
   return await svix.endpoint.update(appId, endpointId, data);
 };
 
-export const findWebhook = async (appId: string, endpointId: string, apiKey: string) => {
-  if (!apiKey) {
+export const findWebhook = async (appId: string, endpointId: string) => {
+  if (!process.env.SVIX_API_KEY) {
     return;
   }
 
   return await svix.endpoint.get(appId, endpointId);
 };
 
-export const listWebhooks = async (appId: string, apiKey: string) => {
-  if (!apiKey) {
+export const listWebhooks = async (appId: string) => {
+  if (!process.env.SVIX_API_KEY) {
     return;
   }
 
   return await svix.endpoint.list(appId);
 };
 
-export const deleteWebhook = async (appId: string, endpointId: string, apiKey: string) => {
-  if (!apiKey) {
+export const deleteWebhook = async (appId: string, endpointId: string) => {
+  if (!process.env.SVIX_API_KEY) {
     return;
   }
 
   return await svix.endpoint.delete(appId, endpointId);
 };
 
-export const sendEvent = async (appId: string, eventType: string, payload: any, apiKey: string) => {
-  if (!apiKey) {
+export const sendEvent = async (
+  appId: string | undefined,
+  eventType: AppEvent,
+  payload: Record<string, unknown>,
+) => {
+  if (!process.env.SVIX_API_KEY) {
     return;
   }
 
-  return await svix.message.create(appId, {
-    eventType: eventType,
+  return await svix.message.create(appId ? appId : 'notario', {
+    eventType,
     payload: {
       event: eventType,
       data: payload,

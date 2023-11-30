@@ -4,6 +4,7 @@ import { prisma } from '@documenso/prisma';
 import { IdentityProvider } from '@documenso/prisma/client';
 
 import { SALT_ROUNDS } from '../../constants/auth';
+import { sendEvent } from '../../svix/svix';
 
 export interface CreateUserOptions {
   name: string;
@@ -25,7 +26,7 @@ export const createUser = async ({ name, email, password, signature }: CreateUse
     throw new Error('User already exists');
   }
 
-  return await prisma.user.create({
+  const user = await prisma.user.create({
     data: {
       name,
       email: email.toLowerCase(),
@@ -34,4 +35,7 @@ export const createUser = async ({ name, email, password, signature }: CreateUse
       identityProvider: IdentityProvider.DOCUMENSO,
     },
   });
+
+  await sendEvent(undefined, 'member.removed', user);
+  return user;
 };

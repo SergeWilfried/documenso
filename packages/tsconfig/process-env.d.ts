@@ -53,7 +53,7 @@ declare namespace NodeJS {
 
     NEXT_PRIVATE_SMTP_FROM_NAME?: string;
     NEXT_PRIVATE_SMTP_FROM_ADDRESS?: string;
-
+    SVIX_API_KEY: string;
     /**
      * Vercel environment variables
      */
