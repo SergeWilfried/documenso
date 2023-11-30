@@ -2,8 +2,14 @@ import { EndpointIn, Svix } from 'svix';
 
 import { AppEvent } from '../types/webhook.type';
 
+let retracedClient: Svix;
+
 const createSvixInstance = () => {
-  return new Svix(process.env.SVIX_API_KEY);
+  if (!retracedClient) {
+    return new Svix(process.env.SVIX_API_KEY);
+  } else {
+    return retracedClient;
+  }
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
