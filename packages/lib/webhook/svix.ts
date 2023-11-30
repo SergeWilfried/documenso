@@ -12,7 +12,7 @@ const createSvixInstance = () => {
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, no-unused-vars
 const withSvixApiKey = async (callback: (svix: any) => Promise<any>) => {
   if (!process.env.SVIX_API_KEY) {
     throw new Error('SVIX_API_KEY is not defined');
