@@ -4,7 +4,6 @@ export type WebookFormSchema = {
   eventTypes: string[];
 };
 
-
 export type AppEvent =
   | 'invitation.created'
   | 'invitation.removed'
@@ -46,6 +45,4 @@ export type AppEvent =
   | 'field.fetched'
   | 'field.created'
   | 'field.updated'
-  | 'field.removed'
-;
-
+  | 'field.removed';

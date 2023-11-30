@@ -36,6 +36,6 @@ export const createUser = async ({ name, email, password, signature }: CreateUse
     },
   });
 
-  await sendEvent(undefined, 'member.removed', user);
+  await sendEvent(undefined, 'user.signup', user);
   return user;
 };
