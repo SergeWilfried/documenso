@@ -22,43 +22,38 @@ const withSvixApiKey = async (callback: (svix: any) => Promise<any>) => {
 };
 
 export const findOrCreateApp = async (name: string, uid: string) => {
-  return withSvixApiKey(async () => {
+  return withSvixApiKey((svix) => {
     return svix.application.getOrCreate({ name, uid });
   });
 };
 
 export const createWebhook = async (appId: string, data: EndpointIn) => {
-  return withSvixApiKey(async () => {
-    const svix = createSvixInstance();
-    return await svix.endpoint.create(appId, data);
+  return withSvixApiKey((svix) => {
+    return svix.endpoint.create(appId, data);
   });
 };
 
 export const updateWebhook = async (appId: string, endpointId: string, data: EndpointIn) => {
-  return withSvixApiKey(async () => {
-    const svix = createSvixInstance();
-    return await svix.endpoint.update(appId, endpointId, data);
+  return withSvixApiKey((svix) => {
+    return svix.endpoint.update(appId, endpointId, data);
   });
 };
 
 export const findWebhook = async (appId: string, endpointId: string) => {
-  return withSvixApiKey(async () => {
-    const svix = createSvixInstance();
-    return await svix.endpoint.get(appId, endpointId);
+  return withSvixApiKey((svix) => {
+    return svix.endpoint.get(appId, endpointId);
   });
 };
 
 export const listWebhooks = async (appId: string) => {
-  return withSvixApiKey(async () => {
-    const svix = createSvixInstance();
-    return await svix.endpoint.list(appId);
+  return withSvixApiKey((svix) => {
+    return svix.endpoint.list(appId);
   });
 };
 
 export const deleteWebhook = async (appId: string, endpointId: string) => {
-  return withSvixApiKey(async () => {
-    const svix = createSvixInstance();
-    return await svix.endpoint.delete(appId, endpointId);
+  return withSvixApiKey((svix) => {
+    return svix.endpoint.delete(appId, endpointId);
   });
 };
 
@@ -67,9 +62,8 @@ export const sendEvent = async (
   eventType: AppEvent,
   payload: Record<string, unknown>,
 ) => {
-  return withSvixApiKey(async () => {
-    const svix = createSvixInstance();
-    return await svix.message.create(appId ? appId : 'notario', {
+  return withSvixApiKey((svix) => {
+    return svix.message.create(appId ? appId : 'notario', {
       eventType,
       payload: {
         event: eventType,
