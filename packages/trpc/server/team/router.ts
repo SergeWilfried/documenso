@@ -63,7 +63,7 @@ export const teamRouter = router({
         const { id } = input;
 
         // Sample implementation - delete the team from the database
-        const deletionResult = await deleteTeamFromDatabase({ id });
+        const deletionResult = await deleteTeamFromDatabase({ key: { id } });
 
         return deletionResult;
       } catch (error) {

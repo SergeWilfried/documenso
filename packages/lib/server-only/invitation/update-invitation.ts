@@ -3,6 +3,7 @@
 import { prisma } from '@documenso/prisma';
 
 export type UpdateInvitationOptions = {
+  id: string;
   teamId?: string;
   email?: string;
   role?: 'OWNER' | 'ADMIN' | 'USER' | 'MEMBER';
@@ -11,10 +12,18 @@ export type UpdateInvitationOptions = {
   invitedBy?: number; // Assuming this refers to the ID of the user who invited
 };
 
-export const updateInvitation = async (id: string, values: UpdateInvitationOptions) => {
+export const updateInvitation = async (params: UpdateInvitationOptions) => {
+  const { id, teamId, email, role, token, expires, invitedBy } = params;
   const updatedInvitation = await prisma.invitation.update({
     where: { id },
-    data: values,
+    data: {
+      teamId,
+      email,
+      role,
+      token,
+      expires,
+      invitedBy,
+    },
   });
   return updatedInvitation;
 };
