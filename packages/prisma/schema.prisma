@@ -43,6 +43,8 @@ model User {
   VerificationToken    VerificationToken[]
   Template           Template[]
 
+  TeamMember TeamMember[]
+  Invitation Invitation[]
   @@index([email])
 }
 
@@ -85,6 +87,54 @@ model Subscription {
   User User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+
+model Team {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String   @unique
+  domain      String?  @unique
+  defaultRole Role     @default(USER)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+
+  Member     TeamMember[]
+  Invitation Invitation[]
+  Template   Template[]
+  Document   Document[]
+}
+
+model TeamMember {
+  id                String  @id @default(cuid())
+  teamId    String
+  userId    Int
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([teamId, userId])
+  @@index([userId])
+}
+
+model Invitation {
+  id        String  @id @default(cuid())
+  teamId    String
+  email     String
+  role      Role     @default(USER)
+  token     String   @unique
+  expires   DateTime
+  invitedBy Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  user User @relation(fields: [invitedBy], references: [id], onDelete: Cascade)
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@unique([teamId, email])
 }
 
 model Account {
@@ -136,10 +186,12 @@ model Document {
   updatedAt      DateTime            @default(now()) @updatedAt
   completedAt    DateTime?
   deletedAt      DateTime?
-
+  teamId                 String?
+  team                   Team? @relation(fields: [teamId], references: [id], onDelete: Cascade)
   @@unique([documentDataId])
   @@index([userId])
   @@index([status])
+  @@index([teamId])
 }
 
 enum DocumentDataType {
@@ -281,6 +333,7 @@ model Template {
   User                   User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   Recipient              Recipient[]
   Field                  Field[]
-
+  teamId                 String?
+  team                   Team? @relation(fields: [teamId], references: [id], onDelete: Cascade)
   @@unique([templateDocumentDataId])
 }
