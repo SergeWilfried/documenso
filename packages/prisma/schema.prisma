@@ -14,8 +14,10 @@ enum IdentityProvider {
 }
 
 enum Role {
+  OWNER
   ADMIN
   USER
+  MEMBER
 }
 
 model User {
@@ -92,7 +94,7 @@ model Subscription {
 
 model Team {
   id          String  @id @default(cuid())
-  name        String
+  name        String   @unique
   slug        String   @unique
   domain      String?  @unique
   defaultRole Role     @default(USER)
@@ -103,13 +105,16 @@ model Team {
   Invitation Invitation[]
   Template   Template[]
   Document   Document[]
+  @@index([slug])
+  @@index([name])
+
 }
 
 model TeamMember {
   id                String  @id @default(cuid())
   teamId    String
   userId    Int
-  role      Role     @default(USER)
+  role      Role     @default(MEMBER)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
