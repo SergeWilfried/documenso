@@ -6,7 +6,7 @@ export type GetInvitationOptions = {
   key: { teamId: string };
 };
 
-export const getAllInvitation = async ({ key }: GetInvitationOptions) => {
+export const getAllInvitations = async ({ key }: GetInvitationOptions) => {
   const invitation = await prisma.invitation.findMany({
     where: key,
     select: {
