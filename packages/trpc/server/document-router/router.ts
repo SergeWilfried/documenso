@@ -1,6 +1,7 @@
 import { TRPCError } from '@trpc/server';
 
 import { getServerLimits } from '@documenso/ee/server-only/limits/server';
+import { sendAudit } from '@documenso/lib/audit/index';
 import { upsertDocumentMeta } from '@documenso/lib/server-only/document-meta/upsert-document-meta';
 import { createDocument } from '@documenso/lib/server-only/document/create-document';
 import { deleteDocument } from '@documenso/lib/server-only/document/delete-document';
@@ -35,10 +36,19 @@ export const documentRouter = router({
       try {
         const { id } = input;
 
-        return await getDocumentById({
+        const document = await getDocumentById({
           id,
           userId: ctx.user.id,
         });
+        await sendAudit({
+          action: 'document.fetch',
+          user: {
+            ...ctx.user,
+            emailVerified: new Date().toISOString(),
+          },
+          crud: 'r',
+        });
+        return document;
       } catch (err) {
         console.error(err);
 
@@ -82,11 +92,20 @@ export const documentRouter = router({
           });
         }
 
-        return await createDocument({
+        const response = await createDocument({
           userId: ctx.user.id,
           title,
           documentDataId,
         });
+        await sendAudit({
+          action: 'document.create',
+          user: {
+            ...ctx.user,
+            emailVerified: new Date().toISOString(),
+          },
+          crud: 'c',
+        });
+        return response;
       } catch (err) {
         if (err instanceof TRPCError) {
           throw err;
@@ -107,7 +126,16 @@ export const documentRouter = router({
 
         const userId = ctx.user.id;
 
-        return await deleteDocument({ id, userId, status });
+        const response = await deleteDocument({ id, userId, status });
+        await sendAudit({
+          action: 'document.delete',
+          user: {
+            ...ctx.user,
+            emailVerified: new Date().toISOString(),
+          },
+          crud: 'd',
+        });
+        return response;
       } catch (err) {
         console.error(err);
 
@@ -125,11 +153,20 @@ export const documentRouter = router({
 
       const userId = ctx.user.id;
 
-      return await updateTitle({
+      const response = await updateTitle({
         title,
         userId,
         documentId,
       });
+      await sendAudit({
+        action: 'document.edit',
+        user: {
+          ...ctx.user,
+          emailVerified: new Date().toISOString(),
+        },
+        crud: 'c',
+      });
+      return response;
     }),
 
   setRecipientsForDocument: authenticatedProcedure
@@ -138,11 +175,20 @@ export const documentRouter = router({
       try {
         const { documentId, recipients } = input;
 
-        return await setRecipientsForDocument({
+        const response = await setRecipientsForDocument({
           userId: ctx.user.id,
           documentId,
           recipients,
         });
+        await sendAudit({
+          action: 'document.edit',
+          user: {
+            ...ctx.user,
+            emailVerified: new Date().toISOString(),
+          },
+          crud: 'u',
+        });
+        return response;
       } catch (err) {
         console.error(err);
 
@@ -160,11 +206,20 @@ export const documentRouter = router({
       try {
         const { documentId, fields } = input;
 
-        return await setFieldsForDocument({
+        const response = await setFieldsForDocument({
           userId: ctx.user.id,
           documentId,
           fields,
         });
+        await sendAudit({
+          action: 'document.edit',
+          user: {
+            ...ctx.user,
+            emailVerified: new Date().toISOString(),
+          },
+          crud: 'u',
+        });
+        return response;
       } catch (err) {
         console.error(err);
 
@@ -189,10 +244,19 @@ export const documentRouter = router({
           });
         }
 
-        return await sendDocument({
+        const response = await sendDocument({
           userId: ctx.user.id,
           documentId,
         });
+        await sendAudit({
+          action: 'document.send',
+          user: {
+            ...ctx.user,
+            emailVerified: new Date().toISOString(),
+          },
+          crud: 'u',
+        });
+        return response;
       } catch (err) {
         console.error(err);
 
@@ -209,11 +273,20 @@ export const documentRouter = router({
       try {
         const { documentId, recipients } = input;
 
-        return await resendDocument({
+        const response = await resendDocument({
           userId: ctx.user.id,
           documentId,
           recipients,
         });
+        await sendAudit({
+          action: 'document.resend',
+          user: {
+            ...ctx.user,
+            emailVerified: new Date().toISOString(),
+          },
+          crud: 'u',
+        });
+        return response;
       } catch (err) {
         console.error(err);
 
@@ -230,10 +303,19 @@ export const documentRouter = router({
       try {
         const { id } = input;
 
-        return await duplicateDocumentById({
+        const response = await duplicateDocumentById({
           id,
           userId: ctx.user.id,
         });
+        await sendAudit({
+          action: 'document.create',
+          user: {
+            ...ctx.user,
+            emailVerified: new Date().toISOString(),
+          },
+          crud: 'u',
+        });
+        return response;
       } catch (err) {
         console.log(err);
         throw new TRPCError({

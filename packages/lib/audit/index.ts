@@ -1,8 +1,8 @@
 import { Client } from '@retracedhq/retraced';
 import type { CRUD, Event } from '@retracedhq/retraced';
-import type { User } from 'next-auth';
+import type { User } from 'next-auth/core/types';
 
-import type { AuditLogsEventType } from '../types/audit-logs';
+import type { AuditLogsEventType } from '../types/audit-logs-event';
 
 /**
  * Represents a request object.
