@@ -88,8 +88,8 @@ export const teamMemberRouter = router({
   }),
   getAll: authenticatedProcedure.input(ReadAllTeamMemberSchema).query(async ({ input, ctx }) => {
     try {
-      const { slug } = input;
-      const teamMembers = await getTeamMembers(slug);
+      const { teamSlug } = input;
+      const teamMembers = await getTeamMembers(teamSlug);
       return teamMembers;
     } catch (error) {
       console.error(error);

@@ -45,11 +45,9 @@ export const teamRouter = router({
     }),
   getTeam: authenticatedProcedure.input(ZGetTeamQuerySchema).query(async ({ input, ctx }) => {
     try {
-      const { userId, slug } = input;
-
-      // Sample implementation - get the team from the database
+      const { slug } = input;
+      const userId = ctx.user.id;
       const team = await getTeam({ userId, slug });
-
       return team;
     } catch (error) {
       console.error(error);
@@ -67,7 +65,6 @@ export const teamRouter = router({
       try {
         const { id, name, slug, domain } = input;
 
-        // Sample implementation - update the team in the database
         const updatedTeam = await updateTeamInDatabase({ id, name, slug, domain });
 
         return updatedTeam;
