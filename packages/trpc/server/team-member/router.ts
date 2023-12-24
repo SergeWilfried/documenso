@@ -22,7 +22,6 @@ export const teamMemberRouter = router({
       try {
         const { teamId, role } = input;
         const updatedTeamMember = await createTeamMember({
-          userId: Number(ctx.user.id),
           teamId,
           role,
         });
@@ -44,7 +43,6 @@ export const teamMemberRouter = router({
         id,
         teamId,
         role,
-        userId,
       });
       return updatedTeamMember;
     } catch (error) {
@@ -63,7 +61,6 @@ export const teamMemberRouter = router({
       await deleteTeamMemberFromDatabase({
         id,
         teamId,
-        userId,
       });
       return true;
     } catch (error) {
@@ -78,7 +75,7 @@ export const teamMemberRouter = router({
   getOne: authenticatedProcedure.input(ReadTeamMemberSchema).query(async ({ input, ctx }) => {
     try {
       const { slug } = input;
-      const teamMember = await getTeamMember({ key: { userId: ctx.user.id, slug } });
+      const teamMember = await getTeamMember({ key: { slug } });
       return teamMember;
     } catch (error) {
       console.error(error);

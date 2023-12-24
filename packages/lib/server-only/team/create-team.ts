@@ -7,16 +7,28 @@ export type CreateTeamOptions = {
   name: string;
   slug: string;
   domain?: string;
+  userId: number;
   defaultRole?: Role;
 };
 
-export const createTeam = async ({ name, slug, domain, defaultRole }: CreateTeamOptions) => {
+export const createTeam = async ({
+  name,
+  slug,
+  domain,
+  userId,
+  defaultRole,
+}: CreateTeamOptions) => {
   return await prisma.team.create({
     data: {
       name,
       slug,
       domain,
       defaultRole,
+      User: {
+        connect: {
+          id: userId,
+        },
+      },
     },
   });
 };

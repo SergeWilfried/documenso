@@ -24,9 +24,15 @@ export const teamRouter = router({
         const { name, slug, domain, defaultRole } = input;
         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         const formattedRole = defaultRole as Role;
-
+        const userId = ctx.user.id;
         // Sample implementation - create a team in the database
-        const newTeam = await createTeam({ name, slug, domain, defaultRole: formattedRole });
+        const newTeam = await createTeam({
+          name,
+          slug,
+          domain,
+          userId,
+          defaultRole: formattedRole,
+        });
         return newTeam;
       } catch (error) {
         console.error(error);

@@ -7,22 +7,15 @@ export type UpdateTeamMemberOptions = {
   id: string;
   role: Role;
   teamId: string;
-  userId: number;
 };
 
-export const updateTeamMemberDatabase = async ({
-  id,
-  teamId,
-  role,
-  userId,
-}: UpdateTeamMemberOptions) => {
+export const updateTeamMemberDatabase = async ({ id, teamId, role }: UpdateTeamMemberOptions) => {
   return await prisma.teamMember.update({
     where: {
       id,
       Team: {
         id: teamId,
       },
-
     },
     data: {
       role,
