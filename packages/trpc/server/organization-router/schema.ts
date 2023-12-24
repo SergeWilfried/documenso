@@ -3,8 +3,11 @@ import { z } from 'zod';
 // Define the schema for creating a new Organization
 const CreateOrganizationSchema = z.object({
   name: z.string().min(1),
-  slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
-  domain: z.string().regex(/^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$/).optional(),
+  slug: z
+    .string()
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
+    .optional(),
+  domain: z.string().url().optional(),
   userId: z.number().int(),
 });
 
@@ -18,7 +21,7 @@ const UpdateOrganizationSchema = z.object({
   id: z.string().min(1),
   name: z.string().optional(),
   slug: z.string().optional(),
-  domain: z.string().optional(),
+  domain: z.string().url().optional(),
   userId: z.number().int(),
 });
 
