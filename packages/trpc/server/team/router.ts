@@ -3,6 +3,7 @@ import { TRPCError } from '@trpc/server';
 import {
   createTeam,
   deleteTeamFromDatabase,
+  getTeam,
   updateTeamInDatabase,
 } from '@documenso/lib/server-only/team/index';
 import type { Role } from '@documenso/prisma/client';
@@ -11,6 +12,7 @@ import { authenticatedProcedure, router } from '../trpc';
 import {
   ZCreateTeamMutationSchema,
   ZDeleteTeamMutationSchema,
+  ZGetTeamQuerySchema,
   ZUpdateTeamMutationSchema,
 } from './schema';
 
@@ -35,6 +37,23 @@ export const teamRouter = router({
         });
       }
     }),
+  getTeam: authenticatedProcedure.input(ZGetTeamQuerySchema).query(async ({ input, ctx }) => {
+    try {
+      const { userId, slug } = input;
+
+      // Sample implementation - get the team from the database
+      const team = await getTeam({ userId, slug });
+
+      return team;
+    } catch (error) {
+      console.error(error);
+
+      throw new TRPCError({
+        code: 'BAD_REQUEST',
+        message: 'We were unable to retrieve the team. Please try again later.',
+      });
+    }
+  }),
 
   updateTeam: authenticatedProcedure
     .input(ZUpdateTeamMutationSchema)

@@ -19,12 +19,10 @@ export const updateTeamMemberDatabase = async ({
   return await prisma.teamMember.update({
     where: {
       id,
-      team: {
+      Team: {
         id: teamId,
       },
-      user: {
-        id: userId,
-      },
+
     },
     data: {
       role,

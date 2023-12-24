@@ -45,7 +45,7 @@ model User {
   VerificationToken    VerificationToken[]
   Template           Template[]
   Organization       Organization[]
-  TeamMember TeamMember[]
+  Team               Team[]
   Invitation Invitation[]
   @@index([email])
 }
@@ -97,6 +97,7 @@ model Team {
   name        String   @unique
   slug        String   @unique
   orgId       String?
+  userId      Int
 
   domain      String?  @unique
   defaultRole Role     @default(USER)
@@ -108,6 +109,8 @@ model Team {
   Invitation Invitation[]
   Template   Template[]
   Document   Document[]
+    User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@index([slug])
   @@index([name])
 
@@ -129,16 +132,13 @@ model Organization {
 model TeamMember {
   id                String  @id @default(cuid())
   teamId    String
-  userId    Int
   role      Role     @default(MEMBER)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
   Team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
-  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([teamId, userId])
-  @@index([userId])
+  @@unique([teamId])
 }
 
 model Invitation {

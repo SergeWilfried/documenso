@@ -3,14 +3,13 @@
 import { prisma } from '@documenso/prisma';
 
 export type GetOneTeamMemberOptions = {
-  key: { userId: number; slug: string };
+  key: { slug: string };
 };
 
-export const getTeamMember = async ({ key: { userId, slug } }: GetOneTeamMemberOptions) => {
+export const getTeamMember = async ({ key: { slug } }: GetOneTeamMemberOptions) => {
   const teamMember = await prisma.teamMember.findFirstOrThrow({
     where: {
-      userId,
-      team: {
+      Team: {
         slug,
       },
       role: {
@@ -18,7 +17,7 @@ export const getTeamMember = async ({ key: { userId, slug } }: GetOneTeamMemberO
       },
     },
     include: {
-      team: true,
+      Team: true,
     },
   });
   return teamMember;

@@ -3,11 +3,14 @@
 import { prisma } from '@documenso/prisma';
 
 export type GetOneTeamOptions = {
-  key: { id: string } | { slug: string } | { name: string };
+  userId?: number;
+  slug?: string;
 };
 
-export const getTeamMember = async ({ key }: GetOneTeamOptions) => {
+export const getTeam = async ({ userId, slug }: GetOneTeamOptions) => {
   return await prisma.team.findUniqueOrThrow({
-    where: key,
+    where: {
+      slug,
+    },
   });
 };
