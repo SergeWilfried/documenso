@@ -16,7 +16,7 @@ const ReadTeamMemberSchema = z.object({
 });
 // Define the schema for reading all TeamMembers
 const ReadAllTeamMemberSchema = z.object({
-  slug: z.string().min(1),
+  teamSlug: z.string().min(1),
 });
 
 // Define the schema for updating an existing TeamMember
