@@ -3,16 +3,21 @@
 import { prisma } from '@documenso/prisma';
 
 export type DeleteTeamOptions = {
-  key: {
-    teamId_userId: {
-      teamId: string;
-      userId: number;
-    };
-  };
+  userId: number;
+  teamId: string;
+  id: string;
 };
 
-export const deleteTeamMemberFromDatabase = async ({ key }: DeleteTeamOptions) => {
+export const deleteTeamMemberFromDatabase = async ({ userId, teamId, id }: DeleteTeamOptions) => {
   return await prisma.teamMember.delete({
-    where: key,
+    where: {
+      id,
+      team: {
+        id: teamId,
+      },
+      user: {
+        id: userId,
+      },
+    },
   });
 };

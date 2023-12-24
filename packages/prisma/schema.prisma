@@ -44,7 +44,7 @@ model User {
   twoFactorBackupCodes String?
   VerificationToken    VerificationToken[]
   Template           Template[]
-
+  Organization       Organization[]
   TeamMember TeamMember[]
   Invitation Invitation[]
   @@index([email])
@@ -96,10 +96,13 @@ model Team {
   id          String  @id @default(cuid())
   name        String   @unique
   slug        String   @unique
+  orgId       String?
+
   domain      String?  @unique
   defaultRole Role     @default(USER)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
+  Organization        Organization? @relation(fields: [orgId], references: [id], onDelete: Cascade)
 
   Member     TeamMember[]
   Invitation Invitation[]
@@ -110,6 +113,19 @@ model Team {
 
 }
 
+model Organization {
+  id           String       @id @default(uuid())
+  name         String   @unique
+  slug         String   @unique
+  domain       String?  @unique
+  userId       Int
+
+  Team        Team[]
+  User        User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([slug])
+  @@index([name])
+}
+
 model TeamMember {
   id                String  @id @default(cuid())
   teamId    String
@@ -118,8 +134,8 @@ model TeamMember {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
-  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([teamId, userId])
   @@index([userId])
@@ -136,8 +152,8 @@ model Invitation {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
-  user User @relation(fields: [invitedBy], references: [id], onDelete: Cascade)
-  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  User User @relation(fields: [invitedBy], references: [id], onDelete: Cascade)
+  Team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
 
   @@unique([teamId, email])
 }

@@ -12,7 +12,7 @@ const CreateTeamMemberSchema = z.object({
 
 // Define the schema for reading a TeamMember
 const ReadTeamMemberSchema = z.object({
-  id: z.string().min(1),
+  slug: z.string().min(1),
 });
 // Define the schema for reading all TeamMembers
 const ReadAllTeamMemberSchema = z.object({
@@ -21,15 +21,15 @@ const ReadAllTeamMemberSchema = z.object({
 
 // Define the schema for updating an existing TeamMember
 const UpdateTeamMemberSchema = z.object({
-  id: z.string().nonempty(),
+  id: z.string().min(1),
   teamId: z.string().min(1),
-  userId: z.number().int(),
   role: RoleEnum.default('MEMBER'),
 });
 
 // Define the schema for deleting a TeamMember
 const DeleteTeamMemberSchema = z.object({
-  id: z.string().nonempty(),
+  id: z.string().min(1),
+  teamId: z.string().min(1),
 });
 
 export {

@@ -3,9 +3,7 @@ import type { DefaultUser } from 'next-auth';
 
 declare module 'next-auth' {
   interface Session {
-    user: User & {
-      roles: { teamId: string; role: Role }[];
-    };
+    user: User;
   }
 
   interface User extends Omit<DefaultUser, 'id' | 'image' | 'emailVerified'> {

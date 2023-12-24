@@ -1,7 +1,10 @@
+import { TRPCError } from '@trpc/server';
+
 import { createTeamMember } from '@documenso/lib/server-only/team-member/create-team-member';
 import { deleteTeamMemberFromDatabase } from '@documenso/lib/server-only/team-member/delete-team-member';
 import { getTeamMember } from '@documenso/lib/server-only/team-member/get-one-member';
 import { getTeamMembers } from '@documenso/lib/server-only/team-member/get-team-member';
+import { updateTeamMemberDatabase } from '@documenso/lib/server-only/team-member/update-team-member';
 
 import { authenticatedProcedure, router } from '../trpc';
 import {
@@ -12,7 +15,7 @@ import {
   UpdateTeamMemberSchema,
 } from './schema';
 
-export const teamRouter = router({
+export const teamMemberRouter = router({
   createInvitation: authenticatedProcedure
     .input(CreateTeamMemberSchema)
     .mutation(async ({ input, ctx }) => {
@@ -24,41 +27,66 @@ export const teamRouter = router({
           role,
         });
         return updatedTeamMember;
-        // Add error handling for createInvitation
       } catch (error) {
-        // Handle error for createInvitation
+        console.error(error);
+
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'Failed to create team member. Please try again later.',
+        });
       }
     }),
   update: authenticatedProcedure.input(UpdateTeamMemberSchema).mutation(async ({ input, ctx }) => {
     try {
       const { id, teamId, role } = input;
-      const updatedTeamMember = await updateTeamMember({
-        key: { userId: ctx.user.id, slug: ctx.team.slug },
-        data: { id, teamId, role },
+      const userId = ctx.user.id;
+      const updatedTeamMember = await updateTeamMemberDatabase({
+        id,
+        teamId,
+        role,
+        userId,
       });
       return updatedTeamMember;
     } catch (error) {
-      // Handle error for update
+      console.error(error);
+
+      throw new TRPCError({
+        code: 'BAD_REQUEST',
+        message: 'Failed to update team member. Please try again later.',
+      });
     }
   }),
   delete: authenticatedProcedure.input(DeleteTeamMemberSchema).mutation(async ({ input, ctx }) => {
     try {
-      const { id } = input;
+      const { id, teamId } = input;
+      const userId = ctx.user.id;
       await deleteTeamMemberFromDatabase({
-        key: { teamId_userId: { userId: Number(ctx.user.id), 'id' } },
+        id,
+        teamId,
+        userId,
       });
       return true;
     } catch (error) {
-      // Handle error for delete
+      console.error(error);
+
+      throw new TRPCError({
+        code: 'BAD_REQUEST',
+        message: 'Failed to delete team member. Please try again later.',
+      });
     }
   }),
   getOne: authenticatedProcedure.input(ReadTeamMemberSchema).query(async ({ input, ctx }) => {
     try {
-      const { id } = input;
-      const teamMember = await getTeamMember({ key: { userId: ctx.user.id, slug: '' } });
+      const { slug } = input;
+      const teamMember = await getTeamMember({ key: { userId: ctx.user.id, slug } });
       return teamMember;
     } catch (error) {
-      // Handle error for getOne
+      console.error(error);
+
+      throw new TRPCError({
+        code: 'BAD_REQUEST',
+        message: 'Failed to get team member. Please try again later.',
+      });
     }
   }),
   getAll: authenticatedProcedure.input(ReadAllTeamMemberSchema).query(async ({ input, ctx }) => {
@@ -67,7 +95,12 @@ export const teamRouter = router({
       const teamMembers = await getTeamMembers(slug);
       return teamMembers;
     } catch (error) {
-      // Handle error for getAll
+      console.error(error);
+
+      throw new TRPCError({
+        code: 'BAD_REQUEST',
+        message: 'Failed to get all team members. Please try again later.',
+      });
     }
   }),
 });
