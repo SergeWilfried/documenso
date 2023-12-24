@@ -9,5 +9,9 @@ export const getUserByEmail = async ({ email }: GetUserByEmailOptions) => {
     where: {
       email: email.toLowerCase(),
     },
+    include: {
+      Team: true,
+      Organization: true,
+    },
   });
 };

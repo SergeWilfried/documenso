@@ -132,7 +132,7 @@ model Organization {
 model TeamMember {
   id                String  @id @default(cuid())
   teamId    String
-  role      Role     @default(MEMBER)
+  role      Role     @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 

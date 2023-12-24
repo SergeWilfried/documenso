@@ -18,9 +18,9 @@ services:
       - 2500:2500
       - 1100:1100
 
-  minio:
+  s3:
     image: minio/minio
-    container_name: minio
+    container_name: s3
     ports:
       - 9002:9002
       - 9001:9001

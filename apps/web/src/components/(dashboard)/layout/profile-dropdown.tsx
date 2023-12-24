@@ -47,6 +47,8 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
   const { getFlag } = useFeatureFlags();
   const { theme, setTheme } = useTheme();
   const isUserAdmin = isAdmin(user);
+  const isTeamMember = true;
+  const teamName = 'Dunia';
 
   const isBillingEnabled = getFlag('app_billing');
 
@@ -115,7 +117,18 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-
+        <DropdownMenuLabel>Team</DropdownMenuLabel>
+        {isTeamMember && (
+          <>
+            <DropdownMenuItem asChild>
+              <Link href="/team" className="cursor-pointer">
+                <UserCog className="mr-2 h-4 w-4" />
+                {teamName}
+              </Link>
+            </DropdownMenuItem>
+          </>
+        )}
+        <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Palette className="mr-2 h-4 w-4" />

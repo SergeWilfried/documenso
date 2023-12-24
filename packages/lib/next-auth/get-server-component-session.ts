@@ -19,6 +19,10 @@ export const getServerComponentSession = cache(async () => {
     where: {
       email: session.user.email,
     },
+    include: {
+      Team: true,
+      Organization: true
+    }
   });
 
   return { user, session };

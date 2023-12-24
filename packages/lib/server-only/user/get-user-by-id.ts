@@ -9,5 +9,9 @@ export const getUserById = async ({ id }: GetUserByIdOptions) => {
     where: {
       id,
     },
+    include: {
+      Team: true,
+      Organization: true,
+    },
   });
 };
