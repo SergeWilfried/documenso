@@ -15,7 +15,7 @@ import {
   ZUpdateInvitationMutationSchema,
 } from './schema';
 
-export const teamRouter = router({
+export const invitationRouter = router({
   createInvitation: authenticatedProcedure
     .input(ZCreateInvitationMutationSchema)
     .mutation(async ({ input, ctx }) => {
