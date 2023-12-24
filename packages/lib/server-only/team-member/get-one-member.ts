@@ -6,7 +6,7 @@ export type GetOneTeamMemberOptions = {
   key: { userId: number; slug: string };
 };
 
-export const getTeam = async ({ key: { userId, slug } }: GetOneTeamMemberOptions) => {
+export const getTeamMember = async ({ key: { userId, slug } }: GetOneTeamMemberOptions) => {
   const teamMember = await prisma.teamMember.findFirstOrThrow({
     where: {
       userId,
