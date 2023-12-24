@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const ZCreateInvitationMutationSchema = z.object({
   teamId: z.string(),
-  email: z.string(),
+  email: z.string().email(),
   role: z.enum(['OWNER', 'ADMIN', 'USER', 'MEMBER']),
 });
 
