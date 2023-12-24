@@ -16,7 +16,7 @@ import {
 } from './schema';
 
 export const teamMemberRouter = router({
-  createInvitation: authenticatedProcedure
+  createTeamMember: authenticatedProcedure
     .input(CreateTeamMemberSchema)
     .mutation(async ({ input, ctx }) => {
       try {

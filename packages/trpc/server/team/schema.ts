@@ -20,8 +20,7 @@ export const ZDeleteTeamMutationSchema = z.object({
 });
 
 export const ZGetTeamQuerySchema = z.object({
-  slug: z.string().min(1),
-  userId: z.number().int(),
+  slug: z.string().min(1)
 });
 export type TCreateTeamMutationSchema = z.infer<typeof ZCreateTeamMutationSchema>;
 export type TUpdateTeamMutationSchema = z.infer<typeof ZUpdateTeamMutationSchema>;
