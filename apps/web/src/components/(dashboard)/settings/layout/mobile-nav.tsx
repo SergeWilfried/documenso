@@ -50,18 +50,7 @@ export const MobileNav = ({ className, ...props }: MobileNavProps) => {
           Security
         </Button>
       </Link>
-      <Link href="/settings/notifications">
-        <Button
-          variant="ghost"
-          className={cn(
-            'w-full justify-start',
-            pathname?.startsWith('/settings/notifications') && 'bg-secondary',
-          )}
-        >
-          <LucideMegaphone className="mr-2 h-5 w-5" />
-          Notifications
-        </Button>
-      </Link>
+
       {isBillingEnabled && (
         <Link href="/settings/billing">
           <Button

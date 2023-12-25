@@ -184,7 +184,9 @@ model Recipient {
   id            Int            @id @default(autoincrement())
   documentId    Int?
   templateId    Int?
-  email         String         @db.VarChar(255)
+  email         String?         @db.VarChar(255)
+  mobile        String?
+
   name          String         @default("") @db.VarChar(255)
   token         String
   expired       DateTime?
@@ -197,11 +199,12 @@ model Recipient {
   Field         Field[]
   Signature     Signature[]
 
-  @@unique([documentId, email])
+  @@unique([documentId, email, mobile])
   @@unique([templateId, email])
   @@index([documentId])
   @@index([templateId])
   @@index([token])
+  @@index([mobile])
 }
 
 enum FieldType {
