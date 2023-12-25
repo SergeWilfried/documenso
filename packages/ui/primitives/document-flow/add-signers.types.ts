@@ -8,6 +8,8 @@ export const ZAddSignersFormSchema = z
         nativeId: z.number().optional(),
         email: z.string().email().min(1),
         name: z.string(),
+        mobile: z.string().optional(),
+
       }),
     ),
   })

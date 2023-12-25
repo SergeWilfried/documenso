@@ -212,6 +212,7 @@ export const EditDocumentForm = ({
               recipients={recipients}
               fields={fields}
               onSubmit={onAddSignersFormSubmit}
+              notificationPreferences={_user.notificationPreferences}
             />
             <AddFieldsFormPartial
               key={fields.length}

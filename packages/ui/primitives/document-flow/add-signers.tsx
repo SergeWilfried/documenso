@@ -10,7 +10,7 @@ import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { useLimits } from '@documenso/ee/server-only/limits/provider/client';
 import { nanoid } from '@documenso/lib/universal/id';
 import type { Field, Recipient } from '@documenso/prisma/client';
-import { DocumentStatus, SendStatus } from '@documenso/prisma/client';
+import { DocumentStatus, NotificationPreferences, SendStatus } from '@documenso/prisma/client';
 import type { DocumentWithData } from '@documenso/prisma/types/document-with-data';
 
 import { Button } from '../button';
@@ -35,6 +35,7 @@ export type AddSignersFormProps = {
   recipients: Recipient[];
   fields: Field[];
   document: DocumentWithData;
+  notificationPreferences: NotificationPreferences;
   onSubmit: (_data: TAddSignersFormSchema) => void;
 };
 
@@ -43,6 +44,7 @@ export const AddSignersFormPartial = ({
   recipients,
   document,
   fields: _fields,
+  notificationPreferences,
   onSubmit,
 }: AddSignersFormProps) => {
   const { toast } = useToast();
@@ -65,13 +67,16 @@ export const AddSignersFormPartial = ({
               nativeId: recipient.id,
               formId: String(recipient.id),
               name: recipient.name,
-              email: recipient.email,
+              email: recipient.email || '',
+              mobile: recipient.mobile || '',
             }))
           : [
               {
                 formId: initialId,
                 name: '',
                 email: '',
+                mobile: ''
+
               },
             ],
     },
@@ -103,6 +108,7 @@ export const AddSignersFormPartial = ({
       formId: nanoid(12),
       name: '',
       email: '',
+      mobile: ''
     });
   };
 
@@ -143,27 +149,49 @@ export const AddSignersFormPartial = ({
                 data-native-id={signer.nativeId}
                 className="flex flex-wrap items-end gap-x-4"
               >
+                {notificationPreferences === NotificationPreferences.EMAIL ?? (
+                  <div className="flex-1">
+                    <Label htmlFor={`signer-${signer.id}-email`}>
+                      Email
+                      <span className="text-destructive ml-1 inline-block font-medium">*</span>
+                    </Label>
+                    <Controller
+                      control={control}
+                      name={`signers.${index}.email`}
+                      render={({ field }) => (
+                        <Input
+                          id={`signer-${signer.id}-email`}
+                          type="email"
+                          className="bg-background mt-2"
+                          disabled={isSubmitting || hasBeenSentToRecipientId(signer.nativeId)}
+                          onKeyDown={onKeyDown}
+                          {...field}
+                        />
+                      )}
+                    />
+                  </div>
+                )}
                 <div className="flex-1">
-                  <Label htmlFor={`signer-${signer.id}-email`}>
-                    Email
-                    <span className="text-destructive ml-1 inline-block font-medium">*</span>
-                  </Label>
-
-                  <Controller
-                    control={control}
-                    name={`signers.${index}.email`}
-                    render={({ field }) => (
-                      <Input
-                        id={`signer-${signer.id}-email`}
-                        type="email"
-                        className="bg-background mt-2"
-                        disabled={isSubmitting || hasBeenSentToRecipientId(signer.nativeId)}
-                        onKeyDown={onKeyDown}
-                        {...field}
-                      />
-                    )}
-                  />
-                </div>
+                    <Label htmlFor={`signer-${signer.id}-mobile`}>
+                      Mobile
+                      <span className="text-destructive ml-1 inline-block font-medium">*</span>
+                    </Label>
+                    <Controller
+                      control={control}
+                      name={`signers.${index}.mobile`}
+                      render={({ field }) => (
+                        <Input
+                          id={`signer-${signer.id}-mobile`}
+                          type="tel"
+                          className="bg-background mt-2"
+                          disabled={isSubmitting || hasBeenSentToRecipientId(signer.nativeId)}
+                          onKeyDown={onKeyDown}
+                          pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                          {...field}
+                        />
+                      )}
+                    />
+                  </div>
 
                 <div className="flex-1">
                   <Label htmlFor={`signer-${signer.id}-name`}>Name</Label>
