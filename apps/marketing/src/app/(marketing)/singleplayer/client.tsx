@@ -153,6 +153,8 @@ export const SinglePlayerClient = () => {
     email: '',
     name: '',
     token: '',
+    phoneNumber: '',
+    notificationChannel: 'EMAIL',
     expired: null,
     signedAt: null,
     readStatus: 'OPENED',

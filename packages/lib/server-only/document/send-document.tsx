@@ -8,7 +8,7 @@ import { renderCustomEmailTemplate } from '@documenso/lib/utils/render-custom-em
 import { prisma } from '@documenso/prisma';
 import { DocumentStatus, NotificationsChannel, SendStatus } from '@documenso/prisma/client';
 
-import { sendMessage } from '../notifications/text/send-message';
+import { sendTextMessage } from '../notifications/text/send-message';
 import { DocumentInviteTextMessageTemplate } from '../notifications/text/templates/document-invite';
 
 export type SendDocumentOptions = {
@@ -98,7 +98,7 @@ export const sendDocument = async ({ documentId, userId }: SendDocumentOptions) 
           documentName: document.title,
           signDocumentLink: signDocumentLink,
         });
-        await sendMessage({
+        await sendTextMessage({
           phone: recipient.phoneNumber,
           message: message,
         });

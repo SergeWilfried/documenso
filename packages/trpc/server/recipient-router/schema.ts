@@ -6,15 +6,19 @@ export const ZAddSignersMutationSchema = z
     signers: z.array(
       z.object({
         nativeId: z.number().optional(),
-        email: z.string().email().min(1),
+        email: z.string().email().optional(),
+        phoneNumber: z.string().optional(),
         name: z.string(),
       }),
     ),
   })
   .refine(
     (schema) => {
-      const emails = schema.signers.map((signer) => signer.email.toLowerCase());
-
+      const emails = schema.signers.map((signer) => {
+        if(signer.email){
+          return signer.email.toLowerCase()
+        }
+      });
       return new Set(emails).size === emails.length;
     },
     // Dirty hack to handle errors when .root is populated for an array type
@@ -29,14 +33,19 @@ export const ZAddTemplateSignersMutationSchema = z
     signers: z.array(
       z.object({
         nativeId: z.number().optional(),
-        email: z.string().email().min(1),
+        email: z.string().email().optional(),
+        phoneNumber: z.string().optional(),
         name: z.string(),
       }),
     ),
   })
   .refine(
     (schema) => {
-      const emails = schema.signers.map((signer) => signer.email.toLowerCase());
+      const emails = schema.signers.map((signer) => {
+        if(signer.email){
+          return signer.email.toLowerCase()
+        }
+      });
 
       return new Set(emails).size === emails.length;
     },
