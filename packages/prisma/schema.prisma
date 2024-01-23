@@ -187,6 +187,7 @@ model Recipient {
   id            Int            @id @default(autoincrement())
   documentId    Int?
   templateId    Int?
+  phoneNumber   String?        
   email         String         @db.VarChar(255)
   name          String         @default("") @db.VarChar(255)
   token         String
