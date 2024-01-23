@@ -59,7 +59,13 @@ export async function GET(_request: Request, { params: { slug } }: SharePageOpen
 
   const signatureName = match(recipientOrSender)
     .with({ Signature: P.array(P._) }, (recipient) => {
-      return recipient.name || recipient.email;
+      if(recipient.email) {
+        return recipient.email
+      } else if(recipient.phoneNumber) {
+        return recipient.phoneNumber
+      } else {
+        return recipient.name;
+      }
     })
     .otherwise((sender) => {
       return sender.name || sender.email;
