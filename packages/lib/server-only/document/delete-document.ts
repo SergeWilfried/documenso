@@ -48,7 +48,7 @@ export const deleteDocument = async ({ id, userId, status }: DeleteDocumentOptio
 
     if (document.Recipient.length > 0) {
       await Promise.all(
-        document.Recipient.map(async (recipient) => {
+        document.Recipient.map(async (recipient):Promise<void>  => {
           const assetBaseUrl = process.env.NEXT_PUBLIC_WEBAPP_URL || 'http://localhost:3000';
 
           const template = createElement(DocumentCancelTemplate, {
@@ -60,7 +60,7 @@ export const deleteDocument = async ({ id, userId, status }: DeleteDocumentOptio
 
           await mailer.sendMail({
             to: {
-              address: recipient.email,
+              address: recipient.email ? recipient.email : '',
               name: recipient.name,
             },
             from: {
