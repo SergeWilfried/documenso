@@ -219,6 +219,7 @@ enum FieldType {
   FREE_SIGNATURE
   NAME
   EMAIL
+  PHONE_NUMBER
   DATE
   TEXT
 }

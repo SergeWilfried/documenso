@@ -20,7 +20,13 @@ export const mapField = (
 ) => {
   const customText = match(field.type)
     .with(FieldType.DATE, () => DateTime.now().toFormat('yyyy-MM-dd hh:mm a'))
-    .with(FieldType.EMAIL, () => signer.email)
+    .with(FieldType.EMAIL, () => {
+      if(signer.email){
+        return signer.email
+      }else {
+        return ''
+      }
+    })
     .with(FieldType.NAME, () => signer.name)
     .otherwise(() => '');
 

@@ -23,8 +23,9 @@ export const recipientRouter = router({
           documentId,
           recipients: signers.map((signer) => ({
             id: signer.nativeId,
-            email: signer.email,
+            email: signer.email ? signer.email : '',
             name: signer.name,
+            phoneNumber: signer.phoneNumber ? signer.phoneNumber : ''
           })),
         });
       } catch (err) {
@@ -48,8 +49,9 @@ export const recipientRouter = router({
           templateId,
           recipients: signers.map((signer) => ({
             id: signer.nativeId,
-            email: signer.email,
+            email: signer.email ? signer.email : '',
             name: signer.name,
+            phoneNumber: signer.phoneNumber ? signer.phoneNumber : ''
           })),
         });
       } catch (err) {

@@ -58,6 +58,7 @@ export const singleplayerRouter = router({
                 id: -1,
                 recipientId: -1,
                 fieldId: -1,
+
               }
             : null,
           // Dummy data.
@@ -105,7 +106,8 @@ export const singleplayerRouter = router({
             data: {
               documentId: document.id,
               name: signer.name,
-              email: signer.email,
+              email: signer.email ? signer.email : '',
+              phoneNumber: signer.phoneNumber? signer.phoneNumber : '',
               token,
               signedAt: createdAt,
               readStatus: ReadStatus.OPENED,

@@ -9,6 +9,22 @@ export const ZAddSignersMutationSchema = z
         email: z.string().email().optional(),
         phoneNumber: z.string().optional(),
         name: z.string(),
+      }).superRefine(({ email, phoneNumber }, refinementContext) => {
+        if (email === '' && phoneNumber !== '' && !z.string().parse(phoneNumber ?? '')) {
+          return refinementContext.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: 'Invalid phone number',
+            path: ['phone'],
+          });
+        }
+
+        if (email !== '' && phoneNumber === '' && !z.string().email().parse(email ?? '')) {
+          return refinementContext.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: 'Invalid email',
+            path: ['email'],
+          });
+        }
       }),
     ),
   })
@@ -36,6 +52,22 @@ export const ZAddTemplateSignersMutationSchema = z
         email: z.string().email().optional(),
         phoneNumber: z.string().optional(),
         name: z.string(),
+      }).superRefine(({ email, phoneNumber }, refinementContext) => {
+        if (email === '' && phoneNumber !== '' && !z.string().parse(phoneNumber ?? '')) {
+          return refinementContext.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: 'Invalid phone number',
+            path: ['phone'],
+          });
+        }
+
+        if (email !== '' && phoneNumber === '' && !z.string().email().parse(email ?? '')) {
+          return refinementContext.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: 'Invalid email',
+            path: ['email'],
+          });
+        }
       }),
     ),
   })
