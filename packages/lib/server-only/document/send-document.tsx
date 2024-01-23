@@ -8,6 +8,9 @@ import { renderCustomEmailTemplate } from '@documenso/lib/utils/render-custom-em
 import { prisma } from '@documenso/prisma';
 import { DocumentStatus, NotificationsChannel, SendStatus } from '@documenso/prisma/client';
 
+import { sendMessage } from '../notifications/text/send-message';
+import { DocumentInviteTextMessageTemplate } from '../notifications/text/templates/document-invite';
+
 export type SendDocumentOptions = {
   documentId: number;
   userId: number;
@@ -86,9 +89,20 @@ export const sendDocument = async ({ documentId, userId }: SendDocumentOptions) 
           html: render(template),
           text: render(template, { plainText: true }),
         });
+      } else if (
+        recipient.notificationChannel === NotificationsChannel.SMS &&
+        recipient.phoneNumber
+      ) {
+        const message = DocumentInviteTextMessageTemplate({
+          inviterName: FROM_NAME,
+          documentName: document.title,
+          signDocumentLink: signDocumentLink,
+        });
+        await sendMessage({
+          phone: recipient.phoneNumber,
+          message: message,
+        });
       }
-
-      await sendMessage({});
       await prisma.recipient.update({
         where: {
           id: recipient.id,
