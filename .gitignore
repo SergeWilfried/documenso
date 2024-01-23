@@ -48,3 +48,7 @@ yarn-error.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+
+packages/lib/server-only
+/whatsapp
