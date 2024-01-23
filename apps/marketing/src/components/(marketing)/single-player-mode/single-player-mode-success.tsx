@@ -40,7 +40,7 @@ export const SinglePlayerModeSuccess = ({
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
-
+  const recipientRef = document.Recipient.email ? document.Recipient.email : document.Recipient.phoneNumber!
   return (
     <div className="flex min-h-[calc(100vh-10rem)] flex-col items-center justify-center sm:min-h-[calc(100vh-13rem)]">
       {isConfettiEnabled && (
@@ -54,7 +54,7 @@ export const SinglePlayerModeSuccess = ({
 
       <SigningCard3D
         className="mt-8"
-        name={document.Recipient.name || document.Recipient.email}
+        name={document.Recipient.name || recipientRef}
         signature={signatures.at(0)}
         signingCelebrationImage={signingCelebration}
       />

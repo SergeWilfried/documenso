@@ -153,6 +153,12 @@ export const AddSubjectFormPartial = ({
                 </li>
                 <li className="text-muted-foreground">
                   <code className="text-muted-foreground bg-muted-foreground/20 rounded p-1 text-sm">
+                    {'{signer.email}'}
+                  </code>{' '}
+                  - The signer's phone number
+                </li>
+                <li className="text-muted-foreground">
+                  <code className="text-muted-foreground bg-muted-foreground/20 rounded p-1 text-sm">
                     {'{document.name}'}
                   </code>{' '}
                   - The document's name
