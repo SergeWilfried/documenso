@@ -186,7 +186,6 @@ enum SigningStatus {
 enum NotificationsChannel {
   SMS
   EMAIL
-  WHATSAPP
 }
 
 model Recipient {
