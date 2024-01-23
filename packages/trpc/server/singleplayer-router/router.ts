@@ -155,23 +155,23 @@ export const singleplayerRouter = router({
         renderAsync(template),
         renderAsync(template, { plainText: true }),
       ]);
-
-      // Send email to signer.
-      await mailer.sendMail({
-        to: {
-          address: signer.email,
-          name: signer.name,
-        },
-        from: {
-          name: FROM_NAME,
-          address: FROM_ADDRESS,
-        },
-        subject: 'Document signed',
-        html,
-        text,
-        attachments: [{ content: signedPdfBuffer, filename: documentName }],
-      });
-
+      if (signer.email) {
+        // Send email to signer.
+        await mailer.sendMail({
+          to: {
+            address: signer.email,
+            name: signer.name,
+          },
+          from: {
+            name: FROM_NAME,
+            address: FROM_ADDRESS,
+          },
+          subject: 'Document signed',
+          html,
+          text,
+          attachments: [{ content: signedPdfBuffer, filename: documentName }],
+        });
+      }
       return token;
     }),
 });

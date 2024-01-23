@@ -6,7 +6,7 @@ import { DocumentInviteEmailTemplate } from '@documenso/email/templates/document
 import { FROM_ADDRESS, FROM_NAME } from '@documenso/lib/constants/email';
 import { renderCustomEmailTemplate } from '@documenso/lib/utils/render-custom-email-template';
 import { prisma } from '@documenso/prisma';
-import { DocumentStatus, SendStatus } from '@documenso/prisma/client';
+import { DocumentStatus, NotificationsChannel, SendStatus } from '@documenso/prisma/client';
 
 export type SendDocumentOptions = {
   documentId: number;
@@ -61,32 +61,32 @@ export const sendDocument = async ({ documentId, userId }: SendDocumentOptions) 
 
       const assetBaseUrl = process.env.NEXT_PUBLIC_WEBAPP_URL || 'http://localhost:3000';
       const signDocumentLink = `${process.env.NEXT_PUBLIC_WEBAPP_URL}/sign/${recipient.token}`;
+      if (recipient.notificationChannel === NotificationsChannel.EMAIL) {
+        const template = createElement(DocumentInviteEmailTemplate, {
+          documentName: document.title,
+          inviterName: user.name || undefined,
+          inviterEmail: user.email,
+          assetBaseUrl,
+          signDocumentLink,
+          customBody: renderCustomEmailTemplate(customEmail?.message || '', customEmailTemplate),
+        });
 
-      const template = createElement(DocumentInviteEmailTemplate, {
-        documentName: document.title,
-        inviterName: user.name || undefined,
-        inviterEmail: user.email,
-        assetBaseUrl,
-        signDocumentLink,
-        customBody: renderCustomEmailTemplate(customEmail?.message || '', customEmailTemplate),
-      });
-
-      await mailer.sendMail({
-        to: {
-          address: email,
-          name,
-        },
-        from: {
-          name: FROM_NAME,
-          address: FROM_ADDRESS,
-        },
-        subject: customEmail?.subject
-          ? renderCustomEmailTemplate(customEmail.subject, customEmailTemplate)
-          : 'Please sign this document',
-        html: render(template),
-        text: render(template, { plainText: true }),
-      });
-
+        await mailer.sendMail({
+          to: {
+            address: email,
+            name,
+          },
+          from: {
+            name: FROM_NAME,
+            address: FROM_ADDRESS,
+          },
+          subject: customEmail?.subject
+            ? renderCustomEmailTemplate(customEmail.subject, customEmailTemplate)
+            : 'Please sign this document',
+          html: render(template),
+          text: render(template, { plainText: true }),
+        });
+      }
       await prisma.recipient.update({
         where: {
           id: recipient.id,
