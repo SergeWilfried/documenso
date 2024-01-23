@@ -87,6 +87,8 @@ export const sendDocument = async ({ documentId, userId }: SendDocumentOptions) 
           text: render(template, { plainText: true }),
         });
       }
+
+      await sendMessage({});
       await prisma.recipient.update({
         where: {
           id: recipient.id,

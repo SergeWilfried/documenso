@@ -1,3 +1,3 @@
-export const TWILLIO_ACCOUNT_TOKEN = process.env.TWILLIO_ACCOUNT_TOKEN || '';
-export const TWILLIO_ACCOUNT_SID = process.env.TWILLIO_ACCOUNT_SID || '';
-export const TWILLIO_PHONE_NUMBER = process.env.TWILLIO_PHONE_NUMBER || '';
+export const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || '';
+export const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || '';
+export const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER || '';
