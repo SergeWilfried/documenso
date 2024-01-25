@@ -9,6 +9,7 @@ import { Loader } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useTranslation } from '@documenso/ui/i18n/client';
 
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
@@ -29,6 +30,8 @@ import { claimPlan } from '~/api/claim-plan/fetcher';
 
 import { STEP } from '../constants';
 import { FormErrorMessage } from '../form/form-error-message';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
+import { useParams } from 'next/navigation';
 
 const ZWidgetFormSchema = z
   .object({
@@ -58,6 +61,8 @@ export type WidgetProps = HTMLAttributes<HTMLDivElement>;
 export const Widget = ({ className, children, ...props }: WidgetProps) => {
   const { toast } = useToast();
   const event = usePlausible();
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = useTranslation(locale, 'marketing');
 
   const [step, setStep] = useState<StepValues>(STEP.EMAIL);
   const [showSigningDialog, setShowSigningDialog] = useState(false);
@@ -194,9 +199,9 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
             className="bg-foreground/5 col-span-12 flex flex-col rounded-2xl p-6 lg:col-span-5"
             onSubmit={handleSubmit(onFormSubmit)}
           >
-            <h3 className="text-2xl font-semibold">Sign up for the early adopters plan</h3>
+            <h3 className="text-2xl font-semibold">{t('sign-up-for-the-early-adopters-plan')}</h3>
             <p className="text-muted-foreground mt-2 text-xs">
-              with Timur Ercan & Lucas Smith from Documenso
+              {t('with-timur-ercan-and-lucas-smith-from-documenso')}
             </p>
 
             <hr className="mb-6 mt-4" />
@@ -204,7 +209,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
             <AnimatePresence>
               <motion.div key="email">
                 <label htmlFor="email" className="text-foreground text-lg font-semibold lg:text-xl">
-                  What’s your email?
+                  {t('whats-your-email')}
                 </label>
 
                 <Controller
@@ -233,7 +238,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                           disabled={!field.value || !!errors.email?.message}
                           onClick={() => step === STEP.EMAIL && onNextStepClick()}
                         >
-                          Next
+                          {t('next')}
                         </Button>
                       </div>
                     </div>
@@ -264,7 +269,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                     htmlFor="name"
                     className="text-foreground text-lg font-semibold lg:text-xl"
                   >
-                    and your name?
+                    t('and-your-name')
                   </label>
 
                   <Controller
@@ -293,7 +298,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                             disabled={!field.value || !!errors.name?.message}
                             onClick={() => onNextStepClick()}
                           >
-                            Next
+                            {t('next')}
                           </Button>
                         </div>
                       </div>
@@ -312,7 +317,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                 {isValid ? 'Ready for Signing' : `${stepsRemaining} step(s) until signed`}
               </p>
 
-              <p className="text-muted-foreground block text-xs md:hidden">Minimise contract</p>
+              <p className="text-muted-foreground block text-xs md:hidden">{t('minimise-contract')}</p>
             </div>
 
             <div className="bg-background relative mt-2.5 h-[2px] w-full">
@@ -376,7 +381,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                     disabled={!isValid || isSubmitting}
                   >
                     {isSubmitting && <Loader className="mr-2 h-4 w-4 animate-spin" />}
-                    Sign
+                    {t('sign')}
                   </Button>
                 </div>
               </CardContent>
@@ -388,14 +393,13 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
       <Dialog open={showSigningDialog} onOpenChange={setShowSigningDialog}>
         <DialogContent position="center">
           <DialogHeader>
-            <DialogTitle>Add your signature</DialogTitle>
+            <DialogTitle>{t('add-your-signature')}</DialogTitle>
           </DialogHeader>
 
           <DialogDescription>
-            By signing you signal your support of Documenso's mission in a <br></br>
-            <strong>non-legally binding, but heartfelt way</strong>. <br></br>
-            <br></br>You also unlock the option to purchase the early supporter plan including
-            everything we build this year for fixed price.
+            {t('by-signing-you-signal-your-support-of-documensos-mission-in-a')} <br></br>
+            <strong>{t('non-legally-binding-but-heartfelt-way')}</strong>. <br></br>
+            <br></br>{t('you-also-unlock-the-option-to-purchase-the-early-supporter-plan-including-everything-we-build-this-year-for-fixed-price')}
           </DialogDescription>
 
           <SignaturePad
@@ -406,10 +410,10 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
           <DialogFooter>
             <Button variant="ghost" onClick={() => setShowSigningDialog(false)}>
-              Cancel
+              {t('cancel')}
             </Button>
 
-            <Button onClick={() => onSignatureConfirmClick()}>Confirm</Button>
+            <Button onClick={() => onSignatureConfirmClick()}>{t('confirm')}</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

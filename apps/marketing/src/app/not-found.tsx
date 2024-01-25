@@ -6,13 +6,16 @@ import { useRouter } from 'next/navigation';
 
 import { motion } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
+import { useTranslation } from '@documenso/ui/i18n/client';
 
 import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
+import { LocaleTypes } from '@documenso/ui/i18n/settings';
 
-export default function NotFound() {
+export default function NotFound({ params: { locale } }: { params: { locale: LocaleTypes } }) {
   const router = useRouter();
+  const { t } = useTranslation(locale, 'common');
 
   return (
     <div className={cn('relative max-w-[100vw] overflow-hidden')}>
