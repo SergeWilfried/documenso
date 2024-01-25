@@ -13,7 +13,8 @@
   "i18n-ally.namespace": true,
   "i18n-ally.sourceLanguage": "en-US",
   "i18n-ally.displayLanguage": "en-US",
-  "i18n-ally.localesPaths": "packages/ui/i18n/locales",
+  "i18n-ally.defaultNamespace": "common",
+  "i18n-ally.localesPaths": "packages/ui/i18n/locales/",
   "i18n-ally.pathMatcher": "{locale}/{namespace}.json",
   "i18n-ally.preferredDelimiter": ":",
   "i18n-ally.enabledFrameworks": ["i18next", "react"],
@@ -22,4 +23,5 @@
   "i18n-ally.theme.annotationBorder": "rgba(153, 153, 153, .8)",
   "i18n-ally.theme.annotationMissing": "#d37070",
   "i18n-ally.theme.annotationMissingBorder": "#d37070",
+  "i18n-ally.keystyle": "nested",
 }

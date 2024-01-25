@@ -33,12 +33,12 @@ export default function NotFound() {
 
       <div className="container mx-auto flex h-full min-h-screen items-center px-6 py-32">
         <div>
-          <p className="text-muted-foreground font-semibold">404 Page not found</p>
+          <p className="text-muted-foreground font-semibold">{t('not.found')}</p>
 
-          <h1 className="mt-3 text-2xl font-bold md:text-3xl">Oops! Something went wrong.</h1>
+          <h1 className="mt-3 text-2xl font-bold md:text-3xl">{t('somethingWentWrong')}</h1>
 
           <p className="text-muted-foreground mt-4 text-sm">
-            The page you are looking for was moved, removed, renamed or might never have existed.
+            {t('deletedOrRemoved')}
           </p>
 
           <div className="mt-6 flex gap-x-2.5 gap-y-4 md:items-center">
@@ -50,11 +50,11 @@ export default function NotFound() {
               }}
             >
               <ChevronLeft className="mr-2 h-4 w-4" />
-              Go Back
+              {t('goBack')}
             </Button>
 
             <Button className="w-32" asChild>
-              <Link href="/">{t('marketing.home')}</Link>
+              <Link href="/">{t('home')}</Link>
             </Button>
           </div>
         </div>
