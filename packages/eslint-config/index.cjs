@@ -8,7 +8,7 @@ module.exports = {
     'plugin:package-json/recommended',
   ],
 
-  plugins: ['prettier', 'package-json', 'unused-imports'],
+  plugins: ['prettier', 'package-json', 'unused-imports', 'i18next'],
 
   env: {
     node: true,
@@ -85,5 +85,10 @@ module.exports = {
         disallowTypeAnnotations: false,
       },
     ],
+
+    // This rule aims to avoid developers to display literal string directly to users without translating them.
+    "i18next/no-literal-string": 2
+
+
   },
 };

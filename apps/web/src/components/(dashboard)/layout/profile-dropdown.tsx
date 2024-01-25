@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useParams, useRouter, useSelectedLayoutSegments } from 'next/navigation';
 
 import {
   CreditCard,
@@ -46,6 +47,15 @@ export type ProfileDropdownProps = {
 export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
   const { getFlag } = useFeatureFlags();
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
+  const params = useParams();
+  const urlSegments = useSelectedLayoutSegments();
+
+  const handleLocaleChange = (newLocale: string) => {
+    const link = `/${newLocale}/${urlSegments.join('/')}`;
+    router.push(link);
+  };
+
   const isUserAdmin = isAdmin(user);
 
   const isBillingEnabled = getFlag('app_billing');
@@ -115,7 +125,29 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger>
+            <Palette className="mr-2 h-4 w-4" />
+            Language
+          </DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuRadioGroup
+                value={Array.isArray(params?.locale) ? params?.locale.join('') : params?.locale}
+                onValueChange={handleLocaleChange}
+              >
+                <DropdownMenuRadioItem value="en">
+                  <Sun className="mr-2 h-4 w-4" /> English
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="fr">
+                  <Moon className="mr-2 h-4 w-4" />
+                  Français
+                </DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
+        <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Palette className="mr-2 h-4 w-4" />

@@ -54,7 +54,7 @@ export default function NotFound() {
             </Button>
 
             <Button className="w-32" asChild>
-              <Link href="/">Home</Link>
+              <Link href="/">{t('marketing.home')}</Link>
             </Button>
           </div>
         </div>
