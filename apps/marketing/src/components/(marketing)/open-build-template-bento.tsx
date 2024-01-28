@@ -1,17 +1,22 @@
 import { HTMLAttributes } from 'react';
 
 import Image from 'next/image';
-
+import { useParams } from 'next/navigation';
 import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 import cardBuildFigure from '@documenso/assets/images/card-build-figure.png';
 import cardOpenFigure from '@documenso/assets/images/card-open-figure.png';
 import cardTemplateFigure from '@documenso/assets/images/card-template-figure.png';
+import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
+import { createTranslation } from '@documenso/ui/i18n/server';
 
 export type OpenBuildTemplateBentoProps = HTMLAttributes<HTMLDivElement>;
 
-export const OpenBuildTemplateBento = ({ className, ...props }: OpenBuildTemplateBentoProps) => {
+export const OpenBuildTemplateBento = async ({ className, ...props }: OpenBuildTemplateBentoProps) => {
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = await createTranslation(locale, 'marketing');
+
   return (
     <div className={cn('relative', className)} {...props}>
       <div className="absolute inset-0 -z-10 flex items-center justify-center">

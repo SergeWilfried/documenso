@@ -7,11 +7,13 @@ import { Variants, motion } from 'framer-motion';
 import { usePlausible } from 'next-plausible';
 import { LuGithub } from 'react-icons/lu';
 import { match } from 'ts-pattern';
-
+import { useParams } from 'next/navigation';
+import { useTranslation } from '@documenso/ui/i18n/client';
 import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
+import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 
 import { Widget } from './widget';
 
@@ -51,6 +53,9 @@ const HeroTitleVariants: Variants = {
 
 export const Hero = ({ className, ...props }: HeroProps) => {
   const event = usePlausible();
+  const locale = useParams()?.locale as LocaleTypes;
+
+  const { t } = useTranslation(locale, 'marketing');
 
   const { getFlag } = useFeatureFlags();
 

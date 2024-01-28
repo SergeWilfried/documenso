@@ -1,10 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 import { usePlausible } from 'next-plausible';
 import { LuGithub } from 'react-icons/lu';
 
+import { useTranslation } from '@documenso/ui/i18n/client';
+import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { Button } from '@documenso/ui/primitives/button';
 
 export type CalloutProps = {
@@ -14,6 +17,8 @@ export type CalloutProps = {
 
 export const Callout = ({ starCount }: CalloutProps) => {
   const event = usePlausible();
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = useTranslation(locale, 'marketing');
 
   const onSignUpClick = () => {
     const el = document.getElementById('email');

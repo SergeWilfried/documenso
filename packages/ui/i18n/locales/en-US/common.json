@@ -54,5 +54,15 @@
   "compliance-check": "Compliance Check",
   "guaranteed-uptime": "Guaranteed Uptime",
   "reporting-and-analysis": "Reporting & Analysis",
-  "24-7-support": "24/7 Support"
+  "24-7-support": "24/7 Support",
+  "copied-to-clipboard": "Copied to clipboard",
+  "your-password-has-been-copied-to-your-clipboard": "Your password has been copied to your clipboard.",
+  "singleplayer": "Singleplayer",
+  "blog": "Blog",
+  "pricing": "Pricing",
+  "open-startup": "Open Startup",
+  "status": "Status",
+  "support": "Support",
+  "privacy": "Privacy",
+  "sign-in": "Sign in"
 }

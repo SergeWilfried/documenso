@@ -2,17 +2,17 @@
 
 import type { HTMLAttributes } from 'react';
 import { useState } from 'react';
-import { useParams, useSearchParams } from 'next/navigation';
 
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePlausible } from 'next-plausible';
 
+import { useTranslation } from '@documenso/ui/i18n/client';
+import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
-import { useTranslation } from '@documenso/ui/i18n/client';
-import { LocaleTypes } from '@documenso/ui/i18n/settings';
 
 export type PricingTableProps = HTMLAttributes<HTMLDivElement>;
 
@@ -63,7 +63,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           >
             {t('yearly')}
             <div className="bg-muted text-foreground block rounded-full px-2 py-0.5 text-xs">
-             {t('save-60')}
+              {t('save-60')}
             </div>
             {period === 'YEARLY' && (
               <motion.div
@@ -169,7 +169,9 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           </Link>
 
           <div className="mt-8 flex w-full flex-col divide-y">
-            <p className="text-foreground py-4 font-medium">{t('everything-in-early-adopters-plus')}</p>
+            <p className="text-foreground py-4 font-medium">
+              {t('everything-in-early-adopters-plus')}
+            </p>
             <p className="text-foreground py-4">{t('custom-subdomain')}</p>
             <p className="text-foreground py-4">{t('compliance-check')}</p>
             <p className="text-foreground py-4">{t('guaranteed-uptime')}</p>

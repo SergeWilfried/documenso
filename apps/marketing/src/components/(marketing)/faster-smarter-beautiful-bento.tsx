@@ -1,20 +1,26 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
 
 import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 import cardBeautifulFigure from '@documenso/assets/images/card-beautiful-figure.png';
 import cardFastFigure from '@documenso/assets/images/card-fast-figure.png';
 import cardSmartFigure from '@documenso/assets/images/card-smart-figure.png';
+import { createTranslation } from '@documenso/ui/i18n/server';
+import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
 
 export type FasterSmarterBeautifulBentoProps = HTMLAttributes<HTMLDivElement>;
 
-export const FasterSmarterBeautifulBento = ({
+export const FasterSmarterBeautifulBento = async ({
   className,
   ...props
 }: FasterSmarterBeautifulBentoProps) => {
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = await createTranslation(locale, 'marketing');
+
   return (
     <div className={cn('relative', className)} {...props}>
       <div className="absolute inset-0 -z-10 flex items-center justify-center">

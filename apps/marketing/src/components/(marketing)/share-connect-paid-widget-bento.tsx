@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 
 import Image from 'next/image';
 
@@ -7,10 +7,11 @@ import cardConnectionsFigure from '@documenso/assets/images/card-connections-fig
 import cardPaidFigure from '@documenso/assets/images/card-paid-figure.png';
 import cardSharingFigure from '@documenso/assets/images/card-sharing-figure.png';
 import cardWidgetFigure from '@documenso/assets/images/card-widget-figure.png';
+import { createTranslation } from '@documenso/ui/i18n/server';
+import { fallbackLng } from '@documenso/ui/i18n/settings';
+import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
-import { LocaleTypes, fallbackLng } from '@documenso/ui/i18n/settings';
-import { createTranslation } from '@documenso/ui/i18n/server';
 
 export type ShareConnectPaidWidgetBentoProps = HTMLAttributes<HTMLDivElement> & {
   locale?: LocaleTypes;

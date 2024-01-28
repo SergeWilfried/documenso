@@ -3,14 +3,17 @@
 import type { HTMLAttributes, KeyboardEvent } from 'react';
 import { useMemo, useState } from 'react';
 
+import { useParams } from 'next/navigation';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Loader } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { useTranslation } from '@documenso/ui/i18n/client';
 
+import { useTranslation } from '@documenso/ui/i18n/client';
+import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
@@ -30,8 +33,6 @@ import { claimPlan } from '~/api/claim-plan/fetcher';
 
 import { STEP } from '../constants';
 import { FormErrorMessage } from '../form/form-error-message';
-import { LocaleTypes } from '@documenso/ui/i18n/settings';
-import { useParams } from 'next/navigation';
 
 const ZWidgetFormSchema = z
   .object({
@@ -269,7 +270,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                     htmlFor="name"
                     className="text-foreground text-lg font-semibold lg:text-xl"
                   >
-                    t('and-your-name')
+                    {t('and-your-name')}
                   </label>
 
                   <Controller
@@ -317,7 +318,9 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                 {isValid ? 'Ready for Signing' : `${stepsRemaining} step(s) until signed`}
               </p>
 
-              <p className="text-muted-foreground block text-xs md:hidden">{t('minimise-contract')}</p>
+              <p className="text-muted-foreground block text-xs md:hidden">
+                {t('minimise-contract')}
+              </p>
             </div>
 
             <div className="bg-background relative mt-2.5 h-[2px] w-full">
@@ -399,7 +402,10 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
           <DialogDescription>
             {t('by-signing-you-signal-your-support-of-documensos-mission-in-a')} <br></br>
             <strong>{t('non-legally-binding-but-heartfelt-way')}</strong>. <br></br>
-            <br></br>{t('you-also-unlock-the-option-to-purchase-the-early-supporter-plan-including-everything-we-build-this-year-for-fixed-price')}
+            <br></br>
+            {t(
+              'you-also-unlock-the-option-to-purchase-the-early-supporter-plan-including-everything-we-build-this-year-for-fixed-price',
+            )}
           </DialogDescription>
 
           <SignaturePad
