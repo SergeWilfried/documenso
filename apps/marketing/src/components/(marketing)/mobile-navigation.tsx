@@ -3,14 +3,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useTranslation } from '@documenso/ui/i18n/client';
+
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaXTwitter } from 'react-icons/fa6';
 import { LiaDiscord } from 'react-icons/lia';
 import { LuGithub } from 'react-icons/lu';
-import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 
 import LogoImage from '@documenso/assets/logo.png';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { Sheet, SheetContent } from '@documenso/ui/primitives/sheet';
 
 export type MobileNavigationProps = {
