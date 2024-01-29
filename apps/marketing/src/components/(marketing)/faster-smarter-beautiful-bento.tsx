@@ -31,17 +31,16 @@ export const FasterSmarterBeautifulBento = async ({
         />
       </div>
       <h2 className="px-0 text-[22px] font-semibold md:px-12 md:text-4xl lg:px-24">
-        A 10x better signing experience.
-        <span className="block md:mt-0">Faster, smarter and more beautiful.</span>
+        {t('a-10x-better-signing-experience')}
+        <span className="block md:mt-0">{t('faster-smarter-and-more-beautiful')}</span>
       </h2>
 
       <div className="mt-6 grid grid-cols-2 gap-8 md:mt-8">
         <Card className="col-span-2" degrees={45} gradient>
           <CardContent className="grid grid-cols-12 gap-8 overflow-hidden p-6 lg:aspect-[2.5/1]">
             <p className="text-foreground/80 col-span-12 leading-relaxed lg:col-span-6">
-              <strong className="block">Fast.</strong>
-              When it comes to sending or receiving a contract, you can count on lightning-fast
-              speeds.
+              <strong className="block">{t('fast')}</strong>
+              {t('when-it-comes-to')}
             </p>
 
             <div className="col-span-12 -my-6 -mr-6 flex items-end justify-end pt-12 lg:col-span-6">
@@ -57,9 +56,8 @@ export const FasterSmarterBeautifulBento = async ({
         <Card className="col-span-2 lg:col-span-1" spotlight>
           <CardContent className="grid grid-cols-1 gap-8 p-6">
             <p className="text-foreground/80 leading-relaxed">
-              <strong className="block">Beautiful.</strong>
-              Because signing should be celebrated. That’s why we care about the smallest detail in
-              our product.
+              <strong className="block">{t('beautiful')}</strong>
+              {t('because-signing-should')}
             </p>
 
             <div className="flex items-center justify-center p-8">
@@ -75,8 +73,8 @@ export const FasterSmarterBeautifulBento = async ({
         <Card className="col-span-2 lg:col-span-1" spotlight>
           <CardContent className="grid grid-cols-1 gap-8 p-6">
             <p className="text-foreground/80 leading-relaxed">
-              <strong className="block">Smart.</strong>
-              Our custom templates come with smart rules that can help you save time and energy.
+              <strong className="block">{t('smart')}</strong>
+              {t('our-custom-templates')}
             </p>
 
             <div className="flex items-center justify-center p-8">

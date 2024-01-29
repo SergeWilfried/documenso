@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 import signingCelebration from '@documenso/assets/images/signing-celebration.png';
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
@@ -13,6 +14,8 @@ import DocumentDialog from '@documenso/ui/components/document/document-dialog';
 import { DocumentDownloadButton } from '@documenso/ui/components/document/document-download-button';
 import { DocumentShareButton } from '@documenso/ui/components/document/document-share-button';
 import { SigningCard3D } from '@documenso/ui/components/signing-card';
+import { useTranslation } from '@documenso/ui/i18n/client';
+import type { LocaleTypes } from '@documenso/ui/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 
@@ -34,7 +37,8 @@ export const SinglePlayerModeSuccess = ({
   const isConfettiEnabled = getFlag('marketing_spm_confetti');
 
   const [showDocumentDialog, setShowDocumentDialog] = useState(false);
-
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = useTranslation(locale, 'marketing');
   const { documentData } = document;
 
   useEffect(() => {
@@ -48,13 +52,13 @@ export const SinglePlayerModeSuccess = ({
       )}
 
       <h2 className="relative z-10 text-center text-2xl font-semibold leading-normal md:text-3xl lg:mb-2 lg:text-4xl">
-        You have signed
+        {t('you-have-signed')}
         <span className="mt-2 block">{document.title}</span>
       </h2>
 
       <SigningCard3D
         className="mt-8"
-        name={document.Recipient.name || document.Recipient.email}
+        name={document.Recipient.name || document.Recipient.email!}
         signature={signatures.at(0)}
         signingCelebrationImage={signingCelebration}
       />
@@ -76,22 +80,22 @@ export const SinglePlayerModeSuccess = ({
             />
 
             <Button onClick={() => setShowDocumentDialog(true)} className="z-10 col-span-2">
-              Show document
+              {t('show-document')}
             </Button>
           </div>
         </div>
       </div>
 
       <p className="text-muted-foreground/60 mt-16 text-center text-sm">
-        Create a{' '}
+        {t('create-a')}{' '}
         <Link
           href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/signup`}
           target="_blank"
           className="text-documenso-700 hover:text-documenso-600 whitespace-nowrap"
         >
-          free account
+          {t('free-account')}
         </Link>{' '}
-        to access your signed documents at any time
+        {t('to-access-your-signed-documents-at-any-time')}
       </p>
 
       <DocumentDialog

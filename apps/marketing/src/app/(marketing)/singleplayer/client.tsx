@@ -158,6 +158,8 @@ export const SinglePlayerClient = () => {
     readStatus: 'OPENED',
     signingStatus: 'NOT_SIGNED',
     sendStatus: 'NOT_SENT',
+    phoneNumber: null,
+    notificationChannel: 'SMS'
   };
 
   const onFileDrop = async (file: File) => {

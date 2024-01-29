@@ -45,7 +45,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
             href="/singleplayer"
             className="bg-primary dark:text-background rounded-full px-2 py-1 text-xs font-semibold sm:px-3"
           >
-            Try now!
+            {t('try-now')}
           </Link>
         )}
       </div>
@@ -55,21 +55,21 @@ export const Header = ({ className, ...props }: HeaderProps) => {
           href="/pricing"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
-          Pricing
+          {t('pricing')}
         </Link>
 
         <Link
           href="/blog"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
-          Blog
+          {t('blog')}
         </Link>
 
         <Link
           href="/open"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
-          Open Startup
+          {t('open-startup')}
         </Link>
 
         <Link
@@ -77,7 +77,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
           target="_blank"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
-          Sign in
+          {t('sign-in')}
         </Link>
       </div>
 
