@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { Caveat, Inter } from 'next/font/google';
 
 import { FeatureFlagProvider } from '@documenso/lib/client-only/providers/feature-flag';
+import { getLocale } from '@documenso/lib/i18n/server';
 import { getServerComponentAllFlags } from '@documenso/lib/server-only/feature-flags/get-server-component-feature-flag';
 import { TrpcProvider } from '@documenso/trpc/react';
 import { cn } from '@documenso/ui/lib/utils';
@@ -67,15 +68,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </Suspense>
 
       <body>
-          <FeatureFlagProvider initialFlags={flags}>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <TooltipProvider>
-                <TrpcProvider>{children}</TrpcProvider>
-              </TooltipProvider>
-            </ThemeProvider>
+        <FeatureFlagProvider initialFlags={flags}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <TooltipProvider>
+              <TrpcProvider>{children}</TrpcProvider>
+            </TooltipProvider>
+          </ThemeProvider>
 
-            <Toaster />
-          </FeatureFlagProvider>
+          <Toaster />
+        </FeatureFlagProvider>
       </body>
     </html>
   );
