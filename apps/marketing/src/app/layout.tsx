@@ -7,6 +7,7 @@ import { getAllAnonymousFlags } from '@documenso/lib/universal/get-feature-flag'
 import { TrpcProvider } from '@documenso/trpc/react';
 import { cn } from '@documenso/ui/lib/utils';
 import { Toaster } from '@documenso/ui/primitives/toaster';
+import { getLocale } from '@documenso/lib/server-only/headers/get-locale';
 
 import { ThemeProvider } from '~/providers/next-theme';
 import { PlausibleProvider } from '~/providers/plausible';
@@ -46,10 +47,11 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const flags = await getAllAnonymousFlags();
+  const locale = getLocale();
 
   return (
     <html
-      lang="en"
+      lang={locale}
       className={cn(fontInter.variable, fontCaveat.variable)}
       suppressHydrationWarning
     >

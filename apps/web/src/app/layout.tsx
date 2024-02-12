@@ -3,9 +3,7 @@ import { Suspense } from 'react';
 import { Caveat, Inter } from 'next/font/google';
 
 import { FeatureFlagProvider } from '@documenso/lib/client-only/providers/feature-flag';
-import { LocaleProvider } from '@documenso/lib/client-only/providers/locale';
 import { getServerComponentAllFlags } from '@documenso/lib/server-only/feature-flags/get-server-component-feature-flag';
-import { getLocale } from '@documenso/lib/server-only/headers/get-locale';
 import { TrpcProvider } from '@documenso/trpc/react';
 import { cn } from '@documenso/ui/lib/utils';
 import { Toaster } from '@documenso/ui/primitives/toaster';
@@ -53,7 +51,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html
-      lang="en"
+      lang={locale}
       className={cn(fontInter.variable, fontCaveat.variable)}
       suppressHydrationWarning
     >
@@ -69,7 +67,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </Suspense>
 
       <body>
-        <LocaleProvider locale={locale}>
           <FeatureFlagProvider initialFlags={flags}>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <TooltipProvider>
@@ -79,7 +76,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
             <Toaster />
           </FeatureFlagProvider>
-        </LocaleProvider>
       </body>
     </html>
   );
