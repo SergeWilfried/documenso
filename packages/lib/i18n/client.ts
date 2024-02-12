@@ -1,28 +1,26 @@
 'use client';
 
-import {useEffect} from 'react';
-import i18next, {i18n} from 'i18next';
-import {initReactI18next, useTranslation as useTransAlias} from 'react-i18next';
-import resourcesToBackend from 'i18next-resources-to-backend';
+import { useEffect } from 'react';
+
+import type { i18n } from 'i18next';
+import i18next from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import {
-  Locales,
-  LANGUAGE_COOKIE,
-  getOptions,
-  supportedLocales,
-} from './settings';
-import {useLocale} from '../client-only/hooks/locale-provider';
+import resourcesToBackend from 'i18next-resources-to-backend';
+import { initReactI18next, useTranslation as useTransAlias } from 'react-i18next';
+
+import { useLocale } from '../client-only/providers/locale-provider';
+import type { Locales } from './settings';
+import { LANGUAGE_COOKIE, getOptions, supportedLocales } from './settings';
 
 const runsOnServerSide = typeof window === 'undefined';
 
 // Initialize i18next for the client side
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 i18next
   .use(initReactI18next)
   .use(LanguageDetector)
   .use(
-    resourcesToBackend(
-      (lang: string, ns: string) => import(`./locales/${lang}/${ns}.json`),
-    ),
+    resourcesToBackend(async (lang: string, ns: string) => import(`./locales/${lang}/${ns}.json`)),
   )
   .init({
     ...getOptions(),
@@ -42,10 +40,11 @@ export function useTranslation(ns: string) {
   const lng = useLocale();
 
   const translator = useTransAlias(ns);
-  const {i18n} = translator;
+  const { i18n } = translator;
 
   // Run content is being rendered on server side
   if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     i18n.changeLanguage(lng);
   } else {
     // Use our custom implementation when running on client side
@@ -59,6 +58,7 @@ function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
   // This effect changes the language of the application when the lng prop changes.
   useEffect(() => {
     if (!lng || i18n.resolvedLanguage === lng) return;
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     i18n.changeLanguage(lng);
   }, [lng, i18n]);
 }
