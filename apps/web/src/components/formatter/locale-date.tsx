@@ -20,7 +20,7 @@ export type LocaleDateProps = HTMLAttributes<HTMLSpanElement> & {
  * the client browser locale once mounted.
  */
 export const LocaleDate = ({ className, date, format, ...props }: LocaleDateProps) => {
-  const { locale } = useLocale();
+  const locale  = useLocale();
 
   const formatDateTime = useCallback(
     (date: DateTime) => {
