@@ -15,8 +15,8 @@ export const PasswordReveal = ({ password }: PasswordRevealProps) => {
   const onCopyClick = () => {
     void copy(password).then(() => {
       toast({
-        title: 'Copied to clipboard',
-        description: 'Your password has been copied to your clipboard.',
+        title: t('copied-to-clipboard'),
+        description: {t('your-password-has-been-copied-to-your-clipboard')},
       });
     });
   };

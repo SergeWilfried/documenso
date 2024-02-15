@@ -19,23 +19,23 @@ export type MobileNavigationProps = {
 export const MENU_NAVIGATION_LINKS = [
   {
     href: '/singleplayer',
-    text: 'Singleplayer',
+    text: 'singleplayer',
   },
   {
     href: '/blog',
-    text: 'Blog',
+    text: 'blog',
   },
   {
     href: '/pricing',
-    text: 'Pricing',
+    text: 'pricing',
   },
   {
     href: 'https://status.documenso.com',
-    text: 'Status',
+    text: 'status',
   },
   {
     href: 'mailto:support@documenso.com',
-    text: 'Support',
+    text: 'support',
     target: '_blank',
   },
   {
@@ -44,7 +44,7 @@ export const MENU_NAVIGATION_LINKS = [
   },
   {
     href: 'https://documenso-app-q0ns.onrender.com/signin',
-    text: 'Sign in',
+    text: 'sign.in',
   },
 ];
 
@@ -101,7 +101,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
                 onClick={() => handleMenuItemClick()}
                 target={target}
               >
-                {text}
+                {t(text)}
               </Link>
             </motion.div>
           ))}

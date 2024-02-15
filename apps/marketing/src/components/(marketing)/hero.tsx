@@ -101,7 +101,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
           className="text-center text-4xl font-bold leading-tight tracking-tight lg:text-[64px]"
         >
           {t('document-signing')}
-          <span className="block" /> finally open source.
+          <span className="block" /> {t('finally-open-source')}
         </motion.h2>
 
         <motion.div
@@ -116,16 +116,16 @@ export const Hero = ({ className, ...props }: HeroProps) => {
             className="rounded-full bg-transparent backdrop-blur-sm"
             onClick={onSignUpClick}
           >
-            Get the Early Adopters Plan
+            {t('get-the-early-adopters-plan')}
             <span className="bg-primary dark:text-background -mr-2.5 ml-2.5 rounded-full px-2 py-1.5 text-xs">
-              $30/mo. forever!
+              {t('30-mo-forever')}
             </span>
           </Button>
 
           <Link href="https://github.com/documenso/documenso" onClick={() => event('view-github')}>
             <Button variant="outline" className="rounded-full bg-transparent backdrop-blur-sm">
               <LuGithub className="mr-2 h-5 w-5" />
-              Book a demo
+              {t('book-a-demo')}
             </Button>
           </Link>
         </motion.div>
@@ -140,11 +140,11 @@ export const Hero = ({ className, ...props }: HeroProps) => {
             >
               <Link href="/singleplayer" className="block px-4 py-2 text-center">
                 <h2 className="text-muted-foreground text-xs font-semibold">
-                  Introducing Single Player Mode
+                  {t('introducing-single-player-mode')}
                 </h2>
 
                 <h1 className="text-foreground mt-1.5 font-medium leading-5">
-                  Self sign for free!
+                  {t('self-sign-for-free')}
                 </h1>
               </Link>
             </motion.div>
@@ -162,7 +162,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
               >
                 <img
                   src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=395047&theme=light&period=daily"
-                  alt="MonTampon - The open source DocuSign alternative | Product Hunt"
+                  alt={t('montampon-the-open-source-docusign-alternative-or-product-hunt')}
                   style={{ width: '250px', height: '54px' }}
                 />
               </Link>
@@ -191,51 +191,38 @@ export const Hero = ({ className, ...props }: HeroProps) => {
           animate="animate"
         >
           <Widget className="mt-12">
-            <strong>MonTampon Supporter Pledge</strong>
+            <strong>{t('montampon-supporter-pledge')}</strong>
             <p className="w-full max-w-[70ch]">
-              Welcome to MonTampon, where our mission is to transform the digital signing landscape
-              into one that's more accessible, transparent, and secure. We're committed to fostering
-              an environment that reflects openness, cooperation, and trust, ensuring our platform
-              meets the needs of both businesses and individuals with a seamless signing experience.
+              {t('welcome-to-montampon-where-our-mission-is-to-transform-the-digital-signing-landscape')}
             </p>
 
             <p className="w-full max-w-[70ch]">
-              At the core of MonTampon is our dedication to trust and transparency. We provide a
-              reliable signing solution that prioritizes your security and privacy, making digital
-              signing straightforward and efficient.
+              {t('at-the-core-of-montampon-is-our-dedication-to-trust')}
             </p>
 
             <p className="w-full max-w-[70ch]">
-              We envision a future where digital transactions are seamlessly integrated, supported
-              by a reliable and user-friendly platform. Our focus on exceptional design and
-              usability aims to position MonTampon as a leader in digital signing, making every
-              interaction smooth and effective.
+              {t('we-envision-a-future-where-digital-transactions')}
             </p>
 
             <p className="w-full max-w-[70ch]">
-              MonTampon is built on the belief that diversity and inclusivity lead to innovation. We
-              welcome contributions from everyone, valuing the variety of perspectives that shape
-              our platform and services. By joining us, you're not just using a service; you're
-              supporting a vision of a more open, cooperative digital world.
+              {t('montampon-is-built-on-the-belief-that-diversity-and-inclusivity-lead-to-innovation-we-welcome-contributions-from-everyone-valuing-the-variety-of-perspectives-that-shape-our-platform-and-services-by-joining-us-youre-not-just-using-a-service-youre-supporting-a-vision-of-a-more-open-cooperative-digital-world')}
             </p>
 
             <p className="w-full max-w-[70ch]">
-              Today we invite you to join us on this journey: By signing this mission statement you
-              signal your support of MonTampon's mission{' '}
+              {t('today-we-invite-you-to-join-us')}{' '}
               <span className="bg-primary text-black">
-                (in a non-legally binding, but heartfelt way)
+                {(`${t('in-a-non-legally-binding-but-heartfelt-way')}`)}
               </span>{' '}
-              and lock in the early supporter plan for forever, including everything we build this
-              year.
+              {t('and-lock-in-the-early-supporter-plan-for-forever-including-everything-we-build-this-year')}
             </p>
 
             <div className="flex h-24 items-center">
-              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>Timur & Lucas</p>
+              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>{t('timur-and-lucas')}</p>
             </div>
 
             <div>
-              <strong>Timur Ercan & Lucas Smith</strong>
-              <p className="mt-1">Co-Founders, MonTampon</p>
+              <strong>{t('timur-ercan-and-lucas-smith')}</strong>
+              <p className="mt-1">{t('co-founders-montampon')}</p>
             </div>
           </Widget>
         </motion.div>
