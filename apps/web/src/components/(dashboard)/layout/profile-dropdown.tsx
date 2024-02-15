@@ -155,7 +155,7 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
             target="_blank"
           >
             <LuGithub className="mr-2 h-4 w-4" />
-            Star on Github
+            Book a demo
           </Link>
         </DropdownMenuItem>
 
