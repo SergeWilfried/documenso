@@ -61,8 +61,6 @@ export const Header = ({ className, ...props }: HeaderProps) => {
           Blog
         </Link>
 
-        
-
         <Link
           href="https://app.documenso.com/signin?utm_source=marketing-header"
           target="_blank"
