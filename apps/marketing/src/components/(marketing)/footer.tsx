@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { FaXTwitter } from 'react-icons/fa6';
 import { LiaDiscord } from 'react-icons/lia';
 import { LuGithub } from 'react-icons/lu';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import LogoImage from '@documenso/assets/logo.png';
 import { LocaleSwitcher } from '@documenso/ui/components/LocaleSwitcher';
@@ -32,6 +33,8 @@ const FOOTER_LINKS = [
 ];
 
 export const Footer = ({ className, ...props }: FooterProps) => {
+  const { t } = useTranslation('marketing');
+
   return (
     <div className={cn('border-t py-12', className)} {...props}>
       <div className="mx-auto flex w-full max-w-screen-xl flex-wrap items-start justify-between gap-8 px-8">

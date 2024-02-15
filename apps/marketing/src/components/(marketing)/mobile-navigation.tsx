@@ -2,10 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaXTwitter } from 'react-icons/fa6';
 import { LiaDiscord } from 'react-icons/lia';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import LogoImage from '@documenso/assets/logo.png';
 import { Sheet, SheetContent } from '@documenso/ui/primitives/sheet';
@@ -53,6 +54,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
   const handleMenuItemClick = () => {
     onMenuOpenChange?.(false);
   };
+  const { t } = useTranslation('marketing');
 
   return (
     <Sheet open={isMenuOpen} onOpenChange={onMenuOpenChange}>

@@ -24,7 +24,7 @@ import {
 import { Input } from '@documenso/ui/primitives/input';
 import { SignaturePad } from '@documenso/ui/primitives/signature-pad';
 import { useToast } from '@documenso/ui/primitives/use-toast';
-
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { claimPlan } from '~/api/claim-plan/fetcher';
 
 import { STEP } from '../constants';
@@ -58,6 +58,7 @@ export type WidgetProps = HTMLAttributes<HTMLDivElement>;
 export const Widget = ({ className, children, ...props }: WidgetProps) => {
   const { toast } = useToast();
   const event = usePlausible();
+  const { t } = useTranslation('marketing');
 
   const [step, setStep] = useState<StepValues>(STEP.EMAIL);
   const [showSigningDialog, setShowSigningDialog] = useState(false);

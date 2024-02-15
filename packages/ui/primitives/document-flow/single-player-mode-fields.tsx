@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { match } from 'ts-pattern';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import { useElementScaleSize } from '@documenso/lib/client-only/hooks/use-element-scale-size';
 import { useFieldPageCoords } from '@documenso/lib/client-only/hooks/use-field-page-coords';

@@ -8,12 +8,13 @@ import { motion } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
 
 import backgroundPattern from '@documenso/assets/images/background-pattern.png';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 
 export default function NotFound() {
   const router = useRouter();
-
+  const { t } = useTranslation('common');
   return (
     <div className={cn('relative max-w-[100vw] overflow-hidden')}>
       <div className="absolute -inset-24 -z-10">

@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Undo2 } from 'lucide-react';
 import type { StrokeOptions } from 'perfect-freehand';
 import { getStroke } from 'perfect-freehand';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import { cn } from '../../lib/utils';
 import { getSvgPathFromStroke } from './helper';

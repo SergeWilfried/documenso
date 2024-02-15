@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import LogoImage from '@documenso/assets/logo.png';
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
@@ -17,6 +18,7 @@ export type HeaderProps = HTMLAttributes<HTMLElement>;
 
 export const Header = ({ className, ...props }: HeaderProps) => {
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+  const { t } = useTranslation('marketing');
 
   const { getFlag } = useFeatureFlags();
 

@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { usePlausible } from 'next-plausible';
 import { LuGithub } from 'react-icons/lu';
 import { match } from 'ts-pattern';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
@@ -52,6 +53,7 @@ const HeroTitleVariants: Variants = {
 
 export const Hero = ({ className, ...props }: HeroProps) => {
   const event = usePlausible();
+  const { t } = useTranslation('marketing');
 
   const { getFlag } = useFeatureFlags();
 
@@ -98,7 +100,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
           animate="animate"
           className="text-center text-4xl font-bold leading-tight tracking-tight lg:text-[64px]"
         >
-          Document signing,
+          {t('document-signing')}
           <span className="block" /> finally open source.
         </motion.h2>
 

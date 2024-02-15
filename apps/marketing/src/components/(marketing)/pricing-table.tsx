@@ -2,6 +2,7 @@
 
 import type { HTMLAttributes } from 'react';
 import { useState } from 'react';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import Link from 'next/link';
 
@@ -17,6 +18,7 @@ const SELECTED_PLAN_BAR_LAYOUT_ID = 'selected-plan-bar';
 
 export const PricingTable = ({ className, ...props }: PricingTableProps) => {
   const event = usePlausible();
+  const { t } = useTranslation('marketing');
 
   const [period, setPeriod] = useState<'MONTHLY' | 'YEARLY'>('MONTHLY');
 

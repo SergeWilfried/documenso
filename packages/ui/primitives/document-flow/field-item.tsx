@@ -12,6 +12,7 @@ import { cn } from '../../lib/utils';
 import { Card, CardContent } from '../card';
 import type { TDocumentFlowFormSchema } from './types';
 import { FRIENDLY_FIELD_TYPE } from './types';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 type Field = TDocumentFlowFormSchema['fields'][0];
 

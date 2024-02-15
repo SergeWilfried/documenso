@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
 import { base64 } from '@documenso/lib/universal/base64';
@@ -32,6 +33,7 @@ type SinglePlayerModeStep = (typeof SinglePlayerModeSteps)[number];
 export const SinglePlayerClient = () => {
   const analytics = useAnalytics();
   const router = useRouter();
+  const { t } = useTranslation('marketing');
 
   const { toast } = useToast();
 

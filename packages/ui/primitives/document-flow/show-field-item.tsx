@@ -8,6 +8,7 @@ import { useFieldPageCoords } from '@documenso/lib/client-only/hooks/use-field-p
 import { cn } from '../../lib/utils';
 import { Card, CardContent } from '../card';
 import { FRIENDLY_FIELD_TYPE } from './types';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type ShowFieldItemProps = {
   field: Prisma.FieldGetPayload<null>;

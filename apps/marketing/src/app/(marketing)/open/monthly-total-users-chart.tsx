@@ -12,6 +12,7 @@ export type MonthlyTotalUsersChartProps = {
 };
 
 export const MonthlyTotalUsersChart = ({ className, data }: MonthlyTotalUsersChartProps) => {
+
   const formattedData = [...data].reverse().map(({ month, cume_count: count }) => {
     return {
       month: DateTime.fromFormat(month, 'yyyy-MM').toFormat('LLL'),

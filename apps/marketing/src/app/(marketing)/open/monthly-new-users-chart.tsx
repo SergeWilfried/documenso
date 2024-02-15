@@ -2,6 +2,7 @@
 
 import { DateTime } from 'luxon';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import type { GetUserMonthlyGrowthResult } from '@documenso/lib/server-only/user/get-user-monthly-growth';
 import { cn } from '@documenso/ui/lib/utils';
@@ -12,6 +13,7 @@ export type MonthlyNewUsersChartProps = {
 };
 
 export const MonthlyNewUsersChart = ({ className, data }: MonthlyNewUsersChartProps) => {
+
   const formattedData = [...data].reverse().map(({ month, count }) => {
     return {
       month: DateTime.fromFormat(month, 'yyyy-MM').toFormat('LLL'),

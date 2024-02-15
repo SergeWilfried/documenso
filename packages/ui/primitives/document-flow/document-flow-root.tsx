@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 
 import { cn } from '../../lib/utils';
 import { Button } from '../button';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type DocumentFlowFormContainerProps = HTMLAttributes<HTMLFormElement> & {
   children?: React.ReactNode;
