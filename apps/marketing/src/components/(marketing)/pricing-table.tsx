@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePlausible } from 'next-plausible';
 
+import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 
@@ -84,11 +85,8 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           </p>
 
           <Button className="rounded-full text-base" asChild>
-            <Link
-              href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/signup`}
-              target="_blank"
-              className="mt-6"
-            >
+
+            <Link href={`${NEXT_PUBLIC_WEBAPP_URL()}/signup`} target="_blank" className="mt-6">
               {t('signup-now')}
             </Link>
           </Button>
@@ -119,7 +117,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           </p>
 
           <Button className="mt-6 rounded-full text-base" asChild>
-            <Link href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/signup`}>{t('signup-now')}</Link>
+            <Link href={`${NEXT_PUBLIC_WEBAPP_URL()}/signup`}>{t('signup-now')}</Link>
           </Button>
 
           <div className="mt-8 flex w-full flex-col divide-y">

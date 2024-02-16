@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslation } from '@documenso/lib/i18n/client';
 
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
 import { base64 } from '@documenso/lib/universal/base64';
 import { putFile } from '@documenso/lib/universal/upload/put-file';
 import type { Field, Recipient } from '@documenso/prisma/client';
@@ -192,7 +193,7 @@ export const SinglePlayerClient = () => {
         <p className="text-foreground mx-auto mt-4 max-w-[50ch] text-lg leading-normal">
           {t('create-a')}{' '}
           <Link
-            href={`${process.env.NEXT_PUBLIC_WEBAPP_URL}/signup`}
+            href={`${NEXT_PUBLIC_WEBAPP_URL()}/signup`}
             target="_blank"
             className="hover:text-foreground/80 font-semibold transition-colors"
           >
