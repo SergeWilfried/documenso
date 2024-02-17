@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import {
   Accordion,
   AccordionContent,
@@ -26,7 +27,8 @@ export type PricingPageProps = {
   };
 };
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const { t } = await createTranslation('marketing');
   return (
     <div className="mt-6 sm:mt-12">
       <div className="text-center">
@@ -131,18 +133,6 @@ export default function PricingPage() {
               </Link>{' '}
               to keep up to date, on what the current priorities are. In any case, we are an open
               community and welcome all input, technical and non-technical ❤️
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="can-i-use-documenso-commercially">
-            <AccordionTrigger className="text-left text-lg font-semibold">
-              Can I use MonTampon commercially?
-            </AccordionTrigger>
-
-            <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              Yes! MonTampon is offered under the GNU AGPL V3 open source license. This means you
-              can use it for free and even modify it to fit your needs, as long as you publish your
-              changes under the same license.
             </AccordionContent>
           </AccordionItem>
 

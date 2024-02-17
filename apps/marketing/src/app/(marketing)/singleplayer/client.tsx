@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useTranslation } from '@documenso/lib/i18n/client';
 
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { base64 } from '@documenso/lib/universal/base64';
 import { putFile } from '@documenso/lib/universal/upload/put-file';
 import type { Field, Recipient } from '@documenso/prisma/client';
@@ -199,7 +199,7 @@ export const SinglePlayerClient = () => {
           >
             {t('free-account')}
           </Link>{' '}
-          {t('or-view-our')}{' '}
+          t('or-view-our'){' '}
           <Link
             href={'/pricing'}
             target="_blank"
