@@ -21,8 +21,8 @@ export default async function SecuritySettingsPage() {
   return (
     <div>
       <SettingsHeader
-        title="Security"
-        subtitle="Here you can manage your password and security settings."
+        title={t('security')}
+        subtitle={t('here-you-can-manage-your-password-and-security-settings')}
       />
 
       {user.identityProvider === 'DOCUMENSO' ? (
@@ -36,12 +36,9 @@ export default async function SecuritySettingsPage() {
             variant="neutral"
           >
             <div className="mb-4 sm:mb-0">
-              <AlertTitle>Two factor authentication</AlertTitle>
+              <AlertTitle>{t('two-factor-authentication')}</AlertTitle>
 
-              <AlertDescription className="mr-4">
-                Create one-time passwords that serve as a secondary authentication method for
-                confirming your identity when requested during the sign-in process.
-              </AlertDescription>
+              <AlertDescription className="mr-4">{t('create-one-time-passwords')}</AlertDescription>
             </div>
 
             <AuthenticatorApp isTwoFactorEnabled={user.twoFactorEnabled} />
@@ -53,11 +50,10 @@ export default async function SecuritySettingsPage() {
               variant="neutral"
             >
               <div className="mb-4 sm:mb-0">
-                <AlertTitle>Recovery codes</AlertTitle>
+                <AlertTitle>{t('recovery-codes')}</AlertTitle>
 
                 <AlertDescription className="mr-4">
-                  Two factor authentication recovery codes are used to access your account in the
-                  event that you lose access to your authenticator app.
+                  {t('two-factor-authentication-recovery')}
                 </AlertDescription>
               </div>
 
@@ -68,13 +64,14 @@ export default async function SecuritySettingsPage() {
       ) : (
         <Alert className="p-6" variant="neutral">
           <AlertTitle>
-            Your account is managed by {IDENTITY_PROVIDER_NAME[user.identityProvider]}
+            {t('your-account-is-managed-by')} {IDENTITY_PROVIDER_NAME[user.identityProvider]}
           </AlertTitle>
 
           <AlertDescription>
-            To update your password, enable two-factor authentication, and manage other security
-            settings, please go to your {IDENTITY_PROVIDER_NAME[user.identityProvider]} account
-            settings.
+            {
+              (t('to-update-your-password'),
+              { provider: IDENTITY_PROVIDER_NAME[user.identityProvider] })
+            }
           </AlertDescription>
         </Alert>
       )}
@@ -84,15 +81,15 @@ export default async function SecuritySettingsPage() {
         variant="neutral"
       >
         <div className="mb-4 mr-4 sm:mb-0">
-          <AlertTitle>Recent activity</AlertTitle>
+          <AlertTitle>{t('recent-activity')}</AlertTitle>
 
           <AlertDescription className="mr-2">
-            View all recent security activity related to your account.
+            {t('view-all-recent-security-activity-related-to-your-account')}
           </AlertDescription>
         </div>
 
         <Button asChild>
-          <Link href="/settings/security/activity">View activity</Link>
+          <Link href="/settings/security/activity">{t('view-activity')}</Link>
         </Button>
       </Alert>
     </div>
