@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { z } from '@documenso/lib/i18n/settings';
 import { TRPCClientError } from '@documenso/trpc/client';
 import { trpc } from '@documenso/trpc/react';
@@ -21,7 +22,6 @@ import {
 } from '@documenso/ui/primitives/form/form';
 import { PasswordInput } from '@documenso/ui/primitives/password-input';
 import { useToast } from '@documenso/ui/primitives/use-toast';
-import { useTranslation } from '@documenso/lib/i18n/client';
 
 export const ZResetPasswordFormSchema = z
   .object({
@@ -104,7 +104,7 @@ export const ResetPasswordForm = ({ className, token }: ResetPasswordFormProps) 
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{t('password')}</FormLabel>
                 <FormControl>
                   <PasswordInput {...field} />
                 </FormControl>
@@ -118,7 +118,7 @@ export const ResetPasswordForm = ({ className, token }: ResetPasswordFormProps) 
             name="repeatedPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Repeat Password</FormLabel>
+                <FormLabel>{t('repeat-password')}</FormLabel>
                 <FormControl>
                   <PasswordInput {...field} />
                 </FormControl>
@@ -129,7 +129,7 @@ export const ResetPasswordForm = ({ className, token }: ResetPasswordFormProps) 
         </fieldset>
 
         <Button type="submit" size="lg" loading={isSubmitting}>
-          {isSubmitting ? 'Resetting Password...' : 'Reset Password'}
+          {isSubmitting ? t('resetting-password') : t('reset-password')}
         </Button>
       </form>
     </Form>
