@@ -75,7 +75,8 @@ export default async function ClaimedPlanPage({ searchParams = {} }: ClaimedPlan
   return (
     <div className="mt-12">
       <h1 className="text-foreground text-3xl font-bold md:text-4xl">
-        {t('welcome-to-the')} <span className="text-primary">{t('open-signing')}</span>{t('revolution')}
+        {t('welcome-to-the')} <span className="text-primary">{t('open-signing')}</span>
+        {t('revolution')}
         <u>{user.name}</u>
       </h1>
 
