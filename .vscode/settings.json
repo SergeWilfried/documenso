@@ -31,4 +31,7 @@
     "signup",
     "singleplayer"
   ],
+  "files.exclude": {
+    "**/node_modules": true
+  },
 }
