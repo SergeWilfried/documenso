@@ -15,7 +15,7 @@ import { TeamInvitations } from './team-invitations';
 export default function TeamsSettingsPage() {
   const { data: teamEmail } = trpc.team.getTeamEmailByEmail.useQuery();
   const { t } = useTranslation('web');
-  
+
   return (
     <div>
       <SettingsHeader

@@ -1,5 +1,7 @@
 {
   "404-page-not-found": "",
+  "accept": "",
+  "accepted-team-invitation": "",
   "action": "",
   "actions": "",
   "all": "",
@@ -77,6 +79,7 @@
   "two-factor-authentication": "",
   "two-factor-authentication-recovery": "",
   "type-delete-to-confirm": "",
+  "unable-to-join-this-team-at-this-time": "",
   "upgrade-your-account-to-upload-more-documents": "",
   "users": "",
   "verify-your-email-to-upload-documents": "",

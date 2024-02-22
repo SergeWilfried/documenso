@@ -1,5 +1,7 @@
 {
   "404-page-not-found": "404 Page not found",
+  "accept": "Accept",
+  "accepted-team-invitation": "Accepted team invitation",
   "action": "Action",
   "actions": "Actions",
   "all": "All",
@@ -77,6 +79,7 @@
   "two-factor-authentication": "Two factor authentication",
   "two-factor-authentication-recovery": "Two factor authentication recovery codes are used to access your account in the event that you lose access to your authenticator app.",
   "type-delete-to-confirm": "Type 'delete' to confirm",
+  "unable-to-join-this-team-at-this-time": "Unable to join this team at this time.",
   "upgrade-your-account-to-upload-more-documents": "Upgrade your account to upload more documents.",
   "users": "Users",
   "verify-your-email-to-upload-documents": "Verify your email to upload documents.",

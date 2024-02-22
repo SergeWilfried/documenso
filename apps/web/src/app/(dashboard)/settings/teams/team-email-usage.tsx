@@ -76,7 +76,8 @@ export const TeamEmailUsage = ({ teamEmail }: TeamEmailUsageProps) => {
 
             <DialogDescription className="mt-4">
               {t('you-are-about-to-revoke-access-for-team')}{' '}
-              <span className="font-semibold">{teamEmail.team.name}</span> ({teamEmail.team.url}{t('to-use-your-email')}
+              <span className="font-semibold">{teamEmail.team.name}</span> ({teamEmail.team.url}
+              {t('to-use-your-email')}
             </DialogDescription>
           </DialogHeader>
 
