@@ -6,12 +6,14 @@ import { useIsMounted } from '@documenso/lib/client-only/hooks/use-is-mounted';
 import { parseToIntegerArray } from '@documenso/lib/utils/params';
 import { trpc } from '@documenso/trpc/react';
 import { MultiSelectCombobox } from '@documenso/ui/primitives/multi-select-combobox';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 type DataTableSenderFilterProps = {
   teamId: number;
 };
 
 export const DataTableSenderFilter = ({ teamId }: DataTableSenderFilterProps) => {
+  const { t } = useTranslation('web');
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -49,11 +51,11 @@ export const DataTableSenderFilter = ({ teamId }: DataTableSenderFilterProps) =>
     <MultiSelectCombobox
       emptySelectionPlaceholder={
         <p className="text-muted-foreground font-normal">
-          <span className="text-muted-foreground/70">Sender:</span> All
+          <span className="text-muted-foreground/70">{t('senderlabel')}</span> {t('all')}
         </p>
       }
       enableClearAllButton={true}
-      inputPlaceholder="Search"
+      inputPlaceholder={t('search')}
       loading={!isMounted || isInitialLoading}
       options={comboBoxOptions}
       selectedValues={senderIds}

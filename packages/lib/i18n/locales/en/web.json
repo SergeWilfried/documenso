@@ -1,1 +1,18 @@
-{}
+{
+  "action": "Action",
+  "all": "All",
+  "an-error-occurred-while-downloading-your-document": "An error occurred while downloading your document.",
+  "approve": "Approve",
+  "delete": "Delete",
+  "download": "Download",
+  "duplicate": "Duplicate",
+  "edit": "Edit",
+  "search": "Search",
+  "share": "Share",
+  "share-signing-card": "Share Signing Card",
+  "sign": "Sign",
+  "something-went-wrong": "Something went wrong",
+  "view": "View",
+  "void": "Void",
+  "senderlabel": "Sender:"
+}

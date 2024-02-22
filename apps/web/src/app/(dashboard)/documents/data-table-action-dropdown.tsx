@@ -20,6 +20,7 @@ import {
 import { useSession } from 'next-auth/react';
 
 import { downloadPDF } from '@documenso/lib/client-only/download-pdf';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { formatDocumentsPath } from '@documenso/lib/utils/teams';
 import { DocumentStatus, RecipientRole } from '@documenso/prisma/client';
 import type { Document, Recipient, Team, User } from '@documenso/prisma/client';
@@ -51,7 +52,7 @@ export type DataTableActionDropdownProps = {
 export const DataTableActionDropdown = ({ row, team }: DataTableActionDropdownProps) => {
   const { data: session } = useSession();
   const { toast } = useToast();
-
+  const { t } = useTranslation('web');
   const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [isDuplicateDialogOpen, setDuplicateDialogOpen] = useState(false);
 
@@ -96,8 +97,8 @@ export const DataTableActionDropdown = ({ row, team }: DataTableActionDropdownPr
       await downloadPDF({ documentData, fileName: row.title });
     } catch (err) {
       toast({
-        title: 'Something went wrong',
-        description: 'An error occurred while downloading your document.',
+        title: t('something-went-wrong'),
+        description: t('an-error-occurred-while-downloading-your-document'),
         variant: 'destructive',
       });
     }
@@ -112,7 +113,7 @@ export const DataTableActionDropdown = ({ row, team }: DataTableActionDropdownPr
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-52" align="start" forceMount>
-        <DropdownMenuLabel>Action</DropdownMenuLabel>
+        <DropdownMenuLabel>{t('action')}</DropdownMenuLabel>
 
         {recipient && recipient?.role !== RecipientRole.CC && (
           <DropdownMenuItem disabled={!recipient || isComplete} asChild>
@@ -120,21 +121,21 @@ export const DataTableActionDropdown = ({ row, team }: DataTableActionDropdownPr
               {recipient?.role === RecipientRole.VIEWER && (
                 <>
                   <EyeIcon className="mr-2 h-4 w-4" />
-                  View
+                  {t('view')}
                 </>
               )}
 
               {recipient?.role === RecipientRole.SIGNER && (
                 <>
                   <Pencil className="mr-2 h-4 w-4" />
-                  Sign
+                  {t('sign')}
                 </>
               )}
 
               {recipient?.role === RecipientRole.APPROVER && (
                 <>
                   <CheckCircle className="mr-2 h-4 w-4" />
-                  Approve
+                  {t('approve')}
                 </>
               )}
             </Link>
@@ -144,31 +145,31 @@ export const DataTableActionDropdown = ({ row, team }: DataTableActionDropdownPr
         <DropdownMenuItem disabled={(!isOwner && !isCurrentTeamDocument) || isComplete} asChild>
           <Link href={`${documentsPath}/${row.id}`}>
             <Edit className="mr-2 h-4 w-4" />
-            Edit
+            {t('edit')}
           </Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem disabled={!isComplete} onClick={onDownloadClick}>
           <Download className="mr-2 h-4 w-4" />
-          Download
+          {t('download')}
         </DropdownMenuItem>
 
         <DropdownMenuItem onClick={() => setDuplicateDialogOpen(true)}>
           <Copy className="mr-2 h-4 w-4" />
-          Duplicate
+          {t('duplicate')}
         </DropdownMenuItem>
 
         <DropdownMenuItem disabled>
           <XCircle className="mr-2 h-4 w-4" />
-          Void
+          {t('void')}
         </DropdownMenuItem>
 
         <DropdownMenuItem onClick={() => setDeleteDialogOpen(true)} disabled={!isDocumentDeletable}>
           <Trash2 className="mr-2 h-4 w-4" />
-          Delete
+          {t('delete')}
         </DropdownMenuItem>
 
-        <DropdownMenuLabel>Share</DropdownMenuLabel>
+        <DropdownMenuLabel>{t('share')}</DropdownMenuLabel>
 
         <ResendDocumentActionItem document={row} recipients={nonSignedRecipients} team={team} />
 
@@ -179,7 +180,7 @@ export const DataTableActionDropdown = ({ row, team }: DataTableActionDropdownPr
             <DropdownMenuItem disabled={disabled || isDraft} onSelect={(e) => e.preventDefault()}>
               <div className="flex items-center">
                 {loading ? <Loader className="mr-2 h-4 w-4" /> : <Share className="mr-2 h-4 w-4" />}
-                Share Signing Card
+                {t('share-signing-card')}
               </div>
             </DropdownMenuItem>
           )}
