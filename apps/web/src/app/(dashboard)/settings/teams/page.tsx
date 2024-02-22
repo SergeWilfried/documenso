@@ -18,7 +18,10 @@ export default function TeamsSettingsPage() {
   
   return (
     <div>
-      <SettingsHeader title={t('teams')} subtitle={t('manage-all-teams-you-are-currently-associated-with')}>
+      <SettingsHeader
+        title={t('teams')}
+        subtitle={t('manage-all-teams-you-are-currently-associated-with')}
+      >
         <CreateTeamDialog />
       </SettingsHeader>
 
