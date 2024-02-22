@@ -24,7 +24,7 @@ type DeleteDraftDocumentDialogProps = {
   documentTitle: string;
 };
 
-export const DeleteDocumentDialog = ({
+export const DeleteDocumentDialog = async ({
   id,
   open,
   onOpenChange,
@@ -32,7 +32,7 @@ export const DeleteDocumentDialog = ({
   documentTitle,
 }: DeleteDraftDocumentDialogProps) => {
   const router = useRouter();
-  const { t } = useTranslation('web');
+  const { t } = await createTranslation('web');
 
   const { toast } = useToast();
 

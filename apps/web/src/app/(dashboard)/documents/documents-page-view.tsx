@@ -98,7 +98,7 @@ export const DocumentsPageView = async ({ searchParams = {}, team }: DocumentsPa
             </Avatar>
           )}
 
-          <h1 className="text-4xl font-semibold">Documents</h1>
+          <h1 className="text-4xl font-semibold">{t('documents')}</h1>
         </div>
 
         <div className="-m-1 flex flex-wrap gap-x-4 gap-y-6 overflow-hidden p-1">

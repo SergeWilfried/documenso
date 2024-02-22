@@ -10,6 +10,7 @@
   "created": "",
   "delete": "",
   "document-deleted": "",
+  "document-duplicated": "",
   "documents": "",
   "documenttitle-has-been-successfully-deleted": "",
   "download": "",
@@ -17,6 +18,7 @@
   "edit": "",
   "go-back": "",
   "last-updated": "",
+  "loading-document": "",
   "manage-documents": "",
   "no-document-available": "",
   "oops-something-went-wrong": "",
@@ -35,9 +37,11 @@
   "subscriptions": "",
   "the-page-you-are-looking": "",
   "this-document-could-not-be-deleted-at-this-time-please-try-again": "",
+  "this-document-could-not-be-duplicated": "",
   "title": "",
   "type-delete-to-confirm": "",
   "users": "",
   "view": "",
-  "void": ""
+  "void": "",
+  "your-document-has-been-successfully-duplicated": ""
 }

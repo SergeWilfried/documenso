@@ -10,6 +10,7 @@
   "created": "Created",
   "delete": "Delete",
   "document-deleted": "Document deleted",
+  "document-duplicated": "Document Duplicated",
   "documents": "Documents",
   "documenttitle-has-been-successfully-deleted": "\"{{documentTitle}}\" has been successfully deleted",
   "download": "Download",
@@ -17,6 +18,7 @@
   "edit": "Edit",
   "go-back": "Go Back",
   "last-updated": "Last updated",
+  "loading-document": "Loading Document...",
   "manage-documents": "Manage documents",
   "no-document-available": "No document available",
   "oops-something-went-wrong": "Oops! Something went wrong.",
@@ -35,9 +37,11 @@
   "subscriptions": "Subscriptions",
   "the-page-you-are-looking": "The page you are looking for was moved, removed, renamed or might never have existed.",
   "this-document-could-not-be-deleted-at-this-time-please-try-again": "This document could not be deleted at this time. Please try again.",
+  "this-document-could-not-be-duplicated": "This document could not be duplicated at this time. Please try again.",
   "title": "Title",
   "type-delete-to-confirm": "Type 'delete' to confirm",
   "users": "Users",
   "view": "View",
-  "void": "Void"
+  "void": "Void",
+  "your-document-has-been-successfully-duplicated": "Your document has been successfully duplicated."
 }
