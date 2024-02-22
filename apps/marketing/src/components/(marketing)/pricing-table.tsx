@@ -125,6 +125,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
               {' '}
               <a href="https://documenso.com/blog/early-adopters" target="_blank">
                 {t('the-early-adopter-deal')}
+
               </a>
             </p>
             <p className="text-foreground py-4">{t('join-the-movement')}</p>
@@ -133,8 +134,9 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
             <p className="text-foreground py-4">
               <strong>
                 {' '}
-                <a href="https://documenso.com/blog/early-adopters" target="_blank">
+                <a href="https://documenso.com/blog/early-adopters" rel="noreferrer" target="_blank">
                   {t('includes-all-upcoming-features')}
+
                 </a>
               </strong>
             </p>

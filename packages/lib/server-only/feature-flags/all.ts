@@ -13,7 +13,6 @@ import { extractDistinctUserId, mapJwtToFlagProperties } from './get';
  */
 export default async function handlerFeatureFlagAll(req: Request) {
   const requestHeaders = Object.fromEntries(req.headers.entries());
-
   const nextReq = new NextRequest(req, {
     headers: requestHeaders,
   });
@@ -29,8 +28,10 @@ export default async function handlerFeatureFlagAll(req: Request) {
   }
 
   const distinctId = extractDistinctUserId(token, nextReq);
-
-  const featureFlags = await postHog.getAllFlags(distinctId, mapJwtToFlagProperties(token));
+  const props = mapJwtToFlagProperties(token);
+  console.warn(props);
+  const featureFlags = await postHog.getAllFlags(distinctId, props);
+  console.warn(featureFlags);
 
   const res = NextResponse.json(featureFlags);
 
