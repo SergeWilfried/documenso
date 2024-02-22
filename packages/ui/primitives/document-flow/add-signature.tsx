@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { DateTime } from 'luxon';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';
-import { useTranslation } from '@documenso/lib/i18n/client';
+
 
 import { DEFAULT_DOCUMENT_DATE_FORMAT } from '@documenso/lib/constants/date-formats';
 import { PDF_VIEWER_PAGE_SELECTOR } from '@documenso/lib/constants/pdf-viewer';

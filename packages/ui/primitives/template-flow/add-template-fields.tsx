@@ -6,7 +6,7 @@ import { Caveat } from 'next/font/google';
 
 import { ChevronsUpDown } from 'lucide-react';
 import { useFieldArray, useForm } from 'react-hook-form';
-import { useTranslation } from '@documenso/lib/i18n/client';
+
 
 import { getBoundingClientRect } from '@documenso/lib/client-only/get-bounding-client-rect';
 import { useDocumentElement } from '@documenso/lib/client-only/hooks/use-document-element';

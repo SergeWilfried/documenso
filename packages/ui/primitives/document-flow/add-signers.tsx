@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'framer-motion';
 import { BadgeCheck, Copy, Eye, PencilLine, Plus, Trash } from 'lucide-react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
-import { useTranslation } from '@documenso/lib/i18n/client';
+
 
 import { useLimits } from '@documenso/ee/server-only/limits/provider/client';
 import { nanoid } from '@documenso/lib/universal/id';

@@ -1,10 +1,10 @@
 import { Caveat } from 'next/font/google';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-
 import { ArrowRight } from 'lucide-react';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { redis } from '@documenso/lib/server-only/redis';
 import { stripe } from '@documenso/lib/server-only/stripe';
 import { prisma } from '@documenso/prisma';
@@ -33,6 +33,7 @@ export default async function ClaimedPlanPage({ searchParams = {} }: ClaimedPlan
   if (typeof sessionId !== 'string') {
     redirect('/');
   }
+  const { t } = await createTranslation('marketing');
 
   const session = await stripe.checkout.sessions.retrieve(sessionId);
   const customerId = typeof session.customer === 'string' ? session.customer : session.customer?.id;

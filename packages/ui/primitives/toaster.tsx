@@ -9,7 +9,7 @@ import {
   ToastViewport,
 } from './toast';
 import { useToast } from './use-toast';
-import { useTranslation } from '@documenso/lib/i18n/client';
+
 
 export function Toaster() {
   const { toasts } = useToast();
