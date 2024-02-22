@@ -1,11 +1,17 @@
 {
   "email-is-required": "Email is required",
   "invalid-email-address": "Invalid email address",
+  "please-enter-a-valid-email": "Please enter a valid email.",
+  "please-enter-a-valid-name": "Please enter a valid name.",
   "please-enter-a-valid-url": "Please enter a valid URL",
   "signers-must-have-unique-emails": "Signers must have unique emails",
+  "team-name-must-be-at-least-3-characters-long": "Team name must be at least 3 characters long.",
+  "team-name-must-not-exceed-30-characters": "Team name must not exceed 30 characters.",
+  "team-url-can-only-contain-letters-numbers-dashes-and-underscores": "Team URL can only contain letters, numbers, dashes and underscores.",
   "team-url-cannot-contain-consecutive-dashes-or-underscores": "Team URL cannot contain consecutive dashes or underscores.",
   "team-url-cannot-start-or-end-with-dashes-or-underscores": "Team URL cannot start or end with dashes or underscores.",
   "team-url-must-be-at-least-3-characters-long": "Team URL must be at least 3 characters long.",
   "team-url-must-not-exceed-30-characters": "Team URL must not exceed 30 characters.",
+  "this-url-is-already-in-use": "This URL is already in use.",
   "title-cant-be-empty": "Title can't be empty"
 }
