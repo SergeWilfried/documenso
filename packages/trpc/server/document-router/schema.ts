@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { URL_REGEX } from '@documenso/lib/constants/url-regex';
 import { DocumentStatus, FieldType, RecipientRole } from '@documenso/prisma/client';

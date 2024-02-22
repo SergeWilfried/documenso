@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 // Not proud of the below but it's a way to deal with Infinity when returning JSON.
 export const ZLimitsSchema = z.object({

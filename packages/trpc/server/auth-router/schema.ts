@@ -1,5 +1,7 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
+import { createTranslation } from '@documenso/lib/i18n/server';
 
+const {t} = await createTranslation('common');
 export const ZCurrentPasswordSchema = z
   .string()
   .min(6, { message: 'Must be at least 6 characters in length' })

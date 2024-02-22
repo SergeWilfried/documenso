@@ -1,1 +1,11 @@
-{}
+{
+  "email-is-required": "",
+  "invalid-email-address": "",
+  "please-enter-a-valid-url": "",
+  "signers-must-have-unique-emails": "",
+  "team-url-cannot-contain-consecutive-dashes-or-underscores": "",
+  "team-url-cannot-start-or-end-with-dashes-or-underscores": "",
+  "team-url-must-be-at-least-3-characters-long": "",
+  "team-url-must-not-exceed-30-characters": "",
+  "title-cant-be-empty": ""
+}

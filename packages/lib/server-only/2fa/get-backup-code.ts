@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { User } from '@documenso/prisma/client';
 

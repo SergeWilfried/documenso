@@ -1,7 +1,7 @@
 import type { InitOptions } from 'i18next';
 import translationEn from 'zod-i18n-map/locales/en/zod.json';
 import translationFr from 'zod-i18n-map/locales/fr/zod.json';
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 import { zodI18nMap } from 'zod-i18n-map';
 export const FALLBACK_LOCALE = 'en';
 export const supportedLocales = ['en', 'zh-CN', 'sv'] as const;

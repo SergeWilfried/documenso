@@ -1,4 +1,5 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
+import { createTranslation } from '@documenso/lib/i18n/server';
 
 import { PROTECTED_TEAM_URLS } from '@documenso/lib/constants/teams';
 import { TeamMemberRole } from '@documenso/prisma/client';
@@ -8,6 +9,9 @@ const GenericFindQuerySchema = z.object({
   page: z.number().optional(),
   perPage: z.number().optional(),
 });
+
+const {t} = await createTranslation('common');
+
 
 /**
  * Restrict team URLs schema.
@@ -27,11 +31,11 @@ const GenericFindQuerySchema = z.object({
 export const ZTeamUrlSchema = z
   .string()
   .trim()
-  .min(3, { message: 'Team URL must be at least 3 characters long.' })
-  .max(30, { message: 'Team URL must not exceed 30 characters.' })
+  .min(3, { message: t('team-url-must-be-at-least-3-characters-long') })
+  .max(30, { message: t('team-url-must-not-exceed-30-characters') })
   .toLowerCase()
-  .regex(/^[a-z0-9].*[^_-]$/, 'Team URL cannot start or end with dashes or underscores.')
-  .regex(/^(?!.*[-_]{2})/, 'Team URL cannot contain consecutive dashes or underscores.')
+  .regex(/^[a-z0-9].*[^_-]$/, t('team-url-cannot-start-or-end-with-dashes-or-underscores'))
+  .regex(/^(?!.*[-_]{2})/, t('team-url-cannot-contain-consecutive-dashes-or-underscores'))
   .regex(
     /^[a-z0-9]+(?:[-_][a-z0-9]+)*$/,
     'Team URL can only contain letters, numbers, dashes and underscores.',

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { DOCUMENSO_ENCRYPTION_SECONDARY_KEY } from '@documenso/lib/constants/crypto';
 import { symmetricEncrypt } from '@documenso/lib/universal/crypto';

@@ -1,4 +1,7 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
+import { createTranslation } from '@documenso/lib/i18n/server';
+
+const {t} = await createTranslation('common');
 
 import { RecipientRole } from '@documenso/prisma/client';
 
