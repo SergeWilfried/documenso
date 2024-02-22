@@ -1,1 +1,12 @@
-{}
+{
+  "password-should-not-be-common-or-based-on-personal-information": "Password should not be common or based on personal information",
+  "please-enter-a-valid-name": "Please enter a valid name.",
+  "sign-here": "Sign Here",
+  "signing-up": "Signing up...",
+  "you-must-enter": "You must enter {{confirmTransferMessage}} to proceed",
+  "signature-pad-cannot-be-empty": "Signature pad cannot be empty",
+  "transfer-to-message": "transfer {{teamName}}",
+  "delete-message": "transfer {{teamName}}",
+  "members-must-have-unique-emails": "Members must have unique emails",
+  "we-need-your-signature-to-sign-documents": "We need your signature to sign documents"
+}

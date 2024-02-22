@@ -26,15 +26,16 @@ import { Input } from '@documenso/ui/primitives/input';
 import { PasswordInput } from '@documenso/ui/primitives/password-input';
 import { SignaturePad } from '@documenso/ui/primitives/signature-pad';
 import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 const SIGN_UP_REDIRECT_PATH = '/documents';
 
 export const ZSignUpFormSchema = z
   .object({
-    name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
+    name: z.string().trim().min(1, { message: 'please-enter-a-valid-name' }),
     email: z.string().email().min(1),
     password: ZPasswordSchema,
-    signature: z.string().min(1, { message: 'We need your signature to sign documents' }),
+    signature: z.string().min(1, { message: 'we-need-your-signature-to-sign-documents' }),
   })
   .refine(
     (data) => {
@@ -42,7 +43,7 @@ export const ZSignUpFormSchema = z
       return !password.includes(name) && !password.includes(email.split('@')[0]);
     },
     {
-      message: 'Password should not be common or based on personal information',
+      message: 'password-should-not-be-common-or-based-on-personal-information',
     },
   );
 
@@ -58,6 +59,7 @@ export const SignUpForm = ({ className, initialEmail, isGoogleSSOEnabled }: Sign
   const { toast } = useToast();
   const analytics = useAnalytics();
   const router = useRouter();
+  const { t } = useTranslation('web');
 
   const form = useForm<TSignUpFormSchema>({
     values: {
@@ -175,7 +177,7 @@ export const SignUpForm = ({ className, initialEmail, isGoogleSSOEnabled }: Sign
             name="signature"
             render={({ field: { onChange } }) => (
               <FormItem>
-                <FormLabel>Sign Here</FormLabel>
+                <FormLabel>{t('sign-here')}</FormLabel>
                 <FormControl>
                   <SignaturePad
                     className="h-36 w-full"
@@ -197,7 +199,7 @@ export const SignUpForm = ({ className, initialEmail, isGoogleSSOEnabled }: Sign
           loading={isSubmitting}
           className="dark:bg-documenso dark:hover:opacity-90"
         >
-          {isSubmitting ? 'Signing up...' : 'Sign Up'}
+          {isSubmitting ? {t('signing-up')} : 'Sign Up'}
         </Button>
 
         {isGoogleSSOEnabled && (

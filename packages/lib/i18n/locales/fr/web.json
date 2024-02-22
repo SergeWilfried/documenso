@@ -1,1 +1,11 @@
-{}
+{
+  "password-should-not-be-common-or-based-on-personal-information": "",
+  "please-enter-a-valid-name": "",
+  "sign-here": "",
+  "signing-up": "",
+  "we-need-your-signature-to-sign-documents": "",
+  "signature-pad-cannot-be-empty": "",
+  "you-must-enter": "",
+  "delete-message":"",
+  "members-must-have-unique-emails": ""
+}

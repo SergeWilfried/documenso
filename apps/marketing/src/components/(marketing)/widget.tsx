@@ -34,8 +34,10 @@ import { FormErrorMessage } from '../form/form-error-message';
 
 const ZWidgetFormSchema = z
   .object({
-    email: z.string().email({ message: 'Please enter a valid email address.' }),
-    name: z.string().trim().min(3, { message: 'Please enter a valid name.' }),
+    email: z.string().email({ message: 'please-enter-a-valid-email-address'}),
+    name: z
+    .string()
+    .trim().min(3, { message: 'please-enter-a-valid-name' }),
   })
   .and(
     z.union([
@@ -150,7 +152,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
       const planId = env('NEXT_PUBLIC_STRIPE_COMMUNITY_PLAN_MONTHLY_PRICE_ID');
 
       if (!planId) {
-        throw new Error('No plan ID found.');
+        throw new Error(t('no-plan-id-found'));
       }
 
       const claimPlanInput = signatureDataUrl
@@ -316,7 +318,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
             <div className="flex items-center justify-between">
               <p className="text-muted-foreground text-xs">
-                {isValid ? t('ready-for-signing') : `${stepsRemaining} step(s) until signed`}
+                {isValid ? t('ready-for-signing') : t('steps-remaining-step-s-until-signed-singular', {count: steps})}
               </p>
 
               <p className="text-muted-foreground block text-xs md:hidden">

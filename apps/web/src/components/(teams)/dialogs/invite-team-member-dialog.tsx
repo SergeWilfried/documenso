@@ -40,6 +40,7 @@ import {
   SelectValue,
 } from '@documenso/ui/primitives/select';
 import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type InviteTeamMembersDialogProps = {
   currentUserTeamRole: TeamMemberRole;
@@ -58,7 +59,7 @@ const ZInviteTeamMembersFormSchema = z
       return new Set(emails).size === emails.length;
     },
     // Dirty hack to handle errors when .root is populated for an array type
-    { message: 'Members must have unique emails', path: ['members__root'] },
+    { message: 'members-must-have-unique-emails', path: ['members__root'] },
   );
 
 type TInviteTeamMembersFormSchema = z.infer<typeof ZInviteTeamMembersFormSchema>;
@@ -70,7 +71,7 @@ export const InviteTeamMembersDialog = ({
   ...props
 }: InviteTeamMembersDialogProps) => {
   const [open, setOpen] = useState(false);
-
+  const { t } = useTranslation('web');
   const { toast } = useToast();
 
   const form = useForm<TInviteTeamMembersFormSchema>({

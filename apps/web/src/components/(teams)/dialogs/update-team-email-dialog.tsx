@@ -38,7 +38,7 @@ export type UpdateTeamEmailDialogProps = {
 } & Omit<DialogPrimitive.DialogProps, 'children'>;
 
 const ZUpdateTeamEmailFormSchema = z.object({
-  name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
+  name: z.string().trim().min(1, { message: 'please-enter-a-valid-name' }),
 });
 
 type TUpdateTeamEmailFormSchema = z.infer<typeof ZUpdateTeamEmailFormSchema>;

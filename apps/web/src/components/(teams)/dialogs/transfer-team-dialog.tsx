@@ -39,6 +39,7 @@ import {
   SelectValue,
 } from '@documenso/ui/primitives/select';
 import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type TransferTeamDialogProps = {
   teamId: number;
@@ -55,7 +56,7 @@ export const TransferTeamDialog = ({
 }: TransferTeamDialogProps) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-
+  const { t } = useTranslation('web');
   const { toast } = useToast();
 
   const { mutateAsync: requestTeamOwnershipTransfer } =
@@ -70,11 +71,11 @@ export const TransferTeamDialog = ({
     teamId,
   });
 
-  const confirmTransferMessage = `transfer ${teamName}`;
+  const confirmTransferMessage = t(`transfer-to-message`, {teamName});
 
   const ZTransferTeamFormSchema = z.object({
     teamName: z.literal(confirmTransferMessage, {
-      errorMap: () => ({ message: `You must enter '${confirmTransferMessage}' to proceed` }),
+      errorMap: () => ({ message: t(`you-must-enter`, {confirmTransferMessage})}),
     }),
     newOwnerUserId: z.string(),
     clearPaymentMethods: z.boolean(),

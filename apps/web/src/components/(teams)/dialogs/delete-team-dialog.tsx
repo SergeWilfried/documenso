@@ -31,6 +31,7 @@ import {
 import { Input } from '@documenso/ui/primitives/input';
 import type { Toast } from '@documenso/ui/primitives/use-toast';
 import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type DeleteTeamDialogProps = {
   teamId: number;
@@ -41,14 +42,14 @@ export type DeleteTeamDialogProps = {
 export const DeleteTeamDialog = ({ trigger, teamId, teamName }: DeleteTeamDialogProps) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-
+  const { t } = useTranslation('web');
   const { toast } = useToast();
 
-  const deleteMessage = `delete ${teamName}`;
+  const deleteMessage = t(`delete-message`, {teamName});
 
   const ZDeleteTeamFormSchema = z.object({
     teamName: z.literal(deleteMessage, {
-      errorMap: () => ({ message: `You must enter '${deleteMessage}' to proceed` }),
+      errorMap: () => ({ message: t(`you-must-enter`, {deleteMessage})}),
     }),
   });
 
