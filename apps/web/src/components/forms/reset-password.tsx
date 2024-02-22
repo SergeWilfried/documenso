@@ -21,6 +21,7 @@ import {
 } from '@documenso/ui/primitives/form/form';
 import { PasswordInput } from '@documenso/ui/primitives/password-input';
 import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export const ZResetPasswordFormSchema = z
   .object({
@@ -29,7 +30,7 @@ export const ZResetPasswordFormSchema = z
   })
   .refine((data) => data.password === data.repeatedPassword, {
     path: ['repeatedPassword'],
-    message: "Passwords don't match",
+    message: 'passwords-dont-match',
   });
 
 export type TResetPasswordFormSchema = z.infer<typeof ZResetPasswordFormSchema>;
@@ -41,6 +42,7 @@ export type ResetPasswordFormProps = {
 
 export const ResetPasswordForm = ({ className, token }: ResetPasswordFormProps) => {
   const router = useRouter();
+  const { t } = useTranslation('web');
 
   const { toast } = useToast();
 

@@ -1,12 +1,16 @@
 {
-  "password-should-not-be-common-or-based-on-personal-information": "Password should not be common or based on personal information",
-  "please-enter-a-valid-name": "Please enter a valid name.",
-  "sign-here": "Sign Here",
-  "signing-up": "Signing up...",
-  "you-must-enter": "You must enter {{confirmTransferMessage}} to proceed",
-  "signature-pad-cannot-be-empty": "Signature pad cannot be empty",
-  "transfer-to-message": "transfer {{teamName}}",
+  "current-password": "Current Password",
   "delete-message": "transfer {{teamName}}",
   "members-must-have-unique-emails": "Members must have unique emails",
-  "we-need-your-signature-to-sign-documents": "We need your signature to sign documents"
+  "password": "Password",
+  "password-should-not-be-common-or-based-on-personal-information": "Password should not be common or based on personal information",
+  "passwords-dont-match": "Passwords don't match",
+  "please-enter-a-valid-name": "Please enter a valid name.",
+  "please-enter-a-valid-url": "Please enter a valid URL",
+  "sign-here": "Sign Here",
+  "signature-pad-cannot-be-empty": "Signature pad cannot be empty",
+  "signing-up": "Signing up...",
+  "transfer-to-message": "transfer {{teamName}}",
+  "we-need-your-signature-to-sign-documents": "We need your signature to sign documents",
+  "you-must-enter": "You must enter {{confirmTransferMessage}} to proceed"
 }
