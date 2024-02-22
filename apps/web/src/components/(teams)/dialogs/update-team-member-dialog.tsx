@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 import { TEAM_MEMBER_ROLE_HIERARCHY, TEAM_MEMBER_ROLE_MAP } from '@documenso/lib/constants/teams';
+import { z } from '@documenso/lib/i18n/settings';
 import { isTeamRoleWithinUserHierarchy } from '@documenso/lib/utils/teams';
 import { TeamMemberRole } from '@documenso/prisma/client';
 import { trpc } from '@documenso/trpc/react';

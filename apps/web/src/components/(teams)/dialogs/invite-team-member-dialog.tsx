@@ -6,9 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Mail, PlusCircle, Trash } from 'lucide-react';
 import { useFieldArray, useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 import { TEAM_MEMBER_ROLE_HIERARCHY, TEAM_MEMBER_ROLE_MAP } from '@documenso/lib/constants/teams';
+import { z } from '@documenso/lib/i18n/settings';
 import { TeamMemberRole } from '@documenso/prisma/client';
 import { trpc } from '@documenso/trpc/react';
 import { ZCreateTeamMemberInvitesMutationSchema } from '@documenso/trpc/server/team-router/schema';

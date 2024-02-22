@@ -7,8 +7,8 @@ import { flushSync } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';
 import { renderSVG } from 'uqr';
-import { z } from 'zod';
 
+import { z } from '@documenso/lib/i18n/settings';
 import { trpc } from '@documenso/trpc/react';
 import { Button } from '@documenso/ui/primitives/button';
 import {
