@@ -3,10 +3,10 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { useIsMounted } from '@documenso/lib/client-only/hooks/use-is-mounted';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { parseToIntegerArray } from '@documenso/lib/utils/params';
 import { trpc } from '@documenso/trpc/react';
 import { MultiSelectCombobox } from '@documenso/ui/primitives/multi-select-combobox';
-import { useTranslation } from '@documenso/lib/i18n/client';
 
 type DataTableSenderFilterProps = {
   teamId: number;
