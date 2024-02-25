@@ -83,7 +83,7 @@ export const UploadDocument = ({ className, team }: UploadDocumentProps) => {
         timestamp: new Date().toISOString(),
       });
 
-      router.push(`${formatDocumentsPath(team?.url)}/${id}`);
+      router.push(`${formatDocumentsPath(team?.url)}/${id}/edit`);
     } catch (error) {
       console.error(error);
 
@@ -105,11 +105,6 @@ export const UploadDocument = ({ className, team }: UploadDocumentProps) => {
     }
   };
 
-  const isSmallVerticalScreen = useMemo(
-    () => typeof window !== 'undefined' && window.innerHeight < 800,
-    [],
-  );
-
   const onFileDropRejected = () => {
     toast({
       title: 'Your document failed to upload.',
@@ -122,7 +117,7 @@ export const UploadDocument = ({ className, team }: UploadDocumentProps) => {
   return (
     <div className={cn('relative', className)}>
       <DocumentDropzone
-        className={`${isSmallVerticalScreen ? 'min-h-[50vh]' : 'min-h-[40vh]'}`}
+        className="h-[min(400px,50vh)]"
         disabled={remaining.documents === 0 || !session?.user.emailVerified}
         disabledMessage={disabledMessage}
         onDrop={onFileDrop}

@@ -9,6 +9,7 @@ export const ZAddSignatureFormSchema = z.object({
     .min(1, { message: t('email-is-required') })
     .email({ message: t('invalid-email-address') }),
   name: z.string(),
+  customText: z.string(),
   signature: z.string(),
 });
 

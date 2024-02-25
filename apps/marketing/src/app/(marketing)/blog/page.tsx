@@ -7,6 +7,7 @@ import { createTranslation } from '@documenso/lib/i18n/server';
 export const metadata: Metadata = {
   title: 'Blog',
 };
+
 export default async function BlogPage() {
   const { t } = await createTranslation('marketing');
 
