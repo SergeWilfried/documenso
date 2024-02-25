@@ -118,6 +118,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
           <Button className="mt-6 rounded-full text-base" asChild>
             <Link href={`${NEXT_PUBLIC_WEBAPP_URL()}/signup`}>{t('signup-now')}</Link>
+
           </Button>
 
           <div className="mt-8 flex w-full flex-col divide-y">

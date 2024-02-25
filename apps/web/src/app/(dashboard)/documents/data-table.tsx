@@ -67,7 +67,7 @@ export const DocumentsDataTable = ({
           },
           {
             header: t('title'),
-            cell: ({ row }) => <DataTableTitle row={row.original} />,
+            cell: ({ row }) => <DataTableTitle row={row.original} teamUrl={team?.url} />,
           },
           {
             id: 'sender',
