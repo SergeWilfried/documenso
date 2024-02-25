@@ -9,7 +9,6 @@ import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next, useTranslation as useTransAlias } from 'react-i18next';
 
 
-
 import { useLocale } from '../client-only/providers/locale';
 import type { Locales } from './settings';
 import { LANGUAGE_COOKIE, getOptions, supportedLocales } from './settings';

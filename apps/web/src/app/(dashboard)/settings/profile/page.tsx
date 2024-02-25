@@ -16,7 +16,10 @@ export default async function ProfileSettingsPage() {
 
   return (
     <div>
-      <SettingsHeader title="Profile" subtitle="Here you can edit your personal details." />
+      <SettingsHeader
+        title={t('profile')}
+        subtitle={t('here-you-can-edit-your-personal-details')}
+      />
 
       <ProfileForm className="max-w-xl" user={user} />
 

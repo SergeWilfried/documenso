@@ -12,6 +12,7 @@ export type DocumentsPageProps = {
 export default async function Documents({ searchParams = {} }: DocumentsPageProps) {
   const page = Number(searchParams.page) || 1;
   const perPage = Number(searchParams.perPage) || 20;
+  const { t } = useTranslation('web');
 
   const results = await findDocuments({
     page,
@@ -20,7 +21,7 @@ export default async function Documents({ searchParams = {} }: DocumentsPageProp
 
   return (
     <div>
-      <h2 className="text-4xl font-semibold">Manage documents</h2>
+      <h2 className="text-4xl font-semibold">{t('manage-documents')}</h2>
       <div className="mt-8">
         <DocumentsDataTable results={results} />
       </div>

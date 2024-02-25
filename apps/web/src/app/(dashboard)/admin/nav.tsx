@@ -14,6 +14,7 @@ export type AdminNavProps = HTMLAttributes<HTMLDivElement>;
 
 export const AdminNav = ({ className, ...props }: AdminNavProps) => {
   const pathname = usePathname();
+  const { t } = useTranslation('web');
 
   return (
     <div
@@ -33,7 +34,7 @@ export const AdminNav = ({ className, ...props }: AdminNavProps) => {
       >
         <Link href="/admin/stats">
           <BarChart3 className="mr-2 h-5 w-5" />
-          Stats
+          {t('stats')}
         </Link>
       </Button>
 
@@ -47,7 +48,7 @@ export const AdminNav = ({ className, ...props }: AdminNavProps) => {
       >
         <Link href="/admin/users">
           <User2 className="mr-2 h-5 w-5" />
-          Users
+          {t('users')}
         </Link>
       </Button>
 
@@ -61,7 +62,7 @@ export const AdminNav = ({ className, ...props }: AdminNavProps) => {
       >
         <Link href="/admin/documents">
           <FileStack className="mr-2 h-5 w-5" />
-          Documents
+          {t('documents')}
         </Link>
       </Button>
 
@@ -75,7 +76,7 @@ export const AdminNav = ({ className, ...props }: AdminNavProps) => {
       >
         <Link href="/admin/subscriptions">
           <Wallet2 className="mr-2 h-5 w-5" />
-          Subscriptions
+          {t('subscriptions')}
         </Link>
       </Button>
 

@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 export default function SettingsSecurityActivityPage() {
   return (
     <div>
-      <h3 className="text-2xl font-semibold">Security activity</h3>
+      <h3 className="text-2xl font-semibold">{t('security-activity')}</h3>
 
       <p className="text-muted-foreground mt-2 text-sm">
-        View all recent security activity related to your account.
+        {t('view-all-recent-security-activity-related-to-your-account')}
       </p>
 
       <hr className="my-4" />

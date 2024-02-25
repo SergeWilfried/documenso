@@ -14,10 +14,14 @@ import { TeamInvitations } from './team-invitations';
 
 export default function TeamsSettingsPage() {
   const { data: teamEmail } = trpc.team.getTeamEmailByEmail.useQuery();
+  const { t } = useTranslation('web');
 
   return (
     <div>
-      <SettingsHeader title="Teams" subtitle="Manage all teams you are currently associated with.">
+      <SettingsHeader
+        title={t('teams')}
+        subtitle={t('manage-all-teams-you-are-currently-associated-with')}
+      >
         <CreateTeamDialog />
       </SettingsHeader>
 

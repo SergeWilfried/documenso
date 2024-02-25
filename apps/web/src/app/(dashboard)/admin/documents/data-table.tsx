@@ -28,6 +28,7 @@ export type DocumentsDataTableProps = {
 
 export const DocumentsDataTable = ({ results }: DocumentsDataTableProps) => {
   const [isPending, startTransition] = useTransition();
+  const { t } = useTranslation('web');
 
   const updateSearchParams = useUpdateSearchParams();
 
@@ -45,12 +46,12 @@ export const DocumentsDataTable = ({ results }: DocumentsDataTableProps) => {
       <DataTable
         columns={[
           {
-            header: 'Created',
+            header: t('created'),
             accessorKey: 'createdAt',
             cell: ({ row }) => <LocaleDate date={row.original.createdAt} />,
           },
           {
-            header: 'Title',
+            header: t('title'),
             accessorKey: 'title',
             cell: ({ row }) => {
               return (
@@ -61,7 +62,7 @@ export const DocumentsDataTable = ({ results }: DocumentsDataTableProps) => {
             },
           },
           {
-            header: 'Owner',
+            header: t('owner'),
             accessorKey: 'owner',
             cell: ({ row }) => {
               const avatarFallbackText = row.original.User.name
@@ -96,12 +97,12 @@ export const DocumentsDataTable = ({ results }: DocumentsDataTableProps) => {
             },
           },
           {
-            header: 'Last updated',
+            header: t('last-updated'),
             accessorKey: 'updatedAt',
             cell: ({ row }) => <LocaleDate date={row.original.updatedAt} />,
           },
           {
-            header: 'Status',
+            header: t('status'),
             accessorKey: 'status',
             cell: ({ row }) => <DocumentStatus status={row.original.status} />,
           },

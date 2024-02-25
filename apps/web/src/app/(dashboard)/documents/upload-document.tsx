@@ -45,12 +45,12 @@ export const UploadDocument = ({ className, team }: UploadDocumentProps) => {
   const disabledMessage = useMemo(() => {
     if (remaining.documents === 0) {
       return team
-        ? 'Document upload disabled due to unpaid invoices'
-        : 'You have reached your document limit.';
+        ? t('document-upload-disabled-due-to-unpaid-invoices')
+        : t('web.you-have-reached-your-document-limit');
     }
 
     if (!session?.user.emailVerified) {
-      return 'Verify your email to upload documents.';
+      return t('verify-your-email-to-upload-documents');
     }
   }, [remaining.documents, session?.user.emailVerified, team]);
 
@@ -72,8 +72,8 @@ export const UploadDocument = ({ className, team }: UploadDocumentProps) => {
       });
 
       toast({
-        title: 'Document uploaded',
-        description: 'Your document has been uploaded successfully.',
+        title: t('document-uploaded'),
+        description: t('your-document-has-been-uploaded-successfully'),
         duration: 5000,
       });
 
@@ -89,14 +89,14 @@ export const UploadDocument = ({ className, team }: UploadDocumentProps) => {
 
       if (error instanceof TRPCClientError) {
         toast({
-          title: 'Error',
+          title: t('error'),
           description: error.message,
           variant: 'destructive',
         });
       } else {
         toast({
-          title: 'Error',
-          description: 'An error occurred while uploading your document.',
+          title: t('error'),
+          description: t('an-error-occurred-while-uploading-your-document'),
           variant: 'destructive',
         });
       }
@@ -107,8 +107,10 @@ export const UploadDocument = ({ className, team }: UploadDocumentProps) => {
 
   const onFileDropRejected = () => {
     toast({
-      title: 'Your document failed to upload.',
-      description: `File cannot be larger than ${APP_DOCUMENT_UPLOAD_SIZE_LIMIT}MB`,
+      title: t('your-document-failed-to-upload'),
+      description: t('file-cannot-be-larger-than_upload_size_limit-mb', {
+        size: APP_DOCUMENT_UPLOAD_SIZE_LIMIT,
+      }),
       duration: 5000,
       variant: 'destructive',
     });
@@ -129,7 +131,10 @@ export const UploadDocument = ({ className, team }: UploadDocumentProps) => {
           remaining.documents > 0 &&
           Number.isFinite(remaining.documents) && (
             <p className="text-muted-foreground/60 text-xs">
-              {remaining.documents} of {quota.documents} documents remaining this month.
+              {t('documents-remaining-this-month', {
+                remaining: remaining.documents,
+                total: quota.documents,
+              })}
             </p>
           )}
       </div>
@@ -144,18 +149,18 @@ export const UploadDocument = ({ className, team }: UploadDocumentProps) => {
         <div className="bg-background/60 absolute inset-0 flex items-center justify-center rounded-lg backdrop-blur-sm">
           <div className="text-center">
             <h2 className="text-muted-foreground/80 text-xl font-semibold">
-              You have reached your document limit.
+              {t('you-have-reached-your-document-limit')}
             </h2>
 
             <p className="text-muted-foreground/60 mt-2 text-sm">
-              You can upload up to {quota.documents} documents per month on your current plan.
+              {t('you-can-upload-up-to', { count: quota.documents })}
             </p>
 
             <Link
               className="text-primary hover:text-primary/80 mt-6 block font-medium"
               href="/settings/billing"
             >
-              Upgrade your account to upload more documents.
+              {t('upgrade-your-account-to-upload-more-documents')}
             </Link>
           </div>
         </div>

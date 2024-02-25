@@ -23,25 +23,24 @@ export type TeamEmailUsageProps = {
 
 export const TeamEmailUsage = ({ teamEmail }: TeamEmailUsageProps) => {
   const [open, setOpen] = useState(false);
-
+  const { t } = useTranslation('web');
   const { toast } = useToast();
 
   const { mutateAsync: deleteTeamEmail, isLoading: isDeletingTeamEmail } =
     trpc.team.deleteTeamEmail.useMutation({
       onSuccess: () => {
         toast({
-          title: 'Success',
-          description: 'You have successfully revoked access.',
+          title: t('success'),
+          description: t('you-have-successfully-revoked-access'),
           duration: 5000,
         });
       },
       onError: () => {
         toast({
-          title: 'Something went wrong',
+          title: t('something-went-wrong'),
           variant: 'destructive',
           duration: 10000,
-          description:
-            'We encountered an unknown error while attempting to revoke access. Please try again or contact support.',
+          description: t('we-encountered-an-unknown-error-while-revoking'),
         });
       },
     });
@@ -49,43 +48,43 @@ export const TeamEmailUsage = ({ teamEmail }: TeamEmailUsageProps) => {
   return (
     <Alert variant="neutral" className="flex flex-row items-center justify-between p-6">
       <div>
-        <AlertTitle className="mb-0">Team Email</AlertTitle>
+        <AlertTitle className="mb-0">{t('team-email')}</AlertTitle>
         <AlertDescription>
           <p>
-            Your email is currently being used by team{' '}
+            {t('your-email-is-currently-being-used-by-team')}{' '}
             <span className="font-semibold">{teamEmail.team.name}</span> ({teamEmail.team.url}
             ).
           </p>
 
-          <p className="mt-1">They have permission on your behalf to:</p>
+          <p className="mt-1">{t('they-have-permission-on-your-behalf-to')}</p>
 
           <ul className="mt-0.5 list-inside list-disc">
-            <li>Display your name and email in documents</li>
-            <li>View all documents sent to your account</li>
+            <li>{t('display-your-name-and-email-in-documents')}</li>
+            <li>{t('view-all-documents-sent-to-your-account')}</li>
           </ul>
         </AlertDescription>
       </div>
 
       <Dialog open={open} onOpenChange={(value) => !isDeletingTeamEmail && setOpen(value)}>
         <DialogTrigger asChild>
-          <Button variant="destructive">Revoke access</Button>
+          <Button variant="destructive">{t('revoke-access')}</Button>
         </DialogTrigger>
 
         <DialogContent position="center">
           <DialogHeader>
-            <DialogTitle>Are you sure?</DialogTitle>
+            <DialogTitle>{t('are-you-sure')}</DialogTitle>
 
             <DialogDescription className="mt-4">
-              You are about to revoke access for team{' '}
-              <span className="font-semibold">{teamEmail.team.name}</span> ({teamEmail.team.url}) to
-              use your email.
+              {t('you-are-about-to-revoke-access-for-team')}{' '}
+              <span className="font-semibold">{teamEmail.team.name}</span> ({teamEmail.team.url}
+              {t('to-use-your-email')}
             </DialogDescription>
           </DialogHeader>
 
           <fieldset disabled={isDeletingTeamEmail}>
             <DialogFooter>
               <Button type="button" variant="secondary" onClick={() => setOpen(false)}>
-                Cancel
+                {t('cancel')}
               </Button>
 
               <Button
@@ -94,7 +93,7 @@ export const TeamEmailUsage = ({ teamEmail }: TeamEmailUsageProps) => {
                 loading={isDeletingTeamEmail}
                 onClick={async () => deleteTeamEmail({ teamId: teamEmail.teamId })}
               >
-                Revoke
+                {t('revoke')}
               </Button>
             </DialogFooter>
           </fieldset>

@@ -26,7 +26,7 @@ import {
 import { Input } from '@documenso/ui/primitives/input';
 import { SignaturePad } from '@documenso/ui/primitives/signature-pad';
 import { useToast } from '@documenso/ui/primitives/use-toast';
-
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { claimPlan } from '~/api/claim-plan/fetcher';
 
 import { STEP } from '../constants';
@@ -324,6 +324,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
               <p className="text-muted-foreground block text-xs md:hidden">
                 {t('minimise-contract')}
               </p>
+
             </div>
 
             <div className="bg-background relative mt-2.5 h-[2px] w-full">
@@ -407,6 +408,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
             <strong>{t('non-legally-binding-but-heartfelt-way')}</strong>. <br></br>
             <br></br>
             {t('you-also-unlock-the-option')}
+
           </DialogDescription>
 
           <SignaturePad

@@ -118,7 +118,6 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
           <Button className="mt-6 rounded-full text-base" asChild>
             <Link target="_blank" href={`${NEXT_PUBLIC_WEBAPP_URL()}/signup`}>{t('signup-now')}</Link>
-
           </Button>
 
           <div className="mt-8 flex w-full flex-col divide-y">
@@ -135,9 +134,9 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
             <p className="text-foreground py-4">
               <strong>
                 {' '}
-                <a href="https://documenso.com/blog/early-adopters" target="_blank">
-                  {t('includes-all-upcoming-features')}
+                <a href="https://documenso.com/blog/early-adopters" rel="noreferrer" target="_blank">
 
+                  {t('includes-all-upcoming-features')}
                 </a>
               </strong>
             </p>

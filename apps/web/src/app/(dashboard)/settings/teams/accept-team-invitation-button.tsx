@@ -10,7 +10,7 @@ export type AcceptTeamInvitationButtonProps = {
 
 export const AcceptTeamInvitationButton = ({ teamId }: AcceptTeamInvitationButtonProps) => {
   const { toast } = useToast();
-
+  const { t } = useTranslation('web');
   const {
     mutateAsync: acceptTeamInvitation,
     isLoading,
@@ -18,17 +18,17 @@ export const AcceptTeamInvitationButton = ({ teamId }: AcceptTeamInvitationButto
   } = trpc.team.acceptTeamInvitation.useMutation({
     onSuccess: () => {
       toast({
-        title: 'Success',
-        description: 'Accepted team invitation',
+        title: t('success'),
+        description: t('accepted-team-invitation'),
         duration: 5000,
       });
     },
     onError: () => {
       toast({
-        title: 'Something went wrong',
+        title: t('something-went-wrong'),
         variant: 'destructive',
         duration: 10000,
-        description: 'Unable to join this team at this time.',
+        description: t('unable-to-join-this-team-at-this-time'),
       });
     },
   });
@@ -39,7 +39,7 @@ export const AcceptTeamInvitationButton = ({ teamId }: AcceptTeamInvitationButto
       loading={isLoading}
       disabled={isLoading || isSuccess}
     >
-      Accept
+      {t('accept')}
     </Button>
   );
 };

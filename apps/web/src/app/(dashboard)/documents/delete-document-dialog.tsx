@@ -24,7 +24,7 @@ type DeleteDraftDocumentDialogProps = {
   documentTitle: string;
 };
 
-export const DeleteDocumentDialog = ({
+export const DeleteDocumentDialog = async ({
   id,
   open,
   onOpenChange,
@@ -32,6 +32,7 @@ export const DeleteDocumentDialog = ({
   documentTitle,
 }: DeleteDraftDocumentDialogProps) => {
   const router = useRouter();
+  const { t } = await createTranslation('web');
 
   const { toast } = useToast();
 
@@ -43,8 +44,8 @@ export const DeleteDocumentDialog = ({
       router.refresh();
 
       toast({
-        title: 'Document deleted',
-        description: `"${documentTitle}" has been successfully deleted`,
+        title: t('document-deleted'),
+        description: t('documenttitle-has-been-successfully-deleted', { documentTitle }),
         duration: 5000,
       });
 
@@ -64,8 +65,8 @@ export const DeleteDocumentDialog = ({
       await deleteDocument({ id, status });
     } catch {
       toast({
-        title: 'Something went wrong',
-        description: 'This document could not be deleted at this time. Please try again.',
+        title: t('something-went-wrong'),
+        description: t('this-document-could-not-be-deleted-at-this-time-please-try-again'),
         variant: 'destructive',
         duration: 7500,
       });
@@ -81,12 +82,9 @@ export const DeleteDocumentDialog = ({
     <Dialog open={open} onOpenChange={(value) => !isLoading && onOpenChange(value)}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you sure you want to delete "{documentTitle}"?</DialogTitle>
+          <DialogTitle>{t('are-you-sure-you-want-to-delete', { documentTitle })}</DialogTitle>
 
-          <DialogDescription>
-            Please note that this action is irreversible. Once confirmed, your document will be
-            permanently deleted.
-          </DialogDescription>
+          <DialogDescription>{t('please-note-that-this-action')}</DialogDescription>
         </DialogHeader>
 
         {status !== DocumentStatus.DRAFT && (
@@ -95,7 +93,7 @@ export const DeleteDocumentDialog = ({
               type="text"
               value={inputValue}
               onChange={onInputChange}
-              placeholder="Type 'delete' to confirm"
+              placeholder={t('type-delete-to-confirm')}
             />
           </div>
         )}
@@ -108,7 +106,7 @@ export const DeleteDocumentDialog = ({
               onClick={() => onOpenChange(false)}
               className="flex-1"
             >
-              Cancel
+              {t('cancel')}
             </Button>
 
             <Button
@@ -119,7 +117,7 @@ export const DeleteDocumentDialog = ({
               variant="destructive"
               className="flex-1"
             >
-              Delete
+              {t('delete')}
             </Button>
           </div>
         </DialogFooter>
