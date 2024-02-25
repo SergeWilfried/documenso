@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 export const ZSetupTwoFactorAuthenticationMutationSchema = z.object({
   password: z.string().min(1),

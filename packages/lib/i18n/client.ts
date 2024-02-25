@@ -8,6 +8,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next, useTranslation as useTransAlias } from 'react-i18next';
 
+
 import { useLocale } from '../client-only/providers/locale';
 import type { Locales } from './settings';
 import { LANGUAGE_COOKIE, getOptions, supportedLocales } from './settings';
@@ -32,7 +33,7 @@ void i18next
       // This will automatically update the cookie
       caches: ['cookie'],
     },
-    preload: runsOnServerSide ? supportedLocales : [],
+    preload: runsOnServerSide ? supportedLocales : []
   });
 
 export function useTranslation(ns: string) {

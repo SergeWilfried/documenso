@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 export const ZCreateTemplateMutationSchema = z.object({
   title: z.string().min(1).trim(),

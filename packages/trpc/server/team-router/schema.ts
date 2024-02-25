@@ -1,4 +1,5 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
+import { createTranslation } from '@documenso/lib/i18n/server';
 
 import { PROTECTED_TEAM_URLS } from '@documenso/lib/constants/teams';
 import { TeamMemberRole } from '@documenso/prisma/client';
@@ -9,6 +10,9 @@ const GenericFindQuerySchema = z.object({
   page: z.number().min(1).optional(),
   perPage: z.number().min(1).optional(),
 });
+
+const {t} = await createTranslation('common');
+
 
 /**
  * Restrict team URLs schema.
@@ -28,24 +32,24 @@ const GenericFindQuerySchema = z.object({
 export const ZTeamUrlSchema = z
   .string()
   .trim()
-  .min(3, { message: 'Team URL must be at least 3 characters long.' })
-  .max(30, { message: 'Team URL must not exceed 30 characters.' })
+  .min(3, { message: t('team-url-must-be-at-least-3-characters-long') })
+  .max(30, { message: t('team-url-must-not-exceed-30-characters') })
   .toLowerCase()
-  .regex(/^[a-z0-9].*[^_-]$/, 'Team URL cannot start or end with dashes or underscores.')
-  .regex(/^(?!.*[-_]{2})/, 'Team URL cannot contain consecutive dashes or underscores.')
+  .regex(/^[a-z0-9].*[^_-]$/, t('team-url-cannot-start-or-end-with-dashes-or-underscores'))
+  .regex(/^(?!.*[-_]{2})/, t('team-url-cannot-contain-consecutive-dashes-or-underscores'))
   .regex(
     /^[a-z0-9]+(?:[-_][a-z0-9]+)*$/,
-    'Team URL can only contain letters, numbers, dashes and underscores.',
+    t('team-url-can-only-contain-letters-numbers-dashes-and-underscores'),
   )
   .refine((value) => !PROTECTED_TEAM_URLS.includes(value), {
-    message: 'This URL is already in use.',
+    message: t('this-url-is-already-in-use'),
   });
 
 export const ZTeamNameSchema = z
   .string()
   .trim()
-  .min(3, { message: 'Team name must be at least 3 characters long.' })
-  .max(30, { message: 'Team name must not exceed 30 characters.' });
+  .min(3, { message: t('team-name-must-be-at-least-3-characters-long') })
+  .max(30, { message: t('team-name-must-not-exceed-30-characters') });
 
 export const ZAcceptTeamInvitationMutationSchema = z.object({
   teamId: z.number(),
@@ -62,8 +66,8 @@ export const ZCreateTeamMutationSchema = z.object({
 
 export const ZCreateTeamEmailVerificationMutationSchema = z.object({
   teamId: z.number(),
-  name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
-  email: z.string().trim().email().toLowerCase().min(1, 'Please enter a valid email.'),
+  name: z.string().trim().min(1, { message: t('please-enter-a-valid-name') }),
+  email: z.string().trim().email().toLowerCase().min(1, t('please-enter-a-valid-email')),
 });
 
 export const ZCreateTeamMemberInvitesMutationSchema = z.object({

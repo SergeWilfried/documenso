@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 

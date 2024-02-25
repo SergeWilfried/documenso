@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import type { TFeatureFlagValue } from '@documenso/lib/client-only/providers/feature-flag.types';
 import { ZFeatureFlagValueSchema } from '@documenso/lib/client-only/providers/feature-flag.types';

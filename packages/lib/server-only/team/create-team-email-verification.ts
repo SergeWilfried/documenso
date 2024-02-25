@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';

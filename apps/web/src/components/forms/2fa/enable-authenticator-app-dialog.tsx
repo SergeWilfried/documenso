@@ -4,8 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';
 import { renderSVG } from 'uqr';
-import { z } from 'zod';
 
+import { z } from '@documenso/lib/i18n/settings';
 import { downloadFile } from '@documenso/lib/client-only/download-file';
 import { trpc } from '@documenso/trpc/react';
 import { Button } from '@documenso/ui/primitives/button';

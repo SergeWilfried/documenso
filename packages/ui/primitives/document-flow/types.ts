@@ -1,5 +1,7 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
+import { createTranslation } from '@documenso/lib/i18n/server';
 
+const {t} = await createTranslation('common');
 import { FieldType } from '@documenso/prisma/client';
 
 export const ZDocumentFlowFormSchema = z.object({
@@ -17,7 +19,7 @@ export const ZDocumentFlowFormSchema = z.object({
     .refine((signers) => {
       const emails = signers.map((signer) => signer.email);
       return new Set(emails).size === emails.length;
-    }, 'Signers must have unique emails'),
+    }, t('signers-must-have-unique-emails')),
 
   fields: z.array(
     z.object({

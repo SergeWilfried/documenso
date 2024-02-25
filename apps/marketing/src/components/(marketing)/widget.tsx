@@ -9,8 +9,9 @@ import { Loader } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import { env } from 'next-runtime-env';
 import { Controller, useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
@@ -33,8 +34,10 @@ import { FormErrorMessage } from '../form/form-error-message';
 
 const ZWidgetFormSchema = z
   .object({
-    email: z.string().email({ message: 'Please enter a valid email address.' }),
-    name: z.string().trim().min(3, { message: 'Please enter a valid name.' }),
+    email: z.string().email({ message: 'please-enter-a-valid-email-address'}),
+    name: z
+    .string()
+    .trim().min(3, { message: 'please-enter-a-valid-name' }),
   })
   .and(
     z.union([
@@ -149,7 +152,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
       const planId = env('NEXT_PUBLIC_STRIPE_COMMUNITY_PLAN_MONTHLY_PRICE_ID');
 
       if (!planId) {
-        throw new Error('No plan ID found.');
+        throw new Error(t('no-plan-id-found'));
       }
 
       const claimPlanInput = signatureDataUrl
@@ -315,10 +318,13 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
             <div className="flex items-center justify-between">
               <p className="text-muted-foreground text-xs">
-                {isValid ? t('ready-for-signing') : `${stepsRemaining} step(s) until signed`}
+                {isValid ? t('ready-for-signing') : t('steps-remaining-step-s-until-signed-singular', {count: steps})}
               </p>
 
-              <p className="text-muted-foreground block text-xs md:hidden">{t('minimise-contract')}</p>
+              <p className="text-muted-foreground block text-xs md:hidden">
+                {t('minimise-contract')}
+              </p>
+
             </div>
 
             <div className="bg-background relative mt-2.5 h-[2px] w-full">
@@ -400,7 +406,9 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
           <DialogDescription>
             {t('by-signing-you-signal-your-support-of-montampons-mission-in-a')} <br></br>
             <strong>{t('non-legally-binding-but-heartfelt-way')}</strong>. <br></br>
-            <br></br>{t('you-also-unlock-the-option')}
+            <br></br>
+            {t('you-also-unlock-the-option')}
+
           </DialogDescription>
 
           <SignaturePad
