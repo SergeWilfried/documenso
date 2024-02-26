@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { env } from 'next-runtime-env';
 
 import { IS_GOOGLE_SSO_ENABLED } from '@documenso/lib/constants/auth';
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { decryptSecondaryData } from '@documenso/lib/server-only/crypto/decrypt';
 
 import { SignInForm } from '~/components/forms/signin';
@@ -19,8 +20,9 @@ type SignInPageProps = {
   };
 };
 
-export default function SignInPage({ searchParams }: SignInPageProps) {
+export default async function SignInPage({ searchParams }: SignInPageProps) {
   const NEXT_PUBLIC_DISABLE_SIGNUP = env('NEXT_PUBLIC_DISABLE_SIGNUP');
+  const { t } = await createTranslation('web');
 
   const rawEmail = typeof searchParams.email === 'string' ? searchParams.email : undefined;
   const email = rawEmail ? decryptSecondaryData(rawEmail) : null;
@@ -31,10 +33,10 @@ export default function SignInPage({ searchParams }: SignInPageProps) {
 
   return (
     <div>
-      <h1 className="text-4xl font-semibold">Sign in to your account</h1>
+      <h1 className="text-4xl font-semibold">{t('sign-in-to-your-account')}</h1>
 
       <p className="text-muted-foreground/60 mt-2 text-sm">
-        Welcome back, we are lucky to have you.
+        {t('welcome-back-we-are-lucky-to-have-you')}
       </p>
 
       <SignInForm
@@ -45,9 +47,9 @@ export default function SignInPage({ searchParams }: SignInPageProps) {
 
       {NEXT_PUBLIC_DISABLE_SIGNUP !== 'true' && (
         <p className="text-muted-foreground mt-6 text-center text-sm">
-          Don't have an account?{' '}
+          {t('dont-have-an-account')}{' '}
           <Link href="/signup" className="text-primary duration-200 hover:opacity-70">
-            Sign up
+            {t('sign-up')}
           </Link>
         </p>
       )}
@@ -57,7 +59,7 @@ export default function SignInPage({ searchParams }: SignInPageProps) {
           href="/forgot-password"
           className="text-muted-foreground text-sm duration-200 hover:opacity-70"
         >
-          Forgot your password?
+          {t('forgot-your-password')}
         </Link>
       </p>
     </div>
