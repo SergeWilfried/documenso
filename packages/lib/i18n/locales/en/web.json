@@ -15,7 +15,7 @@
   "signing-up": "Signing up...",
   "transfer-to-message": "transfer {{teamName}}",
   "we-need-your-signature-to-sign-documents": "We need your signature to sign documents",
-  "you-must-enter": "You must enter {{confirmTransferMessage}} to proceed"
+  "you-must-enter": "You must enter {{confirmTransferMessage}} to proceed",
   "404-page-not-found": "404 Page not found",
   "accept": "Accept",
   "accepted-team-invitation": "Accepted team invitation",
