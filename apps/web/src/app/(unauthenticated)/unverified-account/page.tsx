@@ -1,24 +1,23 @@
 import { Mails } from 'lucide-react';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
+
 import { SendConfirmationEmailForm } from '~/components/forms/send-confirmation-email';
 
-export default function UnverifiedAccount() {
+export default async function UnverifiedAccount() {
+  const { t } = await createTranslation('web');
+
   return (
     <div className="flex w-full items-start">
       <div className="mr-4 mt-1 hidden md:block">
         <Mails className="text-primary h-10 w-10" strokeWidth={2} />
       </div>
       <div className="">
-        <h2 className="text-2xl font-bold md:text-4xl">Confirm email</h2>
+        <h2 className="text-2xl font-bold md:text-4xl">{t('confirm-email')}</h2>
 
-        <p className="text-muted-foreground mt-4">
-          To gain access to your account, please confirm your email address by clicking on the
-          confirmation link from your inbox.
-        </p>
+        <p className="text-muted-foreground mt-4">{t('to-gain-access-to-your-account-please')}</p>
 
-        <p className="text-muted-foreground mt-4">
-          If you don't find the confirmation link in your inbox, you can request a new one below.
-        </p>
+        <p className="text-muted-foreground mt-4">{t('if-you-dont-find-the-confirmation-link')}</p>
 
         <SendConfirmationEmailForm />
       </div>

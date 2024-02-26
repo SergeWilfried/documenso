@@ -1,3 +1,4 @@
+import { createTranslation } from '@documenso/lib/i18n/server';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -7,22 +8,23 @@ export const metadata: Metadata = {
   title: 'Forgot Password',
 };
 
-export default function ForgotPasswordPage() {
+export default async function ForgotPasswordPage() {
+  const { t } = await createTranslation('web');
+
   return (
     <div>
-      <h1 className="text-4xl font-semibold">Forgot your password?</h1>
+      <h1 className="text-4xl font-semibold">{t('forgot-your-password')}</h1>
 
       <p className="text-muted-foreground mt-2 text-sm">
-        No worries, it happens! Enter your email and we'll email you a special link to reset your
-        password.
+        {t('no-worries-it-happens-enter-your-email')}
       </p>
 
       <ForgotPasswordForm className="mt-4" />
 
       <p className="text-muted-foreground mt-6 text-center text-sm">
-        Remembered your password?{' '}
+        {t('remembered-your-password')}{' '}
         <Link href="/signin" className="text-primary duration-200 hover:opacity-70">
-          Sign In
+          {t('sign-in')}
         </Link>
       </p>
     </div>
