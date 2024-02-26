@@ -13,6 +13,7 @@ import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-tabl
 
 import { Skeleton } from './skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './table';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type DataTableChildren<TData> = (_table: TTable<TData>) => React.ReactNode;
 
@@ -52,6 +53,7 @@ export function DataTable<TData, TValue>({
   onPaginationChange,
   children,
 }: DataTableProps<TData, TValue>) {
+  const { t } = useTranslation('web');
   const pagination = useMemo<PaginationState>(() => {
     if (currentPage !== undefined && perPage !== undefined) {
       return {
@@ -125,7 +127,7 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 {error.component ?? (
                   <TableCell colSpan={columns.length} className="h-32 text-center">
-                    Something went wrong.
+                    {t('something-went-wrong')}
                   </TableCell>
                 )}
               </TableRow>
@@ -136,15 +138,14 @@ export function DataTable<TData, TValue>({
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-32 text-center">
-                  <p>No results found</p>
+                  <p>{t('no-results-found')}</p>
 
                   {hasFilters && onClearFilters !== undefined && (
                     <button
                       onClick={() => onClearFilters()}
                       className="text-foreground mt-1 text-sm"
                     >
-                      Clear filters
-                    </button>
+{t('clear-filters')}                    </button>
                   )}
                 </TableCell>
               </TableRow>

@@ -7,9 +7,11 @@ import { Button } from '@documenso/ui/primitives/button';
 import DeleteTokenDialog from '~/components/(dashboard)/settings/token/delete-token-dialog';
 import { LocaleDate } from '~/components/formatter/locale-date';
 import { ApiTokenForm } from '~/components/forms/token';
+import { createTranslation } from '@documenso/lib/i18n/server';
 
 export default async function ApiTokensPage() {
   const { user } = await getRequiredServerComponentSession();
+  const { t } = await createTranslation('web');
 
   const tokens = await getUserTokens({ userId: user.id });
 
