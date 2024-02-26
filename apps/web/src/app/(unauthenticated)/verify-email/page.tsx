@@ -3,13 +3,16 @@ import Link from 'next/link';
 
 import { XCircle } from 'lucide-react';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { Button } from '@documenso/ui/primitives/button';
 
 export const metadata: Metadata = {
   title: 'Verify Email',
 };
 
-export default function EmailVerificationWithoutTokenPage() {
+export default async function EmailVerificationWithoutTokenPage() {
+  const { t } = await createTranslation('web');
+
   return (
     <div className="flex w-full items-start">
       <div className="mr-4 mt-1 hidden md:block">
@@ -17,15 +20,16 @@ export default function EmailVerificationWithoutTokenPage() {
       </div>
 
       <div>
-        <h2 className="text-2xl font-bold md:text-4xl">Uh oh! Looks like you're missing a token</h2>
+        <h2 className="text-2xl font-bold md:text-4xl">
+          {t('uh-oh-looks-like-youre-missing-a-token')}
+        </h2>
 
         <p className="text-muted-foreground mt-4">
-          It seems that there is no token provided, if you are trying to verify your email please
-          follow the link in your email.
+          {t('it-seems-that-there-is-no-token-provided')}
         </p>
 
         <Button className="mt-4" asChild>
-          <Link href="/">Go back home</Link>
+          <Link href="/">{t('go-back-home')}</Link>
         </Button>
       </div>
     </div>

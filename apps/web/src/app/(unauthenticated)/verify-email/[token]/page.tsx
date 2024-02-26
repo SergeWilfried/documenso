@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { AlertTriangle, CheckCircle2, XCircle, XOctagon } from 'lucide-react';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { verifyEmail } from '@documenso/lib/server-only/user/verify-email';
 import { Button } from '@documenso/ui/primitives/button';
 
@@ -12,6 +13,7 @@ export type PageProps = {
 };
 
 export default async function VerifyEmailPage({ params: { token } }: PageProps) {
+  const { t } = await createTranslation('web');
   if (!token) {
     return (
       <div className="w-full">
@@ -19,9 +21,9 @@ export default async function VerifyEmailPage({ params: { token } }: PageProps) 
           <XOctagon />
         </div>
 
-        <h2 className="text-4xl font-semibold">No token provided</h2>
+        <h2 className="text-4xl font-semibold">{t('no-token-provided')}</h2>
         <p className="text-muted-foreground mt-2 text-base">
-          It seems that there is no token provided. Please check your email and try again.
+          {t('it-seems-that-there-is-no-token')}
         </p>
       </div>
     );
@@ -37,15 +39,12 @@ export default async function VerifyEmailPage({ params: { token } }: PageProps) 
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold md:text-4xl">Something went wrong</h2>
+          <h2 className="text-2xl font-bold md:text-4xl">{t('something-went-wrong')}</h2>
 
-          <p className="text-muted-foreground mt-4">
-            We were unable to verify your email. If your email is not verified already, please try
-            again.
-          </p>
+          <p className="text-muted-foreground mt-4">{t('we-were-unable-to-verify-your')}</p>
 
           <Button className="mt-4" asChild>
-            <Link href="/">Go back home</Link>
+            <Link href="/">{t('go-back-home')}</Link>
           </Button>
         </div>
       </div>
@@ -60,15 +59,12 @@ export default async function VerifyEmailPage({ params: { token } }: PageProps) 
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold md:text-4xl">Your token has expired!</h2>
+          <h2 className="text-2xl font-bold md:text-4xl">{t('your-token-has-expired')}</h2>
 
-          <p className="text-muted-foreground mt-4">
-            It seems that the provided token has expired. We've just sent you another token, please
-            check your email and try again.
-          </p>
+          <p className="text-muted-foreground mt-4">{t('it-seems-that-the-provided-token')}</p>
 
           <Button className="mt-4" asChild>
-            <Link href="/">Go back home</Link>
+            <Link href="/">{t('go-back-home')}</Link>
           </Button>
         </div>
       </div>
@@ -82,14 +78,12 @@ export default async function VerifyEmailPage({ params: { token } }: PageProps) 
       </div>
 
       <div>
-        <h2 className="text-2xl font-bold md:text-4xl">Email Confirmed!</h2>
+        <h2 className="text-2xl font-bold md:text-4xl">{t('email-confirmed')}</h2>
 
-        <p className="text-muted-foreground mt-4">
-          Your email has been successfully confirmed! You can now use all features of MonTampon.
-        </p>
+        <p className="text-muted-foreground mt-4">{t('your-email-has-been-successfully')}</p>
 
         <Button className="mt-4" asChild>
-          <Link href="/">Go back home</Link>
+          <Link href="/">{t('go-back-home')}</Link>
         </Button>
       </div>
     </div>

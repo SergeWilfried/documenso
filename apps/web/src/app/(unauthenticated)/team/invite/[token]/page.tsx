@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { DateTime } from 'luxon';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { getServerComponentSession } from '@documenso/lib/next-auth/get-server-component-session';
 import { encryptSecondaryData } from '@documenso/lib/server-only/crypto/encrypt';
 import { acceptTeamInvitation } from '@documenso/lib/server-only/team/accept-team-invitation';
@@ -20,6 +21,7 @@ export default async function AcceptInvitationPage({
   params: { token },
 }: AcceptInvitationPageProps) {
   const session = await getServerComponentSession();
+  const { t } = await createTranslation('web');
 
   const teamMemberInvite = await prisma.teamMemberInvite.findUnique({
     where: {
@@ -30,14 +32,14 @@ export default async function AcceptInvitationPage({
   if (!teamMemberInvite) {
     return (
       <div>
-        <h1 className="text-4xl font-semibold">Invalid token</h1>
+        <h1 className="text-4xl font-semibold">{t('invalid-token')}</h1>
 
         <p className="text-muted-foreground mb-4 mt-2 text-sm">
-          This token is invalid or has expired. Please contact your team for a new invitation.
+          {t('this-token-is-invalid-or-has-expired')}
         </p>
 
         <Button asChild>
-          <Link href="/">Return</Link>
+          <Link href="/">{t('return')}</Link>
         </Button>
       </div>
     );
@@ -80,18 +82,18 @@ export default async function AcceptInvitationPage({
   if (!user) {
     return (
       <div>
-        <h1 className="text-4xl font-semibold">Team invitation</h1>
+        <h1 className="text-4xl font-semibold">{t('team-invitation')}</h1>
 
         <p className="text-muted-foreground mt-2 text-sm">
-          You have been invited by <strong>{team.name}</strong> to join their team.
+          {t('you-have-been-invited-by')} <strong>{team.name}</strong> {t('to-join-their-team')}
         </p>
 
         <p className="text-muted-foreground mb-4 mt-1 text-sm">
-          To accept this invitation you must create an account.
+          {t('to-accept-this-invitation-you-must-create-an-account')}
         </p>
 
         <Button asChild>
-          <Link href={`/signup?email=${encodeURIComponent(email)}`}>Create account</Link>
+          <Link href={`/signup?email=${encodeURIComponent(email)}`}>{t('create-account')}</Link>
         </Button>
       </div>
     );
@@ -101,19 +103,20 @@ export default async function AcceptInvitationPage({
 
   return (
     <div>
-      <h1 className="text-4xl font-semibold">Invitation accepted!</h1>
+      <h1 className="text-4xl font-semibold">{t('invitation-accepted')}</h1>
 
       <p className="text-muted-foreground mb-4 mt-2 text-sm">
-        You have accepted an invitation from <strong>{team.name}</strong> to join their team.
+        {t('you-have-accepted-an-invitation-from')} <strong>{team.name}</strong>{' '}
+        {t('to-join-their-team')}
       </p>
 
       {isSessionUserTheInvitedUser ? (
         <Button asChild>
-          <Link href="/">Continue</Link>
+          <Link href="/">{t('continue')}</Link>
         </Button>
       ) : (
         <Button asChild>
-          <Link href={`/signin?email=${encodeURIComponent(email)}`}>Continue to login</Link>
+          <Link href={`/signin?email=${encodeURIComponent(email)}`}>{t('continue-to-login')}</Link>
         </Button>
       )}
     </div>

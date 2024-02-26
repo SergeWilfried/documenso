@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { transferTeamOwnership } from '@documenso/lib/server-only/team/transfer-team-ownership';
 import { isTokenExpired } from '@documenso/lib/utils/token-verification';
 import { prisma } from '@documenso/prisma';
@@ -14,6 +15,8 @@ type VerifyTeamTransferPage = {
 export default async function VerifyTeamTransferPage({
   params: { token },
 }: VerifyTeamTransferPage) {
+  const { t } = await createTranslation('web');
+
   const teamTransferVerification = await prisma.teamTransferVerification.findUnique({
     where: {
       token,
@@ -26,15 +29,14 @@ export default async function VerifyTeamTransferPage({
   if (!teamTransferVerification || isTokenExpired(teamTransferVerification.expiresAt)) {
     return (
       <div>
-        <h1 className="text-4xl font-semibold">Invalid link</h1>
+        <h1 className="text-4xl font-semibold">{t('invalid-link')}</h1>
 
         <p className="text-muted-foreground mb-4 mt-2 text-sm">
-          This link is invalid or has expired. Please contact your team to resend a transfer
-          request.
+          {t('this-link-is-invalid-or-has-expired')}
         </p>
 
         <Button asChild>
-          <Link href="/">Return</Link>
+          <Link href="/">{t('return')}</Link>
         </Button>
       </div>
     );
@@ -54,11 +56,11 @@ export default async function VerifyTeamTransferPage({
   if (isTransferError) {
     return (
       <div>
-        <h1 className="text-4xl font-semibold">Team ownership transfer</h1>
+        <h1 className="text-4xl font-semibold">{t('team-ownership-transfer')}</h1>
 
         <p className="text-muted-foreground mt-2 text-sm">
-          Something went wrong while attempting to transfer the ownership of team{' '}
-          <strong>{team.name}</strong> to your. Please try again later or contact support.
+          {t('something-went-wrong-while')} <strong>{team.name}</strong>{' '}
+          {t('to-your-please-try-again-later-or-contact-support')}
         </p>
       </div>
     );
@@ -66,14 +68,15 @@ export default async function VerifyTeamTransferPage({
 
   return (
     <div>
-      <h1 className="text-4xl font-semibold">Team ownership transferred!</h1>
+      <h1 className="text-4xl font-semibold">{t('team-ownership-transferred')}</h1>
 
       <p className="text-muted-foreground mb-4 mt-2 text-sm">
-        The ownership of team <strong>{team.name}</strong> has been successfully transferred to you.
+        {t('the-ownership-of-team')} <strong>{team.name}</strong>{' '}
+        {t('has-been-successfully-transferred-to-you')}
       </p>
 
       <Button asChild>
-        <Link href={`/t/${team.url}/settings`}>Continue</Link>
+        <Link href={`/t/${team.url}/settings`}>{t('continue')}</Link>
       </Button>
     </div>
   );

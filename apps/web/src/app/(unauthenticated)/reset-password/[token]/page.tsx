@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { getResetTokenValidity } from '@documenso/lib/server-only/user/get-reset-token-validity';
 
 import { ResetPasswordForm } from '~/components/forms/reset-password';
@@ -12,6 +13,8 @@ type ResetPasswordPageProps = {
 };
 
 export default async function ResetPasswordPage({ params: { token } }: ResetPasswordPageProps) {
+  const { t } = await createTranslation('web');
+
   const isValid = await getResetTokenValidity({ token });
 
   if (!isValid) {
@@ -20,16 +23,16 @@ export default async function ResetPasswordPage({ params: { token } }: ResetPass
 
   return (
     <div className="w-full">
-      <h1 className="text-4xl font-semibold">Reset Password</h1>
+      <h1 className="text-4xl font-semibold">{t('reset-password')}</h1>
 
-      <p className="text-muted-foreground mt-2 text-sm">Please choose your new password </p>
+      <p className="text-muted-foreground mt-2 text-sm">{t('please-choose-your-new-password')} </p>
 
       <ResetPasswordForm token={token} className="mt-4" />
 
       <p className="text-muted-foreground mt-6 text-center text-sm">
-        Don't have an account?{' '}
+        {t('dont-have-an-account')}{' '}
         <Link href="/signup" className="text-primary duration-200 hover:opacity-70">
-          Sign up
+          {t('sign-up')}
         </Link>
       </p>
     </div>
