@@ -3,6 +3,7 @@
 import { trpc } from '@documenso/trpc/react';
 import { Button } from '@documenso/ui/primitives/button';
 import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type AcceptTeamInvitationButtonProps = {
   teamId: number;

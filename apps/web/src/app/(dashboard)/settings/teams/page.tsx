@@ -3,6 +3,7 @@
 import { AnimatePresence } from 'framer-motion';
 
 import { trpc } from '@documenso/trpc/react';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { AnimateGenericFadeInOut } from '@documenso/ui/components/animate/animate-generic-fade-in-out';
 
 import { SettingsHeader } from '~/components/(dashboard)/settings/layout/header';

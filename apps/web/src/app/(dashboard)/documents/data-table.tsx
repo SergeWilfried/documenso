@@ -4,7 +4,7 @@ import { useTransition } from 'react';
 
 import { Loader } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { useUpdateSearchParams } from '@documenso/lib/client-only/hooks/use-update-search-params';
 import type { FindResultSet } from '@documenso/lib/types/find-result-set';
 import type { Document, Recipient, Team, User } from '@documenso/prisma/client';

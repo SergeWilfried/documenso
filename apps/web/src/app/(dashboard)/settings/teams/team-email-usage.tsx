@@ -16,6 +16,7 @@ import {
   DialogTrigger,
 } from '@documenso/ui/primitives/dialog';
 import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type TeamEmailUsageProps = {
   teamEmail: TeamEmail & { team: { name: string; url: string } };

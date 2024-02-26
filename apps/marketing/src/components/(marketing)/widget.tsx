@@ -11,7 +11,6 @@ import { env } from 'next-runtime-env';
 import { Controller, useForm } from 'react-hook-form';
 import { z } from '@documenso/lib/i18n/settings';
 
-import { useTranslation } from '@documenso/lib/i18n/client';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import { Card, CardContent } from '@documenso/ui/primitives/card';

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
+import { createTranslation } from '@documenso/lib/i18n/server';
 
 import { DocumentStatus } from '@documenso/prisma/client';
 import { trpc as trpcReact } from '@documenso/trpc/react';
