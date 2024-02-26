@@ -1,3 +1,4 @@
+import { createTranslation } from '@documenso/lib/i18n/server';
 import React from 'react';
 
 import { DesktopNav } from '~/components/(dashboard)/settings/layout/desktop-nav';
@@ -7,7 +8,8 @@ export type DashboardSettingsLayoutProps = {
   children: React.ReactNode;
 };
 
-export default function DashboardSettingsLayout({ children }: DashboardSettingsLayoutProps) {
+export default async function DashboardSettingsLayout({ children }: DashboardSettingsLayoutProps) {
+  const { t } = await createTranslation('web');
   return (
     <div className="mx-auto w-full max-w-screen-xl px-4 md:px-8">
       <h1 className="text-4xl font-semibold">{t('settings')}</h1>

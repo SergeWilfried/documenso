@@ -10,6 +10,7 @@ import { SettingsHeader } from '~/components/(dashboard)/settings/layout/header'
 import { AuthenticatorApp } from '~/components/forms/2fa/authenticator-app';
 import { RecoveryCodes } from '~/components/forms/2fa/recovery-codes';
 import { PasswordForm } from '~/components/forms/password';
+import { createTranslation } from '@documenso/lib/i18n/server';
 
 export const metadata: Metadata = {
   title: 'Security',
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default async function SecuritySettingsPage() {
   const { user } = await getRequiredServerComponentSession();
-
+  const { t } = await createTranslation('web');
   return (
     <div>
       <SettingsHeader
@@ -69,8 +70,8 @@ export default async function SecuritySettingsPage() {
 
           <AlertDescription>
             {
-              (t('to-update-your-password'),
-              { provider: IDENTITY_PROVIDER_NAME[user.identityProvider] })
+              (t('to-update-your-password',
+              { provider: IDENTITY_PROVIDER_NAME[user.identityProvider] }))
             }
           </AlertDescription>
         </Alert>
