@@ -2,6 +2,7 @@
 
 import { signOut } from 'next-auth/react';
 
+import { useTranslation } from '@documenso/lib/i18n/client';
 import type { User } from '@documenso/prisma/client';
 import { TRPCClientError } from '@documenso/trpc/client';
 import { trpc } from '@documenso/trpc/react';
@@ -25,7 +26,7 @@ export type DeleteAccountDialogProps = {
 
 export const DeleteAccountDialog = ({ className, user }: DeleteAccountDialogProps) => {
   const { toast } = useToast();
-
+  const { t } = useTranslation('web');
   const hasTwoFactorAuthentication = user.twoFactorEnabled;
 
   const { mutateAsync: deleteAccount, isLoading: isDeletingAccount } =
@@ -36,8 +37,8 @@ export const DeleteAccountDialog = ({ className, user }: DeleteAccountDialogProp
       await deleteAccount();
 
       toast({
-        title: 'Account deleted',
-        description: 'Your account has been deleted successfully.',
+        title: t('account-deleted'),
+        description: t('your-account-has-been-deleted-successfully'),
         duration: 5000,
       });
 
@@ -45,17 +46,15 @@ export const DeleteAccountDialog = ({ className, user }: DeleteAccountDialogProp
     } catch (err) {
       if (err instanceof TRPCClientError && err.data?.code === 'BAD_REQUEST') {
         toast({
-          title: 'An error occurred',
+          title: t('an-error-occurred'),
           description: err.message,
           variant: 'destructive',
         });
       } else {
         toast({
-          title: 'An unknown error occurred',
+          title: t('an-unknown-error-occurred'),
           variant: 'destructive',
-          description:
-            err.message ??
-            'We encountered an unknown error while attempting to delete your account. Please try again later.',
+          description: err.message ?? t('we-encountered-an-unknown-error'),
         });
       }
     }
@@ -68,40 +67,37 @@ export const DeleteAccountDialog = ({ className, user }: DeleteAccountDialogProp
         variant="neutral"
       >
         <div>
-          <AlertTitle>Delete Account</AlertTitle>
-          <AlertDescription className="mr-2">
-            Delete your account and all its contents, including completed documents. This action is
-            irreversible and will cancel your subscription, so proceed with caution.
-          </AlertDescription>
+          <AlertTitle>{t('delete-account')}</AlertTitle>
+          <AlertDescription className="mr-2">{t('delete-your-account-and')}</AlertDescription>
         </div>
 
         <div className="flex-shrink-0">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="destructive">Delete Account</Button>
+              <Button variant="destructive">{t('delete-account')}</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader className="space-y-4">
-                <DialogTitle>Delete Account</DialogTitle>
+                <DialogTitle>{t('delete-account')}</DialogTitle>
 
                 <Alert variant="destructive">
                   <AlertDescription className="selection:bg-red-100">
-                    This action is not reversible. Please be certain.
+                    {t('this-action-is-not-reversible-please-be-certain')}
                   </AlertDescription>
                 </Alert>
 
                 {hasTwoFactorAuthentication && (
                   <Alert variant="destructive">
                     <AlertDescription className="selection:bg-red-100">
-                      Disable Two Factor Authentication before deleting your account.
+                      {t('disable-two-factor-authentication-before-deleting-your-account')}
                     </AlertDescription>
                   </Alert>
                 )}
 
                 <DialogDescription>
-                  Documenso will delete <span className="font-semibold">all of your documents</span>
-                  , along with all of your completed documents, signatures, and all other resources
-                  belonging to your Account.
+                  {t('documenso-will-delete')}{' '}
+                  <span className="font-semibold">{t('all-of-your-documents')}</span>
+                  {t('along-with-all-of')}
                 </DialogDescription>
               </DialogHeader>
 
@@ -112,7 +108,7 @@ export const DeleteAccountDialog = ({ className, user }: DeleteAccountDialogProp
                   variant="destructive"
                   disabled={hasTwoFactorAuthentication}
                 >
-                  {isDeletingAccount ? 'Deleting account...' : 'Delete Account'}
+                  {isDeletingAccount ? t('deleting-account') : t('delete-account')}
                 </Button>
               </DialogFooter>
             </DialogContent>

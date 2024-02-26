@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { IDENTITY_PROVIDER_NAME } from '@documenso/lib/constants/auth';
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-component-session';
 import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
 import { Button } from '@documenso/ui/primitives/button';
@@ -10,7 +11,6 @@ import { SettingsHeader } from '~/components/(dashboard)/settings/layout/header'
 import { AuthenticatorApp } from '~/components/forms/2fa/authenticator-app';
 import { RecoveryCodes } from '~/components/forms/2fa/recovery-codes';
 import { PasswordForm } from '~/components/forms/password';
-import { createTranslation } from '@documenso/lib/i18n/server';
 
 export const metadata: Metadata = {
   title: 'Security',
@@ -69,10 +69,9 @@ export default async function SecuritySettingsPage() {
           </AlertTitle>
 
           <AlertDescription>
-            {
-              (t('to-update-your-password',
-              { provider: IDENTITY_PROVIDER_NAME[user.identityProvider] }))
-            }
+            {t('to-update-your-password', {
+              provider: IDENTITY_PROVIDER_NAME[user.identityProvider],
+            })}
           </AlertDescription>
         </Alert>
       )}

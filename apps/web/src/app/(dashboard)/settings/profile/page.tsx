@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-component-session';
 
 import { SettingsHeader } from '~/components/(dashboard)/settings/layout/header';
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function ProfileSettingsPage() {
   const { user } = await getRequiredServerComponentSession();
-
+  const { t } = await createTranslation('web');
   return (
     <div>
       <SettingsHeader

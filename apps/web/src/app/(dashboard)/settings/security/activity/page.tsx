@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 
-import { UserSecurityActivityDataTable } from './user-security-activity-data-table';
 import { createTranslation } from '@documenso/lib/i18n/server';
+
+import { UserSecurityActivityDataTable } from './user-security-activity-data-table';
 
 export const metadata: Metadata = {
   title: 'Security activity',
