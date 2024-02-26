@@ -1,5 +1,6 @@
 {
   "404-page-not-found": "",
+  "a-password-reset-email-has": "",
   "accept": "",
   "accepted-team-invitation": "",
   "account-deleted": "",
@@ -67,6 +68,7 @@
   "duplicate": "",
   "edit": "",
   "email": "",
+  "email-sent": "",
   "error": "",
   "expires-on": "",
   "file-cannot-be-larger-than_upload_size_limit-mb": "",
@@ -111,6 +113,7 @@
   "repeat-password": "",
   "reset-password": "",
   "resetting-password": "",
+  "return-to-sign-in": "",
   "revoke": "",
   "revoke-access": "",
   "search": "",

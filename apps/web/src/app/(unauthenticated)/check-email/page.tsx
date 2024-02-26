@@ -1,24 +1,24 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { Button } from '@documenso/ui/primitives/button';
 
 export const metadata: Metadata = {
   title: 'Forgot password',
 };
 
-export default function ForgotPasswordPage() {
+export default async function ForgotPasswordPage() {
+  const { t } = await createTranslation('web');
+
   return (
     <div>
-      <h1 className="text-4xl font-semibold">Email sent!</h1>
+      <h1 className="text-4xl font-semibold">{t('email-sent')}</h1>
 
-      <p className="text-muted-foreground mb-4 mt-2 text-sm">
-        A password reset email has been sent, if you have an account you should see it in your inbox
-        shortly.
-      </p>
+      <p className="text-muted-foreground mb-4 mt-2 text-sm">{t('a-password-reset-email-has')}</p>
 
       <Button asChild>
-        <Link href="/signin">Return to sign in</Link>
+        <Link href="/signin">{t('return-to-sign-in')}</Link>
       </Button>
     </div>
   );

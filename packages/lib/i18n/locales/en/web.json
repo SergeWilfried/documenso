@@ -1,5 +1,6 @@
 {
   "404-page-not-found": "404 Page not found",
+  "a-password-reset-email-has": "A password reset email has been sent, if you have an account you should see it in your inbox shortly.",
   "accept": "Accept",
   "accepted-team-invitation": "Accepted team invitation",
   "account-deleted": "Account deleted",
@@ -67,6 +68,7 @@
   "duplicate": "Duplicate",
   "edit": "Edit",
   "email": "Email",
+  "email-sent": "Email sent!",
   "error": "Error",
   "expires-on": "Expires on",
   "file-cannot-be-larger-than_upload_size_limit-mb": "File cannot be larger than {{size}}MB",
@@ -111,6 +113,7 @@
   "repeat-password": "Repeat Password",
   "reset-password": "Reset Password",
   "resetting-password": "Resetting Password...",
+  "return-to-sign-in": "Return to sign in",
   "revoke": "Revoke",
   "revoke-access": "Revoke access",
   "search": "Search",

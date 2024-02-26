@@ -1,6 +1,7 @@
-import { createTranslation } from '@documenso/lib/i18n/server';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+
+import { createTranslation } from '@documenso/lib/i18n/server';
 
 import { ForgotPasswordForm } from '~/components/forms/forgot-password';
 
