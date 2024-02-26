@@ -49,9 +49,8 @@ export const LayoutBillingBanner = ({
       setIsOpen(false);
     } catch (err) {
       toast({
-        title: 'Something went wrong',
-        description:
-          'We are unable to proceed to the billing portal at this time. Please try again, or contact support.',
+        title: t('something-went-wrong'),
+        description: t('we-are-unable-to-proceed-to-the-billing-portal'),
         variant: 'destructive',
         duration: 10000,
       });
@@ -94,34 +93,28 @@ export const LayoutBillingBanner = ({
             onClick={() => setIsOpen(true)}
             size="sm"
           >
-            Resolve
+            {t('resolve')}
           </Button>
         </div>
       </div>
 
       <Dialog open={isOpen} onOpenChange={(value) => !isLoading && setIsOpen(value)}>
         <DialogContent>
-          <DialogTitle>Payment overdue</DialogTitle>
+          <DialogTitle>{t('payment-overdue')}</DialogTitle>
 
           {match(subscription.status)
             .with(SubscriptionStatus.PAST_DUE, () => (
-              <DialogDescription>
-                Your payment for teams is overdue. Please settle the payment to avoid any service
-                disruptions.
-              </DialogDescription>
+              <DialogDescription>{t('your-payment-for-teams-is-overdue')}</DialogDescription>
             ))
             .with(SubscriptionStatus.INACTIVE, () => (
-              <DialogDescription>
-                Due to an unpaid invoice, your team has been restricted. Please settle the payment
-                to restore full access to your team.
-              </DialogDescription>
+              <DialogDescription>{t('due-to-an-unpaid-invoice-your-team')}</DialogDescription>
             ))
             .otherwise(() => null)}
 
           {canExecuteTeamAction('MANAGE_BILLING', userRole) && (
             <DialogFooter>
               <Button loading={isLoading} onClick={handleCreatePortal}>
-                Resolve payment
+                {t('resolve-payment')}
               </Button>
             </DialogFooter>
           )}
