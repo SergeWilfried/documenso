@@ -8,6 +8,7 @@ import { UAParser } from 'ua-parser-js';
 
 import { useUpdateSearchParams } from '@documenso/lib/client-only/hooks/use-update-search-params';
 import { USER_SECURITY_AUDIT_LOG_MAP } from '@documenso/lib/constants/auth';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { ZBaseTableSearchParamsSchema } from '@documenso/lib/types/search-params';
 import { trpc } from '@documenso/trpc/react';
 import { DataTable } from '@documenso/ui/primitives/data-table';
@@ -16,7 +17,6 @@ import { Skeleton } from '@documenso/ui/primitives/skeleton';
 import { TableCell } from '@documenso/ui/primitives/table';
 
 import { LocaleDate } from '~/components/formatter/locale-date';
-import { useTranslation } from '@documenso/lib/i18n/client';
 
 const dateFormat: DateTimeFormatOptions = {
   ...DateTime.DATETIME_SHORT,
