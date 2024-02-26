@@ -1,5 +1,5 @@
 import { findDocuments } from '@documenso/lib/server-only/admin/get-all-documents';
-
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { DocumentsDataTable } from './data-table';
 
 export type DocumentsPageProps = {

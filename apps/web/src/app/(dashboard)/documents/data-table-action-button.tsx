@@ -14,6 +14,7 @@ import type { DocumentWithData } from '@documenso/prisma/types/document-with-dat
 import { trpc as trpcClient } from '@documenso/trpc/client';
 import { Button } from '@documenso/ui/primitives/button';
 import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type DataTableActionButtonProps = {
   row: Document & {

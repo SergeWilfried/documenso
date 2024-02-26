@@ -4,6 +4,7 @@ import type { HTMLAttributes } from 'react';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import { BarChart3, FileStack, Settings, User2, Wallet2 } from 'lucide-react';
 
