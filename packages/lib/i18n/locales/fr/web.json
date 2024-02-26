@@ -1,5 +1,6 @@
 {
   "404-page-not-found": "",
+  "404-team-not-found": "",
   "a-password-reset-email-has": "",
   "accept": "",
   "accepted-team-invitation": "",
@@ -169,6 +170,7 @@
   "templates": "",
   "the-ownership-of-team": "",
   "the-page-you-are-looking": "",
+  "the-team-you-are-looking-for-may-have-been-removed": "",
   "there-are-no-active-drafts": "",
   "there-are-no-completed-documents": "",
   "they-have-permission-on-your-behalf-to": "",

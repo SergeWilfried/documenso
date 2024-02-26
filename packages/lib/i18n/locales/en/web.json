@@ -1,5 +1,6 @@
 {
   "404-page-not-found": "404 Page not found",
+  "404-team-not-found": "404 Team not found",
   "a-password-reset-email-has": "A password reset email has been sent, if you have an account you should see it in your inbox shortly.",
   "accept": "Accept",
   "accepted-team-invitation": "Accepted team invitation",
@@ -169,6 +170,7 @@
   "templates": "Templates",
   "the-ownership-of-team": "The ownership of team",
   "the-page-you-are-looking": "The page you are looking for was moved, removed, renamed or might never have existed.",
+  "the-team-you-are-looking-for-may-have-been-removed": "The team you are looking for may have been removed, renamed or may have never existed.",
   "there-are-no-active-drafts": "There are no active drafts at the current moment. You can upload a document to start drafting.",
   "there-are-no-completed-documents": "There are no completed documents yet. Documents that you have created or received will appear here once completed.",
   "they-have-permission-on-your-behalf-to": "They have permission on your behalf to:",

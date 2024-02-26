@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
 import { match } from 'ts-pattern';
 
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { canExecuteTeamAction } from '@documenso/lib/utils/teams';
 import type { TeamMemberRole } from '@documenso/prisma/client';
 import { type Subscription, SubscriptionStatus } from '@documenso/prisma/client';
@@ -32,6 +33,7 @@ export const LayoutBillingBanner = ({
   userRole,
 }: LayoutBillingBannerProps) => {
   const { toast } = useToast();
+  const { t } = useTranslation('web');
 
   const [isOpen, setIsOpen] = useState(false);
 
