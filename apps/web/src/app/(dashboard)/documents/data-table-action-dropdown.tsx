@@ -194,6 +194,7 @@ export const DataTableActionDropdown = ({ row, team }: DataTableActionDropdownPr
           documentTitle={row.title}
           open={isDeleteDialogOpen}
           onOpenChange={setDeleteDialogOpen}
+          teamId={team?.id}
         />
       )}
       {isDuplicateDialogOpen && (

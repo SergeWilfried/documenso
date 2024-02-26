@@ -16,12 +16,13 @@ import {
 import { Input } from '@documenso/ui/primitives/input';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
-type DeleteDraftDocumentDialogProps = {
+type DeleteDocumentDialogProps = {
   id: number;
   open: boolean;
   onOpenChange: (_open: boolean) => void;
   status: DocumentStatus;
   documentTitle: string;
+  teamId?: number;
 };
 
 export const DeleteDocumentDialog = async ({
@@ -30,7 +31,8 @@ export const DeleteDocumentDialog = async ({
   onOpenChange,
   status,
   documentTitle,
-}: DeleteDraftDocumentDialogProps) => {
+  teamId,
+}: DeleteDocumentDialogProps) => {
   const router = useRouter();
   const { t } = await createTranslation('web');
 
@@ -62,7 +64,7 @@ export const DeleteDocumentDialog = async ({
 
   const onDelete = async () => {
     try {
-      await deleteDocument({ id, status });
+      await deleteDocument({ id, teamId });
     } catch {
       toast({
         title: t('something-went-wrong'),
