@@ -1,5 +1,6 @@
-import { createTranslation } from '@documenso/lib/i18n/server';
 import React from 'react';
+
+import { createTranslation } from '@documenso/lib/i18n/server';
 
 import { DesktopNav } from '~/components/(dashboard)/settings/layout/desktop-nav';
 import { MobileNav } from '~/components/(dashboard)/settings/layout/mobile-nav';
