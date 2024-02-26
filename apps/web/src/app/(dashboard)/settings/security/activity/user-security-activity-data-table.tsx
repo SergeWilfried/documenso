@@ -16,6 +16,7 @@ import { Skeleton } from '@documenso/ui/primitives/skeleton';
 import { TableCell } from '@documenso/ui/primitives/table';
 
 import { LocaleDate } from '~/components/formatter/locale-date';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 const dateFormat: DateTimeFormatOptions = {
   ...DateTime.DATETIME_SHORT,
@@ -29,7 +30,7 @@ export const UserSecurityActivityDataTable = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const updateSearchParams = useUpdateSearchParams();
-
+  const { t } = useTranslation('web');
   const parsedSearchParams = ZBaseTableSearchParamsSchema.parse(
     Object.fromEntries(searchParams ?? []),
   );
