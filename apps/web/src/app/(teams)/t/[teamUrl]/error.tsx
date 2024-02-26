@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ChevronLeft } from 'lucide-react';
 
 import { AppErrorCode } from '@documenso/lib/errors/app-error';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { Button } from '@documenso/ui/primitives/button';
 
 type ErrorProps = {
@@ -13,14 +14,15 @@ type ErrorProps = {
 };
 
 export default function ErrorPage({ error }: ErrorProps) {
+  const { t } = useTranslation('web');
   const router = useRouter();
 
-  let errorMessage = 'Unknown error';
+  let errorMessage = t('unknown-error');
   let errorDetails = '';
 
   if (error.message === AppErrorCode.UNAUTHORIZED) {
-    errorMessage = 'Unauthorized';
-    errorDetails = 'You are not authorized to view this page.';
+    errorMessage = t('unauthorized');
+    errorDetails = t('you-are-not-authorized-to-view-this-page');
   }
 
   return (
@@ -28,7 +30,7 @@ export default function ErrorPage({ error }: ErrorProps) {
       <div>
         <p className="text-muted-foreground font-semibold">{errorMessage}</p>
 
-        <h1 className="mt-3 text-2xl font-bold md:text-3xl">Oops! Something went wrong.</h1>
+        <h1 className="mt-3 text-2xl font-bold md:text-3xl">{t('oops-something-went-wrong')}</h1>
 
         <p className="text-muted-foreground mt-4 text-sm">{errorDetails}</p>
 
@@ -41,11 +43,11 @@ export default function ErrorPage({ error }: ErrorProps) {
             }}
           >
             <ChevronLeft className="mr-2 h-4 w-4" />
-            Go Back
+            {t('go-back')}
           </Button>
 
           <Button asChild>
-            <Link href="/settings/teams">View teams</Link>
+            <Link href="/settings/teams">{t('view-teams')}</Link>
           </Button>
         </div>
       </div>
