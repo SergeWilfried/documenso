@@ -55,7 +55,7 @@ export default function PricingPage() {
 
         <div className="mt-4 flex justify-center">
           <Button variant="outline" size="lg" className="rounded-full hover:cursor-pointer" asChild>
-            <Link href="https://github.com/documenso/documenso" target="_blank" rel="noreferrer">
+            <Link href="https://calendly.com/sergewilfried/30min" target="_blank" rel="noreferrer">
               Get Started
             </Link>
           </Button>
@@ -107,44 +107,6 @@ export default function PricingPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="how-to-contribute">
-            <AccordionTrigger className="text-left text-lg font-semibold">
-              How can I contribute?
-            </AccordionTrigger>
-
-            <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              That's awesome. You can take a look at the current{' '}
-              <Link
-                className="text-documenso-700 font-bold"
-                href="https://github.com/documenso/documenso/milestones"
-                target="_blank"
-              >
-                Issues
-              </Link>{' '}
-              and join our{' '}
-              <Link
-                className="text-documenso-700 font-bold"
-                href="https://documen.so/discord"
-                target="_blank"
-              >
-                Discord Community
-              </Link>{' '}
-              to keep up to date, on what the current priorities are. In any case, we are an open
-              community and welcome all input, technical and non-technical ❤️
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="can-i-use-documenso-commercially">
-            <AccordionTrigger className="text-left text-lg font-semibold">
-              Can I use MonTampon commercially?
-            </AccordionTrigger>
-
-            <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              Yes! MonTampon is offered under the GNU AGPL V3 open source license. This means you
-              can use it for free and even modify it to fit your needs, as long as you publish your
-              changes under the same license.
-            </AccordionContent>
-          </AccordionItem>
 
           <AccordionItem value="why-prefer-documenso">
             <AccordionTrigger className="text-left text-lg font-semibold">
@@ -176,13 +138,13 @@ export default function PricingPage() {
               or{' '}
               <a
                 className="text-documenso-700 font-bold"
-                href="https://documen.so/discord"
+                href="https://documen.so/facebook"
                 target="_blank"
                 rel="noreferrer"
               >
-                in our Discord-Support-Channel
+                in our Support Channel
               </a>{' '}
-              please message either Lucas or Timur to get added to the channel if you are not
+              please message us to get added to the channel if you are not
               already a member.
             </AccordionContent>
           </AccordionItem>
