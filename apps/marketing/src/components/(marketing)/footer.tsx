@@ -18,16 +18,16 @@ export type FooterProps = HTMLAttributes<HTMLDivElement>;
 
 const SOCIAL_LINKS = [
   { href: 'https://twitter.com/documenso', icon: <FaXTwitter className="h-6 w-6" /> },
-  { href: 'https://github.com/documenso/documenso', icon: <LuGithub className="h-6 w-6" /> },
-  { href: 'https://documen.so/discord', icon: <LiaDiscord className="h-7 w-7" /> },
+  { href: 'https://calendly.com/sergewilfried/30min', icon: <LuGithub className="h-6 w-6" /> },
+  { href: 'https://documen.so/facebook', icon: <LiaDiscord className="h-7 w-7" /> },
 ];
 
 const FOOTER_LINKS = [
   { href: '/pricing', text: 'Pricing' },
   { href: '/singleplayer', text: 'Singleplayer' },
   { href: '/blog', text: 'Blog' },
-  { href: 'https://status.documenso.com', text: 'Status', target: '_blank' },
-  { href: 'mailto:support@documenso.com', text: 'Support', target: '_blank' },
+  { href: 'https://status.tampon.xyz', text: 'Status', target: '_blank' },
+  { href: 'mailto:support@bangre.co', text: 'Support', target: '_blank' },
   { href: '/privacy', text: 'Privacy' },
 ];
 

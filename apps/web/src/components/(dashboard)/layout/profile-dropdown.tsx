@@ -150,7 +150,7 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link
-            href="https://github.com/documenso/documenso"
+            href="https://calendly.com/sergewilfried/30min"
             className="cursor-pointer"
             target="_blank"
           >

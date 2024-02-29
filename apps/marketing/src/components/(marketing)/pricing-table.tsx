@@ -140,7 +140,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
             <p className="text-foregro‚und py-4">Unlimited Users</p>
             <p className="text-foregro‚und py-4">Unlimited Documents per month</p>
             <p className="text-foreground py-4">Includes all upcoming features</p>
-            <p className="text-foreground py-4">Email, Discord and Slack assistance</p>
+            <p className="text-foreground py-4">Email, WhatsApp, Phone and Slack assistance</p>
           </div>
           <div className="flex-1" />
         </div>

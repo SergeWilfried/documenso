@@ -120,7 +120,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
             </span>
           </Button>
 
-          <Link href="https://github.com/documenso/documenso" onClick={() => event('view-github')}>
+          <Link href="https://calendly.com/sergewilfried/30min" onClick={() => event('schedule-demo')}>
             <Button variant="outline" className="rounded-full bg-transparent backdrop-blur-sm">
               <LuGithub className="mr-2 h-5 w-5" />
               Book a demo

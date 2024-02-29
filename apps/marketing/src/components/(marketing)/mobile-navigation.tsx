@@ -29,11 +29,11 @@ export const MENU_NAVIGATION_LINKS = [
     text: 'Pricing',
   },
   {
-    href: 'https://status.documenso.com',
+    href: 'https://status.tampon.xyz',
     text: 'Status',
   },
   {
-    href: 'mailto:support@documenso.com',
+    href: 'mailto:support@bangre.co',
     text: 'Support',
     target: '_blank',
   },
@@ -118,7 +118,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
             <FaXTwitter className="h-6 w-6" />
           </Link>
           <Link
-            href="https://documen.so/discord"
+            href="https://documen.so/facebook"
             target="_blank"
             className="text-foreground hover:text-foreground/80"
           >
