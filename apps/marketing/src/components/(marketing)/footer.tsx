@@ -26,8 +26,8 @@ const FOOTER_LINKS = [
   { href: '/pricing', text: 'Pricing' },
   { href: '/singleplayer', text: 'Singleplayer' },
   { href: '/blog', text: 'Blog' },
-  { href: 'https://status.documenso.com', text: 'Status', target: '_blank' },
-  { href: 'mailto:support@documenso.com', text: 'Support', target: '_blank' },
+  { href: 'https://status.tampon.xyz', text: 'Status', target: '_blank' },
+  { href: 'mailto:support@bangre.co', text: 'Support', target: '_blank' },
   { href: '/privacy', text: 'Privacy' },
 ];
 
