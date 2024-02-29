@@ -5,10 +5,10 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "prisma generate",
+    "build": "npx prisma generate",
     "format": "prisma format",
     "clean": "rimraf node_modules",
-    "post-install": "prisma generate",
+    "post-install": "npx prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:migrate-dev": "prisma migrate dev",
     "prisma:migrate-deploy": "prisma migrate deploy",
