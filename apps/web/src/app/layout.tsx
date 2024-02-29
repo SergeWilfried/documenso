@@ -47,7 +47,7 @@ export const metadata = {
     images: [`${NEXT_PUBLIC_WEBAPP_URL}/opengraph-image.jpg`],
     description:
       'Join MonTampon, and get a 10x better signing experience. Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
-  },
+  }
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

@@ -114,7 +114,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
             <FaXTwitter className="h-6 w-6" />
           </Link>
           <Link
-            href="https://documen.so/discord"
+            href="https://documen.so/facebook"
             target="_blank"
             className="text-foreground hover:text-foreground/80"
           >

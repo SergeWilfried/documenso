@@ -48,6 +48,9 @@ export const metadata = {
     description:
       'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
   },
+  verification: {
+    google: 'your-google-verification-id-here'
+  },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

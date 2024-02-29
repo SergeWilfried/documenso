@@ -3,7 +3,7 @@ import { hashSync } from '@documenso/lib/server-only/auth/hash';
 import { prisma } from '..';
 
 //
-// https://github.com/documenso/documenso/pull/713
+// https://calendly.com/sergewilfried/30min/pull/713
 //
 
 const PULL_REQUEST_NUMBER = 718;

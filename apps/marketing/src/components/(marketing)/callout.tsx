@@ -47,7 +47,7 @@ export const Callout = ({ starCount }: CalloutProps) => {
       </Button>
 
       <Link
-        href="https://github.com/documenso/documenso"
+        href="https://calendly.com/sergewilfried/30min"
         target="_blank"
         onClick={() => event('view-github')}
       >
