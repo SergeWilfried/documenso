@@ -9,9 +9,9 @@
     "format": "prisma format",
     "clean": "rimraf node_modules",
     "post-install": "npx prisma generate",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate-dev": "prisma migrate dev",
-    "prisma:migrate-deploy": "prisma migrate deploy",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate-dev": "npx prisma migrate dev",
+    "prisma:migrate-deploy": "npx prisma migrate deploy",
     "prisma:seed": "prisma db seed"
   },
   "prisma": {
