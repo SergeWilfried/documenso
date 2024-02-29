@@ -149,7 +149,7 @@ export default async function OpenPage() {
           to share our journey with you. You can read more about why here:{' '}
           <a
             className="font-bold"
-            href="https://documenso.com/blog/pre-seed"
+            href="https://tampon.xyz/blog/pre-seed"
             target="_blank"
             rel="noreferrer"
           >

@@ -29,11 +29,11 @@ export const MENU_NAVIGATION_LINKS = [
     text: 'Pricing',
   },
   {
-    href: 'https://status.documenso.com',
+    href: 'https://status.tampon.xyz',
     text: 'Status',
   },
   {
-    href: 'mailto:support@documenso.com',
+    href: 'mailto:support@bangre.co',
     text: 'Support',
     target: '_blank',
   },
