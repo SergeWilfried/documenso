@@ -5,13 +5,13 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "npx prisma generate",
+    "build": "prisma generate",
     "format": "prisma format",
     "clean": "rimraf node_modules",
-    "post-install": "npx prisma generate",
-    "prisma:generate": "npx prisma generate",
-    "prisma:migrate-dev": "npx prisma migrate dev",
-    "prisma:migrate-deploy": "npx prisma migrate deploy",
+    "post-install": "prisma generate",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate-dev": "prisma migrate dev",
+    "prisma:migrate-deploy": "prisma migrate deploy",
     "prisma:seed": "prisma db seed"
   },
   "prisma": {
