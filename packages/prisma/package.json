@@ -5,7 +5,6 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "prisma generate",
     "format": "prisma format",
     "clean": "rimraf node_modules",
     "postinstall": "prisma generate",
