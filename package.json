@@ -18,18 +18,22 @@
     "dx:up": "docker compose -f docker/compose-services.yml up -d",
     "dx:down": "docker compose -f docker/compose-services.yml down",
     "ci": "turbo run build test:e2e",
-    "prisma:generate": "npm run with:env -- npm run prisma:generate -w @documenso/prisma",
-    "prisma:migrate-dev": "npm run with:env -- npm run prisma:migrate-dev -w @documenso/prisma",
-    "prisma:migrate-deploy": "npm run with:env -- npm run prisma:migrate-deploy -w @documenso/prisma",
-    "prisma:seed": "npm run with:env -- npm run prisma:seed -w @documenso/prisma",
+    "db:migrate:dev": "turbo run db:migrate:dev",
+    "db:migrate:deploy": "turbo run db:migrate:deploy",
+    "db:push": "turbo run db:push",
+    "db:seed": "turbo run db:seed",
+    "generate": "turbo run generate",
     "prisma:studio": "npm run with:env -- npx prisma studio --schema packages/prisma/schema.prisma",
     "with:env": "dotenv -e .env -e .env.local --",
     "reset:hard": "npm run clean && npm i && npm run prisma:generate",
     "precommit": "npm install && git add package.json package-lock.json"
   },
+  "prisma": {
+    "schema": "packages/prisma/schema.prisma",
+    "seed": "ts-node --transpileOnly --project ./packages/prisma/tsconfig.seed.json ./packages/prisma/seed-database.ts"
+  },
   "engines": {
-    "npm": ">=8.6.0",
-    "node": ">=18.0.0"
+    "node": ">=18"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
@@ -42,6 +46,7 @@
     "lint-staged": "^14.0.0",
     "prettier": "^2.5.1",
     "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
     "turbo": "^1.9.3"
   },
   "name": "@documenso/root",
@@ -64,5 +69,6 @@
     "next-contentlayer": {
       "next": "14.0.3"
     }
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }
