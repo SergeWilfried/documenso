@@ -18,6 +18,12 @@
       "cache": false,
       "persistent": true
     },
+    "db:migrate:deploy": {},
+    "db:push": {},
+    "db:seed": {},
+    "generate": {
+      "dependsOn": ["^generate"]
+    },
     "start": {
       "dependsOn": ["^build"],
       "cache": false,
