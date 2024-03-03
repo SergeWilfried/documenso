@@ -119,8 +119,6 @@ export const SignUpFormV2 = ({
     form.formState.dirtyFields.signature &&
     form.formState.errors.signature === undefined;
 
-  console.log({ formSTate: form.formState });
-
   const { mutateAsync: signup } = trpc.auth.signup.useMutation();
 
   const onFormSubmit = async ({ name, email, password, signature, url }: TSignUpFormV2Schema) => {
@@ -421,8 +419,7 @@ export const SignUpFormV2 = ({
                 size="lg"
                 variant="secondary"
                 className="flex-1"
-                disabled={step === 'BASIC_DETAILS'}
-                loading={form.formState.isSubmitting}
+                disabled={step === 'BASIC_DETAILS' || form.formState.isSubmitting}
                 onClick={() => setStep('BASIC_DETAILS')}
               >
                 Back
