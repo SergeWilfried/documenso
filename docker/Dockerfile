@@ -68,6 +68,7 @@ COPY turbo.json turbo.json
 
 RUN TURBO_VERSION="$(npm list --package-lock-only --json turbo | jq -r '.dependencies.turbo.version')"
 RUN npm install -g "turbo@$TURBO_VERSION"
+RUN npm install -g "sharp"
 
 RUN turbo run build --filter=@documenso/web...
 
