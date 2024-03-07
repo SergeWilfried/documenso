@@ -31,7 +31,7 @@ export function generateMetadata() {
     description:
       'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo ! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
     keywords:
-      'MonTampon, DocuSign alternative, document signing, e-signature, electronic signature, fast signing, beautiful signing, smart templates',
+      'MonTampon, DocuSign alternative, document signing, e-signature, electronic signature, sign-pdf, pdf-sign, fast signing, beautiful signing, smart templates',
     authors: { name: 'Documenso, Inc.' },
     robots: 'index, follow',
     metadataBase: new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000'),
