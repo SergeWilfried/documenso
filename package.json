@@ -69,6 +69,5 @@
     "next-contentlayer": {
       "next": "14.0.3"
     }
-  },
-  "packageManager": "yarn@1.22.19"
+  }
 }
