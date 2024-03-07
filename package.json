@@ -15,7 +15,6 @@
     "clean": "turbo run clean && rimraf node_modules",
     "d": "npm run dx && npm run dev",
     "dx": "npm i && npm run dx:up && npm run prisma:migrate-dev",
-<<<<<<< HEAD
     "dx:up": "docker compose -f docker/compose-services.yml up -d",
     "dx:down": "docker compose -f docker/compose-services.yml down",
     "ci": "turbo run build test:e2e",
@@ -24,15 +23,6 @@
     "db:push": "turbo run db:push",
     "db:seed": "turbo run db:seed",
     "prisma:generate": "turbo run generate",
-=======
-    "dx:up": "docker compose -f docker/development/compose.yml up -d",
-    "dx:down": "docker compose -f docker/development/compose.yml down",
-    "ci": "turbo run test:e2e",
-    "prisma:generate": "npm run with:env -- npm run prisma:generate -w @documenso/prisma",
-    "prisma:migrate-dev": "npm run with:env -- npm run prisma:migrate-dev -w @documenso/prisma",
-    "prisma:migrate-deploy": "npm run with:env -- npm run prisma:migrate-deploy -w @documenso/prisma",
-    "prisma:seed": "npm run with:env -- npm run prisma:seed -w @documenso/prisma",
->>>>>>> documenso-main
     "prisma:studio": "npm run with:env -- npx prisma studio --schema packages/prisma/schema.prisma",
     "with:env": "dotenv -e .env -e .env.local --",
     "reset:hard": "yarn clean && yarn && yarn prisma:generate",
