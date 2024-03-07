@@ -29,12 +29,12 @@ export function generateMetadata() {
     description:
       'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo ! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
     keywords:
-      'Documenso, open source, DocuSign alternative, document signing, open signing infrastructure, open-source community, fast signing, beautiful signing, smart templates',
+      'MonTampon, DocuSign alternative, document signing, e-signature, electronic signature, sign-pdf, pdf-sign, fast signing, beautiful signing, smart templates',
     authors: { name: 'Documenso, Inc.' },
     robots: 'index, follow',
     metadataBase: new URL(NEXT_PUBLIC_MARKETING_URL() ?? 'http://localhost:3000'),
     openGraph: {
-      title: 'Documenso - The DocuSign Alternative',
+      title: 'MonTampon - The DocuSign Alternative',
       description:
       'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo ! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
       type: 'website',
