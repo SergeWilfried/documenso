@@ -39,12 +39,12 @@ export function generateMetadata() {
     description:
       'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
     type: 'website',
-    images: [`${NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
+    images: [`${NEXT_PUBLIC_WEBAPP_URL}/opengraph-image.jpg`],
   },
   twitter: {
     site: '@monTampon',
     card: 'summary_large_image',
-    images: [`${NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
+    images: [`${NEXT_PUBLIC_WEBAPP_URL}/opengraph-image.jpg`],
     description:
       'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
   },
