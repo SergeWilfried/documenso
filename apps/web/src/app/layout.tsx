@@ -24,31 +24,31 @@ const fontCaveat = Caveat({ subsets: ['latin'], variable: '--font-signature' });
 
 export function generateMetadata() {
   return {
-    title: {
-      template: '%s - Documenso',
-      default: 'Documenso',
-    },
+   title: {
+    template: '%s - MonTampon',
+    default: 'MonTampon',
+  },
+  description:
+    'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
+  keywords:
+    'Electronic signature, Digital signature, E signature, Esign, Sign documents online, Online signature, Electronic signature free, Free document signing, Sign pdf online, Esignature free, Sign pdf online free, Sign documents online free, E sign, Esign documents, Digital signature free, Digital signature online, Document sign, Esign pdf, E signature online, Fill and sign pdf, Online contract signing, MonTampon, DocuSign alternative, open signing infrastructure, open-source community, fast signing, beautiful signing, smart templates',
+  authors: { name: 'MonTampon, Inc.' },
+  robots: 'index, follow',
+  openGraph: {
+    title: 'MonTampon - The DocuSign Alternative',
     description:
-      'Join Documenso, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
-    keywords:
-      'Documenso, open source, DocuSign alternative, document signing, open signing infrastructure, open-source community, fast signing, beautiful signing, smart templates',
-    authors: { name: 'Documenso, Inc.' },
-    robots: 'index, follow',
-    metadataBase: new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000'),
-    openGraph: {
-      title: 'Documenso - The Open Source DocuSign Alternative',
-      description:
-        'Join Documenso, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
-      type: 'website',
-      images: ['/opengraph-image.jpg'],
-    },
-    twitter: {
-      site: '@documenso',
-      card: 'summary_large_image',
-      images: ['/opengraph-image.jpg'],
-      description:
-        'Join Documenso, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
-    },
+      'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
+    type: 'website',
+    images: [`${NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
+  },
+  twitter: {
+    site: '@monTampon',
+    card: 'summary_large_image',
+    images: [`${NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
+    description:
+      'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
+  },
+ 
   };
 }
 
