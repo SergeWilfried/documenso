@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { usePlausible } from 'next-plausible';
 import { LuGithub } from 'react-icons/lu';
-
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { Button } from '@documenso/ui/primitives/button';
 
 export type CalloutProps = {
@@ -14,6 +14,7 @@ export type CalloutProps = {
 
 export const Callout = ({ starCount }: CalloutProps) => {
   const event = usePlausible();
+  const { t } = useTranslation('marketing');
 
   const onSignUpClick = () => {
     const el = document.getElementById('email');
@@ -40,9 +41,9 @@ export const Callout = ({ starCount }: CalloutProps) => {
         className="rounded-full bg-transparent backdrop-blur-sm"
         onClick={onSignUpClick}
       >
-        Claim Early Adopter Plan
-        <span className="bg-primary dark:text-background -mr-2.5 ml-2.5 rounded-full px-2 py-1.5 text-xs font-medium">
-          $30/mo
+        {t('get-the-early-adopters-plan')}
+        <span className="bg-primary dark:text-background -mr-2.5 ml-2.5 rounded-full px-2 py-1.5 text-xs">
+          {t('30-mo-forever')}
         </span>
       </Button>
 
@@ -53,7 +54,7 @@ export const Callout = ({ starCount }: CalloutProps) => {
       >
         <Button variant="outline" className="rounded-full bg-transparent backdrop-blur-sm">
           <LuGithub className="mr-2 h-5 w-5" />
-          Book a demo
+          {t('book-a-demo')}
           {starCount && starCount > 0 && (
             <span className="bg-primary dark:text-background -mr-2.5 ml-2.5 rounded-full px-2 py-1.5 text-xs">
               {starCount.toLocaleString('en-US')}

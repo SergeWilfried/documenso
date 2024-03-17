@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
+
 import { SettingsHeader } from '~/components/(dashboard)/settings/layout/header';
 
 import ActivityPageBackButton from '../../../../../components/(dashboard)/settings/layout/activity-back';
@@ -9,7 +11,8 @@ export const metadata: Metadata = {
   title: 'Security activity',
 };
 
-export default function SettingsSecurityActivityPage() {
+export default async function SettingsSecurityActivityPage() {
+  const { t } = await createTranslation('web');
   return (
     <div>
       <SettingsHeader

@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 
 import { ChevronLeft } from 'lucide-react';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-component-session';
 import { getFieldsForTemplate } from '@documenso/lib/server-only/field/get-fields-for-template';
 import { getRecipientsForTemplate } from '@documenso/lib/server-only/recipient/get-recipients-for-template';
@@ -25,6 +26,7 @@ export type TemplatePageViewProps = {
 
 export const TemplatePageView = async ({ params, team }: TemplatePageViewProps) => {
   const { id } = params;
+  const { t } = await createTranslation('web');
 
   const templateId = Number(id);
   const templateRootPath = formatTemplatesPath(team?.url);
@@ -61,7 +63,7 @@ export const TemplatePageView = async ({ params, team }: TemplatePageViewProps) 
     <div className="mx-auto max-w-screen-xl px-4 md:px-8">
       <Link href="/templates" className="flex items-center text-[#7AC455] hover:opacity-80">
         <ChevronLeft className="mr-2 inline-block h-5 w-5" />
-        Templates
+        {t('templates')}
       </Link>
 
       <h1 className="mt-4 truncate text-2xl font-semibold md:text-3xl" title={template.title}>

@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 
 import { cn } from '../../lib/utils';
 import { Button } from '../button';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export type DocumentFlowFormContainerProps = HTMLAttributes<HTMLFormElement> & {
   children?: React.ReactNode;
@@ -41,6 +42,7 @@ export const DocumentFlowFormContainerHeader = ({
   title,
   description,
 }: DocumentFlowFormContainerHeaderProps) => {
+  const { t } = useTranslation('common')
   return (
     <>
       <h3 className="text-foreground text-2xl font-semibold">{title}</h3>
@@ -97,10 +99,12 @@ export const DocumentFlowFormContainerStep = ({
   step,
   maxStep,
 }: DocumentFlowFormContainerStepProps) => {
+    const { t } = useTranslation('common')
+
   return (
     <div>
       <p className="text-muted-foreground text-sm">
-        Step <span>{`${step} of ${maxStep}`}</span>
+        {t(`step`)} <span>{`${step} of ${maxStep}`}</span>
       </p>
 
       <div className="bg-muted relative mt-4 h-[2px] rounded-md">
@@ -131,13 +135,15 @@ export type DocumentFlowFormContainerActionsProps = {
 export const DocumentFlowFormContainerActions = ({
   canGoBack = true,
   canGoNext = true,
-  goNextLabel = 'Continue',
-  goBackLabel = 'Go Back',
+  goNextLabel = 'continue',
+  goBackLabel = 'go-back',
   onGoBackClick,
   onGoNextClick,
   loading,
   disabled,
 }: DocumentFlowFormContainerActionsProps) => {
+  const { t } = useTranslation('common')
+
   return (
     <div className="mt-4 flex gap-x-4">
       <Button
@@ -148,7 +154,7 @@ export const DocumentFlowFormContainerActions = ({
         disabled={disabled || loading || !canGoBack || !onGoBackClick}
         onClick={onGoBackClick}
       >
-        {goBackLabel}
+        {t(goBackLabel)}
       </Button>
 
       <Button
@@ -159,7 +165,7 @@ export const DocumentFlowFormContainerActions = ({
         loading={loading}
         onClick={onGoNextClick}
       >
-        {goNextLabel}
+        {t(goNextLabel)}
       </Button>
     </div>
   );

@@ -4,7 +4,7 @@ import { useTransition } from 'react';
 
 import { Loader } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { useUpdateSearchParams } from '@documenso/lib/client-only/hooks/use-update-search-params';
 import type { FindResultSet } from '@documenso/lib/types/find-result-set';
 import type { Document, Recipient, Team, User } from '@documenso/prisma/client';
@@ -39,6 +39,7 @@ export const DocumentsDataTable = ({
 }: DocumentsDataTableProps) => {
   const { data: session } = useSession();
   const [isPending, startTransition] = useTransition();
+  const { t } = useTranslation('web');
 
   const updateSearchParams = useUpdateSearchParams();
 
@@ -60,32 +61,32 @@ export const DocumentsDataTable = ({
       <DataTable
         columns={[
           {
-            header: 'Created',
+            header: t('created'),
             accessorKey: 'createdAt',
             cell: ({ row }) => <LocaleDate date={row.original.createdAt} />,
           },
           {
-            header: 'Title',
+            header: t('title'),
             cell: ({ row }) => <DataTableTitle row={row.original} teamUrl={team?.url} />,
           },
           {
             id: 'sender',
-            header: 'Sender',
+            header: t('sender'),
             cell: ({ row }) => row.original.User.name ?? row.original.User.email,
           },
           {
-            header: 'Recipient',
+            header: t('recipient'),
             accessorKey: 'recipient',
             cell: ({ row }) => <StackAvatarsWithTooltip recipients={row.original.Recipient} />,
           },
           {
-            header: 'Status',
+            header: t('status'),
             accessorKey: 'status',
             cell: ({ row }) => <DocumentStatus status={row.getValue('status')} />,
             size: 140,
           },
           {
-            header: 'Actions',
+            header: t('actions'),
             cell: ({ row }) =>
               (!row.original.deletedAt ||
                 row.original.status === ExtendedDocumentStatus.COMPLETED) && (

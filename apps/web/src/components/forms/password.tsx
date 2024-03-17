@@ -2,8 +2,8 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 
+import { z } from '@documenso/lib/i18n/settings';
 import type { User } from '@documenso/prisma/client';
 import { TRPCClientError } from '@documenso/trpc/client';
 import { trpc } from '@documenso/trpc/react';
@@ -20,6 +20,7 @@ import {
 } from '@documenso/ui/primitives/form/form';
 import { PasswordInput } from '@documenso/ui/primitives/password-input';
 import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 export const ZPasswordFormSchema = z
   .object({
@@ -28,7 +29,7 @@ export const ZPasswordFormSchema = z
     repeatedPassword: ZPasswordSchema,
   })
   .refine((data) => data.password === data.repeatedPassword, {
-    message: 'Passwords do not match',
+    message: 'passwords-dont-match',
     path: ['repeatedPassword'],
   });
 
@@ -41,6 +42,7 @@ export type PasswordFormProps = {
 
 export const PasswordForm = ({ className }: PasswordFormProps) => {
   const { toast } = useToast();
+  const { t } = useTranslation('web');
 
   const form = useForm<TPasswordFormSchema>({
     values: {
@@ -99,7 +101,7 @@ export const PasswordForm = ({ className }: PasswordFormProps) => {
             name="currentPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Current Password</FormLabel>
+                <FormLabel>{t('current-password')}</FormLabel>
                 <FormControl>
                   <PasswordInput autoComplete="current-password" {...field} />
                 </FormControl>
@@ -113,7 +115,7 @@ export const PasswordForm = ({ className }: PasswordFormProps) => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{t('password')}</FormLabel>
                 <FormControl>
                   <PasswordInput autoComplete="new-password" {...field} />
                 </FormControl>

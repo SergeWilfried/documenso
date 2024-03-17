@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { redis } from '@documenso/lib/server-only/redis';
 import { stripe } from '@documenso/lib/server-only/stripe';
 import { prisma } from '@documenso/prisma';
@@ -33,6 +34,7 @@ export default async function ClaimedPlanPage({ searchParams = {} }: ClaimedPlan
   if (typeof sessionId !== 'string') {
     redirect('/');
   }
+  const { t } = await createTranslation('marketing');
 
   const session = await stripe.checkout.sessions.retrieve(sessionId);
   const customerId = typeof session.customer === 'string' ? session.customer : session.customer?.id;
@@ -73,26 +75,25 @@ export default async function ClaimedPlanPage({ searchParams = {} }: ClaimedPlan
   return (
     <div className="mt-12">
       <h1 className="text-foreground text-3xl font-bold md:text-4xl">
-        Welcome to the <span className="text-primary">open signing</span> revolution{' '}
+        {t('welcome-to-the')} <span className="text-primary">{t('open-signing')}</span>
+        {t('revolution')}
         <u>{user.name}</u>
       </h1>
 
       <p className="text-muted-foreground mt-4 max-w-prose text-base md:text-lg">
-        It's not every day you get to be part of a revolution.
+        {t('its-not-every-day-you-get-to-be-part-of-a-revolution')}
       </p>
 
       <p className="text-muted-foreground mt-4 max-w-prose text-base md:text-lg">
-        But today is that day, by signing up to MonTampon, you're joining a movement of people who
-        want to make the world a better place.
+        {t('but-today-is-that-day-by')}
       </p>
 
       <p className="text-muted-foreground mt-4 max-w-prose text-base md:text-lg">
-        We're going to change the way people sign documents. We're going to make it easier, faster,
-        and more secure. And we're going to do it together.
+        {t('were-going-to-change-the-way-people-sign')}
       </p>
 
       <div className="mt-12">
-        <h2 className="text-foreground text-2xl font-bold">Let's do it together</h2>
+        <h2 className="text-foreground text-2xl font-bold">{t('lets-do-it-together')}</h2>
 
         <div className="-mx-4 mt-8 flex md:-mx-8">
           <div className="flex flex-1 flex-col justify-end gap-y-4 border-r px-4 last:border-r-0 md:px-8 lg:flex-none">
@@ -102,14 +103,14 @@ export default async function ClaimedPlanPage({ searchParams = {} }: ClaimedPlan
                 fontCaveat.className,
               )}
             >
-              Timur
+              {t('timur')}
             </p>
 
             <p className="text-muted-foreground text-sm md:text-lg">
-              Timur Ercan
+              {t('timur-ercan')}
               <span className="block lg:hidden" />
               <span className="hidden lg:inline"> - </span>
-              Co Founder
+              {t('co-founder')}
             </p>
           </div>
 
@@ -120,14 +121,14 @@ export default async function ClaimedPlanPage({ searchParams = {} }: ClaimedPlan
                 fontCaveat.className,
               )}
             >
-              Lucas
+              {t('lucas')}
             </p>
 
             <p className="text-muted-foreground text-sm md:text-lg">
-              Lucas Smith
+              {t('lucas-smith')}
               <span className="block lg:hidden" />
               <span className="hidden lg:inline"> - </span>
-              Co Founder
+              {t('co-founder')}
             </p>
           </div>
 
@@ -154,33 +155,33 @@ export default async function ClaimedPlanPage({ searchParams = {} }: ClaimedPlan
               {user.name}
               <span className="block lg:hidden" />
               <span className="hidden lg:inline"> - </span>
-              Our new favourite customer
+              {t('our-new-favourite-customer')}
             </p>
           </div>
         </div>
       </div>
 
       <div className="mt-12">
-        <h2 className="text-foreground text-2xl font-bold">Your sign in details</h2>
+        <h2 className="text-foreground text-2xl font-bold">{t('your-sign-in-details')}</h2>
 
         <div className="mt-4">
           <p className="text-muted-foreground text-lg">
-            <span className="font-bold">Email:</span> {user.email}
+            <span className="font-bold">{t('emaillabel')}</span> {user.email}
           </p>
 
           <p className="text-muted-foreground mt-2 text-lg">
-            <span className="font-bold">Password:</span>{' '}
+            <span className="font-bold">{t('passwordlabel')}</span>{' '}
             <PasswordReveal password={password ?? 'password'} />
           </p>
         </div>
 
         <p className="text-muted-foreground mt-4 text-sm italic">
-          This is a temporary password. Please change it as soon as possible.
+          {t('this-is-a-temporary-password-please-change-it-as-soon-as-possible')}
         </p>
 
         <Link href={`${NEXT_PUBLIC_WEBAPP_URL()}/signin`} target="_blank" className="mt-4 block">
           <Button size="lg" className="text-base">
-            Let's get started!
+            {t('lets-get-started')}
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </Link>

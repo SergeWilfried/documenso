@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaXTwitter } from 'react-icons/fa6';
 import { LiaDiscord } from 'react-icons/lia';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import LogoImage from '@documenso/assets/logo.png';
 import { Sheet, SheetContent } from '@documenso/ui/primitives/sheet';
@@ -18,15 +18,15 @@ export type MobileNavigationProps = {
 export const MENU_NAVIGATION_LINKS = [
   {
     href: '/singleplayer',
-    text: 'Singleplayer',
+    text: 'singleplayer',
   },
   {
     href: '/blog',
-    text: 'Blog',
+    text: 'blog',
   },
   {
     href: '/pricing',
-    text: 'Pricing',
+    text: 'pricing',
   },
   {
     href: 'https://status.tampon.xyz',
@@ -46,7 +46,7 @@ export const MENU_NAVIGATION_LINKS = [
     text: 'Sign in',
   },
   {
-    href: 'https://app.documenso.com/signup?utm_source=marketing-header',
+    href: 'https://app.tampon.xyz/signup?utm_source=marketing-header',
     text: 'Sign up',
   },
 ];
@@ -57,6 +57,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
   const handleMenuItemClick = () => {
     onMenuOpenChange?.(false);
   };
+  const { t } = useTranslation('marketing');
 
   return (
     <Sheet open={isMenuOpen} onOpenChange={onMenuOpenChange}>
@@ -103,7 +104,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
                 onClick={() => handleMenuItemClick()}
                 target={target}
               >
-                {text}
+                {t(text)}
               </Link>
             </motion.div>
           ))}

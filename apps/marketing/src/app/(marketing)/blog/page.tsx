@@ -2,11 +2,19 @@ import type { Metadata } from 'next';
 
 import { allBlogPosts } from 'contentlayer/generated';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
+
 export const metadata: Metadata = {
   title: 'Blog',
 };
+export default async function BlogPage() {
+  const { t } = await createTranslation('marketing');
 
-export default function BlogPage() {
+
+export default async function BlogPage() {
+  const { t } = await createTranslation('marketing');
+
+
   const blogPosts = allBlogPosts.sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
@@ -17,11 +25,10 @@ export default function BlogPage() {
   return (
     <div className="mt-6 sm:mt-12">
       <div className="text-center">
-        <h1 className="text-3xl font-bold lg:text-5xl">From the blog</h1>
+        <h1 className="text-3xl font-bold lg:text-5xl">{t('from-the-blog')}</h1>
 
         <p className="text-muted-foreground mx-auto mt-4 max-w-xl text-center text-lg leading-normal">
-          Get the latest news from MonTampon, including product updates, team announcements and
-          more!
+          {t('get-the-latest-news-from')}
         </p>
       </div>
 
@@ -67,7 +74,7 @@ export default function BlogPage() {
                 {post.authorImage && (
                   <img
                     src={post.authorImage}
-                    alt={`Image of ${post.authorName}`}
+                    alt={`${t('image-of-post-authorname')} ${post.authorName}`}
                     className="bg-foreground/5 h-10 w-10 rounded-full"
                   />
                 )}

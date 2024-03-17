@@ -8,6 +8,7 @@ import { UAParser } from 'ua-parser-js';
 
 import { useUpdateSearchParams } from '@documenso/lib/client-only/hooks/use-update-search-params';
 import { USER_SECURITY_AUDIT_LOG_MAP } from '@documenso/lib/constants/auth';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { ZBaseTableSearchParamsSchema } from '@documenso/lib/types/search-params';
 import { trpc } from '@documenso/trpc/react';
 import { DataTable } from '@documenso/ui/primitives/data-table';
@@ -29,7 +30,7 @@ export const UserSecurityActivityDataTable = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const updateSearchParams = useUpdateSearchParams();
-
+  const { t } = useTranslation('web');
   const parsedSearchParams = ZBaseTableSearchParamsSchema.parse(
     Object.fromEntries(searchParams ?? []),
   );
@@ -63,12 +64,12 @@ export const UserSecurityActivityDataTable = () => {
     <DataTable
       columns={[
         {
-          header: 'Date',
+          header: t('date'),
           accessorKey: 'createdAt',
           cell: ({ row }) => <LocaleDate format={dateFormat} date={row.original.createdAt} />,
         },
         {
-          header: 'Device',
+          header: t('device'),
           cell: ({ row }) => {
             if (!row.original.userAgent) {
               return 'N/A';
@@ -92,7 +93,7 @@ export const UserSecurityActivityDataTable = () => {
           },
         },
         {
-          header: 'Browser',
+          header: t('browser'),
           cell: ({ row }) => {
             if (!row.original.userAgent) {
               return 'N/A';
@@ -106,12 +107,12 @@ export const UserSecurityActivityDataTable = () => {
           },
         },
         {
-          header: 'IP Address',
+          header: t('ip-address'),
           accessorKey: 'ipAddress',
           cell: ({ row }) => row.original.ipAddress ?? 'N/A',
         },
         {
-          header: 'Action',
+          header: t('action'),
           accessorKey: 'type',
           cell: ({ row }) => USER_SECURITY_AUDIT_LOG_MAP[row.original.type],
         },

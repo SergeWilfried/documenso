@@ -12,27 +12,23 @@ export const EmptyDocumentState = ({ status }: EmptyDocumentProps) => {
     icon: Icon,
   } = match(status)
     .with(ExtendedDocumentStatus.COMPLETED, () => ({
-      title: 'Nothing to do',
-      message:
-        'There are no completed documents yet. Documents that you have created or received will appear here once completed.',
+      title: t('nothing-to-do'),
+      message: t('there-are-no-completed-documents'),
       icon: CheckCircle2,
     }))
     .with(ExtendedDocumentStatus.DRAFT, () => ({
-      title: 'No active drafts',
-      message:
-        'There are no active drafts at the current moment. You can upload a document to start drafting.',
+      title: t('no-active-drafts'),
+      message: t('there-are-no-active-drafts'),
       icon: CheckCircle2,
     }))
     .with(ExtendedDocumentStatus.ALL, () => ({
-      title: "We're all empty",
-      message:
-        'You have not yet created or received any documents. To create a document please upload one.',
+      title: t('were-all-empty'),
+      message: t('you-have-not-yet-created-or-received'),
       icon: Bird,
     }))
     .otherwise(() => ({
-      title: 'Nothing to do',
-      message:
-        'All documents have been processed. Any new documents that are sent or received will show here.',
+      title: t('nothing-to-do'),
+      message: t('all-documents-have-been-processed'),
       icon: CheckCircle2,
     }));
 

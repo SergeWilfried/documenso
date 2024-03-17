@@ -43,6 +43,7 @@ const renderCustomizedLabel = ({
 export type CapTableProps = HTMLAttributes<HTMLDivElement>;
 
 export const CapTable = ({ className, ...props }: CapTableProps) => {
+
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {

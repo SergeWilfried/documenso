@@ -123,7 +123,7 @@ export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDo
         ],
         from: {
           name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'MonTampon',
-          address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@montampon.com',
+          address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@montampon.xyz',
         },
         subject: 'Signing Complete!',
         html: render(template),

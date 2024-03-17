@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { RecipientRole } from '@documenso/prisma/client';
 

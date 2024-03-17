@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import LogoImage from '@documenso/assets/logo.png';
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
@@ -18,6 +19,7 @@ export type HeaderProps = HTMLAttributes<HTMLElement>;
 
 export const Header = ({ className, ...props }: HeaderProps) => {
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+  const { t } = useTranslation('marketing');
 
   const { getFlag } = useFeatureFlags();
 
@@ -41,7 +43,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
             href="/singleplayer"
             className="bg-primary dark:text-background rounded-full px-2 py-1 text-xs font-semibold sm:px-3"
           >
-            Try now!
+            {t('try-now')}
           </Link>
         )}
       </div>
@@ -51,14 +53,18 @@ export const Header = ({ className, ...props }: HeaderProps) => {
           href="/pricing"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
-          Pricing
+          pricing
+          {t('pricing')}
+
         </Link>
 
         <Link
           href="/blog"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
-          Blog
+                      {t('blog')}
+
+          
         </Link>
 
         <Link
@@ -66,7 +72,9 @@ export const Header = ({ className, ...props }: HeaderProps) => {
           target="_blank"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
-          Sign in
+                      {t('sign.in')}
+
+         
         </Link>
 
         <Button className="rounded-full" size="sm" asChild>

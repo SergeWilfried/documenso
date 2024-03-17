@@ -1,7 +1,7 @@
 import type { NextApiRequest } from 'next';
 
 import type { RequestInternal } from 'next-auth';
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 const ZIpSchema = z.string().ip();
 

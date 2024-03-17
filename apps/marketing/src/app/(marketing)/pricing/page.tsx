@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import {
   Accordion,
   AccordionContent,
@@ -26,16 +27,17 @@ export type PricingPageProps = {
   };
 };
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const { t } = await createTranslation('marketing');
   return (
     <div className="mt-6 sm:mt-12">
       <div className="text-center">
-        <h1 className="text-3xl font-bold lg:text-5xl">Pricing</h1>
+        <h1 className="text-3xl font-bold lg:text-5xl">{t('pricing')}</h1>
 
         <p className="text-foreground mt-4 text-lg leading-normal">
-          Designed for every stage of your journey.
+          {t('designed-for-every-stage-of-your-journey')}
         </p>
-        <p className="text-foreground text-lg leading-normal">Get started today.</p>
+        <p className="text-foreground text-lg leading-normal">{t('get-started-today')}</p>
       </div>
 
       <div className="mt-12">
@@ -44,19 +46,17 @@ export default function PricingPage() {
 
       <div className="mx-auto mt-36 max-w-2xl">
         <h2 className="text-center text-2xl font-semibold">
-          None of these work for you? Try self-hosting!
+          {t('none-of-these-work-for-you-try-self-hosting')}
         </h2>
 
         <p className="text-muted-foreground mt-4 text-center leading-relaxed">
-          Our self-hosted option is great for small teams and individuals who need a simple
-          solution. You can use our docker based setup to get started in minutes. Take control with
-          full customizability and data ownership.
+          {t('our-self-hosted-option')}
         </p>
 
         <div className="mt-4 flex justify-center">
           <Button variant="outline" size="lg" className="rounded-full hover:cursor-pointer" asChild>
             <Link href="https://calendly.com/sergewilfried/30min" target="_blank" rel="noreferrer">
-              Get Started
+            {t('get-started')}
             </Link>
           </Button>
         </div>
@@ -65,68 +65,82 @@ export default function PricingPage() {
       <div className="mx-auto mt-36 max-w-2xl">
         {/* FAQ Section */}
 
-        <h2 className="text-4xl font-semibold">FAQs</h2>
+        <h2 className="text-4xl font-semibold">{t('faqs')}</h2>
 
         <Accordion type="multiple" className="mt-8">
           <AccordionItem value="plan-differences">
             <AccordionTrigger className="text-left text-lg font-semibold">
-              What is the difference between the plans?
+              {t('what-is-the-difference-between-the-plans')}
             </AccordionTrigger>
 
             <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              You can self-host MonTampon for free or use our ready-to-use hosted version. The
-              hosted version comes with additional support, painless scalability and more. Early
-              adopters will get access to all features we build this year, for no additional cost!
-              Forever! Yes, that includes multiple users per account later. If you want MonTampon
-              for your enterprise, we are happy to talk about your needs.
+              {t('you-can-self-host-montampon')}
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="data-handling">
             <AccordionTrigger className="text-left text-lg font-semibold">
-              How do you handle my data?
+              {t('how-do-you-handle-my-data')}
             </AccordionTrigger>
 
             <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              Securely. Our data centers are located in Frankfurt (Germany), giving us the best
-              local privacy laws. We are very aware of the sensitive nature of our data and follow
-              best practices to ensure the security and integrity of the data entrusted to us.
+              {t('securely-our-data-centers')}
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="should-use-cloud">
             <AccordionTrigger className="text-left text-lg font-semibold">
-              Why should I use your hosting service?
+              {t('why-should-i-use-your-hosting-service')}
             </AccordionTrigger>
 
             <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              Using our hosted version is the easiest way to get started, you can simply subscribe
-              and start signing your documents. We take care of the infrastructure, so you can focus
-              on your business. Additionally, when using our hosted version you benefit from our
-              trusted signing certificates which helps you to build trust with your customers.
+              {t('using-our-hosted-version')}
             </AccordionContent>
           </AccordionItem>
 
-
-          <AccordionItem value="why-prefer-documenso">
+          <AccordionItem value="how-to-contribute">
             <AccordionTrigger className="text-left text-lg font-semibold">
-              Why should I prefer MonTampon over DocuSign or some other signing tool?
+              {t('how-can-i-contribute')}
             </AccordionTrigger>
 
             <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              MonTampon is a community effort to create an open and vibrant ecosystem around a tool,
-              everybody is free to use and adapt. By being truly open we want to create trusted
-              infrastructure for the future of the internet.
+              {t('thats-awesome-you-can-take-a-look-at-the-current')}{' '}
+              <Link
+                className="text-documenso-700 font-bold"
+                href="https://github.com/documenso/documenso/milestones"
+                target="_blank"
+              >
+                {t('issues')}
+              </Link>{' '}
+              {t('and-join-our')}{' '}
+              <Link
+                className="text-documenso-700 font-bold"
+                href="https://documen.so/discord"
+                target="_blank"
+              >
+                {t('discord-community')}
+              </Link>{' '}
+              {t('to-keep-up-to')}
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="why-prefer-documenso">
+            <AccordionTrigger className="text-left text-lg font-semibold">
+              {t('why-should-i-prefer-montampon-over-docusign-or-some-other-signing-tool')}
+            </AccordionTrigger>
+
+            <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
+              {t('montampon-is-a-community-effort')}
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="where-can-i-get-support">
             <AccordionTrigger className="text-left text-lg font-semibold">
-              Where can I get support?
+              {t('where-can-i-get-support')}
             </AccordionTrigger>
 
             <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              We are happy to assist you at{' '}
+              {t('we-are-happy-to-assist-you-at')}{' '}
               <Link
                 className="text-documenso-700 font-bold"
                 target="_blank"
@@ -142,10 +156,9 @@ export default function PricingPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                in our Support Channel
+                {t('in-our-discord-support-channel')}
               </a>{' '}
-              please message us to get added to the channel if you are not
-              already a member.
+              {t('please-message-either')}
             </AccordionContent>
           </AccordionItem>
         </Accordion>

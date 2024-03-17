@@ -2,7 +2,7 @@
 
 import { useCopyToClipboard } from '@documenso/lib/client-only/hooks/use-copy-to-clipboard';
 import { useToast } from '@documenso/ui/primitives/use-toast';
-
+import { useTranslation } from '@documenso/lib/i18n/client';
 export type PasswordRevealProps = {
   password: string;
 };
@@ -10,12 +10,13 @@ export type PasswordRevealProps = {
 export const PasswordReveal = ({ password }: PasswordRevealProps) => {
   const { toast } = useToast();
   const [, copy] = useCopyToClipboard();
+  const { t } = useTranslation('marketing');
 
   const onCopyClick = () => {
     void copy(password).then(() => {
       toast({
-        title: 'Copied to clipboard',
-        description: 'Your password has been copied to your clipboard.',
+        title: t('copied-to-clipboard'),
+        description: {t('your-password-has-been-copied-to-your-clipboard')},
       });
     });
   };
