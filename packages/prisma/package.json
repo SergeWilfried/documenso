@@ -7,12 +7,15 @@
   "scripts": {
     "format": "prisma format",
     "clean": "rimraf node_modules",
-    "generate": "prisma generate",
-    "db:migrate:deploy": "prisma migrate deploy",
-    "db:migrate:dev": "prisma migrate dev",
-    "db:push": "prisma db push",
-    "db:seed": "ts-node --transpileOnly --project ./tsconfig.seed.json ./seed-database.ts",
-    "studio": "prisma studio"
+    "post-install": "prisma generate",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate-dev": "prisma migrate dev --skip-seed",
+    "prisma:migrate-deploy": "prisma migrate deploy",
+    "prisma:seed": "prisma db seed",
+    "prisma:studio": "prisma studio"
+  },
+  "prisma": {
+    "seed": "ts-node --transpileOnly --project ./tsconfig.seed.json ./seed-database.ts"
   },
 
   "dependencies": {
