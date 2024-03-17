@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
@@ -128,7 +128,7 @@ export const sendTeamEmailVerificationEmail = async (
       name: FROM_NAME,
       address: FROM_ADDRESS,
     },
-    subject: `A request to use your email has been initiated by ${teamName} on Documenso`,
+    subject: `A request to use your email has been initiated by ${teamName} on MonTampon`,
     html: render(template),
     text: render(template, { plainText: true }),
   });

@@ -2,11 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaXTwitter } from 'react-icons/fa6';
 import { LiaDiscord } from 'react-icons/lia';
-import { LuGithub } from 'react-icons/lu';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import LogoImage from '@documenso/assets/logo.png';
 import { Sheet, SheetContent } from '@documenso/ui/primitives/sheet';
@@ -19,26 +18,22 @@ export type MobileNavigationProps = {
 export const MENU_NAVIGATION_LINKS = [
   {
     href: '/singleplayer',
-    text: 'Singleplayer',
+    text: 'singleplayer',
   },
   {
     href: '/blog',
-    text: 'Blog',
+    text: 'blog',
   },
   {
     href: '/pricing',
-    text: 'Pricing',
+    text: 'pricing',
   },
   {
-    href: '/open',
-    text: 'Open Startup',
-  },
-  {
-    href: 'https://status.documenso.com',
+    href: 'https://status.tampon.xyz',
     text: 'Status',
   },
   {
-    href: 'mailto:support@documenso.com',
+    href: 'mailto:support@bangre.co',
     text: 'Support',
     target: '_blank',
   },
@@ -47,11 +42,11 @@ export const MENU_NAVIGATION_LINKS = [
     text: 'Privacy',
   },
   {
-    href: 'https://app.documenso.com/signin?utm_source=marketing-header',
+    href: 'https://app.tampon.xyz/signin?utm_source=marketing-header',
     text: 'Sign in',
   },
   {
-    href: 'https://app.documenso.com/signup?utm_source=marketing-header',
+    href: 'https://app.tampon.xyz/signup?utm_source=marketing-header',
     text: 'Sign up',
   },
 ];
@@ -62,6 +57,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
   const handleMenuItemClick = () => {
     onMenuOpenChange?.(false);
   };
+  const { t } = useTranslation('marketing');
 
   return (
     <Sheet open={isMenuOpen} onOpenChange={onMenuOpenChange}>
@@ -69,7 +65,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
         <Link href="/" className="z-10" onClick={handleMenuItemClick}>
           <Image
             src={LogoImage}
-            alt="Documenso Logo"
+            alt="MonTampon Logo"
             className="dark:invert"
             width={170}
             height={25}
@@ -108,7 +104,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
                 onClick={() => handleMenuItemClick()}
                 target={target}
               >
-                {text}
+                {t(text)}
               </Link>
             </motion.div>
           ))}
@@ -122,17 +118,8 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
           >
             <FaXTwitter className="h-6 w-6" />
           </Link>
-
           <Link
-            href="https://github.com/documenso/documenso"
-            target="_blank"
-            className="text-foreground hover:text-foreground/80"
-          >
-            <LuGithub className="h-6 w-6" />
-          </Link>
-
-          <Link
-            href="https://documen.so/discord"
+            href="https://documen.so/facebook"
             target="_blank"
             className="text-foreground hover:text-foreground/80"
           >

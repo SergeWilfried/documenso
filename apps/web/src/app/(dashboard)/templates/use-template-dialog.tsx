@@ -5,6 +5,7 @@ import { Plus } from 'lucide-react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import * as z from 'zod';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import type { Recipient } from '@documenso/prisma/client';
 import { RecipientRole } from '@documenso/prisma/client';
 import { trpc } from '@documenso/trpc/react';
@@ -46,13 +47,14 @@ export type UseTemplateDialogProps = {
   documentRootPath: string;
 };
 
-export function UseTemplateDialog({
+export async function UseTemplateDialog({
   recipients,
   documentRootPath,
   templateId,
 }: UseTemplateDialogProps) {
   const router = useRouter();
   const { toast } = useToast();
+  const { t } = await createTranslation('web');
 
   const team = useOptionalCurrentTeam();
 
@@ -94,16 +96,16 @@ export function UseTemplateDialog({
       });
 
       toast({
-        title: 'Document created',
-        description: 'Your document has been created from the template successfully.',
+        title: t('document-created'),
+        description: t('your-document-has-been-created-from-the-template-successfully'),
         duration: 5000,
       });
 
       router.push(`${documentRootPath}/${id}`);
     } catch (err) {
       toast({
-        title: 'Error',
-        description: 'An error occurred while creating document from template.',
+        title: t('error'),
+        description: t('an-error-occurred-while-creating-document-from-template'),
         variant: 'destructive',
       });
     }
@@ -121,13 +123,15 @@ export function UseTemplateDialog({
       <DialogTrigger asChild>
         <Button className="cursor-pointer">
           <Plus className="-ml-1 mr-2 h-4 w-4" />
-          Use Template
+          {t('use-template')}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Document Recipients</DialogTitle>
-          <DialogDescription>Add the recipients to create the template with.</DialogDescription>
+          <DialogTitle>{t('document-recipients')}</DialogTitle>
+          <DialogDescription>
+            {t('add-the-recipients-to-create-the-template-with')}
+          </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col space-y-4">
           {formRecipients.map((recipient, index) => (
@@ -138,7 +142,7 @@ export function UseTemplateDialog({
             >
               <div className="flex-1">
                 <Label htmlFor={`recipient-${recipient.id}-email`}>
-                  Email
+                  {t('email')}
                   <span className="text-destructive ml-1 inline-block font-medium">*</span>
                 </Label>
 
@@ -158,7 +162,7 @@ export function UseTemplateDialog({
               </div>
 
               <div className="flex-1">
-                <Label htmlFor={`recipient-${recipient.id}-name`}>Name</Label>
+                <Label htmlFor={`recipient-${recipient.id}-name`}>{t('name')}</Label>
 
                 <Controller
                   control={control}
@@ -187,28 +191,28 @@ export function UseTemplateDialog({
                         <SelectItem value={RecipientRole.SIGNER}>
                           <div className="flex items-center">
                             <span className="mr-2">{ROLE_ICONS[RecipientRole.SIGNER]}</span>
-                            Signer
+                            {t('signer')}
                           </div>
                         </SelectItem>
 
                         <SelectItem value={RecipientRole.CC}>
                           <div className="flex items-center">
                             <span className="mr-2">{ROLE_ICONS[RecipientRole.CC]}</span>
-                            Receives copy
+                            {t('receives-copy')}
                           </div>
                         </SelectItem>
 
                         <SelectItem value={RecipientRole.APPROVER}>
                           <div className="flex items-center">
                             <span className="mr-2">{ROLE_ICONS[RecipientRole.APPROVER]}</span>
-                            Approver
+                            {t('approver')}
                           </div>
                         </SelectItem>
 
                         <SelectItem value={RecipientRole.VIEWER}>
                           <div className="flex items-center">
                             <span className="mr-2">{ROLE_ICONS[RecipientRole.VIEWER]}</span>
-                            Viewer
+                            {t('viewer')}
                           </div>
                         </SelectItem>
                       </SelectContent>
@@ -228,7 +232,7 @@ export function UseTemplateDialog({
         <DialogFooter className="justify-end">
           <DialogClose asChild>
             <Button type="button" variant="secondary">
-              Close
+              {t('close')}
             </Button>
           </DialogClose>
 
@@ -238,7 +242,7 @@ export function UseTemplateDialog({
             disabled={isCreatingDocumentFromTemplate}
             onClick={onCreateDocumentFromTemplate}
           >
-            Create Document
+            {t('create-document')}
           </Button>
         </DialogFooter>
       </DialogContent>

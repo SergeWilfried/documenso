@@ -16,7 +16,7 @@ import { DocumentShareButton } from '@documenso/ui/components/document/document-
 import { SigningCard3D } from '@documenso/ui/components/signing-card';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
-
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { ConfettiScreen } from '~/components/(marketing)/confetti-screen';
 
 interface SinglePlayerModeSuccessProps {
@@ -31,7 +31,7 @@ export const SinglePlayerModeSuccess = ({
   signatures,
 }: SinglePlayerModeSuccessProps) => {
   const { getFlag } = useFeatureFlags();
-
+  const { t } = useTranslation('marketing');
   const isConfettiEnabled = getFlag('marketing_spm_confetti');
 
   const [showDocumentDialog, setShowDocumentDialog] = useState(false);
@@ -49,7 +49,7 @@ export const SinglePlayerModeSuccess = ({
       )}
 
       <h2 className="relative z-10 text-center text-2xl font-semibold leading-normal md:text-3xl lg:mb-2 lg:text-4xl">
-        You have signed
+        {t('you-have-signed')}
         <span className="mt-2 block">{document.title}</span>
       </h2>
 
@@ -77,22 +77,22 @@ export const SinglePlayerModeSuccess = ({
             />
 
             <Button onClick={() => setShowDocumentDialog(true)} className="z-10 col-span-2">
-              Show document
+              {t('show-document')}
             </Button>
           </div>
         </div>
       </div>
 
       <p className="text-muted-foreground/60 mt-16 text-center text-sm">
-        Create a{' '}
+        {t('create-a')}{' '}
         <Link
           href={`${NEXT_PUBLIC_WEBAPP_URL()}/signup?utm_source=singleplayer`}
           target="_blank"
           className="text-documenso-700 hover:text-documenso-600 whitespace-nowrap"
         >
-          free account
+          {t('free-account')}
         </Link>{' '}
-        to access your signed documents at any time
+        {t('to-access-your-signed-documents-at-any-time')}
       </p>
 
       <DocumentDialog

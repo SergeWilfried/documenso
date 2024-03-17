@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-component-session';
 import { findTemplates } from '@documenso/lib/server-only/template/find-templates';
 import { formatDocumentsPath, formatTemplatesPath } from '@documenso/lib/utils/teams';
@@ -22,6 +23,7 @@ export const TemplatesPageView = async ({ searchParams = {}, team }: TemplatesPa
   const { user } = await getRequiredServerComponentSession();
   const page = Number(searchParams.page) || 1;
   const perPage = Number(searchParams.perPage) || 10;
+  const { t } = await createTranslation('web');
 
   const documentRootPath = formatDocumentsPath(team?.url);
   const templateRootPath = formatTemplatesPath(team?.url);
@@ -45,7 +47,7 @@ export const TemplatesPageView = async ({ searchParams = {}, team }: TemplatesPa
             </Avatar>
           )}
 
-          <h1 className="truncate text-2xl font-semibold md:text-3xl">Templates</h1>
+          <h1 className="truncate text-2xl font-semibold md:text-3xl">{t('templates')}</h1>
         </div>
 
         <div>

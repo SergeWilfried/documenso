@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Copy, Edit, MoreHorizontal, Trash2 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 
+import { useTranslation } from '@documenso/lib/i18n/client';
 import type { Template } from '@documenso/prisma/client';
 import {
   DropdownMenu,
@@ -31,7 +32,7 @@ export const DataTableActionDropdown = ({
   teamId,
 }: DataTableActionDropdownProps) => {
   const { data: session } = useSession();
-
+  const { t } = useTranslation('web');
   const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [isDuplicateDialogOpen, setDuplicateDialogOpen] = useState(false);
 
@@ -49,12 +50,12 @@ export const DataTableActionDropdown = ({
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-52" align="start" forceMount>
-        <DropdownMenuLabel>Action</DropdownMenuLabel>
+        <DropdownMenuLabel>{t('action')}</DropdownMenuLabel>
 
         <DropdownMenuItem disabled={!isOwner && !isTeamTemplate} asChild>
           <Link href={`${templateRootPath}/${row.id}`}>
             <Edit className="mr-2 h-4 w-4" />
-            Edit
+            {t('edit')}
           </Link>
         </DropdownMenuItem>
 
@@ -63,7 +64,7 @@ export const DataTableActionDropdown = ({
           onClick={() => setDuplicateDialogOpen(true)}
         >
           <Copy className="mr-2 h-4 w-4" />
-          Duplicate
+          {t('duplicate')}
         </DropdownMenuItem>
 
         <DropdownMenuItem
@@ -71,7 +72,7 @@ export const DataTableActionDropdown = ({
           onClick={() => setDeleteDialogOpen(true)}
         >
           <Trash2 className="mr-2 h-4 w-4" />
-          Delete
+          {t('delete')}
         </DropdownMenuItem>
       </DropdownMenuContent>
 

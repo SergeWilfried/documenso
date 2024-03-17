@@ -5,6 +5,7 @@ import React, { useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { match } from 'ts-pattern';
 
+
 import { useElementScaleSize } from '@documenso/lib/client-only/hooks/use-element-scale-size';
 import { useFieldPageCoords } from '@documenso/lib/client-only/hooks/use-field-page-coords';
 import {

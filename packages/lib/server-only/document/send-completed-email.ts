@@ -114,6 +114,7 @@ export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDo
         downloadLink: recipient.email === owner.email ? documentOwnerDownloadLink : downloadLink,
       });
 
+
       await mailer.sendMail({
         to: [
           {
@@ -122,8 +123,8 @@ export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDo
           },
         ],
         from: {
-          name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'Documenso',
-          address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@documenso.com',
+              name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'MonTampon',
+              address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@montampon.com',
         },
         subject: 'Signing Complete!',
         html: render(template),

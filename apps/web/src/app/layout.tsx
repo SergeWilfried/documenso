@@ -7,6 +7,7 @@ import { PublicEnvScript } from 'next-runtime-env';
 import { FeatureFlagProvider } from '@documenso/lib/client-only/providers/feature-flag';
 import { LocaleProvider } from '@documenso/lib/client-only/providers/locale';
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
+import type { Locales } from '@documenso/lib/i18n/settings';
 import { getServerComponentAllFlags } from '@documenso/lib/server-only/feature-flags/get-server-component-feature-flag';
 import { getLocale } from '@documenso/lib/server-only/headers/get-locale';
 import { TrpcProvider } from '@documenso/trpc/react';
@@ -22,6 +23,7 @@ import './globals.css';
 const fontInter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const fontCaveat = Caveat({ subsets: ['latin'], variable: '--font-signature' });
 
+
 export function generateMetadata() {
   return {
    title: {
@@ -29,6 +31,7 @@ export function generateMetadata() {
     default: 'MonTampon',
   },
   description:
+
     'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
   keywords:
     'Electronic signature, Digital signature, E signature, Esign, Sign documents online, Online signature, Electronic signature free, Free document signing, Sign pdf online, Esignature free, Sign pdf online free, Sign documents online free, E sign, Esign documents, Digital signature free, Digital signature online, Document sign, Esign pdf, E signature online, Fill and sign pdf, Online contract signing, MonTampon, DocuSign alternative, open signing infrastructure, open-source community, fast signing, beautiful signing, smart templates',
@@ -37,6 +40,7 @@ export function generateMetadata() {
   openGraph: {
     title: 'MonTampon - The DocuSign Alternative',
     description:
+
       'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
     type: 'website',
     images: [`${NEXT_PUBLIC_WEBAPP_URL}/opengraph-image.jpg`],
@@ -46,6 +50,7 @@ export function generateMetadata() {
     card: 'summary_large_image',
     images: [`${NEXT_PUBLIC_WEBAPP_URL}/opengraph-image.jpg`],
     description:
+
       'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
   },
  
@@ -55,11 +60,11 @@ export function generateMetadata() {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const flags = await getServerComponentAllFlags();
 
-  const locale = getLocale();
+  const locale = getLocale() as Locales;
 
   return (
     <html
-      lang="en"
+      lang={locale}
       className={cn(fontInter.variable, fontCaveat.variable)}
       suppressHydrationWarning
     >
@@ -76,7 +81,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </Suspense>
 
       <body>
-        <LocaleProvider locale={locale}>
+        <LocaleProvider value={locale}>
           <FeatureFlagProvider initialFlags={flags}>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <TooltipProvider>

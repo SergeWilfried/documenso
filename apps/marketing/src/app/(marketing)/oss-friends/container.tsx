@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import { Variants, motion } from 'framer-motion';
 
@@ -48,6 +49,7 @@ export type OSSFriendsContainerProps = {
 };
 
 export const OSSFriendsContainer = ({ className, ossFriends }: OSSFriendsContainerProps) => {
+
   return (
     <motion.div
       className={cn('grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3', className)}

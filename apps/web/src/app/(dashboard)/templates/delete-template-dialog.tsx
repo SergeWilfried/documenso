@@ -1,5 +1,6 @@
 import { useRouter } from 'next/navigation';
 
+import { createTranslation } from '@documenso/lib/i18n/server';
 import { trpc as trpcReact } from '@documenso/trpc/react';
 import { Button } from '@documenso/ui/primitives/button';
 import {
@@ -18,9 +19,13 @@ type DeleteTemplateDialogProps = {
   onOpenChange: (_open: boolean) => void;
 };
 
-export const DeleteTemplateDialog = ({ id, open, onOpenChange }: DeleteTemplateDialogProps) => {
+export const DeleteTemplateDialog = async ({
+  id,
+  open,
+  onOpenChange,
+}: DeleteTemplateDialogProps) => {
   const router = useRouter();
-
+  const { t } = await createTranslation('web');
   const { toast } = useToast();
 
   const { mutateAsync: deleteTemplate, isLoading } = trpcReact.template.deleteTemplate.useMutation({
@@ -28,8 +33,8 @@ export const DeleteTemplateDialog = ({ id, open, onOpenChange }: DeleteTemplateD
       router.refresh();
 
       toast({
-        title: 'Template deleted',
-        description: 'Your template has been successfully deleted.',
+        title: t('template-deleted'),
+        description: t('your-template-has-been-successfully-deleted'),
         duration: 5000,
       });
 
@@ -37,8 +42,8 @@ export const DeleteTemplateDialog = ({ id, open, onOpenChange }: DeleteTemplateD
     },
     onError: () => {
       toast({
-        title: 'Something went wrong',
-        description: 'This template could not be deleted at this time. Please try again.',
+        title: t('something-went-wrong'),
+        description: t('this-template-could-not-be-deleted-at-this-time-please-try-again'),
         variant: 'destructive',
         duration: 7500,
       });
@@ -49,12 +54,9 @@ export const DeleteTemplateDialog = ({ id, open, onOpenChange }: DeleteTemplateD
     <Dialog open={open} onOpenChange={(value) => !isLoading && onOpenChange(value)}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Do you want to delete this template?</DialogTitle>
+          <DialogTitle>{t('do-you-want-to-delete-this-template')}</DialogTitle>
 
-          <DialogDescription>
-            Please note that this action is irreversible. Once confirmed, your template will be
-            permanently deleted.
-          </DialogDescription>
+          <DialogDescription>{t('please-note-that-this-action-is-irreversible')}</DialogDescription>
         </DialogHeader>
 
         <DialogFooter>
@@ -64,11 +66,11 @@ export const DeleteTemplateDialog = ({ id, open, onOpenChange }: DeleteTemplateD
             disabled={isLoading}
             onClick={() => onOpenChange(false)}
           >
-            Cancel
+            {t('cancel')}
           </Button>
 
           <Button type="button" loading={isLoading} onClick={async () => deleteTemplate({ id })}>
-            Delete
+            {t('delete')}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
+import { useTranslation } from '@documenso/lib/i18n/client';
 import type { DocumentData, Field, Recipient, Template, User } from '@documenso/prisma/client';
 import { trpc } from '@documenso/trpc/react';
 import { cn } from '@documenso/ui/lib/utils';
@@ -45,18 +46,18 @@ export const EditTemplateForm = ({
 }: EditTemplateFormProps) => {
   const { toast } = useToast();
   const router = useRouter();
-
+  const { t } = useTranslation('web');
   const [step, setStep] = useState<EditTemplateStep>('signers');
 
   const documentFlow: Record<EditTemplateStep, DocumentFlowStep> = {
     signers: {
-      title: 'Add Placeholders',
-      description: 'Add all relevant placeholders for each recipient.',
+      title: t('add-placeholders'),
+      description: t('add-all-relevant-placeholders-for-each-recipient'),
       stepIndex: 1,
     },
     fields: {
-      title: 'Add Fields',
-      description: 'Add all relevant fields for each recipient.',
+      title: t('add-fields'),
+      description: t('add-all-relevant-fields-for-each-recipient'),
       stepIndex: 2,
     },
   };
@@ -80,8 +81,8 @@ export const EditTemplateForm = ({
       setStep('fields');
     } catch (err) {
       toast({
-        title: 'Error',
-        description: 'An error occurred while adding signers.',
+        title: t('error'),
+        description: t('an-error-occurred-while-adding-signers'),
         variant: 'destructive',
       });
     }
@@ -95,16 +96,16 @@ export const EditTemplateForm = ({
       });
 
       toast({
-        title: 'Template saved',
-        description: 'Your templates has been saved successfully.',
+        title: t('template-saved'),
+        description: t('your-templates-has-been-saved-successfully'),
         duration: 5000,
       });
 
       router.push(templateRootPath);
     } catch (err) {
       toast({
-        title: 'Error',
-        description: 'An error occurred while adding signers.',
+        title: t('error'),
+        description: t('an-error-occurred-while-adding-signers'),
         variant: 'destructive',
       });
     }

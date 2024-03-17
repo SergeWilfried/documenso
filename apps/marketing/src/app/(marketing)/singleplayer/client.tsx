@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { base64 } from '@documenso/lib/universal/base64';
 import { putFile } from '@documenso/lib/universal/upload/put-file';
 import type { Field, Recipient } from '@documenso/prisma/client';
@@ -33,6 +34,7 @@ type SinglePlayerModeStep = (typeof SinglePlayerModeSteps)[number];
 export const SinglePlayerClient = () => {
   const analytics = useAnalytics();
   const router = useRouter();
+  const { t } = useTranslation('marketing');
 
   const { toast } = useToast();
 
@@ -46,8 +48,8 @@ export const SinglePlayerClient = () => {
 
   const documentFlow: Record<SinglePlayerModeStep, DocumentFlowStep> = {
     fields: {
-      title: 'Add document',
-      description: 'Upload a document and add fields.',
+      title: t('add-document'),
+      description: t('upload-a-document-and-add-fields'),
       stepIndex: 1,
       onBackStep: uploadedFile
         ? () => {
@@ -58,8 +60,8 @@ export const SinglePlayerClient = () => {
       onNextStep: () => setStep('sign'),
     },
     sign: {
-      title: 'Sign',
-      description: 'Enter your details.',
+      title: t('sign'),
+      description: t('enter-your-details'),
       stepIndex: 2,
       onBackStep: () => setStep('fields'),
     },
@@ -141,8 +143,8 @@ export const SinglePlayerClient = () => {
       router.push(`/singleplayer/${documentToken}/success`);
     } catch {
       toast({
-        title: 'Something went wrong',
-        description: 'Please try again later.',
+        title: t('something-went-wrong'),
+        description: t('please-try-again-later'),
         variant: 'destructive',
       });
     }
@@ -176,8 +178,8 @@ export const SinglePlayerClient = () => {
       analytics.capture('Marketing: SPM - Document uploaded');
     } catch {
       toast({
-        title: 'Something went wrong',
-        description: 'Please try again later.',
+        title: t('something-went-wrong'),
+        description: t('please-try-again-later'),
         variant: 'destructive',
       });
     }
@@ -186,26 +188,26 @@ export const SinglePlayerClient = () => {
   return (
     <div className="mt-6 sm:mt-12">
       <div className="text-center">
-        <h1 className="text-3xl font-bold lg:text-5xl">Single Player Mode</h1>
+        <h1 className="text-3xl font-bold lg:text-5xl">{t('single-player-mode')}</h1>
 
         <p className="text-foreground mx-auto mt-4 max-w-[50ch] text-lg leading-normal">
-          Create a{' '}
+          {t('create-a')}{' '}
           <Link
             href={`${NEXT_PUBLIC_WEBAPP_URL()}/signup?utm_source=singleplayer`}
             target="_blank"
             className="hover:text-foreground/80 font-semibold transition-colors"
           >
-            free account
+            {t('free-account')}
           </Link>{' '}
-          or view our{' '}
+          t('or-view-our'){' '}
           <Link
             href={'/pricing'}
             target="_blank"
             className="hover:text-foreground/80 font-semibold transition-colors"
           >
-            early adopter plan
+            {t('community-plan')}
           </Link>{' '}
-          for exclusive features, including the ability to collaborate with multiple signers.
+          {t('for-exclusive-features-including-the-ability-to-collaborate-with-multiple-signers')}
         </p>
       </div>
 

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { getUserMonthlyGrowth } from '@documenso/lib/server-only/user/get-user-monthly-growth';
 

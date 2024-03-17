@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Plus, Trash } from 'lucide-react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 
+
 import { nanoid } from '@documenso/lib/universal/id';
 import { type Field, type Recipient, RecipientRole } from '@documenso/prisma/client';
 import { Button } from '@documenso/ui/primitives/button';

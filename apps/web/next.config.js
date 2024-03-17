@@ -59,7 +59,7 @@ const config = {
     return [
       {
         source: '/ingest/:path*',
-        destination: 'https://eu.posthog.com/:path*',
+        destination: 'https://app.posthog.com/:path*',
       },
     ];
   },
@@ -88,6 +88,10 @@ const config = {
         ],
       },
     ];
+  },
+  generateBuildId: async () => {
+    // This could be anything, using the latest git hash
+    return String(process.env.VERSION || Date.now() + Math.round(Math.random() * 2441139));
   },
 };
 

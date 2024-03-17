@@ -9,8 +9,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
-import { z } from 'zod';
 
+import { z } from '@documenso/lib/i18n/settings';
 import { ErrorCode, isErrorCode } from '@documenso/lib/next-auth/error-codes';
 import { ZCurrentPasswordSchema } from '@documenso/trpc/server/auth-router/schema';
 import { cn } from '@documenso/ui/lib/utils';

@@ -7,6 +7,7 @@ import { Undo2 } from 'lucide-react';
 import type { StrokeOptions } from 'perfect-freehand';
 import { getStroke } from 'perfect-freehand';
 
+
 import { unsafe_useEffectOnce } from '@documenso/lib/client-only/hooks/use-effect-once';
 
 import { cn } from '../../lib/utils';

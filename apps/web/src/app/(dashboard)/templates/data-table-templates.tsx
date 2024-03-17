@@ -8,6 +8,7 @@ import { AlertTriangle, Loader } from 'lucide-react';
 
 import { useLimits } from '@documenso/ee/server-only/limits/provider/client';
 import { useUpdateSearchParams } from '@documenso/lib/client-only/hooks/use-update-search-params';
+import { useTranslation } from '@documenso/lib/i18n/client';
 import type { Recipient, Template } from '@documenso/prisma/client';
 import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
 import { DataTable } from '@documenso/ui/primitives/data-table';
@@ -49,6 +50,7 @@ export const TemplatesDataTable = ({
 }: TemplatesDataTableProps) => {
   const [isPending, startTransition] = useTransition();
   const updateSearchParams = useUpdateSearchParams();
+  const { t } = useTranslation('web');
 
   const { remaining } = useLimits();
 
@@ -66,11 +68,11 @@ export const TemplatesDataTable = ({
       {remaining.documents === 0 && (
         <Alert variant="warning" className="mb-4">
           <AlertTriangle className="h-4 w-4" />
-          <AlertTitle>Document Limit Exceeded!</AlertTitle>
+          <AlertTitle>{t('document-limit-exceeded')}</AlertTitle>
           <AlertDescription className="mt-2">
-            You have reached your document limit.{' '}
+            {t('you-have-reached-your-document-limit')}{' '}
             <Link className="underline underline-offset-4" href="/settings/billing">
-              Upgrade your account to continue!
+              {t('upgrade-your-account-to-continue')}
             </Link>
           </AlertDescription>
         </Alert>
@@ -79,21 +81,21 @@ export const TemplatesDataTable = ({
       <DataTable
         columns={[
           {
-            header: 'Created',
+            header: t('created'),
             accessorKey: 'createdAt',
             cell: ({ row }) => <LocaleDate date={row.original.createdAt} />,
           },
           {
-            header: 'Title',
+            header: t('title'),
             cell: ({ row }) => <DataTableTitle row={row.original} />,
           },
           {
-            header: 'Type',
+            header: t('type'),
             accessorKey: 'type',
             cell: ({ row }) => <TemplateType type={row.original.type} />,
           },
           {
-            header: 'Actions',
+            header: t('actions'),
             accessorKey: 'actions',
             cell: ({ row }) => {
               return (

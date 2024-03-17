@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
+import { useTranslation } from '@documenso/lib/i18n/client';
 import { createDocumentData } from '@documenso/lib/server-only/document-data/create-document-data';
 import { base64 } from '@documenso/lib/universal/base64';
 import { putFile } from '@documenso/lib/universal/upload/put-file';
@@ -50,6 +51,7 @@ type NewTemplateDialogProps = {
 
 export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialogProps) => {
   const router = useRouter();
+  const { t } = useTranslation('web');
 
   const { data: session } = useSession();
   const { toast } = useToast();
@@ -82,8 +84,8 @@ export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialo
       }
     } catch {
       toast({
-        title: 'Something went wrong',
-        description: 'Please try again later.',
+        title: t('something-went-wrong'),
+        description: t('please-try-again-later'),
         variant: 'destructive',
       });
     }
@@ -111,9 +113,8 @@ export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialo
       });
 
       toast({
-        title: 'Template document uploaded',
-        description:
-          'Your document has been uploaded successfully. You will be redirected to the template page.',
+        title: t('template-document-uploaded'),
+        description: t('your-document-has-been'),
         duration: 5000,
       });
 
@@ -122,8 +123,8 @@ export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialo
       router.push(`${templateRootPath}/${id}`);
     } catch {
       toast({
-        title: 'Something went wrong',
-        description: 'Please try again later.',
+        title: t('something-went-wrong'),
+        description: t('please-try-again-later'),
         variant: 'destructive',
       });
     }
@@ -148,13 +149,13 @@ export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialo
       <DialogTrigger asChild>
         <Button className="cursor-pointer" disabled={!session?.user.emailVerified}>
           <FilePlus className="-ml-1 mr-2 h-4 w-4" />
-          New Template
+          {t('new-template')}
         </Button>
       </DialogTrigger>
 
       <DialogContent className="w-full max-w-xl">
         <DialogHeader>
-          <DialogTitle className="mb-4">New Template</DialogTitle>
+          <DialogTitle className="mb-4">{t('new-template')}</DialogTitle>
         </DialogHeader>
 
         <div>
@@ -165,14 +166,15 @@ export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialo
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name your template</FormLabel>
+                    <FormLabel>{t('name-your-template')}</FormLabel>
                     <FormControl>
                       <Input id="email" type="text" className="bg-background mt-1.5" {...field} />
                     </FormControl>
                     <FormDescription>
                       <span className="text-muted-foreground text-xs">
-                        Leave this empty if you would like to use your document's name for the
-                        template
+                        {t(
+                          'leave-this-empty-if-you-would-like-to-use-your-documents-name-for-the-template',
+                        )}
                       </span>
                     </FormDescription>
                     <FormMessage />
@@ -181,7 +183,7 @@ export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialo
               />
 
               <div>
-                <Label htmlFor="template">Upload a Document</Label>
+                <Label htmlFor="template">{t('upload-a-document')}</Label>
 
                 <div className="my-3">
                   {uploadedFile ? (
@@ -189,11 +191,11 @@ export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialo
                       <CardContent className="flex h-full flex-col items-center justify-center p-2">
                         <button
                           onClick={() => resetForm()}
-                          title="Remove Template"
+                          title={t('remove-template')}
                           className="text-muted-foreground absolute right-2.5 top-2.5 rounded-sm opacity-60 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none"
                         >
                           <X className="h-6 w-6" />
-                          <span className="sr-only">Remove Template</span>
+                          <span className="sr-only">{t('remove-template')}</span>
                         </button>
 
                         <div className="border-muted-foreground/20 group-hover:border-documenso/80 dark:bg-muted/80 z-10 flex aspect-[3/4] w-24 flex-col gap-y-1 rounded-lg border bg-white/80 px-2 py-4 backdrop-blur-sm">
@@ -203,7 +205,7 @@ export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialo
                         </div>
 
                         <p className="group-hover:text-foreground text-muted-foreground mt-4 font-medium">
-                          Uploaded Document
+                          {t('uploaded-document')}
                         </p>
 
                         <span className="text-muted-foreground/80 mt-1 text-sm">
@@ -223,7 +225,7 @@ export const NewTemplateDialog = ({ teamId, templateRootPath }: NewTemplateDialo
 
               <div className="flex w-full justify-end">
                 <Button loading={isCreatingTemplate} type="submit">
-                  Create Template
+                  {t('create-template')}
                 </Button>
               </div>
             </form>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { useSession } from 'next-auth/react';
 
+import type { Template } from '@documenso/prisma/client';
 import { formatTemplatesPath } from '@documenso/lib/utils/teams';
 import type { Template } from '@documenso/prisma/client';
 

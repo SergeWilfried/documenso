@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Plus, Trash } from 'lucide-react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 
+
 import { useLimits } from '@documenso/ee/server-only/limits/provider/client';
 import { nanoid } from '@documenso/lib/universal/id';
 import type { Field, Recipient } from '@documenso/prisma/client';
@@ -166,14 +167,17 @@ export const AddSignersFormPartial = ({
                     control={control}
                     name={`signers.${index}.email`}
                     render={({ field }) => (
-                      <Input
-                        id={`signer-${signer.id}-email`}
-                        type="email"
-                        className="bg-background mt-2"
-                        disabled={isSubmitting || hasBeenSentToRecipientId(signer.nativeId)}
-                        onKeyDown={onKeyDown}
-                        {...field}
-                      />
+                      <>
+                        <Input
+                          id={`signer-${signer.id}-email`}
+                          type="email"
+                          className="bg-background mt-2"
+                          disabled={isSubmitting || hasBeenSentToRecipientId(signer.nativeId)}
+                          onKeyDown={onKeyDown}
+                          {...field}
+                        />
+
+                      </>
                     )}
                   />
                 </div>

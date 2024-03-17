@@ -9,8 +9,9 @@ import { Loader } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import { env } from 'next-runtime-env';
 import { Controller, useForm } from 'react-hook-form';
-import { z } from 'zod';
 
+import { useTranslation } from '@documenso/lib/i18n/client';
+import { z } from '@documenso/lib/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
@@ -33,8 +34,8 @@ import { FormErrorMessage } from '../form/form-error-message';
 
 const ZWidgetFormSchema = z
   .object({
-    email: z.string().email({ message: 'Please enter a valid email address.' }),
-    name: z.string().trim().min(3, { message: 'Please enter a valid name.' }),
+    email: z.string().email({ message: 'please-enter-a-valid-email-address' }),
+    name: z.string().trim().min(3, { message: 'please-enter-a-valid-name' }),
   })
   .and(
     z.union([
@@ -59,6 +60,7 @@ export type WidgetProps = HTMLAttributes<HTMLDivElement>;
 export const Widget = ({ className, children, ...props }: WidgetProps) => {
   const { toast } = useToast();
   const event = usePlausible();
+  const { t } = useTranslation('marketing');
 
   const [step, setStep] = useState<StepValues>(STEP.EMAIL);
   const [showSigningDialog, setShowSigningDialog] = useState(false);
@@ -148,7 +150,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
       const planId = env('NEXT_PUBLIC_STRIPE_COMMUNITY_PLAN_MONTHLY_PRICE_ID');
 
       if (!planId) {
-        throw new Error('No plan ID found.');
+        throw new Error(t('no-plan-id-found'));
       }
 
       const claimPlanInput = signatureDataUrl
@@ -176,8 +178,8 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
       event('claim-plan-failed');
 
       toast({
-        title: 'Something went wrong',
-        description: error instanceof Error ? error.message : 'Please try again later.',
+        title: t('something-went-wrong'),
+        description: error instanceof Error ? error.message : t('please-try-again-later'),
         variant: 'destructive',
       });
     }
@@ -199,17 +201,17 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
             className="bg-foreground/5 col-span-12 flex flex-col rounded-2xl p-6 lg:col-span-5"
             onSubmit={handleSubmit(onFormSubmit)}
           >
-            <h3 className="text-xl font-semibold">Sign up to Early Adopter Plan</h3>
+            <h3 className="text-2xl font-semibold">{t('sign-up-for-the-early-adopters-plan')}</h3>
             <p className="text-muted-foreground mt-2 text-xs">
-              with Timur Ercan & Lucas Smith from Documenso
+              {t('with-timur-ercan-and-lucas-smith-from-montampon')}
             </p>
 
             <hr className="mb-6 mt-4" />
 
             <AnimatePresence>
               <motion.div key="email">
-                <label htmlFor="email" className="text-foreground font-medium ">
-                  What’s your email?
+                <label htmlFor="email" className="text-foreground text-lg font-semibold lg:text-xl">
+                  {t('whats-your-email')}
                 </label>
 
                 <Controller
@@ -238,7 +240,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                           disabled={!field.value || !!errors.email?.message}
                           onClick={() => step === STEP.EMAIL && onNextStepClick()}
                         >
-                          Next
+                          {t('next')}
                         </Button>
                       </div>
                     </div>
@@ -265,8 +267,11 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                     transform: 'translateX(25%)',
                   }}
                 >
-                  <label htmlFor="name" className="text-foreground font-medium ">
-                    And your name?
+                  <label
+                    htmlFor="name"
+                    className="text-foreground text-lg font-semibold lg:text-xl"
+                  >
+                    {t('and-your-name')}
                   </label>
 
                   <Controller
@@ -295,7 +300,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                             disabled={!field.value || !!errors.name?.message}
                             onClick={() => onNextStepClick()}
                           >
-                            Next
+                            {t('next')}
                           </Button>
                         </div>
                       </div>
@@ -311,10 +316,14 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
             <div className="flex items-center justify-between">
               <p className="text-muted-foreground text-xs">
-                {isValid ? 'Ready for Signing' : `${stepsRemaining} step(s) until signed`}
+                {isValid
+                  ? t('ready-for-signing')
+                  : t('steps-remaining-step-s-until-signed-singular', { count: steps })}
               </p>
 
-              <p className="text-muted-foreground block text-xs md:hidden">Minimise contract</p>
+              <p className="text-muted-foreground block text-xs md:hidden">
+                {t('minimise-contract')}
+              </p>
             </div>
 
             <div className="bg-background relative mt-2.5 h-[2px] w-full">
@@ -338,7 +347,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                   {!signatureText && signatureDataUrl && (
                     <img
                       src={signatureDataUrl}
-                      alt="user signature"
+                      alt={t('user-signature')}
                       className="h-full dark:invert"
                     />
                   )}
@@ -361,7 +370,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                   <Input
                     id="signatureText"
                     className="text-foreground placeholder:text-muted-foreground border-none p-0 text-sm focus-visible:ring-0"
-                    placeholder="Draw or type name here"
+                    placeholder={t('draw-or-type-name-here')}
                     disabled={isSubmitting}
                     {...register('signatureText', {
                       onChange: (e) => {
@@ -378,7 +387,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                     disabled={!isValid || isSubmitting}
                   >
                     {isSubmitting && <Loader className="mr-2 h-4 w-4 animate-spin" />}
-                    Sign
+                    {t('sign')}
                   </Button>
                 </div>
               </CardContent>
@@ -390,14 +399,14 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
       <Dialog open={showSigningDialog} onOpenChange={setShowSigningDialog}>
         <DialogContent position="center">
           <DialogHeader>
-            <DialogTitle>Add your signature</DialogTitle>
+            <DialogTitle>{t('add-your-signature')}</DialogTitle>
           </DialogHeader>
 
           <DialogDescription>
-            By signing you signal your support of Documenso's mission in a <br></br>
-            <strong>non-legally binding, but heartfelt way</strong>. <br></br>
-            <br></br>You also unlock the option to purchase the early supporter plan including
-            everything we build this year for fixed price.
+            {t('by-signing-you-signal-your-support-of-montampons-mission-in-a')} <br></br>
+            <strong>{t('non-legally-binding-but-heartfelt-way')}</strong>. <br></br>
+            <br></br>
+            {t('you-also-unlock-the-option')}
           </DialogDescription>
 
           <SignaturePad
@@ -409,10 +418,10 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
           <DialogFooter>
             <Button variant="ghost" onClick={() => setShowSigningDialog(false)}>
-              Cancel
+              {t('cancel')}
             </Button>
 
-            <Button onClick={() => onSignatureConfirmClick()}>Confirm</Button>
+            <Button onClick={() => onSignatureConfirmClick()}>{t('confirm')}</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

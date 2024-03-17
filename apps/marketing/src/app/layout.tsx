@@ -5,7 +5,10 @@ import { Caveat, Inter } from 'next/font/google';
 import { PublicEnvScript } from 'next-runtime-env';
 
 import { FeatureFlagProvider } from '@documenso/lib/client-only/providers/feature-flag';
+import { LocaleProvider } from '@documenso/lib/client-only/providers/locale';
 import { NEXT_PUBLIC_MARKETING_URL } from '@documenso/lib/constants/app';
+import type { Locales } from '@documenso/lib/i18n/settings';
+import { getLocale } from '@documenso/lib/server-only/headers/get-locale';
 import { getAllAnonymousFlags } from '@documenso/lib/universal/get-feature-flag';
 import { TrpcProvider } from '@documenso/trpc/react';
 import { cn } from '@documenso/ui/lib/utils';
@@ -20,14 +23,14 @@ import './globals.css';
 const fontInter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const fontCaveat = Caveat({ subsets: ['latin'], variable: '--font-signature' });
 
+
 export function generateMetadata() {
   return {
     title: {
     template: '%s - MonTampon',
     default: 'MonTampon',
   },
-  description:
-    'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
+  description: 'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
   keywords:
     'Electronic signature, Digital signature, E signature, Esign, Sign documents online, Online signature, Electronic signature free, Free document signing, Sign pdf online, Esignature free, Sign pdf online free, Sign documents online free, E sign, Esign documents, Digital signature free, Digital signature online, Document sign, Esign pdf, E signature online, Fill and sign pdf, Online contract signing, MonTampon, DocuSign alternative, open signing infrastructure, open-source community, fast signing, beautiful signing, smart templates',
   authors: { name: 'Studio Bangre, Inc.' },
@@ -55,10 +58,11 @@ export function generateMetadata() {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const flags = await getAllAnonymousFlags();
+  const locale = getLocale() as Locales;
 
   return (
     <html
-      lang="en"
+      lang={locale}
       className={cn(fontInter.variable, fontCaveat.variable)}
       suppressHydrationWarning
     >
@@ -75,13 +79,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </Suspense>
 
       <body>
-        <FeatureFlagProvider initialFlags={flags}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <PlausibleProvider>
-              <TrpcProvider>{children}</TrpcProvider>
-            </PlausibleProvider>
-          </ThemeProvider>
-        </FeatureFlagProvider>
+        <LocaleProvider value={locale}>
+          <FeatureFlagProvider initialFlags={flags}>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <PlausibleProvider>
+                <TrpcProvider>{children}</TrpcProvider>
+              </PlausibleProvider>
+            </ThemeProvider>
+          </FeatureFlagProvider>
+        </LocaleProvider>
 
         <Toaster />
       </body>

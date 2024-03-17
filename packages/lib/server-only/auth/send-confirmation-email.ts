@@ -37,8 +37,8 @@ export const sendConfirmationEmail = async ({ userId }: SendConfirmationEmailPro
 
   const assetBaseUrl = NEXT_PUBLIC_WEBAPP_URL() || 'http://localhost:3000';
   const confirmationLink = `${assetBaseUrl}/verify-email/${verificationToken.token}`;
-  const senderName = NEXT_PRIVATE_SMTP_FROM_NAME || 'Documenso';
-  const senderAdress = NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@documenso.com';
+  const senderName = process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'MonTampon';
+  const senderAdress = process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@tampon.xyz';
 
   const confirmationTemplate = createElement(ConfirmEmailTemplate, {
     assetBaseUrl,

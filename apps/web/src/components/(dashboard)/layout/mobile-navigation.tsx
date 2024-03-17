@@ -8,6 +8,7 @@ import { signOut } from 'next-auth/react';
 
 import LogoImage from '@documenso/assets/logo.png';
 import { getRootHref } from '@documenso/lib/utils/params';
+import { LocaleSwitcher } from '@documenso/ui/components/LocaleSwitcher';
 import { Sheet, SheetContent } from '@documenso/ui/primitives/sheet';
 import { ThemeSwitcher } from '@documenso/ui/primitives/theme-switcher';
 
@@ -50,7 +51,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
         <Link href="/" onClick={handleMenuItemClick}>
           <Image
             src={LogoImage}
-            alt="Documenso Logo"
+            alt="MonTampon Logo"
             className="dark:invert"
             width={170}
             height={25}
@@ -83,11 +84,13 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
 
         <div className="mt-auto flex w-full flex-col space-y-4 self-end">
           <div className="w-fit">
+            <LocaleSwitcher />
+
             <ThemeSwitcher />
           </div>
 
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Documenso, Inc. All rights reserved.
+            © {new Date().getFullYear()} MonTampon, Inc. All rights reserved.
           </p>
         </div>
       </SheetContent>

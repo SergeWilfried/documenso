@@ -1,5 +1,5 @@
 import { TRPCError } from '@trpc/server';
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { TRPCClientError } from '@documenso/trpc/client';
 

@@ -1,5 +1,5 @@
 import type Stripe from 'stripe';
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { createTeamCustomer } from '@documenso/ee/server-only/stripe/create-team-customer';
 import { getTeamRelatedPrices } from '@documenso/ee/server-only/stripe/get-team-related-prices';

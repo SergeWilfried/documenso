@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { usePlausible } from 'next-plausible';
 import { LuGithub } from 'react-icons/lu';
 import { match } from 'ts-pattern';
+import { useTranslation } from '@documenso/lib/i18n/client';
 
 import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
@@ -52,6 +53,7 @@ const HeroTitleVariants: Variants = {
 
 export const Hero = ({ className, ...props }: HeroProps) => {
   const event = usePlausible();
+  const { t } = useTranslation('marketing');
 
   const { getFlag } = useFeatureFlags();
 
@@ -98,8 +100,8 @@ export const Hero = ({ className, ...props }: HeroProps) => {
           animate="animate"
           className="text-center text-4xl font-bold leading-tight tracking-tight lg:text-[64px]"
         >
-          Document signing,
-          <span className="block" /> finally open source.
+          {t('document-signing')}
+          <span className="block" /> {t('finally-open-source')}
         </motion.h2>
 
         <motion.div
@@ -114,16 +116,16 @@ export const Hero = ({ className, ...props }: HeroProps) => {
             className="rounded-full bg-transparent backdrop-blur-sm"
             onClick={onSignUpClick}
           >
-            Claim Early Adopter Plan
-            <span className="bg-primary dark:text-background -mr-2.5 ml-2.5 rounded-full px-2 py-1.5 text-xs font-medium">
-              $30/mo
+            {t('get-the-early-adopters-plan')}
+            <span className="bg-primary dark:text-background -mr-2.5 ml-2.5 rounded-full px-2 py-1.5 text-xs">
+              {t('30-mo-forever')}
             </span>
           </Button>
 
-          <Link href="https://github.com/documenso/documenso" onClick={() => event('view-github')}>
+          <Link href="https://calendly.com/sergewilfried/30min" onClick={() => event('schedule-demo')}>
             <Button variant="outline" className="rounded-full bg-transparent backdrop-blur-sm">
               <LuGithub className="mr-2 h-5 w-5" />
-              Star on Github
+              {t('book-a-demo')}
             </Button>
           </Link>
         </motion.div>
@@ -138,11 +140,11 @@ export const Hero = ({ className, ...props }: HeroProps) => {
             >
               <Link href="/singleplayer" className="block px-4 py-2 text-center">
                 <h2 className="text-muted-foreground text-xs font-semibold">
-                  Introducing Single Player Mode
+                  {t('introducing-single-player-mode')}
                 </h2>
 
                 <h1 className="text-foreground mt-1.5 font-medium leading-5">
-                  Self sign for free!
+                  {t('self-sign-for-free')}
                 </h1>
               </Link>
             </motion.div>
@@ -160,7 +162,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
               >
                 <img
                   src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=395047&theme=light&period=daily"
-                  alt="Documenso - The open source DocuSign alternative | Product Hunt"
+                  alt={t('montampon-the-open-source-docusign-alternative-or-product-hunt')}
                   style={{ width: '250px', height: '54px' }}
                 />
               </Link>
@@ -189,53 +191,38 @@ export const Hero = ({ className, ...props }: HeroProps) => {
           animate="animate"
         >
           <Widget className="mt-12">
-            <strong>Documenso Supporter Pledge</strong>
+            <strong>{t('montampon-supporter-pledge')}</strong>
             <p className="w-full max-w-[70ch]">
-              Our mission is to create an open signing infrastructure that empowers the world,
-              enabling businesses to embrace openness, cooperation, and transparency. We believe
-              that signing, as a fundamental act, should embody these values. By offering an
-              open-source signing solution, we aim to make document signing accessible, transparent,
-              and trustworthy.
+              {t('welcome-to-montampon-where-our-mission-is-to-transform-the-digital-signing-landscape')}
             </p>
 
             <p className="w-full max-w-[70ch]">
-              Through our platform, called Documenso, we strive to earn your trust by allowing
-              self-hosting and providing complete visibility into its inner workings. We value
-              inclusivity and foster an environment where diverse perspectives and contributions are
-              welcomed, even though we may not implement them all.
+              {t('at-the-core-of-montampon-is-our-dedication-to-trust')}
             </p>
 
             <p className="w-full max-w-[70ch]">
-              At Documenso, we envision a web-enabled future for business and contracts, and we are
-              committed to being the leading provider of open signing infrastructure. By combining
-              exceptional product design with open-source principles, we aim to deliver a robust and
-              well-designed application that exceeds your expectations.
+              {t('we-envision-a-future-where-digital-transactions')}
             </p>
 
             <p className="w-full max-w-[70ch]">
-              We understand that exceptional products are born from exceptional communities, and we
-              invite you to join our open-source community. Your contributions, whether technical or
-              non-technical, will help shape the future of signing. Together, we can create a better
-              future for everyone.
+              {t('montampon-is-built-on-the-belief-that-diversity-and-inclusivity-lead-to-innovation-we-welcome-contributions-from-everyone-valuing-the-variety-of-perspectives-that-shape-our-platform-and-services-by-joining-us-youre-not-just-using-a-service-youre-supporting-a-vision-of-a-more-open-cooperative-digital-world')}
             </p>
 
             <p className="w-full max-w-[70ch]">
-              Today we invite you to join us on this journey: By signing this mission statement you
-              signal your support of Documenso's mission{' '}
+              {t('today-we-invite-you-to-join-us')}{' '}
               <span className="bg-primary text-black">
-                (in a non-legally binding, but heartfelt way)
+                {(`${t('in-a-non-legally-binding-but-heartfelt-way')}`)}
               </span>{' '}
-              and lock in the early adopter plan for forever, including everything we build this
-              year.
+              {t('and-lock-in-the-early-supporter-plan-for-forever-including-everything-we-build-this-year')}
             </p>
 
             <div className="flex h-24 items-center">
-              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>Timur & Lucas</p>
+              <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>{t('timur-and-lucas')}</p>
             </div>
 
             <div>
-              <strong>Timur Ercan & Lucas Smith</strong>
-              <p className="mt-1">Co-Founders, Documenso</p>
+              <strong>{t('timur-ercan-and-lucas-smith')}</strong>
+              <p className="mt-1">{t('co-founders-montampon')}</p>
             </div>
           </Widget>
         </motion.div>

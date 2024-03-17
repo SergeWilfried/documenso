@@ -1,8 +1,12 @@
-import { z } from 'zod';
+import { z } from '@documenso/lib/i18n/settings';
 
 import { URL_REGEX } from '@documenso/lib/constants/url-regex';
 import { ZBaseTableSearchParamsSchema } from '@documenso/lib/types/search-params';
-import { FieldType, RecipientRole } from '@documenso/prisma/client';
+import { DocumentStatus, FieldType, RecipientRole } from '@documenso/prisma/client';
+import { createTranslation } from '@documenso/lib/i18n/server';
+
+const {t} = await createTranslation('common');
+
 
 export const ZFindDocumentAuditLogsQuerySchema = ZBaseTableSearchParamsSchema.extend({
   documentId: z.number().min(1),
@@ -94,7 +98,7 @@ export const ZSendDocumentMutationSchema = z.object({
       .string()
       .optional()
       .refine((value) => value === undefined || value === '' || URL_REGEX.test(value), {
-        message: 'Please enter a valid URL',
+        message: t('please-enter-a-valid-url'),
       }),
   }),
 });
