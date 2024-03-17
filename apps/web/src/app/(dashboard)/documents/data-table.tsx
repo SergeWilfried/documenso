@@ -77,14 +77,13 @@ export const DocumentsDataTable = ({
           {
             header: t('recipient'),
             accessorKey: 'recipient',
-            cell: ({ row }) => {
-              return <StackAvatarsWithTooltip recipients={row.original.Recipient} />;
-            },
+            cell: ({ row }) => <StackAvatarsWithTooltip recipients={row.original.Recipient} />,
           },
           {
             header: t('status'),
             accessorKey: 'status',
             cell: ({ row }) => <DocumentStatus status={row.getValue('status')} />,
+            size: 140,
           },
           {
             header: t('actions'),

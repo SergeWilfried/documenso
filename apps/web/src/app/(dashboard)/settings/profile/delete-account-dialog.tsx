@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { signOut } from 'next-auth/react';
 
 import { useTranslation } from '@documenso/lib/i18n/client';
@@ -17,6 +19,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@documenso/ui/primitives/dialog';
+import { Input } from '@documenso/ui/primitives/input';
+import { Label } from '@documenso/ui/primitives/label';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
 export type DeleteAccountDialogProps = {
@@ -28,6 +32,8 @@ export const DeleteAccountDialog = ({ className, user }: DeleteAccountDialogProp
   const { toast } = useToast();
   const { t } = useTranslation('web');
   const hasTwoFactorAuthentication = user.twoFactorEnabled;
+
+  const [enteredEmail, setEnteredEmail] = useState<string>('');
 
   const { mutateAsync: deleteAccount, isLoading: isDeletingAccount } =
     trpc.profile.deleteAccount.useMutation();
@@ -72,10 +78,11 @@ export const DeleteAccountDialog = ({ className, user }: DeleteAccountDialogProp
         </div>
 
         <div className="flex-shrink-0">
-          <Dialog>
+          <Dialog onOpenChange={() => setEnteredEmail('')}>
             <DialogTrigger asChild>
               <Button variant="destructive">{t('delete-account')}</Button>
             </DialogTrigger>
+
             <DialogContent>
               <DialogHeader className="space-y-4">
                 <DialogTitle>{t('delete-account')}</DialogTitle>
@@ -101,12 +108,29 @@ export const DeleteAccountDialog = ({ className, user }: DeleteAccountDialogProp
                 </DialogDescription>
               </DialogHeader>
 
+              {!hasTwoFactorAuthentication && (
+                <div className="mt-4">
+                  <Label>
+                    Please type{' '}
+                    <span className="text-muted-foreground font-semibold">{user.email}</span> to
+                    confirm.
+                  </Label>
+
+                  <Input
+                    type="text"
+                    className="mt-2"
+                    aria-label="Confirm Email"
+                    value={enteredEmail}
+                    onChange={(e) => setEnteredEmail(e.target.value)}
+                  />
+                </div>
+              )}
               <DialogFooter>
                 <Button
                   onClick={onDeleteAccount}
                   loading={isDeletingAccount}
                   variant="destructive"
-                  disabled={hasTwoFactorAuthentication}
+                  disabled={hasTwoFactorAuthentication || enteredEmail !== user.email}
                 >
                   {isDeletingAccount ? t('deleting-account') : t('delete-account')}
                 </Button>

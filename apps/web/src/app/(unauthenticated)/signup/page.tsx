@@ -35,25 +35,11 @@ export default async function SignUpPage({ searchParams }: SignUpPageProps) {
   }
 
   return (
-    <div>
-      <h1 className="text-4xl font-semibold">{t('create-a-new-account')}</h1>
 
-      <p className="text-muted-foreground/60 mt-2 text-sm">
-        {t('create-your-account-and-start-using')}
-      </p>
-
-      <SignUpForm
-        className="mt-4"
-        initialEmail={email || undefined}
-        isGoogleSSOEnabled={IS_GOOGLE_SSO_ENABLED}
-      />
-
-      <p className="text-muted-foreground mt-6 text-center text-sm">
-        {t('already-have-an-account')}{' '}
-        <Link href="/signin" className="text-primary duration-200 hover:opacity-70">
-          {t('sign-in-instead')}
-        </Link>
-      </p>
-    </div>
+    <SignUpFormV2
+      className="w-screen max-w-screen-2xl px-4 md:px-16 lg:-my-16"
+      initialEmail={email || undefined}
+      isGoogleSSOEnabled={IS_GOOGLE_SSO_ENABLED}
+    />
   );
 }
