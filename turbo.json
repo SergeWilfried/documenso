@@ -18,6 +18,12 @@
       "cache": false,
       "persistent": true
     },
+    "db:migrate:deploy": {},
+    "db:push": {},
+    "db:seed": {},
+    "generate": {
+      "dependsOn": ["^generate"]
+    },
     "start": {
       "dependsOn": ["^build"],
       "cache": false,
@@ -27,7 +33,8 @@
       "cache": false
     },
     "test:e2e": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "cache": false
     }
   },
   "globalDependencies": ["**/.env.*local"],
@@ -89,6 +96,7 @@
     "FONT_CAVEAT_URI",
     "POSTGRES_URL",
     "DATABASE_URL",
+    "DATABASE_URL_UNPOOLED",
     "POSTGRES_PRISMA_URL",
     "POSTGRES_URL_NON_POOLING",
     "E2E_TEST_AUTHENTICATE_USERNAME",

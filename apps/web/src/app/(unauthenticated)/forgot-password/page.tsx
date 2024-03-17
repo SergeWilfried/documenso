@@ -20,7 +20,7 @@ export default async function ForgotPasswordPage() {
         {t('no-worries-it-happens-enter-your-email')}
       </p>
 
-      <ForgotPasswordForm className="mt-4" />
+        <ForgotPasswordForm className="mt-4" />
 
       <p className="text-muted-foreground mt-6 text-center text-sm">
         {t('remembered-your-password')}{' '}
@@ -28,6 +28,4 @@ export default async function ForgotPasswordPage() {
           {t('sign-in')}
         </Link>
       </p>
-    </div>
   );
-}

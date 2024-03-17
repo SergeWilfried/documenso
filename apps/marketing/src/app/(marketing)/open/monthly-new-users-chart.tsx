@@ -16,7 +16,7 @@ export const MonthlyNewUsersChart = ({ className, data }: MonthlyNewUsersChartPr
 
   const formattedData = [...data].reverse().map(({ month, count }) => {
     return {
-      month: DateTime.fromFormat(month, 'yyyy-MM').toFormat('LLL'),
+      month: DateTime.fromFormat(month, 'yyyy-MM').toFormat('LLLL'),
       count: Number(count),
     };
   });
@@ -34,6 +34,9 @@ export const MonthlyNewUsersChart = ({ className, data }: MonthlyNewUsersChartPr
             <YAxis />
 
             <Tooltip
+              labelStyle={{
+                color: 'hsl(var(--primary-foreground))',
+              }}
               formatter={(value) => [Number(value).toLocaleString('en-US'), 'New Users']}
               cursor={{ fill: 'hsl(var(--primary) / 10%)' }}
             />

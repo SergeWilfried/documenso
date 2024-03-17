@@ -101,7 +101,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
         </div>
 
         <div
-          data-plan="community"
+          data-plan="early-adopter"
           className="border-primary bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border-2 px-8 py-12 shadow-[0px_0px_0px_4px_#E3E3E380]"
         >
           <p className="text-foreground text-4xl font-medium">{t('early-adopters')}</p>
@@ -142,6 +142,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
             </p>
             <p className="text-foreground py-4">{t('fixed-straightforward-pricing')}</p>
           </div>
+          <div className="flex-1" />
         </div>
 
         <div

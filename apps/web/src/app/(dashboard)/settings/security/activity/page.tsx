@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 
 import { createTranslation } from '@documenso/lib/i18n/server';
 
+import { SettingsHeader } from '~/components/(dashboard)/settings/layout/header';
+
+import ActivityPageBackButton from '../../../../../components/(dashboard)/settings/layout/activity-back';
 import { UserSecurityActivityDataTable } from './user-security-activity-data-table';
 
 export const metadata: Metadata = {
@@ -12,11 +15,14 @@ export default async function SettingsSecurityActivityPage() {
   const { t } = await createTranslation('web');
   return (
     <div>
-      <h3 className="text-2xl font-semibold">{t('security-activity')}</h3>
-
-      <p className="text-muted-foreground mt-2 text-sm">
-        {t('view-all-recent-security-activity-related-to-your-account')}
-      </p>
+      <SettingsHeader
+        title="Security activity"
+        subtitle="View all recent security activity related to your account."
+      >
+        <div>
+          <ActivityPageBackButton />
+        </div>
+      </SettingsHeader>
 
       <hr className="my-4" />
 

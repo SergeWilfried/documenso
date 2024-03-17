@@ -19,8 +19,8 @@ export type FooterProps = HTMLAttributes<HTMLDivElement>;
 
 const SOCIAL_LINKS = [
   { href: 'https://twitter.com/documenso', icon: <FaXTwitter className="h-6 w-6" /> },
-  { href: 'https://github.com/documenso/documenso', icon: <LuGithub className="h-6 w-6" /> },
-  { href: 'https://documen.so/discord', icon: <LiaDiscord className="h-7 w-7" /> },
+  { href: 'https://calendly.com/sergewilfried/30min', icon: <LuGithub className="h-6 w-6" /> },
+  { href: 'https://documen.so/facebook', icon: <LiaDiscord className="h-7 w-7" /> },
 ];
 
 const FOOTER_LINKS = [

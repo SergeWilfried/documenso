@@ -9,8 +9,9 @@ import { Loader } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import { env } from 'next-runtime-env';
 import { Controller, useForm } from 'react-hook-form';
-import { z } from '@documenso/lib/i18n/settings';
 
+import { useTranslation } from '@documenso/lib/i18n/client';
+import { z } from '@documenso/lib/i18n/settings';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import { Card, CardContent } from '@documenso/ui/primitives/card';
@@ -25,7 +26,7 @@ import {
 import { Input } from '@documenso/ui/primitives/input';
 import { SignaturePad } from '@documenso/ui/primitives/signature-pad';
 import { useToast } from '@documenso/ui/primitives/use-toast';
-import { useTranslation } from '@documenso/lib/i18n/client';
+
 import { claimPlan } from '~/api/claim-plan/fetcher';
 
 import { STEP } from '../constants';
@@ -33,10 +34,8 @@ import { FormErrorMessage } from '../form/form-error-message';
 
 const ZWidgetFormSchema = z
   .object({
-    email: z.string().email({ message: 'please-enter-a-valid-email-address'}),
-    name: z
-    .string()
-    .trim().min(3, { message: 'please-enter-a-valid-name' }),
+    email: z.string().email({ message: 'please-enter-a-valid-email-address' }),
+    name: z.string().trim().min(3, { message: 'please-enter-a-valid-name' }),
   })
   .and(
     z.union([
@@ -223,7 +222,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
                       <Input
                         id="email"
                         type="email"
-                        placeholder=""
+                        placeholder="your@example.com"
                         className="bg-background w-full pr-16"
                         disabled={isSubmitting}
                         onKeyDown={(e) =>
@@ -317,13 +316,14 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
 
             <div className="flex items-center justify-between">
               <p className="text-muted-foreground text-xs">
-                {isValid ? t('ready-for-signing') : t('steps-remaining-step-s-until-signed-singular', {count: steps})}
+                {isValid
+                  ? t('ready-for-signing')
+                  : t('steps-remaining-step-s-until-signed-singular', { count: steps })}
               </p>
 
               <p className="text-muted-foreground block text-xs md:hidden">
                 {t('minimise-contract')}
               </p>
-
             </div>
 
             <div className="bg-background relative mt-2.5 h-[2px] w-full">
@@ -407,7 +407,6 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
             <strong>{t('non-legally-binding-but-heartfelt-way')}</strong>. <br></br>
             <br></br>
             {t('you-also-unlock-the-option')}
-
           </DialogDescription>
 
           <SignaturePad

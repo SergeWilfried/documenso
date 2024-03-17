@@ -29,12 +29,12 @@ export const MENU_NAVIGATION_LINKS = [
     text: 'pricing',
   },
   {
-    href: 'https://status.documenso.com',
-    text: 'status',
+    href: 'https://status.tampon.xyz',
+    text: 'Status',
   },
   {
-    href: 'mailto:support@documenso.com',
-    text: 'support',
+    href: 'mailto:support@bangre.co',
+    text: 'Support',
     target: '_blank',
   },
   {
@@ -42,8 +42,12 @@ export const MENU_NAVIGATION_LINKS = [
     text: 'Privacy',
   },
   {
-    href: 'https://documenso-app-q0ns.onrender.com/signin',
-    text: 'sign.in',
+    href: 'https://app.tampon.xyz/signin?utm_source=marketing-header',
+    text: 'Sign in',
+  },
+  {
+    href: 'https://app.tampon.xyz/signup?utm_source=marketing-header',
+    text: 'Sign up',
   },
 ];
 
@@ -115,7 +119,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
             <FaXTwitter className="h-6 w-6" />
           </Link>
           <Link
-            href="https://documen.so/discord"
+            href="https://documen.so/facebook"
             target="_blank"
             className="text-foreground hover:text-foreground/80"
           >

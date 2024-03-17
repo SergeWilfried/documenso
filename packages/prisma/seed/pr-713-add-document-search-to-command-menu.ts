@@ -16,7 +16,7 @@ import {
 } from '../client';
 
 //
-// https://github.com/documenso/documenso/pull/713
+// https://calendly.com/sergewilfried/30min/pull/713
 //
 
 const PULL_REQUEST_NUMBER = 713;
@@ -49,6 +49,7 @@ export const seedDatabase = async () => {
           email: u.email,
           password: hashSync(u.password),
           emailVerified: new Date(),
+          url: u.email,
         },
       }),
     ),

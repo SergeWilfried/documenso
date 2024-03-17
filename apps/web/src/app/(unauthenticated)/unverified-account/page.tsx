@@ -19,7 +19,8 @@ export default async function UnverifiedAccount() {
 
         <p className="text-muted-foreground mt-4">{t('if-you-dont-find-the-confirmation-link')}</p>
 
-        <SendConfirmationEmailForm />
+          <SendConfirmationEmailForm />
+        </div>
       </div>
     </div>
   );

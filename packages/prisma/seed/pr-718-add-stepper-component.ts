@@ -3,7 +3,7 @@ import { hashSync } from '@documenso/lib/server-only/auth/hash';
 import { prisma } from '..';
 
 //
-// https://github.com/documenso/documenso/pull/713
+// https://calendly.com/sergewilfried/30min/pull/713
 //
 
 const PULL_REQUEST_NUMBER = 718;
@@ -23,6 +23,7 @@ export const seedDatabase = async () => {
       email: TEST_USER.email,
       password: hashSync(TEST_USER.password),
       emailVerified: new Date(),
+      url: TEST_USER.email,
     },
   });
 };

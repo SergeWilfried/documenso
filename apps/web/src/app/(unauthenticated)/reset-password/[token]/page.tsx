@@ -27,7 +27,7 @@ export default async function ResetPasswordPage({ params: { token } }: ResetPass
 
       <p className="text-muted-foreground mt-2 text-sm">{t('please-choose-your-new-password')} </p>
 
-      <ResetPasswordForm token={token} className="mt-4" />
+        <ResetPasswordForm token={token} className="mt-4" />
 
       <p className="text-muted-foreground mt-6 text-center text-sm">
         {t('dont-have-an-account')}{' '}
