@@ -29,7 +29,7 @@ export const metadata = {
     default: 'MonTampon',
   },
   description:
-    'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
+    'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
   keywords:
     'Electronic signature, Digital signature, E signature, Esign, Sign documents online, Online signature, Electronic signature free, Free document signing, Sign pdf online, Esignature free, Sign pdf online free, Sign documents online free, E sign, Esign documents, Digital signature free, Digital signature online, Document sign, Esign pdf, E signature online, Fill and sign pdf, Online contract signing, MonTampon, DocuSign alternative, open signing infrastructure, open-source community, fast signing, beautiful signing, smart templates',
   authors: { name: 'MonTampon, Inc.' },
@@ -37,7 +37,7 @@ export const metadata = {
   openGraph: {
     title: 'MonTampon - The DocuSign Alternative',
     description:
-      'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
+      'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
     type: 'website',
     images: [`${NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
   },
@@ -46,10 +46,10 @@ export const metadata = {
     card: 'summary_large_image',
     images: [`${NEXT_PUBLIC_MARKETING_URL}/opengraph-image.jpg`],
     description:
-      'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
+      'Join MonTampon, and get a 10x better signing experience. Pricing starts at $30/mo. Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
   },
   verification: {
-    google: 'your-google-verification-id-here'
+    google: 'your-google-verification-id-here',
   },
 };
 
