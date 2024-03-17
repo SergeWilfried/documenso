@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { z } from '@documenso/lib/i18n/settings';
+import { z } from 'zod';
 
 import { getUserMonthlyGrowth } from '@documenso/lib/server-only/user/get-user-monthly-growth';
 
@@ -142,23 +142,24 @@ export default async function OpenPage() {
   const MONTHLY_USERS = await getUserMonthlyGrowth();
 
   return (
-    <div className="mx-auto mt-6 max-w-screen-lg sm:mt-12">
-      <div className="flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold lg:text-5xl">Open Startup</h1>
+    <div>
+      <div className="mx-auto mt-6 max-w-screen-lg sm:mt-12">
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-3xl font-bold lg:text-5xl">Open Startup</h1>
 
-        <p className="text-muted-foreground mt-4 max-w-[60ch] text-center text-lg leading-normal">
-          All our metrics, finances, and learnings are public. We believe in transparency and want
-          to share our journey with you. You can read more about why here:{' '}
-          <a
-            className="font-bold"
-            href="https://tampon.xyz/blog/pre-seed"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Announcing Open Metrics
-          </a>
-        </p>
-      </div>
+          <p className="text-muted-foreground mt-4 max-w-[60ch] text-center text-lg leading-normal">
+            All our metrics, finances, and learnings are public. We believe in transparency and want
+            to share our journey with you. You can read more about why here:{' '}
+            <a
+              className="font-bold"
+              href="https://documenso.com/blog/pre-seed"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Announcing Open Metrics
+            </a>
+          </p>
+        </div>
 
         <div className="mt-12 grid grid-cols-12 gap-8">
           <div className="col-span-12 grid grid-cols-4 gap-4">

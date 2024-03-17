@@ -1,8 +1,9 @@
 'use client';
 
 import { useCopyToClipboard } from '@documenso/lib/client-only/hooks/use-copy-to-clipboard';
-import { useToast } from '@documenso/ui/primitives/use-toast';
 import { useTranslation } from '@documenso/lib/i18n/client';
+import { useToast } from '@documenso/ui/primitives/use-toast';
+
 export type PasswordRevealProps = {
   password: string;
 };
@@ -16,7 +17,7 @@ export const PasswordReveal = ({ password }: PasswordRevealProps) => {
     void copy(password).then(() => {
       toast({
         title: t('copied-to-clipboard'),
-        description: {t('your-password-has-been-copied-to-your-clipboard')},
+        description: t('your-password-has-been-copied-to-your-clipboard'),
       });
     });
   };
