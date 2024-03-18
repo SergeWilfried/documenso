@@ -2,16 +2,23 @@
 
 import { useEffect } from 'react';
 
+import { cookies } from 'next/headers';
+
 import type { i18n } from 'i18next';
 import i18next from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next, useTranslation as useTransAlias } from 'react-i18next';
 
+import {
+  FALLBACK_LOCALE,
+  LANGUAGE_COOKIE,
+  getOptions,
+  supportedLocales,
+} from '@documenso/lib/i18n/settings';
 
 import { useLocale } from '../client-only/providers/locale';
 import type { Locales } from './settings';
-import { LANGUAGE_COOKIE, getOptions, supportedLocales } from './settings';
 
 const runsOnServerSide = typeof window === 'undefined';
 
@@ -33,7 +40,7 @@ void i18next
       // This will automatically update the cookie
       caches: ['cookie'],
     },
-    preload: runsOnServerSide ? supportedLocales : []
+    preload: runsOnServerSide ? supportedLocales : [],
   });
 
 export function useTranslation(ns: string) {
@@ -59,4 +66,10 @@ function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
     if (!lng || i18n.resolvedLanguage === lng) return;
     void i18n.changeLanguage(lng);
   }, [lng, i18n]);
+}
+
+// Utility function to get the locale from server components
+export function getLocale() {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+  return (cookies().get(LANGUAGE_COOKIE)?.value ?? FALLBACK_LOCALE) as Locales;
 }

@@ -7,14 +7,9 @@ import { createTranslation } from '@documenso/lib/i18n/server';
 export const metadata: Metadata = {
   title: 'Blog',
 };
-export default async function BlogPage() {
+
+export async function BlogPage() {
   const { t } = await createTranslation('marketing');
-
-
-export default async function BlogPage() {
-  const { t } = await createTranslation('marketing');
-
-
   const blogPosts = allBlogPosts.sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
