@@ -5,7 +5,7 @@ export const ZClaimPlanRequestSchema = z
     email: z
       .string()
       .email()
-      .transform((value) => value.toLowerCase()),
+      .transform((value: string) => value.toLowerCase()),
     name: z.string(),
     planId: z.string(),
   })
