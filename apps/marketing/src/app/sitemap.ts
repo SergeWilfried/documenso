@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 
 import { allBlogPosts, allGenericPages } from 'contentlayer/generated';
 
@@ -27,10 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     {
       url: `${baseUrl}/open`,
-      lastModified,
-    },
-    {
-      url: `${baseUrl}/oss-friends`,
       lastModified,
     },
     {
