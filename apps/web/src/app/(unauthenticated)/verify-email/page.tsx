@@ -20,18 +20,19 @@ export default async function EmailVerificationWithoutTokenPage() {
           <XCircle className="text-destructive h-10 w-10" strokeWidth={2} />
         </div>
 
-      <div>
-        <h2 className="text-2xl font-bold md:text-4xl">
-          {t('uh-oh-looks-like-youre-missing-a-token')}
-        </h2>
+        <div>
+          <h2 className="text-2xl font-bold md:text-4xl">
+            {t('uh-oh-looks-like-youre-missing-a-token')}
+          </h2>
 
-        <p className="text-muted-foreground mt-4">
-          {t('it-seems-that-there-is-no-token-provided')}
-        </p>
+          <p className="text-muted-foreground mt-4">
+            {t('it-seems-that-there-is-no-token-provided')}
+          </p>
 
-        <Button className="mt-4" asChild>
-          <Link href="/">{t('go-back-home')}</Link>
-        </Button>
+          <Button className="mt-4" asChild>
+            <Link href="/">{t('go-back-home')}</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );
