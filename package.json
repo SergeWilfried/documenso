@@ -3,7 +3,7 @@
   "scripts": {
     "build": "turbo run build",
     "build:web": "turbo run build --filter=@documenso/web",
-    "build:marketing": "turbo run build --filter=@documenso/marketing --filter=!@documenso/prisma",
+    "build:marketing": "turbo run build --filter=@documenso/marketing",
     "dev": "turbo run dev --filter=@documenso/marketing",
     "start:marketing": "turbo run start --filter=@documenso/marketing",
     "start:web": "turbo run start --filter=@documenso/web",
@@ -61,8 +61,7 @@
     "react-i18next": "^14.0.5",
     "zod-i18n-map": "^2.27.0",
     "sharp": "^0.33.2",
-    "@documenso/pdf-sign": "^0.1.0",
-    "next-runtime-env": "^3.2.0"
+    "@documenso/pdf-sign": "^0.1.0"
   },
   "overrides": {
     "next-auth": {

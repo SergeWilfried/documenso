@@ -1,15 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { useTranslation } from '@documenso/lib/i18n/client';
 
-import { Variants, motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import { Card, CardContent, CardTitle } from '@documenso/ui/primitives/card';
 
-import { TOSSFriendsSchema } from './schema';
+import type { TOSSFriendsSchema } from './schema';
 
 const ContainerVariants: Variants = {
   initial: {
@@ -49,7 +49,6 @@ export type OSSFriendsContainerProps = {
 };
 
 export const OSSFriendsContainer = ({ className, ossFriends }: OSSFriendsContainerProps) => {
-
   return (
     <motion.div
       className={cn('grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3', className)}
@@ -57,7 +56,7 @@ export const OSSFriendsContainer = ({ className, ossFriends }: OSSFriendsContain
       initial="initial"
       animate="animate"
     >
-      {ossFriends.map((friend, index) => (
+      {ossFriends.map((friend: FriendType, index: number) => (
         <motion.div key={index} className="h-full w-full" variants={CardVariants}>
           <Card
             className="h-full"
@@ -83,4 +82,10 @@ export const OSSFriendsContainer = ({ className, ossFriends }: OSSFriendsContain
       ))}
     </motion.div>
   );
+};
+
+type FriendType = {
+  href: string;
+  description: string;
+  name: string;
 };
