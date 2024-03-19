@@ -41,8 +41,8 @@
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.40.0",
     "eslint-config-custom": "*",
-    "husky": "^8.0.0",
-    "lint-staged": "^14.0.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "prettier": "^2.5.1",
     "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
@@ -60,7 +60,9 @@
     "next-runtime-env": "^3.2.0",
     "react-i18next": "^14.0.5",
     "zod-i18n-map": "^2.27.0",
-    "sharp": "^0.33.2"
+    "sharp": "^0.33.2",
+    "@documenso/pdf-sign": "^0.1.0",
+    "next-runtime-env": "^3.2.0"
   },
   "overrides": {
     "next-auth": {
