@@ -42,7 +42,7 @@ export const sendDeleteEmail = async ({ documentId, reason }: SendDeleteEmailOpt
       name: name || '',
     },
     from: {
-      name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'Documenso',
+      name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'Tampon',
       address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@documenso.com',
     },
     subject: 'Document Deleted!',
