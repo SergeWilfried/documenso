@@ -60,7 +60,7 @@ export const DocumentInviteEmailTemplate = ({
               <Section>
                 <Img
                   src={getAssetUrl('/static/logo.png')}
-                  alt="Documenso Logo"
+                  alt="Tampon Logo"
                   className="mb-4 h-6"
                 />
 

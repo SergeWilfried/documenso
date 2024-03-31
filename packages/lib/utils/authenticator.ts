@@ -9,7 +9,7 @@ export const getAuthenticatorOptions = () => {
   const rpId = webAppBaseUrl.hostname;
 
   return {
-    rpName: 'Documenso',
+    rpName: 'Tampon',
     rpId,
     origin: WEBAPP_BASE_URL,
     timeout: PASSKEY_TIMEOUT,
