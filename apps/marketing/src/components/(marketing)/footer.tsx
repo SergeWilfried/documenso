@@ -27,9 +27,9 @@ const FOOTER_LINKS = [
   { href: '/blog', text: 'Blog' },
   { href: '/design-system', text: 'Design' },
   { href: '/open', text: 'Open Startup' },
-  { href: 'https://shop.documenso.com', text: 'Shop', target: '_blank' },
-  { href: 'https://status.documenso.com', text: 'Status', target: '_blank' },
-  { href: 'mailto:support@documenso.com', text: 'Support', target: '_blank' },
+  { href: 'https://shop.tampon.xyz', text: 'Shop', target: '_blank' },
+  { href: 'https://status.tampon.xyz', text: 'Status', target: '_blank' },
+  { href: 'mailto:support@tampon.xyz', text: 'Support', target: '_blank' },
   { href: '/oss-friends', text: 'OSS Friends' },
   { href: '/careers', text: 'Careers' },
   { href: '/privacy', text: 'Privacy' },
@@ -43,7 +43,7 @@ export const Footer = ({ className, ...props }: FooterProps) => {
           <Link href="/">
             <Image
               src={LogoImage}
-              alt="Documenso Logo"
+              alt="Tampon Logo"
               className="dark:invert"
               width={170}
               height={0}

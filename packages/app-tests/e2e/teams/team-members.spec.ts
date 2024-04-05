@@ -43,7 +43,7 @@ test('[TEAMS]: accept team invitation without account', async ({ page }) => {
   const team = await seedTeam();
 
   const teamInvite = await seedTeamInvite({
-    email: `team-invite-test-${Date.now()}@test.documenso.com`,
+    email: `team-invite-test-${Date.now()}@test.tampon.xyz`,
     teamId: team.id,
   });
 

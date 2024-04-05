@@ -21,7 +21,7 @@ export type ResetPasswordTemplateProps = Partial<TemplateResetPasswordProps>;
 
 export const ResetPasswordTemplate = ({
   userName = 'Lucas Smith',
-  userEmail = 'lucas@documenso.com',
+  userEmail = 'lucas@tampon.xyz',
   assetBaseUrl = 'http://localhost:3002',
 }: ResetPasswordTemplateProps) => {
   const previewText = `Password Reset Successful`;
@@ -47,11 +47,7 @@ export const ResetPasswordTemplate = ({
           <Section>
             <Container className="mx-auto mb-2 mt-8 max-w-xl rounded-lg border border-solid border-slate-200 p-4 backdrop-blur-sm">
               <Section>
-                <Img
-                  src={getAssetUrl('/static/logo.png')}
-                  alt="Documenso Logo"
-                  className="mb-4 h-6"
-                />
+                <Img src={getAssetUrl('/static/logo.png')} alt="Tampon Logo" className="mb-4 h-6" />
 
                 <TemplateResetPassword
                   userName={userName}
@@ -77,7 +73,7 @@ export const ResetPasswordTemplate = ({
                 <Text className="mt-2 text-base text-slate-400">
                   Didn't request a password change? We are here to help you secure your account,
                   just{' '}
-                  <Link className="text-documenso-700 font-normal" href="mailto:hi@documenso.com">
+                  <Link className="text-documenso-700 font-normal" href="mailto:hi@tampon.xyz">
                     contact us.
                   </Link>
                 </Text>

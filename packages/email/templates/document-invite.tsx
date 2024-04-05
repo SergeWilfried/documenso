@@ -26,9 +26,9 @@ export type DocumentInviteEmailTemplateProps = Partial<TemplateDocumentInvitePro
 
 export const DocumentInviteEmailTemplate = ({
   inviterName = 'Lucas Smith',
-  inviterEmail = 'lucas@documenso.com',
+  inviterEmail = 'lucas@tampon.xyz',
   documentName = 'Open Source Pledge.pdf',
-  signDocumentLink = 'https://documenso.com',
+  signDocumentLink = 'https://tampon.xyz',
   assetBaseUrl = 'http://localhost:3002',
   customBody,
   role,
@@ -58,11 +58,7 @@ export const DocumentInviteEmailTemplate = ({
           <Section>
             <Container className="mx-auto mb-2 mt-8 max-w-xl rounded-lg border border-solid border-slate-200 p-4 backdrop-blur-sm">
               <Section>
-                <Img
-                  src={getAssetUrl('/static/logo.png')}
-                  alt="Documenso Logo"
-                  className="mb-4 h-6"
-                />
+                <Img src={getAssetUrl('/static/logo.png')} alt="Tampon Logo" className="mb-4 h-6" />
 
                 <TemplateDocumentInvite
                   inviterName={inviterName}

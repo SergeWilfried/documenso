@@ -2,7 +2,7 @@ import { hashSync } from '@documenso/lib/server-only/auth/hash';
 
 import { prisma } from '..';
 
-export const seedTestEmail = () => `user-${Date.now()}@test.documenso.com`;
+export const seedTestEmail = () => `user-${Date.now()}@test.tampon.xyz`;
 
 type SeedUserOptions = {
   name?: string;
@@ -13,7 +13,7 @@ type SeedUserOptions = {
 
 export const seedUser = async ({
   name = `user-${Date.now()}`,
-  email = `user-${Date.now()}@test.documenso.com`,
+  email = `user-${Date.now()}@test.tampon.xyz`,
   password = 'password',
   verified = true,
 }: SeedUserOptions = {}) => {

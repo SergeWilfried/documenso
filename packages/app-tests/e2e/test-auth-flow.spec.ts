@@ -11,7 +11,7 @@ test.use({ storageState: { cookies: [], origins: [] } });
 
 test('user can sign up with email and password', async ({ page }: { page: Page }) => {
   const username = 'Test User';
-  const email = `test-user-${Date.now()}@auth-flow.documenso.com`;
+  const email = `test-user-${Date.now()}@auth-flow.tampon.xyz`;
   const password = 'Password123#';
 
   await page.goto('/signup');

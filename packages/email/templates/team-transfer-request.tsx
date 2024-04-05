@@ -27,7 +27,7 @@ export type TeamTransferRequestTemplateProps = {
 
 export const TeamTransferRequestTemplate = ({
   assetBaseUrl = 'http://localhost:3002',
-  baseUrl = 'https://documenso.com',
+  baseUrl = 'https://tampon.xyz',
   senderName = 'John Doe',
   teamName = 'Team Name',
   teamUrl = 'demo',

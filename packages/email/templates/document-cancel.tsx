@@ -9,7 +9,7 @@ export type DocumentCancelEmailTemplateProps = Partial<TemplateDocumentCancelPro
 
 export const DocumentCancelTemplate = ({
   inviterName = 'Lucas Smith',
-  inviterEmail = 'lucas@documenso.com',
+  inviterEmail = 'lucas@tampon.xyz',
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
 }: DocumentCancelEmailTemplateProps) => {
@@ -36,11 +36,7 @@ export const DocumentCancelTemplate = ({
           <Section>
             <Container className="mx-auto mb-2 mt-8 max-w-xl rounded-lg border border-solid border-slate-200 p-4 backdrop-blur-sm">
               <Section>
-                <Img
-                  src={getAssetUrl('/static/logo.png')}
-                  alt="Documenso Logo"
-                  className="mb-4 h-6"
-                />
+                <Img src={getAssetUrl('/static/logo.png')} alt="Tampon Logo" className="mb-4 h-6" />
 
                 <TemplateDocumentCancel
                   inviterName={inviterName}

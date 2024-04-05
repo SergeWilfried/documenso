@@ -21,7 +21,7 @@ import {
 
 const PULL_REQUEST_NUMBER = 713;
 
-const EMAIL_DOMAIN = `pr-${PULL_REQUEST_NUMBER}.documenso.com`;
+const EMAIL_DOMAIN = `pr-${PULL_REQUEST_NUMBER}.tampon.xyz`;
 
 export const TEST_USERS = [
   {

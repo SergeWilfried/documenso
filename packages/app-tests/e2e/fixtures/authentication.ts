@@ -15,7 +15,7 @@ type LoginOptions = {
 
 export const manualLogin = async ({
   page,
-  email = 'example@documenso.com',
+  email = 'example@tampon.xyz',
   password = 'password',
   redirectPath,
 }: LoginOptions) => {
@@ -42,7 +42,7 @@ export const manualSignout = async ({ page }: LoginOptions) => {
 
 export const apiSignin = async ({
   page,
-  email = 'example@documenso.com',
+  email = 'example@tampon.xyz',
   password = 'password',
   redirectPath = '/',
 }: LoginOptions) => {

@@ -67,7 +67,7 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
               {
                 formId: initialId,
                 name: `Recipient 1`,
-                email: `recipient.1@documenso.com`,
+                email: `recipient.1@tampon.xyz`,
                 role: RecipientRole.SIGNER,
               },
             ],
@@ -89,7 +89,7 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
     appendSigner({
       formId: nanoid(12),
       name: `Recipient ${placeholderRecipientCount}`,
-      email: `recipient.${placeholderRecipientCount}@documenso.com`,
+      email: `recipient.${placeholderRecipientCount}@tampon.xyz`,
       role: RecipientRole.SIGNER,
     });
 
