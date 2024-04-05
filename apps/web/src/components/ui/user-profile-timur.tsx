@@ -16,7 +16,7 @@ export type UserProfileTimurProps = {
   rows?: number;
 };
 
-const businesses = ['Insurance', 'Real Estate', 'Police Municipale'];
+const businesses = ['Suubu Assurance', 'Police Municipale', 'Real Estate', 'Tic Capital'];
 
 export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps) => {
   const baseUrl = new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000');
@@ -57,9 +57,7 @@ export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps)
           <VerifiedIcon className="text-primary h-8 w-8" />
         </div>
 
-        <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">
-          Hey We are Cowry
-        </p>
+        <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">Hey Welcome</p>
 
         <p className="text-muted-foreground mt-1 max-w-[40ch] text-center text-sm">
           Pick any of the following agreements below and start signing to get started
