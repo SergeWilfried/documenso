@@ -79,7 +79,7 @@ export const Footer = ({ className, ...props }: FooterProps) => {
       </div>
       <div className="mx-auto mt-4 flex w-full max-w-screen-xl flex-wrap items-center justify-between gap-4 px-8 md:mt-12 lg:mt-24">
         <p className="text-muted-foreground text-sm">
-          © {new Date().getFullYear()} Documenso, Inc. All rights reserved.
+          © {new Date().getFullYear()} MonTampon, Inc. All rights reserved.
         </p>
 
         <div className="flex flex-wrap">

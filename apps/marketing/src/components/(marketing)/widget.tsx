@@ -201,7 +201,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
           >
             <h3 className="text-xl font-semibold">Sign up to Early Adopter Plan</h3>
             <p className="text-muted-foreground mt-2 text-xs">
-              with Timur Ercan & Lucas Smith from Documenso
+              with Timur Ercan & Lucas Smith from MonTampon
             </p>
 
             <hr className="mb-6 mt-4" />
@@ -394,7 +394,7 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
           </DialogHeader>
 
           <DialogDescription>
-            By signing you signal your support of Documenso's mission in a <br></br>
+            By signing you signal your support of MonTampon's mission in a <br></br>
             <strong>non-legally binding, but heartfelt way</strong>. <br></br>
             <br></br>You also unlock the option to purchase the early supporter plan including
             everything we build this year for fixed price.

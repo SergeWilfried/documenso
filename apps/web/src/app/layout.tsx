@@ -32,7 +32,7 @@ export function generateMetadata() {
       'Join Tampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
     keywords:
       'MonTampon, toosign, pdf sign, e-signature, sign pdf, DocuSign alternative, document signing, open signing infrastructure, fast signing, beautiful signing, smart templates',
-    authors: { name: 'Documenso, Inc.' },
+    authors: { name: 'MonTampon, Inc.' },
     robots: 'index, follow',
     metadataBase: new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000'),
     openGraph: {
