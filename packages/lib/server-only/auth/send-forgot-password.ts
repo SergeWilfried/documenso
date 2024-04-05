@@ -45,8 +45,8 @@ export const sendForgotPassword = async ({ userId }: SendForgotPasswordOptions) 
       name: user.name || '',
     },
     from: {
-      name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'Tampon',
-      address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@documenso.com',
+      name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'MonTampon',
+      address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@tampon.xyz',
     },
     subject: 'Forgot Password?',
     html: render(template),

@@ -2,7 +2,6 @@ import { type Page, expect, test } from '@playwright/test';
 
 import {
   extractUserVerificationToken,
-  seedTestEmail,
   seedUser,
   unseedUser,
   unseedUserByEmail,
@@ -12,7 +11,7 @@ test.use({ storageState: { cookies: [], origins: [] } });
 
 test('[USER] can sign up with email and password', async ({ page }: { page: Page }) => {
   const username = 'Test User';
-  const email = seedTestEmail();
+  const email = `test-user-${Date.now()}@auth-flow.tampon.xyz`;
   const password = 'Password123#';
 
   await page.goto('/signup');

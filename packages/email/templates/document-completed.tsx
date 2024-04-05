@@ -8,7 +8,7 @@ import { TemplateFooter } from '../template-components/template-footer';
 export type DocumentCompletedEmailTemplateProps = Partial<TemplateDocumentCompletedProps>;
 
 export const DocumentCompletedEmailTemplate = ({
-  downloadLink = 'https://documenso.com',
+  downloadLink = 'https://tampon.xyz',
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
 }: DocumentCompletedEmailTemplateProps) => {
@@ -37,7 +37,7 @@ export const DocumentCompletedEmailTemplate = ({
               <Section className="p-2">
                 <Img
                   src={getAssetUrl('/static/logo.png')}
-                  alt="Tampon Logo"
+                  alt="MonTampon Logo"
                   className="mb-4 h-6"
                 />
 

@@ -72,8 +72,8 @@ export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDo
         },
       ],
       from: {
-        name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'Tampon',
-        address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@documenso.com',
+        name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'MonTampon',
+        address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@tampon.xyz',
       },
       subject: 'Signing Complete!',
       html: render(template),
@@ -122,8 +122,8 @@ export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDo
           },
         ],
         from: {
-          name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'Tampon',
-          address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@documenso.com',
+          name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'MonTampon',
+          address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@tampon.xyz',
         },
         subject: 'Signing Complete!',
         html: render(template),

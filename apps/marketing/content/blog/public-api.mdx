@@ -33,7 +33,7 @@ The API provides 12 endpoints at the time of writing this article:
 - (PATCH) `/api/v1/documents/{id}/fields` - update the details of a document field
 - (DELETE) `/api/v1/documents/{id}/fields` - delete a field from a document
 
-> Check out the [API documentation](https://app.documenso.com/api/v1/openapi).
+> Check out the [API documentation](https://app.tampon.xyz/api/v1/openapi).
 
 Moreover, it also enables us to enhance the platform by bringing other integrations to Documenso, such as Zapier.
 
@@ -222,7 +222,7 @@ That's how the other endpoints work as well. The code differs, but the principle
 For the documentation, we decided to use Swagger UI, which automatically generates the documentation from the OpenAPI specification.
 
 The OpenAPI specification describes an API containing the available endpoints and their HTTP request methods, authentication methods, and so on. Its purpose is to help both machines and humans understand the API without having to look at the code.
-The Documenso OpenAPI specification is live [here](https://documenso.com/api/v1/openapi.json).
+The Documenso OpenAPI specification is live [here](https://tampon.xyz/api/v1/openapi.json).
 
 Thankfully, `ts-rest` makes it seamless to generate the OpenAPI specification.
 
@@ -279,7 +279,7 @@ export default function OpenApiDocsPage() {
 }
 ```
 
-You can access and play around with the documentation at [documenso.com/api/v1/openapi](https://documenso.com/api/v1/openapi). You should see a page like the one shown in the screenshot below.
+You can access and play around with the documentation at [tampon.xyz/api/v1/openapi](https://tampon.xyz/api/v1/openapi). You should see a page like the one shown in the screenshot below.
 
 ![The documentation for the Documenso API](docs.webp)
 

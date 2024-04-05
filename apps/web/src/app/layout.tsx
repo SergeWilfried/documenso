@@ -26,20 +26,20 @@ const fontCaveat = Caveat({ subsets: ['latin'], variable: '--font-signature' });
 export function generateMetadata() {
   return {
     title: {
-      template: '%s - Tampon',
-      default: 'Tampon',
+      template: '%s - MonTampon',
+      default: 'MonTampon',
     },
     description:
-      'Join Tampon, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+      'Join Tampon, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
     keywords:
-      'Tampon, open source, DocuSign alternative, document signing, open signing infrastructure, open-source community, fast signing, beautiful signing, smart templates',
-    authors: { name: 'Tampon, Inc.' },
+      'MonTampon, toosign, pdf sign, e-signature, sign pdf, DocuSign alternative, document signing, open signing infrastructure, fast signing, beautiful signing, smart templates',
+    authors: { name: 'MonTampon, Inc.' },
     robots: 'index, follow',
     metadataBase: new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000'),
     openGraph: {
-      title: 'Tampon - The Open Source DocuSign Alternative',
+      title: 'MonTampon - The DocuSign Alternative',
       description:
-        'Join Tampon, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+        'Join Tampon, and get a 10x better signing experience. Pricing starts at $30/mo. Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable.',
       type: 'website',
       images: ['/opengraph-image.jpg'],
     },
@@ -48,7 +48,7 @@ export function generateMetadata() {
       card: 'summary_large_image',
       images: ['/opengraph-image.jpg'],
       description:
-        'Join Tampon, the open signing infrastructure, and get a 10x better signing experience. Pricing starts at $30/mo. forever! Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
+        'Join Tampon, and get a 10x better signing experience. Pricing starts at $30/mo. Sign in now and enjoy a faster, smarter, and more beautiful document signing process. Integrates with your favorite tools, customizable, and expandable. Support our mission and become a part of our open-source community.',
     },
   };
 }

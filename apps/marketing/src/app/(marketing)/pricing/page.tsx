@@ -74,11 +74,11 @@ export default function PricingPage() {
             </AccordionTrigger>
 
             <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              You can self-host Tampon for free or use our ready-to-use hosted version. The
-              hosted version comes with additional support, painless scalability and more. Early
-              adopters will get access to all features we build this year, for no additional cost!
-              Forever! Yes, that includes multiple users per account later. If you want Tampon
-              for your enterprise, we are happy to talk about your needs.
+              You can self-host MonTampon or use our ready-to-use hosted version. The hosted version
+              comes with additional support, painless scalability and more. Early adopters will get
+              access to all features we build this year, for no additional cost! Forever! Yes, that
+              includes multiple users per account later. If you want MonTampon for your enterprise,
+              we are happy to talk about your needs.
             </AccordionContent>
           </AccordionItem>
 
@@ -136,11 +136,11 @@ export default function PricingPage() {
 
           <AccordionItem value="can-i-use-documenso-commercially">
             <AccordionTrigger className="text-left text-lg font-semibold">
-              Can I use Tampon commercially?
+              Can I use MonTampon commercially?
             </AccordionTrigger>
 
             <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              Yes! Tampon is offered under the GNU AGPL V3 open source license. This means you
+              Yes! MonTampon is offered under the GNU AGPL V3 open source license. This means you
               can use it for free and even modify it to fit your needs, as long as you publish your
               changes under the same license.
             </AccordionContent>
@@ -148,11 +148,11 @@ export default function PricingPage() {
 
           <AccordionItem value="why-prefer-documenso">
             <AccordionTrigger className="text-left text-lg font-semibold">
-              Why should I prefer Tampon over DocuSign or some other signing tool?
+              Why should I prefer MonTampon over DocuSign or some other signing tool?
             </AccordionTrigger>
 
             <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              Tampon is a community effort to create an open and vibrant ecosystem around a tool,
+              MonTampon is a community effort to create an open and vibrant ecosystem around a tool,
               everybody is free to use and adapt. By being truly open we want to create trusted
               infrastructure for the future of the internet.
             </AccordionContent>
@@ -169,9 +169,9 @@ export default function PricingPage() {
                 className="text-documenso-700 font-bold"
                 target="_blank"
                 rel="noreferrer"
-                href="mailto:support@documenso.com"
+                href="mailto:support@tampon.xyz"
               >
-                support@documenso.com
+                support@tampon.xyz
               </Link>{' '}
               or{' '}
               <a

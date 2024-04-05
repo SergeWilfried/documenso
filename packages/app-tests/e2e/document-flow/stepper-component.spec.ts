@@ -281,7 +281,7 @@ test('[DOCUMENT_FLOW]: should be able to create, send with redirect url, sign a 
   await expect(page.getByRole('heading', { name: 'General' })).toBeVisible();
   await page.getByLabel('Title').fill(documentTitle);
   await page.getByRole('button', { name: 'Advanced Options' }).click();
-  await page.getByLabel('Redirect URL').fill('https://documenso.com');
+  await page.getByLabel('Redirect URL').fill('https://tampon.xyz');
 
   await page.getByRole('button', { name: 'Continue' }).click();
 
@@ -325,7 +325,7 @@ test('[DOCUMENT_FLOW]: should be able to create, send with redirect url, sign a 
   await expect(page.getByRole('dialog').getByText('Complete Signing').first()).toBeVisible();
   await page.getByRole('button', { name: 'Sign' }).click();
 
-  await page.waitForURL('https://documenso.com');
+  await page.waitForURL('https://tampon.xyz');
 
   // Check if document has been signed
   const { status: completedStatus } = await getDocumentByToken(token);

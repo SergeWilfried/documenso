@@ -27,13 +27,13 @@ export type TeamTransferRequestTemplateProps = {
 
 export const TeamTransferRequestTemplate = ({
   assetBaseUrl = 'http://localhost:3002',
-  baseUrl = 'https://documenso.com',
+  baseUrl = 'https://tampon.xyz',
   senderName = 'John Doe',
   teamName = 'Team Name',
   teamUrl = 'demo',
   token = '',
 }: TeamTransferRequestTemplateProps) => {
-  const previewText = 'Accept team transfer request on Tampon';
+  const previewText = 'Accept team transfer request on MonTampon';
 
   return (
     <Html>

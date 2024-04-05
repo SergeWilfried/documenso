@@ -69,7 +69,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
         </Link>
 
         <Link
-          href="https://app.documenso.com/signin?utm_source=marketing-header"
+          href="https://app.tampon.xyz/signin?utm_source=marketing-header"
           target="_blank"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
@@ -77,7 +77,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
         </Link>
 
         <Button className="rounded-full" size="sm" asChild>
-          <Link href="https://app.documenso.com/signup?utm_source=marketing-header" target="_blank">
+          <Link href="https://app.tampon.xyz/signup?utm_source=marketing-header" target="_blank">
             Sign up
           </Link>
         </Button>
