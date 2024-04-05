@@ -20,7 +20,7 @@ export default function BlogPage() {
         <h1 className="text-3xl font-bold lg:text-5xl">From the blog</h1>
 
         <p className="text-muted-foreground mx-auto mt-4 max-w-xl text-center text-lg leading-normal">
-          Get the latest news from Documenso, including product updates, team announcements and
+          Get the latest news from Tampon, including product updates, team announcements and
           more!
         </p>
       </div>
