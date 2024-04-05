@@ -74,11 +74,11 @@ export default function PricingPage() {
             </AccordionTrigger>
 
             <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
-              You can self-host MonTampon for free or use our ready-to-use hosted version. The
-              hosted version comes with additional support, painless scalability and more. Early
-              adopters will get access to all features we build this year, for no additional cost!
-              Forever! Yes, that includes multiple users per account later. If you want MonTampon
-              for your enterprise, we are happy to talk about your needs.
+              You can self-host MonTampon or use our ready-to-use hosted version. The hosted version
+              comes with additional support, painless scalability and more. Early adopters will get
+              access to all features we build this year, for no additional cost! Forever! Yes, that
+              includes multiple users per account later. If you want MonTampon for your enterprise,
+              we are happy to talk about your needs.
             </AccordionContent>
           </AccordionItem>
 

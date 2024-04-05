@@ -13,7 +13,7 @@ export const seedTeam = async ({
   createTeamMembers = 0,
   createTeamEmail,
 }: SeedTeamOptions = {}) => {
-  const teamUrl = `team-${Date.now()}`;
+  const teamUrl = `team-${nanoid()}`;
   const teamEmail = createTeamEmail === true ? `${teamUrl}@${EMAIL_DOMAIN}` : createTeamEmail;
 
   const teamOwner = await seedUser({

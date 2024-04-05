@@ -160,7 +160,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
               >
                 <img
                   src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=395047&theme=light&period=daily"
-                  alt="MonTampon - The open source DocuSign alternative | Product Hunt"
+                  alt="MonTampon - The DocuSign alternative | Product Hunt"
                   style={{ width: '250px', height: '54px' }}
                 />
               </Link>

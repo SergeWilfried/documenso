@@ -44,7 +44,7 @@ export const apiSignin = async ({
   page,
   email = 'example@tampon.xyz',
   password = 'password',
-  redirectPath = '/',
+  redirectPath = '/documents',
 }: LoginOptions) => {
   const { request } = page.context();
 
@@ -59,9 +59,7 @@ export const apiSignin = async ({
     },
   });
 
-  if (redirectPath) {
-    await page.goto(`${WEBAPP_BASE_URL}${redirectPath}`);
-  }
+  await page.goto(`${WEBAPP_BASE_URL}${redirectPath}`);
 };
 
 export const apiSignout = async ({ page }: { page: Page }) => {

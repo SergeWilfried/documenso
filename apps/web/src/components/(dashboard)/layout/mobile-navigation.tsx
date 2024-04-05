@@ -87,7 +87,7 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
           </div>
 
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} MonTampon, Inc. All rights reserved.
+            © {new Date().getFullYear()} Studio Bangré, Inc. All rights reserved.
           </p>
         </div>
       </SheetContent>
