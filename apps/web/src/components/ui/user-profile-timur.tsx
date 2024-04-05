@@ -3,6 +3,7 @@
 import Image from 'next/image';
 
 import { File } from 'lucide-react';
+import { ReactTyped } from 'react-typed';
 
 import timurImage from '@documenso/assets/images/timur.png';
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
@@ -15,8 +16,11 @@ export type UserProfileTimurProps = {
   rows?: number;
 };
 
+const businesses = ['Insurance', 'Real Estate', 'Police Municipale'];
+
 export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps) => {
   const baseUrl = new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000');
+  // Create reference to store the DOM element containing the animation
 
   return (
     <div
@@ -39,7 +43,16 @@ export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps)
 
       <div className="mt-6">
         <div className="flex items-center justify-center gap-x-2">
-          <h2 className="text-2xl font-semibold">Cowry Assurance</h2>
+          <h2 className="text-2xl font-semibold">
+            <ReactTyped
+              strings={businesses}
+              typeSpeed={100}
+              loop
+              backSpeed={20}
+              cursorChar="|"
+              showCursor={false}
+            />
+          </h2>
 
           <VerifiedIcon className="text-primary h-8 w-8" />
         </div>
