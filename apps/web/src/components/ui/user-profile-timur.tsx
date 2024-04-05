@@ -16,7 +16,13 @@ export type UserProfileTimurProps = {
   rows?: number;
 };
 
-const businesses = ['Suubu Assurance', 'Police Municipale', 'Real Estate', 'Tic Capital'];
+const businesses = [
+  'Suubu Assurance',
+  'Police Municipale',
+  'Luciole Immobilier',
+  'Barka Capital',
+  'Maître Ouoba',
+];
 
 export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps) => {
   const baseUrl = new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000');
