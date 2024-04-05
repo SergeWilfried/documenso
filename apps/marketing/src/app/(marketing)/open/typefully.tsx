@@ -21,7 +21,7 @@ export const Typefully = ({ className, ...props }: TypefullyProps) => {
         <div className="my-12 flex flex-col items-center gap-y-4 text-center">
           <FaXTwitter className="h-12 w-12" />
           <Link href="https://typefully.com/documenso/stats" target="_blank">
-            <h1>Documenso on X</h1>
+            <h1>Tampon on X</h1>
           </Link>
           <Button className="rounded-full" size="sm" asChild>
             <Link href="https://typefully.com/documenso/stats" target="_blank">
