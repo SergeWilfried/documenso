@@ -61,8 +61,8 @@ export default function SignatureDisclosure() {
           You have the right to withdraw your consent to use electronic signatures at any time
           before completing the signing process. To withdraw your consent, please contact the sender
           of the document. In failing to contact the sender you may reach out to{' '}
-          <a href="mailto:support@documenso.com">support@documenso.com</a> for assistance. Be aware
-          that withdrawing consent may delay or halt the completion of the related transaction or
+          <a href="mailto:support@tampon.xyz">support@tampon.xyz</a> for assistance. Be aware that
+          withdrawing consent may delay or halt the completion of the related transaction or
           service.
         </p>
 
@@ -93,8 +93,7 @@ export default function SignatureDisclosure() {
         <h2>Contact Information</h2>
         <p>
           For any questions regarding this disclosure, electronic signatures, or any related
-          process, please contact us at:{' '}
-          <a href="mailto:support@documenso.com">support@documenso.com</a>
+          process, please contact us at: <a href="mailto:support@tampon.xyz">support@tampon.xyz</a>
         </p>
       </article>
 
