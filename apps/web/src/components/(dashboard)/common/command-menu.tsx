@@ -14,6 +14,10 @@ import {
   SETTINGS_PAGE_SHORTCUT,
   TEMPLATES_PAGE_SHORTCUT,
 } from '@documenso/lib/constants/keyboard-shortcuts';
+import {
+  DO_NOT_INVALIDATE_QUERY_ON_MUTATION,
+  SKIP_QUERY_BATCH_META,
+} from '@documenso/lib/constants/trpc';
 import type { Document, Recipient } from '@documenso/prisma/client';
 import { trpc as trpcReact } from '@documenso/trpc/react';
 import {
@@ -82,6 +86,10 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
       },
       {
         keepPreviousData: true,
+        // Do not batch this due to relatively long request time compared to
+        // other queries which are generally batched with this.
+        ...SKIP_QUERY_BATCH_META,
+        ...DO_NOT_INVALIDATE_QUERY_ON_MUTATION,
       },
     );
 
@@ -197,20 +205,22 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
         )}
         {!currentPage && (
           <>
-            <CommandGroup heading="Documents">
+            <CommandGroup className="mx-2 p-0 pb-2" heading="Documents">
               <Commands push={push} pages={DOCUMENTS_PAGES} />
             </CommandGroup>
-            <CommandGroup heading="Templates">
+            <CommandGroup className="mx-2 p-0 pb-2" heading="Templates">
               <Commands push={push} pages={TEMPLATES_PAGES} />
             </CommandGroup>
-            <CommandGroup heading="Settings">
+            <CommandGroup className="mx-2 p-0 pb-2" heading="Settings">
               <Commands push={push} pages={SETTINGS_PAGES} />
             </CommandGroup>
-            <CommandGroup heading="Preferences">
-              <CommandItem onSelect={() => addPage('theme')}>Change theme</CommandItem>
+            <CommandGroup className="mx-2 p-0 pb-2" heading="Preferences">
+              <CommandItem className="-mx-2 -my-1 rounded-lg" onSelect={() => addPage('theme')}>
+                Change theme
+              </CommandItem>
             </CommandGroup>
             {searchResults.length > 0 && (
-              <CommandGroup heading="Your documents">
+              <CommandGroup className="mx-2 p-0 pb-2" heading="Your documents">
                 <Commands push={push} pages={searchResults} />
               </CommandGroup>
             )}
@@ -231,6 +241,7 @@ const Commands = ({
 }) => {
   return pages.map((page, idx) => (
     <CommandItem
+      className="-mx-2 -my-1 rounded-lg"
       key={page.path + idx}
       value={page.value ?? page.label}
       onSelect={() => push(page.path)}
@@ -255,7 +266,7 @@ const ThemeCommands = ({ setTheme }: { setTheme: (_theme: string) => void }) => 
     <CommandItem
       key={theme.theme}
       onSelect={() => setTheme(theme.theme)}
-      className="mx-2 first:mt-2 last:mb-2"
+      className="-my-1 mx-2 rounded-lg first:mt-2 last:mb-2"
     >
       <theme.icon className="mr-2" />
       {theme.label}

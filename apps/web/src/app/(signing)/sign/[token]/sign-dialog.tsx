@@ -1,14 +1,17 @@
 import { useState } from 'react';
 
 import type { Document, Field } from '@documenso/prisma/client';
+import { RecipientRole } from '@documenso/prisma/client';
 import { Button } from '@documenso/ui/primitives/button';
 import {
   Dialog,
   DialogContent,
   DialogFooter,
+  DialogTitle,
   DialogTrigger,
 } from '@documenso/ui/primitives/dialog';
 
+import { SigningDisclosure } from '~/components/general/signing-disclosure';
 import { truncateTitle } from '~/helpers/truncate-title';
 
 export type SignDialogProps = {
@@ -17,6 +20,7 @@ export type SignDialogProps = {
   fields: Field[];
   fieldsValidated: () => void | Promise<void>;
   onSignatureComplete: () => void | Promise<void>;
+  role: RecipientRole;
 };
 
 export const SignDialog = ({
@@ -25,13 +29,34 @@ export const SignDialog = ({
   fields,
   fieldsValidated,
   onSignatureComplete,
+  role,
 }: SignDialogProps) => {
   const [showDialog, setShowDialog] = useState(false);
   const truncatedTitle = truncateTitle(document.title);
   const isComplete = fields.every((field) => field.inserted);
 
+  const handleOpenChange = (open: boolean) => {
+    if (isSubmitting || !isComplete) {
+      return;
+    }
+
+    // Reauth is currently not required for signing the document.
+    // if (isAuthRedirectRequired) {
+    //   await executeActionAuthProcedure({
+    //     actionTarget: 'DOCUMENT',
+    //     onReauthFormSubmit: () => {
+    //       // Do nothing since the user should be redirected.
+    //     },
+    //   });
+
+    //   return;
+    // }
+
+    setShowDialog(open);
+  };
+
   return (
-    <Dialog open={showDialog && isComplete} onOpenChange={setShowDialog}>
+    <Dialog open={showDialog} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button
           className="w-full"
@@ -43,13 +68,38 @@ export const SignDialog = ({
           {isComplete ? 'Complete' : 'Next field'}
         </Button>
       </DialogTrigger>
+
       <DialogContent>
-        <div className="text-center">
-          <div className="text-foreground text-xl font-semibold">Sign Document</div>
-          <div className="text-muted-foreground mx-auto w-4/5 py-2 text-center">
-            You are about to finish signing "{truncatedTitle}". Are you sure?
+        <DialogTitle>
+          <div className="text-foreground text-xl font-semibold">
+            {role === RecipientRole.VIEWER && 'Complete Viewing'}
+            {role === RecipientRole.SIGNER && 'Complete Signing'}
+            {role === RecipientRole.APPROVER && 'Complete Approval'}
           </div>
+        </DialogTitle>
+
+        <div className="text-muted-foreground max-w-[50ch]">
+          {role === RecipientRole.VIEWER && (
+            <span>
+              You are about to complete viewing "{truncatedTitle}".
+              <br /> Are you sure?
+            </span>
+          )}
+          {role === RecipientRole.SIGNER && (
+            <span>
+              You are about to complete signing "{truncatedTitle}".
+              <br /> Are you sure?
+            </span>
+          )}
+          {role === RecipientRole.APPROVER && (
+            <span>
+              You are about to complete approving "{truncatedTitle}".
+              <br /> Are you sure?
+            </span>
+          )}
         </div>
+
+        <SigningDisclosure className="mt-4" />
 
         <DialogFooter>
           <div className="flex w-full flex-1 flex-nowrap gap-4">
@@ -71,7 +121,9 @@ export const SignDialog = ({
               loading={isSubmitting}
               onClick={onSignatureComplete}
             >
-              Sign
+              {role === RecipientRole.VIEWER && 'Mark as Viewed'}
+              {role === RecipientRole.SIGNER && 'Sign'}
+              {role === RecipientRole.APPROVER && 'Approve'}
             </Button>
           </div>
         </DialogFooter>

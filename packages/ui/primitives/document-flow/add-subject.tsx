@@ -1,36 +1,18 @@
 'use client';
 
-import { useEffect } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
-import { Controller, useForm } from 'react-hook-form';
-
-import { DATE_FORMATS, DEFAULT_DOCUMENT_DATE_FORMAT } from '@documenso/lib/constants/date-formats';
-import { DEFAULT_DOCUMENT_TIME_ZONE, TIME_ZONES } from '@documenso/lib/constants/time-zones';
 import type { Field, Recipient } from '@documenso/prisma/client';
 import { DocumentStatus } from '@documenso/prisma/client';
-import { SendStatus } from '@documenso/prisma/client';
 import type { DocumentWithData } from '@documenso/prisma/types/document-with-data';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@documenso/ui/primitives/accordion';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@documenso/ui/primitives/select';
 
-import { Combobox } from '../combobox';
 import { FormErrorMessage } from '../form/form-error-message';
 import { Input } from '../input';
 import { Label } from '../label';
 import { useStep } from '../stepper';
 import { Textarea } from '../textarea';
-import type { TAddSubjectFormSchema } from './add-subject.types';
+import { type TAddSubjectFormSchema, ZAddSubjectFormSchema } from './add-subject.types';
 import {
   DocumentFlowFormContainerActions,
   DocumentFlowFormContainerContent,
@@ -38,6 +20,7 @@ import {
   DocumentFlowFormContainerHeader,
   DocumentFlowFormContainerStep,
 } from './document-flow-root';
+import { ShowFieldItem } from './show-field-item';
 import type { DocumentFlowStep } from './types';
 
 export type AddSubjectFormProps = {
@@ -46,6 +29,7 @@ export type AddSubjectFormProps = {
   fields: Field[];
   document: DocumentWithData;
   onSubmit: (_data: TAddSubjectFormSchema) => void;
+  isDocumentPdfLoaded: boolean;
 };
 
 export const AddSubjectFormPartial = ({
@@ -54,41 +38,24 @@ export const AddSubjectFormPartial = ({
   fields: fields,
   document,
   onSubmit,
+  isDocumentPdfLoaded,
 }: AddSubjectFormProps) => {
   const {
-    control,
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, touchedFields },
-    getValues,
-    setValue,
+    formState: { errors, isSubmitting },
   } = useForm<TAddSubjectFormSchema>({
     defaultValues: {
       meta: {
         subject: document.documentMeta?.subject ?? '',
         message: document.documentMeta?.message ?? '',
-        timezone: document.documentMeta?.timezone ?? DEFAULT_DOCUMENT_TIME_ZONE,
-        dateFormat: document.documentMeta?.dateFormat ?? DEFAULT_DOCUMENT_DATE_FORMAT,
       },
     },
+    resolver: zodResolver(ZAddSubjectFormSchema),
   });
 
   const onFormSubmit = handleSubmit(onSubmit);
   const { currentStep, totalSteps, previousStep } = useStep();
-
-  const hasDateField = fields.find((field) => field.type === 'DATE');
-
-  const documentHasBeenSent = recipients.some(
-    (recipient) => recipient.sendStatus === SendStatus.SENT,
-  );
-
-  // We almost always want to set the timezone to the user's local timezone to avoid confusion
-  // when the document is signed.
-  useEffect(() => {
-    if (!touchedFields.meta?.timezone && !documentHasBeenSent) {
-      setValue('meta.timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
-    }
-  }, [documentHasBeenSent, setValue, touchedFields.meta?.timezone]);
 
   return (
     <>
@@ -98,6 +65,11 @@ export const AddSubjectFormPartial = ({
       />
       <DocumentFlowFormContainerContent>
         <div className="flex flex-col">
+          {isDocumentPdfLoaded &&
+            fields.map((field, index) => (
+              <ShowFieldItem key={index} field={field} recipients={recipients} />
+            ))}
+
           <div className="flex flex-col gap-y-4">
             <div>
               <Label htmlFor="subject">
@@ -106,7 +78,6 @@ export const AddSubjectFormPartial = ({
 
               <Input
                 id="subject"
-                // placeholder="Subject"
                 className="bg-background mt-2"
                 disabled={isSubmitting}
                 {...register('meta.subject')}
@@ -159,65 +130,6 @@ export const AddSubjectFormPartial = ({
                 </li>
               </ul>
             </div>
-
-            {hasDateField && (
-              <Accordion type="multiple" className="mt-8 border-none">
-                <AccordionItem value="advanced-options" className="border-none">
-                  <AccordionTrigger className="mb-2 border-b text-left hover:no-underline">
-                    Advanced Options
-                  </AccordionTrigger>
-
-                  <AccordionContent className="text-muted-foreground -mx-1 flex max-w-prose flex-col px-1 text-sm leading-relaxed">
-                    <div className="mt-2 flex flex-col">
-                      <Label htmlFor="date-format">
-                        Date Format <span className="text-muted-foreground">(Optional)</span>
-                      </Label>
-
-                      <Controller
-                        control={control}
-                        name={`meta.dateFormat`}
-                        disabled={documentHasBeenSent}
-                        render={({ field: { value, onChange, disabled } }) => (
-                          <Select value={value} onValueChange={onChange} disabled={disabled}>
-                            <SelectTrigger className="bg-background mt-2">
-                              <SelectValue />
-                            </SelectTrigger>
-
-                            <SelectContent>
-                              {DATE_FORMATS.map((format) => (
-                                <SelectItem key={format.key} value={format.value}>
-                                  {format.label}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        )}
-                      />
-                    </div>
-
-                    <div className="mt-4 flex flex-col">
-                      <Label htmlFor="time-zone">
-                        Time Zone <span className="text-muted-foreground">(Optional)</span>
-                      </Label>
-
-                      <Controller
-                        control={control}
-                        name={`meta.timezone`}
-                        render={({ field: { value, onChange } }) => (
-                          <Combobox
-                            className="bg-background"
-                            options={TIME_ZONES}
-                            value={value}
-                            onChange={(value) => value && onChange(value)}
-                            disabled={documentHasBeenSent}
-                          />
-                        )}
-                      />
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            )}
           </div>
         </div>
       </DocumentFlowFormContainerContent>
