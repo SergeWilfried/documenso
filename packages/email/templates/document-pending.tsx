@@ -36,7 +36,7 @@ export const DocumentPendingEmailTemplate = ({
               <Section>
                 <Img
                   src={getAssetUrl('/static/logo.png')}
-                  alt="Tampon Logo"
+                  alt="MonTampon Logo"
                   className="mb-4 h-6"
                 />
 

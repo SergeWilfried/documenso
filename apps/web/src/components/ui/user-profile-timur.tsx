@@ -3,6 +3,7 @@
 import Image from 'next/image';
 
 import { File } from 'lucide-react';
+import { ReactTyped } from 'react-typed';
 
 import timurImage from '@documenso/assets/images/timur.png';
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
@@ -15,8 +16,17 @@ export type UserProfileTimurProps = {
   rows?: number;
 };
 
+const businesses = [
+  'Suubu Assurance',
+  'Police Municipale',
+  'Luciole Immobilier',
+  'Barka Capital',
+  'Maître Ouoba',
+];
+
 export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps) => {
   const baseUrl = new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000');
+  // Create reference to store the DOM element containing the animation
 
   return (
     <div
@@ -26,7 +36,7 @@ export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps)
       )}
     >
       <div className="border-border bg-background text-muted-foreground inline-block max-w-full truncate rounded-md border px-2.5 py-1.5 text-sm">
-        {baseUrl.host}/u/timur
+        {baseUrl.host}/u/cowry
       </div>
 
       <div className="mt-4">
@@ -39,12 +49,21 @@ export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps)
 
       <div className="mt-6">
         <div className="flex items-center justify-center gap-x-2">
-          <h2 className="text-2xl font-semibold">Timur Ercan</h2>
+          <h2 className="text-2xl font-semibold">
+            <ReactTyped
+              strings={businesses}
+              typeSpeed={100}
+              loop
+              backSpeed={20}
+              cursorChar="|"
+              showCursor={false}
+            />
+          </h2>
 
           <VerifiedIcon className="text-primary h-8 w-8" />
         </div>
 
-        <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">Hey I’m Timur</p>
+        <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">Hey Welcome</p>
 
         <p className="text-muted-foreground mt-1 max-w-[40ch] text-center text-sm">
           Pick any of the following agreements below and start signing to get started

@@ -202,11 +202,8 @@ export default async function CompletedSigningPage({
         ) : (
           <p className="text-muted-foreground/60 mt-36 text-sm">
             Want to send slick signing links like this one?{' '}
-            <Link
-              href="https://tampon.xyz"
-              className="text-documenso-700 hover:text-documenso-600"
-            >
-              Check out Tampon.
+            <Link href="https://tampon.xyz" className="text-documenso-700 hover:text-documenso-600">
+              Check out MonTampon.
             </Link>
           </p>
         )}

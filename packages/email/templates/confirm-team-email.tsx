@@ -27,12 +27,12 @@ export type ConfirmTeamEmailProps = {
 
 export const ConfirmTeamEmailTemplate = ({
   assetBaseUrl = 'http://localhost:3002',
-  baseUrl = 'https://documenso.com',
+  baseUrl = 'https://tampon.xyz',
   teamName = 'Team Name',
   teamUrl = 'demo',
   token = '',
 }: ConfirmTeamEmailProps) => {
-  const previewText = `Accept team email request for ${teamName} on Tampon`;
+  const previewText = `Accept team email request for ${teamName} on MonTampon`;
 
   return (
     <Html>
@@ -71,7 +71,7 @@ export const ConfirmTeamEmailTemplate = ({
 
                 <Text className="text-center text-base">
                   <span className="font-bold">{teamName}</span> has requested to use your email
-                  address for their team on Tampon.
+                  address for their team on MonTampon.
                 </Text>
 
                 <div className="mx-auto mt-6 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">
@@ -94,7 +94,7 @@ export const ConfirmTeamEmailTemplate = ({
                   </ul>
 
                   <Text className="mt-2 text-sm">
-                    You can revoke access at any time in your team settings on Tampon{' '}
+                    You can revoke access at any time in your team settings on MonTampon{' '}
                     <Link href={`${baseUrl}/settings/teams`}>here.</Link>
                   </Text>
                 </Section>

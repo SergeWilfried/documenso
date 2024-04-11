@@ -8,7 +8,7 @@ import { TemplateForgotPassword } from '../template-components/template-forgot-p
 export type ForgotPasswordTemplateProps = Partial<TemplateForgotPasswordProps>;
 
 export const ForgotPasswordTemplate = ({
-  resetPasswordLink = 'https://documenso.com',
+  resetPasswordLink = 'https://tampon.xyz',
   assetBaseUrl = 'http://localhost:3002',
 }: ForgotPasswordTemplateProps) => {
   const previewText = `Password Reset Requested`;
@@ -36,7 +36,7 @@ export const ForgotPasswordTemplate = ({
               <Section>
                 <Img
                   src={getAssetUrl('/static/logo.png')}
-                  alt="Tampon Logo"
+                  alt="MonTampon Logo"
                   className="mb-4 h-6"
                 />
 

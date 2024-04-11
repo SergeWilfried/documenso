@@ -214,9 +214,9 @@ export const InviteTeamMembersDialog = ({
 
   const downloadTemplate = () => {
     const data = [
-      { email: 'admin@documenso.com', role: 'Admin' },
-      { email: 'manager@documenso.com', role: 'Manager' },
-      { email: 'member@documenso.com', role: 'Member' },
+      { email: 'admin@tampon.xyz', role: 'Admin' },
+      { email: 'manager@tampon.xyz', role: 'Manager' },
+      { email: 'member@tampon.xyz', role: 'Member' },
     ];
 
     const csvContent =

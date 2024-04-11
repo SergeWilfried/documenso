@@ -34,11 +34,11 @@ export const MENU_NAVIGATION_LINKS = [
     text: 'Open Startup',
   },
   {
-    href: 'https://status.documenso.com',
+    href: 'https://status.tampon.xyz',
     text: 'Status',
   },
   {
-    href: 'mailto:support@documenso.com',
+    href: 'mailto:support@tampon.xyz',
     text: 'Support',
     target: '_blank',
   },
@@ -47,11 +47,11 @@ export const MENU_NAVIGATION_LINKS = [
     text: 'Privacy',
   },
   {
-    href: 'https://app.documenso.com/signin?utm_source=marketing-header',
+    href: 'https://app.tampon.xyz/signin?utm_source=marketing-header',
     text: 'Sign in',
   },
   {
-    href: 'https://app.documenso.com/signup?utm_source=marketing-header',
+    href: 'https://app.tampon.xyz/signup?utm_source=marketing-header',
     text: 'Sign up',
   },
 ];

@@ -10,19 +10,19 @@ type SharePageProps = {
 
 export function generateMetadata({ params: { slug } }: SharePageProps) {
   return {
-    title: 'Tampon - Share',
-    description: 'I just signed a document in style with Tampon!',
+    title: 'MonTampon - Share',
+    description: 'I just signed a document in style with MonTampon!',
     openGraph: {
-      title: 'Tampon - Join the open source signing revolution',
-      description: 'I just signed with Tampon!',
+      title: 'MonTampon - Join the signing revolution',
+      description: 'I just signed with MonTampon!',
       type: 'website',
       images: [`/share/${slug}/opengraph`],
     },
     twitter: {
-      site: '@documenso',
+      site: '@MonTampon',
       card: 'summary_large_image',
       images: [`/share/${slug}/opengraph`],
-      description: 'I just signed with Tampon!',
+      description: 'I just signed with MonTampon!',
     },
   } satisfies Metadata;
 }

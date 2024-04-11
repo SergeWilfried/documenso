@@ -1,15 +1,15 @@
-<img src="https://github.com/documenso/documenso/assets/13398220/a643571f-0239-46a6-a73e-6bef38d1228b" alt="Documenso Logo">
+<img src="https://github.com/documenso/documenso/assets/13398220/a643571f-0239-46a6-a73e-6bef38d1228b" alt="Tampon Logo">
 
 <p align="center" style="margin-top: 20px">
   <p align="center">
   The Open Source DocuSign Alternative.
   <br>
-    <a href="https://documenso.com"><strong>Learn more »</strong></a>
+    <a href="https://tampon.xyz"><strong>Learn more »</strong></a>
     <br />
     <br />
     <a href="https://documen.so/discord">Discord</a>
     ·
-    <a href="https://documenso.com">Website</a>
+    <a href="https://tampon.xyz">Website</a>
     ·
     <a href="https://github.com/documenso/documenso/issues">Issues</a>
     ·

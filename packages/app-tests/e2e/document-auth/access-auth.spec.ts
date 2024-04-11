@@ -16,7 +16,7 @@ test('[DOCUMENT_AUTH]: should grant access when not required', async ({ page }) 
 
   const document = await seedPendingDocument(user, [
     recipientWithAccount,
-    'recipientwithoutaccount@documenso.com',
+    'recipientwithoutaccount@tampon.xyz',
   ]);
 
   const recipients = await prisma.recipient.findMany({
@@ -42,7 +42,7 @@ test('[DOCUMENT_AUTH]: should allow or deny access when required', async ({ page
 
   const document = await seedPendingDocument(
     user,
-    [recipientWithAccount, 'recipientwithoutaccount@documenso.com'],
+    [recipientWithAccount, 'recipientwithoutaccount@tampon.xyz'],
     {
       createDocumentOptions: {
         authOptions: createDocumentAuthOptions({
