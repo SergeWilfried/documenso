@@ -42,8 +42,10 @@ test.describe('[EE_ONLY]', () => {
     await page.getByPlaceholder('Email').fill('recipient1@tampon.xyz');
     await page.getByPlaceholder('Name').fill('Recipient 1');
     await page.getByRole('button', { name: 'Add Signer' }).click();
-    await page.getByRole('textbox', { name: 'Email', exact: true }).fill('recipient2@tampon.xyz');
-    await page.getByRole('textbox', { name: 'Name', exact: true }).fill('Recipient 2');
+    await page
+      .getByRole('textbox', { name: 'Email', exact: true })
+      .fill('recipient2@documenso.com');
+    await page.getByRole('textbox', { name: 'Name', exact: true }).nth(1).fill('Recipient 2');
 
     // Display advanced settings.
     await page.getByLabel('Show advanced settings').click();
