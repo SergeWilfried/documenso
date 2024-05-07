@@ -64,7 +64,7 @@ export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps)
           <VerifiedIcon className="text-primary h-8 w-8" />
         </div>
 
-        <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">Bonjour</p>
+        <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">Bienvenue</p>
 
         <p className="text-muted-foreground mt-1 max-w-[40ch] text-center text-sm">
           Choisissez l'un des accords suivants et commencez à signer pour démarrer.

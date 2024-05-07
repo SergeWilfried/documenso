@@ -345,9 +345,9 @@ export const SignUpFormV2 = ({
                 )}
 
                 <p className="text-muted-foreground mt-4 text-sm">
-                  Already have an account?{' '}
+                  Vous avez déja un compte ?{' '}
                   <Link href="/signin" className="text-documenso-700 duration-200 hover:opacity-70">
-                    Me connecter
+                    Se connecter
                   </Link>
                 </p>
               </fieldset>
@@ -386,13 +386,13 @@ export const SignUpFormV2 = ({
             <div className="mt-6">
               {step === 'BASIC_DETAILS' && (
                 <p className="text-muted-foreground text-sm">
-                  <span className="font-medium">Basic details</span> 1/2
+                  <span className="font-medium">Informations générales</span> 1/2
                 </p>
               )}
 
               {step === 'CLAIM_USERNAME' && (
                 <p className="text-muted-foreground text-sm">
-                  <span className="font-medium">Claim username</span> 2/2
+                  <span className="font-medium">Reclamez votre alias</span> 2/2
                 </p>
               )}
 
@@ -418,7 +418,7 @@ export const SignUpFormV2 = ({
                 disabled={step === 'BASIC_DETAILS' || form.formState.isSubmitting}
                 onClick={() => setStep('BASIC_DETAILS')}
               >
-                Back
+                Précédent
               </Button>
 
               {/* Continue button */}
