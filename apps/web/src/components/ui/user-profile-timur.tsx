@@ -19,7 +19,8 @@ export type UserProfileTimurProps = {
 const businesses = [
   'Suubu Assurance',
   'Police Municipale',
-  'Luciole Immobilier',
+  'Fondation Luciole',
+  'Perceptor Immobilier',
   'Barka Capital',
   'Maître Ouoba',
 ];
