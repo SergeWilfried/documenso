@@ -4,8 +4,11 @@ import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
 import { DocumentInviteEmailTemplate } from '@documenso/email/templates/document-invite';
 import { FROM_ADDRESS, FROM_NAME } from '@documenso/lib/constants/email';
+import { sealDocument } from '@documenso/lib/server-only/document/seal-document';
+import { updateDocument } from '@documenso/lib/server-only/document/update-document';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
 import type { RequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
+import { putPdfFile } from '@documenso/lib/universal/upload/put-file';
 import { createDocumentAuditLogData } from '@documenso/lib/utils/document-audit-logs';
 import { renderCustomEmailTemplate } from '@documenso/lib/utils/render-custom-email-template';
 import { prisma } from '@documenso/prisma';
@@ -18,7 +21,6 @@ import {
   RECIPIENT_ROLE_TO_EMAIL_TYPE,
 } from '../../constants/recipient-roles';
 import { getFile } from '../../universal/upload/get-file';
-import { putFile } from '../../universal/upload/put-file';
 import { insertFormValuesInPdf } from '../pdf/insert-form-values-in-pdf';
 import { triggerWebhook } from '../webhooks/trigger/trigger-webhook';
 
@@ -100,7 +102,7 @@ export const sendDocument = async ({
       formValues: document.formValues as Record<string, string | number | boolean>,
     });
 
-    const newDocumentData = await putFile({
+    const newDocumentData = await putPdfFile({
       name: document.title,
       type: 'application/pdf',
       arrayBuffer: async () => Promise.resolve(prefilled),
@@ -149,7 +151,7 @@ export const sendDocument = async ({
         assetBaseUrl,
         signDocumentLink,
         customBody: renderCustomEmailTemplate(
-          selfSigner ? selfSignerCustomEmail : customEmail?.message || '',
+          selfSigner && !customEmail?.message ? selfSignerCustomEmail : customEmail?.message || '',
           customEmailTemplate,
         ),
         role: recipient.role,
@@ -210,6 +212,31 @@ export const sendDocument = async ({
       );
     }),
   );
+
+  const allRecipientsHaveNoActionToTake = document.Recipient.every(
+    (recipient) => recipient.role === RecipientRole.CC,
+  );
+
+  if (allRecipientsHaveNoActionToTake) {
+    const updatedDocument = await updateDocument({
+      documentId,
+      userId,
+      teamId,
+      data: { status: DocumentStatus.COMPLETED },
+    });
+
+    await sealDocument({ documentId: updatedDocument.id, requestMetadata });
+
+    // Keep the return type the same for the `sendDocument` method
+    return await prisma.document.findFirstOrThrow({
+      where: {
+        id: documentId,
+      },
+      include: {
+        Recipient: true,
+      },
+    });
+  }
 
   const updatedDocument = await prisma.$transaction(async (tx) => {
     if (document.status === DocumentStatus.DRAFT) {

@@ -5,7 +5,6 @@ import { sealDocument } from '@documenso/lib/server-only/document/seal-document'
 import { redis } from '@documenso/lib/server-only/redis';
 import { stripe } from '@documenso/lib/server-only/stripe';
 import { alphaid, nanoid } from '@documenso/lib/universal/id';
-import { putFile } from '@documenso/lib/universal/upload/put-file';
 import { prisma } from '@documenso/prisma';
 import {
   DocumentStatus,
