@@ -195,7 +195,7 @@ export const SignUpFormV2 = ({
 
         <div className="relative flex h-full w-full flex-col items-center justify-evenly">
           <div className="bg-background rounded-2xl border px-4 py-1 text-sm font-medium">
-            Public Profiles are coming soon!
+            Réclamez votre Profil Publique Tampon maintenant !
           </div>
 
           <AnimatePresence>
@@ -224,11 +224,10 @@ export const SignUpFormV2 = ({
       <div className="border-border dark:bg-background relative z-10 flex min-h-[min(850px,80vh)] w-full max-w-lg flex-col rounded-xl border bg-neutral-100 p-6">
         {step === 'BASIC_DETAILS' && (
           <div className="h-20">
-            <h1 className="text-xl font-semibold md:text-2xl">Create a new account</h1>
+            <h1 className="text-xl font-semibold md:text-2xl">Créer un nouveau compte</h1>
 
             <p className="text-muted-foreground mt-2 text-xs md:text-sm">
-              Create your account and start using state-of-the-art document signing. Open and
-              beautiful signing is within your grasp.
+              Créez votre compte et commencez à utiliser la signature numérique.
             </p>
           </div>
         )}
@@ -264,7 +263,7 @@ export const SignUpFormV2 = ({
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Full Name</FormLabel>
+                      <FormLabel>Nom Complet</FormLabel>
                       <FormControl>
                         <Input type="text" {...field} />
                       </FormControl>
@@ -278,7 +277,7 @@ export const SignUpFormV2 = ({
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email Address</FormLabel>
+                      <FormLabel>Addresse Email</FormLabel>
                       <FormControl>
                         <Input type="email" {...field} />
                       </FormControl>
@@ -308,7 +307,7 @@ export const SignUpFormV2 = ({
                   name="signature"
                   render={({ field: { onChange } }) => (
                     <FormItem>
-                      <FormLabel>Sign Here</FormLabel>
+                      <FormLabel>Signez Ici</FormLabel>
                       <FormControl>
                         <SignaturePad
                           className="h-36 w-full"
@@ -327,7 +326,7 @@ export const SignUpFormV2 = ({
                   <>
                     <div className="relative flex items-center justify-center gap-x-4 py-2 text-xs uppercase">
                       <div className="bg-border h-px flex-1" />
-                      <span className="text-muted-foreground bg-transparent">Or</span>
+                      <span className="text-muted-foreground bg-transparent">Ou</span>
                       <div className="bg-border h-px flex-1" />
                     </div>
 
@@ -340,7 +339,7 @@ export const SignUpFormV2 = ({
                       onClick={onSignUpWithGoogleClick}
                     >
                       <FcGoogle className="mr-2 h-5 w-5" />
-                      Sign Up with Google
+                      S'inscrire avec Google
                     </Button>
                   </>
                 )}
@@ -348,7 +347,7 @@ export const SignUpFormV2 = ({
                 <p className="text-muted-foreground mt-4 text-sm">
                   Already have an account?{' '}
                   <Link href="/signin" className="text-documenso-700 duration-200 hover:opacity-70">
-                    Sign in instead
+                    Me connecter
                   </Link>
                 </p>
               </fieldset>
@@ -367,7 +366,7 @@ export const SignUpFormV2 = ({
                   name="url"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Public profile username</FormLabel>
+                      <FormLabel>Votre Alias du Profil Public</FormLabel>
 
                       <FormControl>
                         <Input type="text" className="mb-2 mt-2 lowercase" {...field} />
@@ -431,7 +430,7 @@ export const SignUpFormV2 = ({
                   loading={form.formState.isSubmitting}
                   onClick={onNextClick}
                 >
-                  Next
+                  Suivant
                 </Button>
               )}
 
@@ -444,7 +443,7 @@ export const SignUpFormV2 = ({
                   size="lg"
                   className="flex-1"
                 >
-                  Complete
+                  Terminez
                 </Button>
               )}
             </div>
