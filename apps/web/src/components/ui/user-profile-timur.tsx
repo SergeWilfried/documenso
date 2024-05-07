@@ -37,7 +37,7 @@ export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps)
       )}
     >
       <div className="border-border bg-background text-muted-foreground inline-block max-w-full truncate rounded-md border px-2.5 py-1.5 text-sm">
-        {baseUrl.host}/u/cowry
+        {baseUrl.host}/u/votre_alias
       </div>
 
       <div className="mt-4">
@@ -64,10 +64,10 @@ export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps)
           <VerifiedIcon className="text-primary h-8 w-8" />
         </div>
 
-        <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">Hey Welcome</p>
+        <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">Bonjour</p>
 
         <p className="text-muted-foreground mt-1 max-w-[40ch] text-center text-sm">
-          Pick any of the following agreements below and start signing to get started
+          Choisissez l'un des accords suivants et commencez à signer pour démarrer.
         </p>
       </div>
 
@@ -95,7 +95,7 @@ export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps)
 
                 <div className="flex-shrink-0">
                   <Button type="button" size="sm" className="pointer-events-none w-32">
-                    Sign
+                    Signer
                   </Button>
                 </div>
               </div>
