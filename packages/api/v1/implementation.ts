@@ -22,7 +22,7 @@ import { updateRecipient } from '@documenso/lib/server-only/recipient/update-rec
 import { createDocumentFromTemplate } from '@documenso/lib/server-only/template/create-document-from-template';
 import { extractNextApiRequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
 import { getFile } from '@documenso/lib/universal/upload/get-file';
-import { putFile } from '@documenso/lib/universal/upload/put-file';
+import { putPdfFile } from '@documenso/lib/universal/upload/put-file';
 import {
   getPresignGetUrl,
   getPresignPostUrl,
@@ -229,6 +229,13 @@ export const ApiContractV1Implementation = createNextRoute(ApiContractV1, {
         requestMetadata: extractNextApiRequestMetadata(args.req),
       });
 
+      await upsertDocumentMeta({
+        documentId: document.id,
+        userId: user.id,
+        ...body.meta,
+        requestMetadata: extractNextApiRequestMetadata(args.req),
+      });
+
       const recipients = await setRecipientsForDocument({
         userId: user.id,
         teamId: team?.id,
@@ -296,7 +303,7 @@ export const ApiContractV1Implementation = createNextRoute(ApiContractV1, {
         formValues: body.formValues,
       });
 
-      const newDocumentData = await putFile({
+      const newDocumentData = await putPdfFile({
         name: fileName,
         type: 'application/pdf',
         arrayBuffer: async () => Promise.resolve(prefilled),
@@ -324,10 +331,7 @@ export const ApiContractV1Implementation = createNextRoute(ApiContractV1, {
       await upsertDocumentMeta({
         documentId: document.id,
         userId: user.id,
-        subject: body.meta.subject,
-        message: body.meta.message,
-        dateFormat: body.meta.dateFormat,
-        timezone: body.meta.timezone,
+        ...body.meta,
         requestMetadata: extractNextApiRequestMetadata(args.req),
       });
     }
