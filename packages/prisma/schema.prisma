@@ -566,3 +566,46 @@ model SiteSettings {
   lastModifiedAt       DateTime @default(now())
   lastModifiedByUser   User?    @relation(fields: [lastModifiedByUserId], references: [id], onDelete: SetNull)
 }
+
+
+model PaymentGateway {
+  id         Int      @id @default(autoincrement())
+  name       String
+  apiKey     String
+  publicKey  String?
+  privateKey String?
+  webhookUrl String?
+  // Add other necessary fields for integration
+}
+
+model PaymentRequest {
+  id          Int       @id @default(autoincrement())
+  documentId  Int
+  amount      Float
+  dueDate     DateTime
+  gatewayId   Int
+  status      String    // Pending, Completed, Failed, etc.
+  // Add other necessary fields for payment request
+  @@index([documentId])
+  @@index([gatewayId])
+}
+
+model PaymentReminder {
+  id             Int      @id @default(autoincrement())
+  paymentReqId   Int
+  recipientId    Int
+  scheduledDate  DateTime
+  sentDate       DateTime?
+  // Add other necessary fields for reminders
+  @@index([paymentReqId])
+  @@index([recipientId])
+}
+
+
+model PaymentStatus {
+  id          Int      @id @default(autoincrement())
+  documentId  Int
+  status      String   // Pending, Completed, Failed, etc.
+  // Add other necessary fields for payment status
+  @@index([documentId])
+}
