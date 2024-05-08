@@ -609,3 +609,23 @@ model PaymentStatus {
   // Add other necessary fields for payment status
   @@index([documentId])
 }
+
+model SubscriptionPlan {
+  id          Int      @id @default(autoincrement())
+  documentId  Int
+  name        String
+  price       Float
+  interval    String   // Monthly, Yearly, etc.
+  // Add other necessary fields for subscription plan
+  @@index([documentId])
+}
+
+
+model PaymentInstallment {
+  id          Int      @id @default(autoincrement())
+  documentId  Int
+  amount      Float
+  dueDate     DateTime
+  // Add other necessary fields for installment payment
+  @@index([documentId])
+}
