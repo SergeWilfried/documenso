@@ -277,7 +277,7 @@ export const SignUpFormV2 = ({
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Addresse Email</FormLabel>
+                      <FormLabel>Email</FormLabel>
                       <FormControl>
                         <Input type="email" {...field} />
                       </FormControl>
@@ -291,7 +291,7 @@ export const SignUpFormV2 = ({
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel>Mot de passe</FormLabel>
 
                       <FormControl>
                         <PasswordInput {...field} />
