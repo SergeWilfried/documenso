@@ -48,7 +48,7 @@ export const sendForgotPassword = async ({ userId }: SendForgotPasswordOptions) 
       name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'MonTampon',
       address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@tampon.xyz',
     },
-    subject: 'Forgot Password?',
+    subject: 'Mot de passe oublié?',
     html: render(template),
     text: render(template, { plainText: true }),
   });

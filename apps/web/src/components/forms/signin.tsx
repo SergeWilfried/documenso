@@ -300,7 +300,7 @@ export const SignInForm = ({ className, initialEmail, isGoogleSSOEnabled }: Sign
                     href="/forgot-password"
                     className="text-muted-foreground text-sm duration-200 hover:opacity-70"
                   >
-                    Forgot your password?
+                    Mot de passe oublié?
                   </Link>
                 </p>
               </FormItem>
