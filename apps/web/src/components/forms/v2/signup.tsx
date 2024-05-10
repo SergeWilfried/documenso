@@ -234,11 +234,11 @@ export const SignUpFormV2 = ({
 
         {step === 'CLAIM_USERNAME' && (
           <div className="h-20">
-            <h1 className="text-xl font-semibold md:text-2xl">Claim your username now</h1>
+            <h1 className="text-xl font-semibold md:text-2xl">Réclamez votre alias maintenant</h1>
 
             <p className="text-muted-foreground mt-2 text-xs md:text-sm">
-              You will get notified & be able to set up your documenso public profile when we launch
-              the feature.
+              Vous serez informé et pourrez créer votre profil publique MonTampon lorsque nous
+              lancerons cette fonctionnalité.
             </p>
           </div>
         )}

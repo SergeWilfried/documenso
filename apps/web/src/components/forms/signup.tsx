@@ -161,7 +161,7 @@ export const SignUpForm = ({ className, initialEmail, isGoogleSSOEnabled }: Sign
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Mot de Passe</FormLabel>
                 <FormControl>
                   <PasswordInput {...field} />
                 </FormControl>
